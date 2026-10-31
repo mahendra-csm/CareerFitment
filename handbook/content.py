@@ -3,7 +3,9 @@ import p1_meet
 import p2_test
 import p3_dims
 import p4_report
-import p5_dash
-import p6_startup
-import p7_research
-import p8_family
+import p5_explore
+import p6_skills
+import p7_startup
+import p8_research
+import p9_family
+import p10_action

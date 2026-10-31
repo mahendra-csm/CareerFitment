@@ -1,8 +1,29 @@
 from lib import *
 
-divider(7, "research", "Research & Conferences", "From a student's first research question to an international stage: OneGrasp's peer-reviewed conferences and the scientific committee behind them.",
-        ["International scientific conferences", "The researcher journey", "The OneGrasp Scientific Committee", "Keynotes, awards and the conference day"], "feat/research.webp")
+divider(8, "research", "Research & Conferences", "From a student's first research question to an international stage: OneGrasp's peer-reviewed conferences and the scientific committee behind them.",
+        ["The Research Studio", "International scientific conferences", "The researcher journey", "The OneGrasp Scientific Committee", "Keynotes, awards and the conference day"], "feat/research.webp")
 S = "Research & Conferences"
+
+from tools import opener, howto, mission
+mark("The Research Studio")
+opener(14, "Research Studio", "From a good question to your first conference talk: eight short units, a project planned backwards from a real conference date, a mentor check and a practice recorder.", "feat/research.webp",
+       [("8", "studio units"), ("14", "lessons"), ("5", "levels")],
+       pills(["Class 9–12: first project", "UG: papers and conferences", "Teachers: mentor checks"]),
+       ["Research shows colleges and employers that you can think independently.", "Planning back from a real conference date turns curiosity into a finished project.", "Presenting your work builds confidence that lasts."],
+       [("book-open", "8 studio units", "Question → method → abstract → talk."), ("flag", "Start a project", "Pick a conference, plan back."), ("search", "Conference finder", "India and worldwide."),
+        ("clipboard-check", "Mentor check", "7 items scored 1–4."), ("mic", "Practice recorder", "3 or 10 minutes; stays on device."), ("id-card", "Research profile", "A public page with a QR code.")],
+       ("Dashboard", "Career Toolkit", "Research"), S)
+howto("Research Studio", [("research-studio", "Eight studio units."), ("research-new", "Start a project from a conference date."), ("research-practice", "Practice recorder.")],
+      [("Do unit 1", "What research is, in 10 minutes."), ("Pick a conference", "Find one 3–6 months away."), ("Plan backwards", "Question, sources, method, results, abstract, slides."), ("Mentor check", "7 items, each 1–4, before you submit."),
+       ("Rehearse and present", "Record, compare tries, then submit via Spotlight.")],
+      [callout("simple", "The 8 units: What is research · A good question · Sources · Method & data · Results · Abstract · Poster or slides · Presenting & Q&A."), callout("teacher", "Use the mentor check as a simple rubric for school projects.")], S)
+mission("Research Studio",
+        [("Ask a good question", "30 min", ["Finish units 1 and 2", "Write 3 questions below", "Pick the best one"]),
+         ("Plan from the date", "20 min", ["Find a conference", "Fill the backward plan", "Tell your mentor"]),
+         ("Present", "1 hour", ["Write a 5-line abstract", "Record a 3-minute talk", "Submit through Spotlight"])],
+        two(box(h3("My research question", "circle-help") + p("<b>I wonder why / how / whether…</b>", "small") + lines(3) + p("A good question is specific, answerable and interesting to someone else.", "small")),
+            box(h3("My backward plan", "calendar-range") + table(["Weeks before", "I will finish"], [["12", "Question + sources"], ["9", "Method and data"], ["6", "Results"], ["4", "Abstract (mentor check)"], ["2", "Slides + rehearsal"], ["0", "Present!"]], "fill dense")), gap="4mm"),
+        "You have a real question, a plan and a date.", S)
 
 mark("International scientific conferences")
 disc = [("Business & Economics", "FinTech, digital payments", "briefcase"), ("Engineering & Technology", "Green energy, sustainable manufacturing", "cog"), ("Sports & Physical Education", "Performance, exercise physiology", "dumbbell"),

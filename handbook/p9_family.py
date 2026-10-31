@@ -1,7 +1,7 @@
 from lib import *
 
-divider(8, "family", "Parents & Schools", "How families and institutions can support students with care, and what everyone gains.",
-        ["For parents: guide, not decide", "Ten questions to talk through", "For schools: the Institution Portal", "What everyone gains", "Questions people often ask"], "home/faq.webp")
+divider(9, "family", "Parents & Schools", "How families and institutions can support students with care, and what everyone gains.",
+        ["For parents: guide, not decide", "Ten questions to talk through", "For schools: the Institution Portal", "Questions people often ask"], "home/faq.webp")
 S = "Parents & Schools"
 
 mark("For parents: guide, not decide")
@@ -42,22 +42,6 @@ add(head("For schools and colleges", "See every student.", "Nudge the ones who n
     + band("Schools only ever see their own students, never a student's individual answers. A trust flag shows if a test looks rushed, so it can be retaken.", "Privacy:", "lock", "mt push"),
     section=S)
 
-mark("What everyone gains")
-add(head("Benefits", "What everyone", "gains.", center=True)
-    + grid([f'<div class="gain" style="--gc:{c}"><div class="gh">{icon(ic, "9mm", "#fff")}<h4>{t}</h4></div>' + bullets(items, "tight", "check", c) + "</div>" for t, ic, c, items in [
-        ("Students", "graduation-cap", "#0284C7", ["Know yourself: type, interests, strengths", "Careers that fit, with real facts", "A plan: subjects, exams, degree, college", "Money: scholarships and funding",
-                                                 "Skills school doesn't teach", "Proof: certificates, portfolio, passport", "Confidence to choose, and to change"]),
-        ("Parents", "heart-handshake", "#DB2777", ["A calm conversation based on evidence", "Practical questions to support better", "Visibility of weekly progress", "Honest cost checks before big spends",
-                                                  "Protection from scams and false promises", "A report to revisit as your child grows"]),
-        ("Schools and colleges", "school", "#22C55E", ["A structured guidance programme on campus", "Daily tracking and one-click reminders", "Decision briefs for counsellors", "Life and future skills for every student",
-                                                       "Privacy built in", "Better-prepared students for admissions and placements"])]], 3, gap="4mm")
-    + h3("Built for the world of work that's coming", "rocket")
-    + table(["What employers want (WEF 2025)", "Where OneGrasp builds it"], [
-        ["Analytical thinking", "Aptitude practice, mock tests, research projects, Money Labs"], ["Resilience, flexibility, agility", "Career GPS streaks, exam wellbeing, startup missions"],
-        ["Leadership and social influence", "Communication Lab, startup pitching, research talks"], ["Creative thinking", "Startup Builder, research questions, portfolio projects"],
-        ["Motivation and self-awareness", "Your report, My plan, My Progress"], ["AI and big data", "AI & Certifications: AI Aware to AI Builder"]], "", widths=["40%", "60%"]),
-    section=S)
-
 mark("Questions people often ask")
 faq = [("How long does the test take?", "Up to 90 minutes. Answers save as you go, and you can stop and resume."), ("Can I fail?", "No. Only the Aptitude section has right answers, and the report is never pass or fail."),
        ("Can I retake it?", "Yes. Many students retake it as they move up a stage (Class 8, then 10, then 12)."), ("Who sees my answers?", "Only you. Schools see progress and activity, never answers."),
@@ -76,17 +60,3 @@ add(head("FAQ", "Questions people", "often ask.")
     + grid([f'<div class="gl2"><b>{a}</b><span>{b}</span></div>' for a, b in gl], 2, gap="1.4mm 4mm"),
     section=S)
 
-# ---------------------------------------------------------------- back cover
-theme("brand")
-add(f'''<div class="bk">
-<div class="dv-dots"></div><div class="dv-blob b1"></div>
-<div class="bk-logo">{img("art/logo.png")}</div>
-<div class="bk-t"><div class="cv-kick" style="color:#FFC83D">The view from every seat</div>
-<h1>Know yourself.<br>Choose with confidence.<br><span>Build your future.</span></h1></div>
-<div class="bk-photos">{"".join(f'<div>{img("gallery/" + g)}</div>' for g in ("new1.webp", "old13.webp", "new5.webp", "old02.webp"))}</div>
-<div class="bk-stats">{stats([("3,000+", "students assessed"), ("10+", "schools and colleges"), ("2,500+", "career roadmaps"), ("8", "dimensions measured")], "glass")}</div>
-<div class="bk-cta">{img("art/qr.png", "bk-qr")}<div><div class="kicker" style="color:#E5383B">Take the assessment today</div>
-<div class="bk-url">careerfitment.onegrasp.com</div>
-<p>{icon("mail", "4mm", "#1E2340")} support@onegrasp.com &nbsp; {icon("phone", "4mm", "#1E2340")} +91 89777 60442 / 43 &nbsp; {icon("globe", "4mm", "#1E2340")} onegrasp.com/events</p>
-<p class="small">OneGrasp Education Pvt. Ltd., Hyderabad, India</p></div></div>
-<div class="bk-foot">© 2026 OneGrasp. Salaries are indicative ranges for India. All logos and trademarks belong to their respective owners.</div></div>''', kind="back")

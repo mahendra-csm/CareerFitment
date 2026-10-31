@@ -7,16 +7,20 @@ A 120-page, full-colour A4 handbook for the Career Fitment Assessment, for stude
 | `out/OneGrasp-Career-Fitment-Handbook-print.pdf` | Print edition: high-resolution images |
 | `out/OneGrasp-Career-Fitment-Handbook-digital.pdf` | Digital edition: smaller file for download and sharing |
 
-## What's inside (8 colour-coded parts)
+## What's inside (10 colour-coded parts)
 
-1. **Meet OneGrasp** (red): who we are, services, the three traps, myths vs facts, the future of work, campus days and photos
-2. **The Assessment** (blue): what it is, four editions, the science, the 90 minutes, registering, the exam screen, question types, trust and privacy
-3. **The 8 Dimensions** (violet): two pages per dimension with charts, plus the 8 undergraduate readiness areas
-4. **Your Report** (green): every class's report, a worked example (sample student Ananya), the 15 domains, how to read it, a 90-day plan
-5. **Your Dashboard** (orange): every tool, with real screenshots, steps, tasks and a quick map
-6. **Startups & Funding** (magenta): Spot–Build–Pitch and all 311 funding programmes
-7. **Research & Conferences** (indigo): conferences, the researcher journey, the 39 featured scientific committee members, keynotes
-8. **Parents & Schools** (sky): guide-not-decide, ten questions, the Institution Portal, benefits, FAQ and glossary
+A practical **do-it workbook**: every dashboard tool has its own 3-page chapter (opener, how it works with real screenshots, and a mission card with tick boxes and a fill-in worksheet).
+
+1. **Meet OneGrasp**: who we are, services, why choices go wrong, future of work, campus days and photos
+2. **The Assessment**: what it is, editions, the science, registering, the exam screen, question types, trust
+3. **The 8 Dimensions**: one page per dimension with a chart and a fill-in box, plus the 8 undergraduate areas
+4. **Your Report**: page-by-page anatomy, a worked example, every class's report, how to read it
+5. **Dashboard: Explore**: home, navigation, then tool chapters: Career Library, Entrance Exams, Scholarships, Study Abroad, Internships & Jobs; quick map
+6. **Skills for Life & Work**: Financial Literacy, Law & Rights, AI & Certifications, Communication Lab, Resume & Interview, Proof & Progress, Spotlight
+7. **Startups & Funding**: the Startups course chapter with an idea canvas, Spot–Build–Pitch, all 311 funding programmes
+8. **Research & Conferences**: the Research Studio chapter, conferences, researcher journey, scientific committee, keynotes
+9. **Parents & Schools**: guide-not-decide, ten questions, the Institution Portal, FAQ and glossary
+10. **Your Action Plan**: 30-day kickstart challenge, month-by-month plans per stage, profile on one page, trackers, achievements log
 
 ## Rebuild
 

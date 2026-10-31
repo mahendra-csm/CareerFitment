@@ -27,22 +27,17 @@ def dim(i, art, simple, measures, framework, elems, example, chart, chart_note, 
     mark(f"{i + 1:02d} {nm}")
     eg = "".join(f'<div class="el" style="--dc:{c}">{chip(ic, c, f"color-mix(in srgb, {c} 12%, white)", "9mm", "4.6mm")}<div><b>{t}</b><span>{x}</span></div></div>' for ic, t, x in elems)
     v = f'--dc:{c};--c1:{c};--c2:{c};--soft:color-mix(in srgb, {c} 9%, white);--deep:color-mix(in srgb, {c} 70%, #1E2340)'
-    add(f'<div class="dwrap" style="{v}"><div class="dimtop"><div><span class="dimbadge">Dimension {i + 1:02d} of 08</span><div class="dimnum">{i + 1:02d}</div>'
-        f'<h1 class="title" style="font-size:30pt">{nm}</h1><div class="dimq">“{QS[i]}”</div></div>{img(art, "dimart")}</div>'
+    add(f'<div class="dwrap" style="{v}"><div class="dimtop sm"><div><span class="dimbadge">Dimension {i + 1:02d} of 08</span><div class="dimnum">{i + 1:02d}</div>'
+        f'<h1 class="title" style="font-size:27pt">{nm}</h1><div class="dimq">“{QS[i]}”</div></div>{img(art, "dimart")}</div>'
         + callout("simple", simple)
-        + two(box(h3("What it measures", "ruler") + p(measures)), box(h3("The framework behind it", "book-open") + p(framework), "soft"), gap="4mm")
-        + h3("What it looks at", "search")
-        + f'<div class="els" style="grid-template-columns:repeat({2 if len(elems) <= 4 else 2},1fr)">{eg}</div>'
-        + callout("example", example, cls="push") + "</div>",
-        section=S)
-    add(f'<div class="dwrap" style="{v}">' + head(f"{nm} · in your report", "What your report", "shows you.")
-        + two(box(h3("Example result", "chart-column") + chart + p(chart_note + " <i>Illustrative, not a real result.</i>", "small mt")),
-              box(h3("Why it matters", "target") + p(why) + h3("In the age of AI, employers want people who…", "bot") + bullets(ai, "tight", "check", c), "soft"), ratio="1.05fr 0.95fr", gap="4mm")
+        + two(box(h3("What it measures", "ruler") + p(measures, "small") + h3("The framework", "book-open") + p(framework, "small")),
+              box(h3("How it looks in your report", "chart-column") + chart + p(chart_note + " <i>Illustrative.</i>", "small mt")), ratio="1fr 1fr", gap="4mm")
+        + f'<div class="els c4">{eg}</div>'
         + h3("Careers that often suit each pattern", "briefcase")
-        + table(["If you lean towards…", "You may enjoy careers such as…"], careers, "dense", widths=["34%", "66%"])
-        + h3("Try this month", "list-checks")
-        + grid([f'<div class="tryc" style="--dc:{c}"><b>{s}</b><span>{t}</span></div>' for s, t in tries], 4, gap="2.4mm")
-        + callout("good", good, cls="push") + "</div>",
+        + table(["If you lean towards…", "You may enjoy careers such as…"], careers, "dense", widths=["30%", "70%"])
+        + two(grid([f'<div class="tryc" style="--dc:{c}"><b>{s_}</b><span>{t}</span></div>' for s_, t in tries], 2, gap="2mm"),
+              box(h3("Fill in from your report", "pen-line") + '<div class="myr"><span>My score</span><i></i><span>My top result</span><i></i><span>One way I\'ll use it</span><i></i></div>', "soft"), "mt push", ratio="1.2fr 0.8fr", gap="4mm")
+        + "</div>",
         section=S)
 
 
@@ -201,12 +196,8 @@ ug = [("01", "Personality & Behaviour", "How you naturally work, decide and reac
       ("06", "Digital & Future Skills", "Learning new tools, using AI sensibly, checking data.", "Your digital and AI readiness.", "ug-i-069"),
       ("07", "Career & Employability Readiness", "Knowing the role you want, experience, proof of skills.", "How ready you are for your first job.", "ug-i-072"),
       ("08", "Future Career Adaptability & Fit", "How fast you learn, handle change; the career and place that suit you.", "How well you adapt, and your long-term preferences.", "ug-i-075")]
-for half in (0, 1):
-    items = ug[half * 4:(half + 1) * 4]
-    rows = "".join(f'''<div class="ugr" style="--dc:{DIMC[half * 4 + i]}">{img("brochure/" + a + ".png", "uga")}<div><span class="dimbadge">Area {n}</span><h4>{t}</h4>
-<p><b>Measures:</b> {m}</p><p><b>Your report shows:</b> {r} Plus a score, your strengths, where to grow and next steps.</p></div></div>''' for i, (n, t, m, r, a) in enumerate(items))
-    add(head("Undergraduate edition", "Eight areas of career readiness", ["who you are and how you think.", "how ready you are for work."][half],
-             "Undergraduates don't need to discover themselves from scratch; they need to know how ready they are for the job market. So their edition measures eight career-readiness areas." if half == 0 else "")
-        + rows
-        + (callout("simple", "Areas 1–4 describe <b>you and your subject</b>. Areas 5–8 describe <b>how ready you are for work</b>. Your report adds a skill gap and a 20-year career horizon (Part 4).", cls="push") if half == 1 else ""),
-        section="Undergraduate edition")
+rows = "".join(f'''<div class="ugc" style="--dc:{DIMC[i]}">{img("brochure/" + a + ".png", "uga")}<div><span class="dimbadge">Area {n}</span><h4>{t}</h4><p>{m}</p><p class="small"><b>Report shows:</b> {r}</p></div></div>''' for i, (n, t, m, r, a) in enumerate(ug))
+add(head("Undergraduate edition", "Eight areas of", "career readiness.", "Undergraduates don't need to discover themselves from scratch; they need to know how ready they are for the job market. Areas 1–4 describe you and your subject; areas 5–8 describe how ready you are for work.")
+    + f'<div class="ugg">{rows}</div>'
+    + callout("simple", "Each area gets a score, your strengths, where to grow and next steps. The report adds a skill gap and a 20-year career horizon (Part 4).", cls="push"),
+    section="Undergraduate edition")

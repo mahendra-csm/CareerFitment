@@ -1,7 +1,7 @@
 from lib import *
 
 divider(2, "test", "The Assessment", "What the Career Fitment Assessment is, who it is for, the science behind it, and exactly how to take it, screen by screen.",
-        ["What is a psychometric assessment?", "Four editions for four stages", "The science behind every question", "What happens in the 90 minutes", "Before you begin",
+        ["What is a psychometric assessment?", "Four editions for four stages", "The science behind every question", "Before you begin",
          "Registering, step by step", "Inside the exam screen", "Six kinds of questions", "Built to be trusted", "After you finish"],
         "feat/exams.webp")
 S = "The Assessment"
@@ -53,24 +53,6 @@ add(head("The science", "Built on frameworks", "psychologists trust.",
     + "".join(f'<div class="fw" style="--fc:{DIMC[i]}"><span class="fwn">{n}</span><div><b>{t}</b><p>{d}</p></div><span class="fwo">{icon("book-marked", "3.6mm", DIMC[i])} {o}</span></div>' for i, (n, t, d, o) in enumerate(fw))
     + two(callout("simple", "A <b>framework</b> is a well-tested way of describing people. It means the same answers always give the same result, and every result can be explained in plain words."),
           callout("good", "Class 11–12 adds <b>subject fit</b>, <b>career and stream fit</b> and your <b>career aspiration</b>. Undergraduates take eight career-readiness areas instead (page {{REF:Undergraduates: 8 areas of career readiness}})."), "push", gap="4mm"),
-    section=S)
-
-mark("What happens in the 90 minutes")
-sec11 = [("Aptitude", 12, "#0C8599"), ("Interests", 10, "#E03131"), ("Strengths", 9, "#2F9E44"), ("Personality", 7, "#3B5BDB"), ("Intelligences", 7, "#7048E8"),
-         ("Subjects", 7, "#94A3B8"), ("Career fit", 7, "#64748B"), ("Motivators", 6, "#F08C00"), ("Emotional", 4, "#D6336C"), ("Learning", 3, "#1C7ED6"), ("Careers", 3, "#334155")]
-add(head("Inside the test", "What happens in", "the 90 minutes?",
-         "Here is exactly how the Class 11–12 edition (75 questions) is divided. The other editions follow the same idea with their own sections.")
-    + two(f'<div class="center">{donut(sec11, 74, 0.6, ("75", "questions"))}</div>', legend(sec11) + callout("simple", "Aptitude has the most questions because it is the only part with right answers; more questions give a fairer score."), ratio="0.9fr 1.1fr", cls="mid")
-    + h3("A realistic timeline", "clock")
-    + '<div class="tl">' + "".join(f'<div class="tli" style="--w:{w}%;--tc:{c}"><b>{t}</b><span>{x}</span></div>' for t, x, w, c in [
-        ("0–5 min", "Read the instructions", 7, "#94A3B8"), ("5–30 min", "Personality, interests, intelligences", 28, "#0EA5E9"), ("30–60 min", "Aptitude: take your time", 33, "#2563EB"),
-        ("60–80 min", "Strengths, motivators, learning, emotions", 22, "#7048E8"), ("80–90", "Review", 10, "#16A34A")]) + "</div>"
-    + p("Most students finish well before the 90 minutes. The timer is a limit, not a target.", "small")
-    + h3("Every section, in one line", "list")
-    + table(["Section", "What it asks you", "Right answers?"], [
-        ["Personality", "How you usually act in situations", "No"], ["Interests", "Which activities appeal to you", "No"], ["Aptitude", "Reasoning puzzles with words, numbers, shapes", '<b class="c1">Yes</b>'],
-        ["Strengths / Intelligences", "What you'd naturally do or enjoy", "No"], ["Motivators / Learning / Emotional", "What drives you, how you learn, how you react", "No"],
-        ["Subjects / Career fit / Careers", "Your stream, subjects and goals", "No, it's information"]], "dense", widths=["30%", "52%", "18%"]),
     section=S)
 
 mark("Before you begin")
@@ -142,19 +124,6 @@ add(head("Trust", "Built to", "be trusted.",
           + table(["Check", "Our rushed sample", "A thoughtful test"], [["Time taken", "9 min", "40–80 min"], ["Answers under 3 seconds", "79%", "Under 15%"], ["Same answer repeated", "74%", "Under 30%"], ["Longest identical run", "42 in a row", "3–4"], ["Trust", tag("LOW", "#DC2626"), tag("HIGH", "#16A34A")]], "dense", widths=["40%", "30%", "30%"]),
           '<div class="grid" style="grid-template-columns:1fr 1fr;gap:3mm">' + gauge(79, "answers under 3 seconds", "#DC2626", 36) + gauge(74, "same answer as the one before", "#F08C00", 36) + "</div>"
           + callout("simple", "Rushing doesn't save time. It just gives you a report about nobody. Slow down, read, and answer as yourself.")),
-    section=S)
-
-mark("Your data, your control")
-add(head("Trust", "Your data,", "your control.", "How OneGrasp handles what you share, in plain words.")
-    + cards([("user-check", "Only you see your answers", "Your individual answers are used to build your report and are never shown to your school.", "#0EA5E9"),
-             ("building-2", "Schools see progress", "If you joined through your school, it sees whether you finished and how active you are, to help at the right time.", "#2563EB"),
-             ("mail", "A copy to your email", "A PDF copy goes only to your registered email address.", "#7048E8"),
-             ("folder-lock", "Documents for applications only", "Scholarship and study-abroad vaults keep your documents for your applications.", "#16A34A"),
-             ("mic-off", "Recordings stay on your device", "The research practice recorder never uploads your voice.", "#F08C00"),
-             ("eye-off", "Quick exit on shared devices", "Law & Rights has a quick-exit button and private browsing.", "#DC2626"),
-             ("shield", "AI tools checked first", "AI tools in the dashboard are rated for age and privacy before you see them.", "#0C8599"),
-             ("globe-lock", "You choose what's public", "Your portfolio page is private until you choose to share the link.", "#D6336C")], 4, "compact")
-    + band("Your results come from your own answers, read through established psychometric frameworks. Nothing in the report is a limit on what you can become.", "Our honesty promise:", "shield-check", "mt push"),
     section=S)
 
 mark("After you finish")

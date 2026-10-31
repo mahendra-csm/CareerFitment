@@ -2,28 +2,12 @@ import json, os
 from lib import *
 
 divider(4, "report", "Your Report", "What every class receives, page by page, a complete worked example, and how to read your own report with confidence.",
-        ["One assessment, four reports", "Your report, page by page", "Meet Ananya: a worked example", "Class 6–8: Career Discovery", "Class 9–10: Stream Selection",
-         "The 15 career domains", "Class 11–12: Career Planning", "Undergraduates: Employability Readiness", "How to read your report", "Your 90-day plan"],
+        ["Your report, page by page", "Meet Ananya: a worked example", "Class 6–8: Career Discovery", "Class 9–10: Stream Selection",
+         "The 15 career domains", "Class 11–12: Career Planning", "Undergraduates: Employability Readiness", "How to read your report"],
         "brochure/c11-i-005.png")
 S = "Your Report"
 DOM = json.load(open(os.path.join(os.path.dirname(__file__), "domains.json")))
 Y = '<span class="yes">✓</span>'
-
-mark("One assessment, four reports")
-add(head("By stage", "One assessment,", "four reports.",
-         "Every report is built only from the student's own answers. What it focuses on changes with the decisions in front of them.")
-    + table(["What's in the report", "Class 6–8", "Class 9–10", "Class 11–12", "Undergraduates"], [
-        ["Dimension scorecard on one page", Y + " 8–9 dimensions", Y + " 8 dimensions", Y + " 8 dimensions", Y + " 8 readiness areas"],
-        ["A deep dive for every dimension", Y, Y, Y, Y], ["Personality type and interest code", Y, Y, Y, Y],
-        ["Best-fit fields with a fit %", "Top 5 of 15 domains", "Top 5 of 15 domains", "16 career clusters", "17 career clusters"],
-        ["Fitment · Suitability · Selector", "", "", Y + " by stream", Y + " by degree"], ["Your choice vs your result", Y, Y, Y, Y],
-        ["Long-term roadmap", "20-year roadmap", "20-year roadmap", "15-step roadmap", "3-year learning roadmap"],
-        ["Skill gap vs what jobs need", "", "", "", Y], ["2026–2046 career horizon", "", "", "", Y], ["Entrance / PG exams", "", "Exam awareness", Y + " for your stream", Y + " PG exams"],
-        ["What's rising, what's fading (WEF 2025)", Y, Y, Y, Y], ["Learn, find work and get funded", Y, Y, Y, Y], ["A page for parents and mentors", Y, Y, Y, Y], ["PDF download + email copy", Y, Y, Y, Y]],
-        widths=["31%", "17%", "17%", "17%", "18%"])
-    + two(callout("simple", "Younger students get a report that <b>opens doors</b> (what could I enjoy?). Older students get a report that <b>plans routes</b> (which exam, which degree, which skills?)."),
-          callout("good", "The same report powers the <b>Your results</b> pages of your dashboard, so you can explore it on screen too (Part 5)."), "push", gap="4mm"),
-    section=S)
 
 mark("Your report, page by page")
 pages = [("r11-00", "Cover", "Your name, school, class and date."), ("r11-01", "What's inside", "A map of the report's four sections."), ("r11-02", "Scorecard", "Your real result in each dimension."),
@@ -37,21 +21,8 @@ add(head("Anatomy", "Your report,", "page by page.", "This is a real Class 11 re
 # ---------------------------------------------------------------- Ananya
 mark("Meet Ananya: a worked example")
 an = [100, 100, 60, 25, 74, 19, 70, 25]
-add(head("Worked example", "Meet Ananya.", "Let's read her report together.",
-         "Ananya Rao is a sample Class 11 MPC student we created to show you every screen in this handbook. Her answers were generated for demonstration, so treat her numbers as an example, not a real person's profile.")
-    + two(box(h3("Her eight dimensions", "radar") + f'<div class="center">{radar(["Personality", "Interests", "Intelligence", "EQ", "Learning", "Motivators", "Strengths", "Aptitude"], an, "#10B981", 72)}</div>'
-              + p("The shape shows where her answers were clearest. Big points: personality, interests, learning style, strengths. Small points: emotional intelligence, motivators, aptitude.", "small")),
-          box(h3("What her profile says", "user-round")
-              + '<div class="typecard" style="--dc:#10B981"><b>ISFJ</b><span>“The Systematic Organiser”: draws energy from quiet, focused time and prefers structure and planning.</span></div>'
-              + table(["Dimension", "Her result"], [["Strongest interest", "Investigative (I): curious, analytical"], ["Top intelligences", "Logical-Mathematical, Interpersonal"], ["Learning style", "Reading/Writing, then hands-on"],
-                                                     ["Signature strength", "Creative & innovative"], ["Core motivators", "Creativity, social impact, achievement"]], "dense mt", widths=["42%", "58%"])), ratio="0.95fr 1.05fr", gap="4mm")
-    + callout("ananya", "When Ananya first saw “EQ 25”, she worried it meant she was bad with people. It doesn't. It means her answers didn't show a clear pattern yet, and the report suggests small, practical ways to build it. <b>A low score is a starting point, not a verdict.</b>")
-    + two(callout("simple", "Look for the <b>2–3 points that stick out</b> on the radar. Those are what make a profile unique. Don't worry about the small ones on day one."),
-          callout("try", "Draw your own radar on this page with a pencil, using your scorecard. Compare it with Ananya's: what's different?"), "push", gap="4mm"),
-    section="Worked example")
-
 doms = [("Computer Science / IT", 92), ("AI / Data Science", 92), ("Pure Science", 90), ("Research", 89), ("Mathematics / Statistics", 88), ("Biotechnology", 88), ("Engineering", 87), ("Economics", 86)]
-add(head("Worked example", "Ananya's best fits", "and her dream career.")
+add(head("Worked example", "Meet Ananya:", "her best fits and dream career.", "Ananya Rao is a sample Class 11 MPC student we created to show every screen in this handbook. Her answers were generated for demonstration: an ISFJ, Investigative, logical learner who dreams of software engineering.")
     + two(box(h3("Her top career fields", "target") + hbars([(d, v, "#10B981" if i < 2 else "#6EE7B7") for i, (d, v) in enumerate(doms)], maxv=100, unit="%")
               + p("Computer Science / IT and AI / Data Science tie at the top: both reward an investigative, logical, organised profile.", "small mt")),
           box(h3("Her dream career: Software Engineer", "rocket")
@@ -79,16 +50,6 @@ add(head("Class 6–8 · Career Discovery", "Curiosity first,", "labels never.",
     + callout("parent", "A Class 7 report is a snapshot of a growing child. Celebrate the strengths, don't worry about the lowest scores, and plan to retake the assessment in Class 9–10.", cls="push"),
     section="Class 6–8")
 
-add(head("Class 6–8 · Career Discovery", "Reading the Class 6–8", "report together.")
-    + two(paper("shots/r7-12.jpg", "“Your career, in one page”: the profile wheel and best-fit domains."), paper("shots/r7-15.jpg", "The 20-year roadmap, rising step by step from today."), gap="6mm")
-    + h3("What to do with it at this age", "list-checks")
-    + cards([("compass", "Explore, don't decide", "Use the top 5 domains as a menu of things to try: clubs, books, videos, visits.", "#F08C00"),
-             ("repeat", "Build habits", "The roadmap's first steps are habits: reading, curiosity, money basics, asking good questions.", "#16A34A"),
-             ("gamepad-2", "Play the dashboard", "Financial Literacy games, Communication Lab and AI Aware are made for younger students too.", "#7048E8"),
-             ("calendar", "Know the early exams", "JNVST (Navodaya, Class 6), AISSEE (Sainik School, Class 6 and 9) and NMMS (Class 8).", "#0EA5E9")], 4, "compact"),
-    section="Class 6–8")
-
-# ---------------------------------------------------------------- Class 9-10
 mark("Class 9–10: Stream Selection")
 add(head("Class 9–10 · Stream Selection", "The first big choice:", "your stream.",
          "After Class 10 every student picks a stream: MPC, BiPC, MEC, CEC, HEC or vocational. It's easier to choose than to change, so the Class 9–10 report makes sure the stream follows the student, not the crowd.")
@@ -109,16 +70,6 @@ add(head("Class 9–10 · Stream Selection", "From your top domains", "to a stre
     + table(["Career domain", "Most direct stream", "Exams you may meet"], [[f"<b>{d['name']}</b>", stream[d["key"]], exams[d["key"]]] for d in DOM], "dense", widths=["40%", "30%", "30%"])
     + two(callout("simple", "<b>M</b>aths <b>P</b>hysics <b>C</b>hemistry · <b>Bi</b>ology <b>P</b>hysics <b>C</b>hemistry · <b>M</b>aths <b>E</b>conomics <b>C</b>ommerce · <b>C</b>ivics <b>E</b>conomics <b>C</b>ommerce · <b>H</b>istory <b>E</b>conomics <b>C</b>ivics."),
           callout("warn", "This is a starting guide. Many degrees accept any stream and rules change, so confirm eligibility on each exam's official site (linked in Entrance Exams)."), "push", gap="4mm"),
-    section="Class 9–10")
-
-add(head("Class 9–10 · Stream Selection", "Your roadmap and", "a stream checklist.")
-    + two(paper("shots/r910-13.jpg", "Your 20-year roadmap."), paper("shots/r910-14.jpg", "Take the next step: learn, find work and get funded."), gap="6mm")
-    + h3("Before you sign the stream form", "clipboard-check")
-    + box(check_list(["Our top 2 domains from the report point to this stream", "The student enjoys at least two core subjects of this stream",
-                      "We checked aptitude: the maths or biology load is manageable", "We read 3 careers from this stream in the Career Library",
-                      "We tried one Career Test-Drive in this stream", "We know the main entrance exam and its eligibility",
-                      "We have a backup plan if the first-choice exam doesn't work out", "The decision is the student's, with the family's support"], 2), "soft")
-    + callout("parent", "If the report and the family's wish disagree, don't fight. Use the dashboard's <b>Family Decision Room</b> to compare both paths side by side with facts.", cls="push"),
     section="Class 9–10")
 
 mark("The 15 career domains")
@@ -161,14 +112,6 @@ add(head("Class 11–12 · Career Selector", "Pick your dream career.", "Get the
     + callout("warn", "A roadmap is a guide, not a guarantee. Entry routes and requirements change; always confirm with the college, exam body or employer.", cls="push"),
     section="Class 11–12")
 
-add(head("Class 11–12 · Also in your report", "Real facts.", "Not guesses.",
-         "Every exam and funded programme links to its official source, so you can check it yourself.")
-    + two(img("brochure/c11-i-158.png", "pic"), paper("shots/r11-17.jpg", "What's rising, what's fading (WEF 2025)."), gap="5mm")
-    + cards([("clipboard-list", "Entrance exams for your stream", "With who conducts them and official links.", "#10B981"), ("landmark", "Funded programmes", "Genuinely funded or stipend-linked routes, checked against official sources.", "#0EA5E9"),
-             ("graduation-cap", "Learn, work, get funded", "Free courses (NPTEL, Coursera, edX, Khan Academy), job sites and scholarships.", "#8B5CF6"), ("heart-handshake", "A page for parents", "“Guide, not decide”: simple ways to support.", "#D6336C")], 4, "compact mt"),
-    section="Class 11–12")
-
-# ---------------------------------------------------------------- UG
 mark("Undergraduates: Employability Readiness")
 add(head("Undergraduate edition", "Know your fit.", "Build your career.",
          "Skills, internships, first job and higher study: the undergraduate report covers the four choices to make before graduation.")
@@ -182,13 +125,6 @@ add(head("Undergraduate edition", "Know your fit.", "Build your career.",
               "Your 2026–2046 career horizon", "PG entrance exams for your field: CAT, CUET-PG, state PGCETs and more", "Learn, find work and get funded; a page for parents and mentors"], "tight")), "mt", ratio="0.85fr 1.15fr", gap="5mm"),
     section="Undergraduate edition")
 
-add(head("Undergraduate edition", "Your clusters and", "your realistic path.")
-    + two(paper("shots/rug-11.jpg", "Your career cluster fit across 17 clusters."), paper("shots/rug-12.jpg", "Your career path at a glance."), gap="6mm")
-    + h3("The Career Selector's realistic path includes", "route")
-    + grid([f'<div class="pill2">{icon("check", "3.4mm", "var(--c1)", 3)} {t}</div>' for t in ["Career overview and horizons", "Three-year learning roadmap", "Technical skills to master", "Portfolio projects", "Skill-gap assessment", "Internship strategy",
-                                                                                              "Entry-level job titles", "Employer skill matrix", "Certifications and short courses", "Higher education options", "Specialisations and progression", "Target profile by graduation"]], 3, gap="2mm"),
-    section="Undergraduate edition")
-
 add(head("Undergraduate edition", "Know your gaps.", "See 20 years ahead.")
     + two(paper("shots/rug-16.jpg", "Your skill gap: your level (1–5) next to what jobs in your area usually need."), img("brochure/ug-i-147.png", "pic"), gap="5mm")
     + two(box(h3("Reading the skill gap", "gauge") + table(["Mark", "Meaning", "Do this"], [[tag("Ready", "#16A34A"), "At the level jobs need", "Show proof of it"],
@@ -198,17 +134,9 @@ add(head("Undergraduate edition", "Know your gaps.", "See 20 years ahead.")
               + callout("simple", "The skill gap is your <b>to-do list for this year</b>. The horizon is your <b>compass for the next twenty</b>.")), "mt", gap="4mm"),
     section="Undergraduate edition")
 
-add(head("Undergraduate edition", "Plan your next step", "with real facts.")
-    + two(paper("shots/rug-18.jpg", "PG entrance exams for your field, with what each is for."), paper("shots/rug-20.jpg", "Take the next step: learn, find work and get funded."), gap="6mm")
-    + two(box(h3("Free places to learn", "graduation-cap") + table(["Platform", "Good for"], [["NPTEL", "Free courses from the IITs"], ["Coursera / edX", "University courses, many free to audit"], ["freeCodeCamp", "Hands-on coding"], ["Khan Academy", "Maths and science basics"]], "dense")),
-          box(h3("Where to find work", "briefcase") + table(["Portal", "Good for"], [["LinkedIn Jobs", "Jobs and networking"], ["Naukri / Indeed", "Indian job listings"], ["Internshala", "Internships"], ["Wellfound", "Startup jobs"]], "dense")), "mt", gap="4mm")
-    + band("Your profile shows where you will thrive today, but you are still growing. Revisit your report as you change, and share it with someone who is guiding you.", "This is a map, not a verdict.", "map", "mt push"),
-    section="Undergraduate edition")
-
-# ---------------------------------------------------------------- how to read
 mark("How to read your report")
 add(head("Reading guide", "How to read your report", "in 20 minutes.",
-         "Read it in this order the first time. Have a pen and the 90-day plan on the next page ready.")
+         "Read it in this order the first time. Have a pen ready; the 90-day plan is in Part 10.")
     + vsteps([("Start with “At a glance” (2 min)", "The scorecard shows your real result in each dimension. Notice the two or three that stand out."),
               ("Read your personality type and interest code (4 min)", "These two explain most of the rest. Ask yourself: does this sound like me?"),
               ("Look at your best-fit fields (4 min)", "Note the top 3 and their fit %. Read why each was matched."),
@@ -223,14 +151,3 @@ add(head("Reading guide", "How to read your report", "in 20 minutes.",
     + callout("simple", "In Personality, Learning Style and Motivators a score shows a <b>preference</b>, not quality. Only Aptitude has right answers, and even Aptitude grows with practice.", cls="push"),
     section="Reading guide")
 
-mark("Your 90-day plan")
-add(head("Reading guide", "Turn your report into", "a 90-day plan.", "Fill this in with your report open. Keep it on your desk, or photograph it and pin it to your phone.")
-    + two(box(h3("My report in one line", "pen-line") + p("My type is ________ · my interest code is ________", "small") + lines(1) + h3("My top 3 fields", "target") + lines(3)),
-          box(h3("One strength to use", "trophy") + lines(2) + h3("One area to grow", "sprout") + lines(2)), gap="4mm")
-    + table(["When", "Goal", "Dashboard tool I'll use", "Done"], [
-        ["<b>Days 1–30</b> · Explore", "Read 5 careers from my top field", "Career Library, Test-Drive", "☐"], ["", "", "", "☐"],
-        ["<b>Days 31–60</b> · Do", "One small task or free course", "Internships, AI & Certifications", "☐"], ["", "", "", "☐"],
-        ["<b>Days 61–90</b> · Build", "One project or proof", "Portfolio, Career Passport", "☐"], ["", "", "", "☐"]], "mt", widths=["22%", "38%", "32%", "8%"])
-    + two(callout("try", "The dashboard's <b>My plan</b> page and weekly <b>Career GPS</b> missions turn this sheet into ticked-off tasks (Part 5)."),
-          callout("parent", "Sign the bottom of this page with your child: <span class='hand' style='font-size:13pt'>We agree to try this together.</span>"), "push", gap="4mm"),
-    section="Reading guide")

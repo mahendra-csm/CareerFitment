@@ -1,7 +1,7 @@
 from lib import *
 
 divider(1, "meet", "Meet OneGrasp", "Who we are, what we do, and why we built a career assessment that looks far beyond marks.",
-        ["What is OneGrasp?", "Everything OneGrasp does", "Why career choices go wrong", "Myths and facts", "The future of work", "Your journey with OneGrasp", "An assessment day on campus", "Real schools, real students"],
+        ["What is OneGrasp?", "Everything OneGrasp does", "Why career choices go wrong", "The future of work", "Your journey with OneGrasp", "An assessment day on campus", "Real schools, real students"],
         "brochure/ug-i-001.png")
 S = "Meet OneGrasp"
 
@@ -55,20 +55,6 @@ add(head("Why it matters", "Three traps that decide", "too many careers.",
                                               ["Decide once, alone", "Decide in steps, as a family"], ["Hope it works", "Test it first: Test-Drive, internships, projects"]], widths=["45%", "55%"]),
           callout("simple", "A good career fit is where three circles overlap: <b>what you enjoy</b> (interests), <b>what you are good at</b> (strengths and aptitude) and <b>what the world needs and pays for</b> (real careers). The assessment finds the first two; the dashboard shows you the third.")
           + callout("parent", "Your experience matters, and so does your child's profile. Use the report as a shared, neutral starting point for the conversation.")),
-    section=S)
-
-mark("Myths and facts")
-myths = [("“JEE or NEET decides everything.”", "Our library covers 930 careers. Many great routes need neither exam."),
-         ("“Marks are enough to choose a career.”", "Marks show how you did. Fit shows where you will do well."),
-         ("“It's too late to change direction.”", "Many degrees accept any stream. Your report shows which ones."),
-         ("“My degree decides my career.”", "Many roles hire from more than one degree. Your report shows which fit you."),
-         ("“CGPA is all that matters.”", "CGPA shows how you did. Skills and proof show what you can do."),
-         ("“Only toppers need career guidance.”", "Every student benefits from knowing their strengths and options."),
-         ("“A test tells you one fixed career.”", "It shows best-fit fields and a plan to test them in real life."),
-         ("“It's an exam you can fail.”", "There are no good or bad results, only better fits.")]
-add(head("Clearing the air", "Myth or fact?", "", "Eight things students and parents often believe, and what is actually true.")
-    + "".join(f'<div class="vs-row mb" style="margin-bottom:2.6mm"><div class="myth"><div class="lbl">{icon("x", "3.4mm", "#DC2626", 3)} MYTH</div>{m}</div><div class="fact"><div class="lbl">{icon("check", "3.4mm", "#16A34A", 3)} FACT</div>{f}</div></div>' for m, f in myths)
-    + callout("good", "Career guidance is not about predicting the future. It is about making the next decision with better information than you had yesterday.", cls="push"),
     section=S)
 
 mark("The future of work")

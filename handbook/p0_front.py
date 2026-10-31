@@ -32,16 +32,13 @@ add(head("Before you begin", "This handbook", "belongs to…")
     + two(box('<div class="own">' + "".join(f'<div class="ownf"><label>{l}</label><div class="wline"></div></div>' for l in
                                            ["My name", "Class / year", "School or college", "Date I took the assessment", "My personality type", "My interest code", "My top career field"]) + "</div>", "soft"),
           box(h3("How to use this book", "compass")
-              + p("You do not need to read it cover to cover. Each part has its own colour, so you can find your way by the edge of the page.")
+              + p("This is a <b>do-it book</b>, not a read-it book. Every dashboard tool has a mission card with tick boxes and a worksheet. Each part has its own colour on the page edge.")
               + "".join(f'<div class="route" style="--rc:{c}"><span class="rdot"></span><div><b>{t}</b><br><span class="small">{x}</span></div></div>' for c, t, x in [
-                  ("#E5383B", "Part 1 · Meet OneGrasp", "Who we are and why this matters"),
-                  ("#0EA5E9", "Part 2 · The Assessment", "Read before you take the test"),
-                  ("#8B5CF6", "Part 3 · The 8 Dimensions", "What each part of you means"),
-                  ("#10B981", "Part 4 · Your Report", "Read with your report open"),
-                  ("#F97316", "Part 5 · Your Dashboard", "Keep next to your screen"),
-                  ("#D946EF", "Part 6 · Startups & Funding", "311 programmes to fund an idea"),
-                  ("#6366F1", "Part 7 · Research & Conferences", "Present your work to the world"),
-                  ("#0284C7", "Part 8 · Parents & Schools", "How the adults can help")])),
+                  ("#E5383B", "1 · Meet OneGrasp", "Who we are"), ("#0EA5E9", "2 · The Assessment", "Before you take the test"),
+                  ("#8B5CF6", "3 · The 8 Dimensions", "What each part of you means"), ("#10B981", "4 · Your Report", "Read with your report open"),
+                  ("#F97316", "5 · Dashboard: Explore", "Careers, exams, scholarships, abroad, jobs"), ("#0891B2", "6 · Skills for Life & Work", "Money, law, AI, speaking, resume, proof"),
+                  ("#D946EF", "7 · Startups & Funding", "Build an idea; 311 funding programmes"), ("#6366F1", "8 · Research & Conferences", "From question to global stage"),
+                  ("#0284C7", "9 · Parents & Schools", "How the adults can help"), ("#F59E0B", "10 · Your Action Plan", "30-day challenge, yearly plans, trackers")])),
           ratio="0.9fr 1.1fr")
     + h3("Look out for these boxes")
     + grid([callout("simple", "The idea explained the way a friend would."), callout("example", "A real situation that shows how it works."),
@@ -86,14 +83,3 @@ add(head("Working together", "Our partners and", "collaborations.", "Internation
     + p("All logos and trademarks belong to their respective owners.", "small center push"),
     section="Partners")
 
-# ---------------------------------------------------------------- 6. at a glance
-mark("OneGrasp at a glance")
-nums = [("3,000+", "Students assessed", "users", "#E5383B"), ("10+", "Schools and colleges", "school", "#4C5FD5"), ("8", "Dimensions measured", "radar", "#F5B700"),
-        ("2,500+", "Career roadmaps", "route", "#16A34A"), ("2", "States reached", "map", "#7048E8"), ("1,000+", "Parents engaged", "heart-handshake", "#0EA5E9"), ("500+", "Counselling sessions", "messages-square", "#E64980")]
-add(head("The big picture", "OneGrasp", "at a glance.", center=True)
-    + photo("gallery/old08.webp", style="height:62mm", tape=False)
-    + '<div class="glance">' + "".join(f'<div class="gl" style="--g:{c}"><span class="gln">{i + 1}</span>{icon(ic, "6mm", c)}<b>{v}</b><span>{l}</span></div>' for i, (v, l, ic, c) in enumerate(nums)) + "</div>"
-    + h3("Inside the dashboard", "layout-dashboard")
-    + stats([("930", "careers explained", "briefcase"), ("29", "entrance exams", "clipboard-list"), ("40", "scholarships", "award"), ("209", "free internships", "laptop"), ("24", "legal guides", "scale")])
-    + '<div class="grid push" style="grid-template-columns:repeat(4,1fr);gap:3mm">' + "".join(photo(f"gallery/{g}", style="height:30mm", tape=False) for g in ("old10.webp", "new2.webp", "old03.webp", "g13.jpg")) + "</div>",
-    section="At a glance")

@@ -1,13 +1,13 @@
 from lib import *
 from tools import *
 
-THEMES["skills"] = ("Skills for Life & Work", "#0891B2", "#22C55E", "#E8F7FB", "#155E75")
+THEMES["skills"] = ("Skills for Life & Work", "#3D4F66", "#3D4F66", "#E8F7FB", "#155E75")
 divider(6, "skills", "Skills for Life & Work", "School teaches subjects. These tools teach the skills that decide how well life and work go: money, rights, AI, communication, a job-ready resume, and proof of what you can do.",
         ["Financial Literacy", "Law & Rights", "AI & Certifications", "Communication Lab", "Resume & Interview", "Portfolio, Passport, GPS & Progress", "Spotlight"], "feat/money.webp")
 
 # ---------------------------------------------------------------- 6 Money
 mark("Financial Literacy")
-tool_theme("t-money", "Financial Literacy", "#CA8A04", "#16A34A")
+tool_theme("t-money", "Financial Literacy", "#9C5A5E", "#17243A")
 opener(6, "Financial Literacy", "Money skills, one level at a time: short lessons, a life simulation, eight money labs and Scam Shield games, with virtual money so mistakes cost nothing.", "feat/money.webp",
        [("6", "levels"), ("16", "lessons"), ("19", "tools")],
        pills(["Class 6–8: needs vs wants", "Class 9–12: saving, banking, scams", "Class 11–12: salary, tax, credit, EMIs"]),
@@ -29,7 +29,7 @@ mission("Financial Literacy",
 
 # ---------------------------------------------------------------- 7 Law
 mark("Law & Rights")
-tool_theme("t-law", "Law & Rights", "#475569", "#6366F1")
+tool_theme("t-law", "Law & Rights", "#3D4F66", "#3D4F66")
 opener(7, "Law & Rights", "Know your rights and what to do first. Answer two questions and get the right guide, the steps to take, ready-made letters and the helpline to call.", "feat/legal.webp",
        [("24", "guides"), ("37", "lessons"), ("112", "always first")],
        pills(["School: bullying, safe touch, cyberbullying", "College: ragging, privacy, fraud", "First job: offer letter, wages, harassment"]),
@@ -52,7 +52,7 @@ mission("Law & Rights",
 
 # ---------------------------------------------------------------- 8 AI
 mark("AI & Certifications")
-tool_theme("t-ai", "AI & Certifications", "#DB2777", "#A855F7")
+tool_theme("t-ai", "AI & Certifications", "#7A2A30", "#5E7189")
 opener(8, "AI & Certifications", "Learn AI for free and get certified: courses from the Government of India's YUVA AI for All to Harvard, Google, IBM and Kaggle, plus AI tools rated for your age.", "feat/ai.webp",
        [("4", "levels"), ("Free", "certificates"), ("Age-rated", "tools")],
        pills(["Everyone: AI Aware", "Class 9–10: AI User", "Class 11–12: AI Maker & Builder"]),
@@ -74,7 +74,7 @@ mission("AI & Certifications",
 
 # ---------------------------------------------------------------- 9 Communication
 mark("Communication Lab")
-tool_theme("t-comm", "Communication Lab", "#0891B2", "#2563EB")
+tool_theme("t-comm", "Communication Lab", "#3D4F66", "#17243A")
 opener(9, "Communication Lab", "Speak, write and listen with confidence: a course for your class, a one-minute daily speaking challenge with instant feedback, and your Communication Score (CQ).", "feat/communication.webp",
        [("4", "class tracks"), ("1 min", "daily challenge"), ("CQ", "your score")],
        pills(["Class 6–8 track", "Class 9–10 track", "Class 11–12 track", "College track"]),
@@ -96,7 +96,7 @@ mission("Communication Lab",
 
 # ---------------------------------------------------------------- 10 Resume & Interview
 mark("Resume & Interview")
-tool_theme("t-job", "Resume & Interview", "#E11D48", "#F97316")
+tool_theme("t-job", "Resume & Interview", "#B92B32", "#B92B32")
 opener(10, "Resume & Interview", "From your resume to your first offer: an ATS-friendly resume with AI help, jobs matched with a fit score, tailored cover letters and interview practice out loud.", "feat/jobready.webp",
        [("6", "steps to an offer"), ("100", "interview questions"), ("PDF", "resume download")],
        pills(["Class 11–12: first resume for internships", "Parents: help with the first CV"]),
@@ -117,7 +117,7 @@ mission("Resume & Interview",
 
 # ---------------------------------------------------------------- 11 Portfolio / Passport / GPS / Progress
 mark("Portfolio, Passport, GPS & Progress")
-tool_theme("t-prog", "Proof & Progress", "#EA580C", "#DB2777")
+tool_theme("t-prog", "Proof & Progress", "#B92B32", "#7A2A30")
 opener(11, "Proof & Progress", "Build your website, collect verified achievements in your Career Passport, follow three Career GPS missions every week, and watch it all add up in My Progress.", "feat/progress.webp",
        [("3", "missions a week"), ("+10", "points each"), ("QR", "verified passport")],
        pills(["Every class", "Parents see weekly progress", "Schools verify achievements"]),
@@ -139,7 +139,7 @@ mission("Proof & Progress",
 
 # ---------------------------------------------------------------- 12 Spotlight (2 pages)
 mark("Spotlight")
-tool_theme("t-spot", "Spotlight", "#D97706", "#E11D48")
+tool_theme("t-spot", "Spotlight", "#9C5A5E", "#B92B32")
 opener(12, "Spotlight", "Career boosters from OneGrasp: present research at an international conference, publish a paper, get an ISBN for your book, start a journal with an ISSN, or be featured in Awardees Magazine.", "feat/spotlight.webp",
        [("5", "boosters"), ("DOI", "for abstracts"), ("Free", "to ask")],
        pills(["Class 11–12 researchers", "Young authors", "Faculty and professionals"]),

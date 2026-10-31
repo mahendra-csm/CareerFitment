@@ -35,8 +35,8 @@ mark("Spot, Build, Pitch")
 add(head("Entrepreneurship", "Entrepreneurship is best", "learned by doing.",
          "Most students meet entrepreneurship as a chapter, a guest lecture or a case study. OneGrasp's startup programmes give them a real occasion to take one problem, build a first answer and defend it in front of people who ask hard questions.")
     + grid([f'<div class="sbp" style="--sc:{c}"><span>{n}</span>{icon(ic, "9mm", "#fff")}<h4>{t}</h4><p>{x}</p></div>' for n, t, x, ic, c in [
-        ("01", "SPOT", "Observe, investigate and define a real problem.", "search", "#D946EF"), ("02", "BUILD", "Develop a prototype or a structured business solution.", "hammer", "#F43F5E"),
-        ("03", "PITCH", "Present the idea, answer questions and plan the next steps.", "presentation", "#F97316")]], 3, gap="4mm")
+        ("01", "SPOT", "Observe, investigate and define a real problem.", "search", "#7A2A30"), ("02", "BUILD", "Develop a prototype or a structured business solution.", "hammer", "#B92B32"),
+        ("03", "PITCH", "Present the idea, answer questions and plan the next steps.", "presentation", "#B92B32")]], 3, gap="4mm")
     + h3("From problem to pitch: what students actually do", "route")
     + steps([("Meet a real-world problem", "Chosen by the team.", "globe"), ("Find out who lives with it", "Talk to real users.", "users"), ("Build and test a first solution", "Something people can handle.", "wrench"),
              ("Shape a business model", "Who pays, and why.", "wallet"), ("Present it", "Answer hard questions.", "mic")], cols=5)
@@ -46,9 +46,9 @@ add(head("Entrepreneurship", "Entrepreneurship is best", "learned by doing.",
     section=S)
 
 mark("How to use the Funding directory")
-kinds = [("Grant", sum(p["kind"] == "grant" for p in P), "#16A34A"), ("Subsidy", sum(p["kind"] == "subsidy" for p in P), "#0EA5E9"), ("Loan", sum(p["kind"] == "loan" for p in P), "#F59E0B"),
-         ("Equity", sum(p["kind"] == "equity" for p in P), "#8B5CF6"), ("Guarantee", sum(p["kind"] == "guarantee" for p in P), "#F43F5E")]
-runby = [("State government", T["runBy"]["state"], "#D946EF"), ("Incubators and funds", T["runBy"]["incubator"], "#F43F5E"), ("Central government", T["runBy"]["central"], "#F97316"), ("Banks and SIDBI", T["runBy"]["bank"], "#64748B")]
+kinds = [("Grant", sum(p["kind"] == "grant" for p in P), "#17243A"), ("Subsidy", sum(p["kind"] == "subsidy" for p in P), "#3D4F66"), ("Loan", sum(p["kind"] == "loan" for p in P), "#B92B32"),
+         ("Equity", sum(p["kind"] == "equity" for p in P), "#5E7189"), ("Guarantee", sum(p["kind"] == "guarantee" for p in P), "#B92B32")]
+runby = [("State government", T["runBy"]["state"], "#7A2A30"), ("Incubators and funds", T["runBy"]["incubator"], "#B92B32"), ("Central government", T["runBy"]["central"], "#B92B32"), ("Banks and SIDBI", T["runBy"]["bank"], "#8A97A8")]
 early = sum(1 for p in P if set(p["stages"]) & {"idea", "proof-of-concept", "prototype"})
 add(head("Funding directory", "Money to start", "your startup.",
          f"The dashboard's Funding directory lists every grant, loan, subsidy, equity and credit-guarantee programme for Indian startups from CapEasy's scheme directory (CapEasy is OneGrasp's own company). The next nine pages list all {T['programmes']}, as of {F['fetchedAt']}.")
@@ -63,7 +63,7 @@ add(head("Funding directory", "Money to start", "your startup.",
           callout("warn", "Never pay an agent to “guarantee” a government grant. Real schemes apply directly or through registered incubators."), "push", gap="4mm"),
     section=S)
 
-KIND = {"grant": tag("Grant", "#16A34A"), "subsidy": tag("Subsidy", "#0EA5E9"), "loan": tag("Loan", "#F59E0B"), "equity": tag("Equity", "#8B5CF6"), "guarantee": tag("Guarantee", "#F43F5E")}
+KIND = {"grant": tag("Grant", "#17243A"), "subsidy": tag("Subsidy", "#3D4F66"), "loan": tag("Loan", "#B92B32"), "equity": tag("Equity", "#5E7189"), "guarantee": tag("Guarantee", "#B92B32")}
 STAGE = {"idea": "Idea", "proof-of-concept": "PoC", "prototype": "Prototype", "early-stage": "Early", "seed": "Seed", "paid-pilot": "Pilot", "early-revenue": "Revenue", "growth": "Growth", "scale": "Scale"}
 
 

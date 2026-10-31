@@ -33,6 +33,8 @@ DIMC = ["#3B5BDB", "#E03131", "#7048E8", "#D6336C", "#1C7ED6", "#F08C00", "#2F9E
 
 
 def theme(key):
+    if key not in THEMES:
+        THEMES[key] = THEMES["brand"]
     CUR["theme"] = key
 
 
@@ -389,3 +391,10 @@ def divider(part, key, title, sub, items, art, art2=None):
 <div class="dv-list"><div class="dv-lh">In this part</div><ol>{lis}</ol></div>
 {img(art, "dv-art")}{a2}
 <div class="dv-foot"><span>{title}</span><span>careerfitment.onegrasp.com</span></div></div>''', section=title, kind="divider")
+
+
+# ---- brand system: every chapter shares one palette ----
+BRAND = ("#B92B32", "#17243A", "#F4F3EF", "#17243A")
+for _k in list(THEMES):
+    THEMES[_k] = (THEMES[_k][0],) + BRAND
+DIMC[:] = ["#17243A", "#B92B32", "#3D4F66", "#7A2A30", "#5E7189", "#9C5A5E", "#8A97A8", "#C2A3A5"]

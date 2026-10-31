@@ -17,16 +17,16 @@ add(head("About us", "What is", "OneGrasp?",
           + stats([("6–12", "classes covered", "layers"), ("8", "dimensions", "radar")]) + stats([("20+", "dashboard tools", "layout-grid"), ("100%", "facts linked to sources", "badge-check")]),
           ratio="1.15fr 0.85fr", gap="6mm")
     + h3("What makes OneGrasp different", "sparkles")
-    + cards([("flask-conical", "Built on science", "Well-known frameworks: personality type, Holland's RIASEC interests, Gardner's intelligences, emotional intelligence and reasoning aptitude.", "#E5383B"),
-             ("users", "Written for each age", "Questions and a report written for each class, from Class 6 to Class 12.", "#4C5FD5"),
-             ("map", "A plan, not just a PDF", "The report opens a dashboard of lessons, tools and weekly tasks, so it never sits in a drawer.", "#16A34A"),
-             ("shield-check", "Facts you can check", "Every exam, scholarship and funding programme links to its official source.", "#F08C00")], 4, "compact"),
+    + cards([("flask-conical", "Built on science", "Well-known frameworks: personality type, Holland's RIASEC interests, Gardner's intelligences, emotional intelligence and reasoning aptitude.", "#B92B32"),
+             ("users", "Written for each age", "Questions and a report written for each class, from Class 6 to Class 12.", "#3D4F66"),
+             ("map", "A plan, not just a PDF", "The report opens a dashboard of lessons, tools and weekly tasks, so it never sits in a drawer.", "#17243A"),
+             ("shield-check", "Facts you can check", "Every exam, scholarship and funding programme links to its official source.", "#9C5A5E")], 4, "compact"),
     section=S)
 
 mark("Why career choices go wrong")
-traps = [("Marks", "“You scored 95 in maths, so take engineering.”", "Marks show how you did in an exam. They do not show what you enjoy, how you work, or what you will want to do for 30 years.", "percent", "#E5383B"),
-         ("Peer pressure", "“All my friends are taking MPC.”", "Your friends have different strengths and dreams. Following the crowd feels safe today and costly later.", "users", "#F08C00"),
-         ("Guesswork", "“My cousin did B.Com, so…”", "Most families know only a handful of careers. With 930 careers in our library, guessing means missing most of your options.", "shuffle", "#7048E8")]
+traps = [("Marks", "“You scored 95 in maths, so take engineering.”", "Marks show how you did in an exam. They do not show what you enjoy, how you work, or what you will want to do for 30 years.", "percent", "#B92B32"),
+         ("Peer pressure", "“All my friends are taking MPC.”", "Your friends have different strengths and dreams. Following the crowd feels safe today and costly later.", "users", "#9C5A5E"),
+         ("Guesswork", "“My cousin did B.Com, so…”", "Most families know only a handful of careers. With 930 careers in our library, guessing means missing most of your options.", "shuffle", "#5E7189")]
 add(head("Why it matters", "Three traps that decide", "too many careers.",
          "Ask ten adults why they chose their career and many will say “I didn't really choose.” These are the three most common traps.")
     + grid([f'<div class="trap" style="--tc:{c}"><div class="trh">{chip(ic, "#fff", c, "12mm", "6mm")}<b>Trap {i + 1}</b><h4>{t}</h4></div><p class="trq">{q}</p><p>{x}</p></div>' for i, (t, q, x, ic, c) in enumerate(traps)], 3)
@@ -49,7 +49,7 @@ add(head("The next decade", "The world of work", "is changing fast.",
          "AI is taking over routine tasks. The World Economic Forum's <i>Future of Jobs Report 2025</i> shows which skills and jobs are rising, and which are fading.")
     + two(box(h3("Skills employers want most", "trending-up") + numbered(["Analytical thinking", "Resilience, flexibility and agility", "Leadership and social influence", "Creative thinking", "Motivation and self-awareness", "AI and big data"])
               + p("Source: World Economic Forum, Future of Jobs Report 2025. None of these skills shows on a mark sheet.", "small mt")),
-          box(h3("Fading or automating", "trending-down") + bullets(fading, "tight", "minus", "#DC2626"), "soft"), ratio="1.1fr 0.9fr")
+          box(h3("Fading or automating", "trending-down") + bullets(fading, "tight", "minus", "#B92B32"), "soft"), ratio="1.1fr 0.9fr")
     + h3("Rising and future-proof", "rocket")
     + grid([f'<div class="rise"><b>{t}</b><span>{d}</span></div>' for t, d in rising], 5, gap="2.4mm")
     + callout("simple", "Jobs that mix <b>human judgement</b> with <b>technology</b> are the safest. That is why the assessment measures how you think, learn, feel and relate to people, not just what you know.", cls="push"),

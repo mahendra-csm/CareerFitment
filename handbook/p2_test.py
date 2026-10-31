@@ -65,10 +65,10 @@ add(head("Prepare", "Before you", "begin.",
               + p("There are no good or bad results, only better fits. If you answer the way a parent, teacher or friend would like, the report will describe them, not you.")
               + p("If two options both feel true, pick the one that is true <b>more often</b>.", "small"), "soft"))
     + h3("Good habits during the test", "sparkles")
-    + cards([("zap", "Trust your first reaction", "Your first honest answer is usually the most accurate. Don't overthink.", "#0EA5E9"),
-             ("skip-forward", "Skip, then return", "Not sure? Tap Next and come back using the navigator.", "#2563EB"),
-             ("brain", "Focus on aptitude", "It's the only part with right answers. Read each question fully.", "#7048E8"),
-             ("save", "Take a break if needed", "Tap Save Progress. You'll resume with the same questions and time.", "#16A34A")], 4, "compact")
+    + cards([("zap", "Trust your first reaction", "Your first honest answer is usually the most accurate. Don't overthink.", "#3D4F66"),
+             ("skip-forward", "Skip, then return", "Not sure? Tap Next and come back using the navigator.", "#17243A"),
+             ("brain", "Focus on aptitude", "It's the only part with right answers. Read each question fully.", "#5E7189"),
+             ("save", "Take a break if needed", "Tap Save Progress. You'll resume with the same questions and time.", "#17243A")], 4, "compact")
     + two(callout("parent", "Please let your child answer alone. Sitting beside them changes their answers. You'll read the report together afterwards (Part 8)."),
           callout("teacher", "Run the test in a calm lab session. Remind students there are no marks and no ranking: that single sentence improves honesty."), "push", gap="4mm"),
     section=S)
@@ -108,20 +108,20 @@ mk = {
 }
 add(head("Question types", "Six kinds of", "questions.",
          "Most questions take a few seconds. Here is what each type looks like on screen, and how to answer it well.")
-    + grid([f'<div class="qt"><div class="qth">{chip(["mouse-pointer-click", "sliders-horizontal", "list-plus", "chevrons-up-down", "brain", "toggle-left"][i], size="8mm", isz="4.4mm")}<b>{k}</b></div>{m}<p class="small">{icon("lightbulb", "3.4mm", "#F5B700")} {tip}</p></div>' for i, (k, (m, tip)) in enumerate(mk.items())], 3, gap="4mm")
+    + grid([f'<div class="qt"><div class="qth">{chip(["mouse-pointer-click", "sliders-horizontal", "list-plus", "chevrons-up-down", "brain", "toggle-left"][i], size="8mm", isz="4.4mm")}<b>{k}</b></div>{m}<p class="small">{icon("lightbulb", "3.4mm", "#9C5A5E")} {tip}</p></div>' for i, (k, (m, tip)) in enumerate(mk.items())], 3, gap="4mm")
     + two(laptop("shots/flow-2.jpg", "A personality question: tap the option most like you."), laptop("shots/exam-mid.jpg", "Class 11–12: answers save as soon as you tap."), "mt", gap="6mm"),
     section=S)
 
 mark("Built to be trusted")
 add(head("Trust", "Built to", "be trusted.",
          "A report is only useful if it really describes the student. Three safeguards protect every result.")
-    + cards([("activity", "Answer-quality check", "When you submit, the test looks at how the paper was answered: how many answers came in under 3 seconds, and whether the same option was picked again and again. It never changes your scores. It only flags a report that may not reflect you (high, medium or low trust), so a rushed test can be retaken.", "#0EA5E9"),
-             ("lock", "Your answers stay private", "Your report belongs to you. If you joined through a school, the school sees your progress and activity, never your individual answers.", "#2563EB"),
-             ("badge-check", "Facts linked to sources", "Exams, scholarships, funded routes and funding programmes link to their official websites, so anyone can check them.", "#16A34A")], 3)
+    + cards([("activity", "Answer-quality check", "When you submit, the test looks at how the paper was answered: how many answers came in under 3 seconds, and whether the same option was picked again and again. It never changes your scores. It only flags a report that may not reflect you (high, medium or low trust), so a rushed test can be retaken.", "#3D4F66"),
+             ("lock", "Your answers stay private", "Your report belongs to you. If you joined through a school, the school sees your progress and activity, never your individual answers.", "#17243A"),
+             ("badge-check", "Facts linked to sources", "Exams, scholarships, funded routes and funding programmes link to their official websites, so anyone can check them.", "#17243A")], 3)
     + h3("What a rushed test looks like", "triangle-alert")
     + two(callout("example", "To show you the quality check, we raced through a sample test in about <b>9 minutes</b>, tapping answers in under 3 seconds. The system noticed straight away and marked the report <b>low trust</b>, with the exact reasons below.")
-          + table(["Check", "Our rushed sample", "A thoughtful test"], [["Time taken", "9 min", "40–80 min"], ["Answers under 3 seconds", "79%", "Under 15%"], ["Same answer repeated", "74%", "Under 30%"], ["Longest identical run", "42 in a row", "3–4"], ["Trust", tag("LOW", "#DC2626"), tag("HIGH", "#16A34A")]], "dense", widths=["40%", "30%", "30%"]),
-          '<div class="grid" style="grid-template-columns:1fr 1fr;gap:3mm">' + gauge(79, "answers under 3 seconds", "#DC2626", 36) + gauge(74, "same answer as the one before", "#F08C00", 36) + "</div>"
+          + table(["Check", "Our rushed sample", "A thoughtful test"], [["Time taken", "9 min", "40–80 min"], ["Answers under 3 seconds", "79%", "Under 15%"], ["Same answer repeated", "74%", "Under 30%"], ["Longest identical run", "42 in a row", "3–4"], ["Trust", tag("LOW", "#B92B32"), tag("HIGH", "#17243A")]], "dense", widths=["40%", "30%", "30%"]),
+          '<div class="grid" style="grid-template-columns:1fr 1fr;gap:3mm">' + gauge(79, "answers under 3 seconds", "#B92B32", 36) + gauge(74, "same answer as the one before", "#9C5A5E", 36) + "</div>"
           + callout("simple", "Rushing doesn't save time. It just gives you a report about nobody. Slow down, read, and answer as yourself.")),
     section=S)
 

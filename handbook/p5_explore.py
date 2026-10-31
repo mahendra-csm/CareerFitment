@@ -33,8 +33,8 @@ add(head("Dashboard home", "Your report becomes", "a dashboard you use.",
     section=S)
 
 mark("Finding your way, and your results")
-groups = [("Explore", "#F97316", ["Career Library", "Entrance Exams", "Scholarships", "Study Abroad", "Internships", "Jobs", "Financial Literacy", "Law & Rights", "Research", "Startups", "AI & Certifications", "Communication Lab", "Spotlight"]),
-          ("Your results", "#10B981", ["Your profile", "8 Dimensions", "Best-fit fields", "How you think", "My plan"]), ("Track", "#8B5CF6", ["My Progress", "Certificates"]), ("Create", "#0EA5E9", ["Resume & Interview", "Build your website"])]
+groups = [("Explore", "#B92B32", ["Career Library", "Entrance Exams", "Scholarships", "Study Abroad", "Internships", "Jobs", "Financial Literacy", "Law & Rights", "Research", "Startups", "AI & Certifications", "Communication Lab", "Spotlight"]),
+          ("Your results", "#17243A", ["Your profile", "8 Dimensions", "Best-fit fields", "How you think", "My plan"]), ("Track", "#5E7189", ["My Progress", "Certificates"]), ("Create", "#3D4F66", ["Resume & Interview", "Build your website"])]
 add(head("Navigation", "Finding your way,", "and your results.", "The left menu stays on every screen. The Your results pages are your report made interactive.")
     + two('<div class="navmap">' + "".join(f'<div class="ng" style="--g:{c}"><b>{g}</b><div>' + "".join(f"<span>{i}</span>" for i in its) + "</div></div>" for g, c, its in groups) + "</div>",
           browser("shots/res-profile.jpg", "Your profile: title, type, strongest interest, top field."), ratio="1fr 1fr", gap="5mm")
@@ -51,7 +51,7 @@ add(head("Your results", "Your report,", "made interactive.", "The <b>Your resul
 
 # ---------------------------------------------------------------- 1 Career Library
 mark("Career Library")
-tool_theme("t-careers", "Career Library", "#2563EB", "#06B6D4")
+tool_theme("t-careers", "Career Library", "#17243A", "#5E7189")
 opener(1, "Career Library", "930 careers explained simply, with salaries, skills and a degree roadmap for each, plus a Test-Drive and a Family Decision Room.", "feat/careers.webp",
        [("930", "careers"), ("8", "fields"), ("2,500+", "roadmaps")],
        pills(["Class 6–8: explore", "Class 9–10: choose a stream", "Class 11–12: choose a degree", "Parents: compare paths"]),
@@ -73,7 +73,7 @@ mission("Career Library",
 
 # ---------------------------------------------------------------- 2 Exams
 mark("Entrance Exams")
-tool_theme("t-exams", "Entrance Exams", "#7C3AED", "#A855F7")
+tool_theme("t-exams", "Entrance Exams", "#5E7189", "#5E7189")
 opener(2, "Entrance Exams", "Every major entrance exam in one place: check if you're eligible, plan backwards from the date, practise with mocks and stay calm.", "feat/exams.webp",
        [("29", "exams"), ("44", "lessons"), ("34", "tools & planners")],
        pills(["Class 6: JNVST, AISSEE", "Class 8: NMMS", "Class 9–10: olympiads, NSEJS", "Class 11–12: JEE, NEET, CUET, CLAT, NDA…"]),
@@ -95,7 +95,7 @@ mission("Entrance Exams",
 
 # ---------------------------------------------------------------- 3 Scholarships
 mark("Scholarships")
-tool_theme("t-sch", "Scholarships", "#16A34A", "#84CC16")
+tool_theme("t-sch", "Scholarships", "#17243A", "#8A97A8")
 opener(3, "Scholarships", "Find the money you qualify for: central, state and private schemes, with a deadline calendar, essay help and a safe document vault.", "feat/scholarships.webp",
        [("40", "scholarships"), ("53", "lessons"), ("47", "tools")],
        pills(["Class 8: NMMS", "Class 11–12: Pankh, INSPIRE, Pragati", "After Class 12: CSSS, Reliance, PM YASASVI", "Parents: income & category schemes"]),
@@ -117,7 +117,7 @@ mission("Scholarships",
 
 # ---------------------------------------------------------------- 4 Study Abroad
 mark("Study Abroad")
-tool_theme("t-abroad", "Study Abroad", "#C026D3", "#7C3AED")
+tool_theme("t-abroad", "Study Abroad", "#7A2A30", "#5E7189")
 opener(4, "Study Abroad", "Abroad Compass: decide whether to go, where and for what, and check the money works before anyone sells you a university.", "feat/study-abroad.webp",
        [("6", "steps"), ("30", "lessons"), ("8", "countries")],
        pills(["Class 9–10: plan early", "Class 11–12: degree abroad", "Parents: the money check"]),
@@ -140,7 +140,7 @@ mission("Study Abroad",
 
 # ---------------------------------------------------------------- 5 Internships & Jobs
 mark("Internships & Jobs")
-tool_theme("t-intern", "Internships & Jobs", "#0D9488", "#22C55E")
+tool_theme("t-intern", "Internships & Jobs", "#3D4F66", "#3D4F66")
 opener(5, "Internships & Jobs", "209 free internship programmes from 135 companies, and fresh jobs every day, checked for scam warning signs.", "feat/internships.webp",
        [("209", "free programmes"), ("135", "companies"), ("₹0", "to join")],
        pills(["Class 9–12: beginner programmes", "Class 11–12: summer internships", "Everyone: certificates for your CV"]),

@@ -6,7 +6,7 @@ from lib import *
 
 
 def tool_theme(key, name, c1, c2):
-    THEMES[key] = (name, c1, c2, f"color-mix(in srgb, {c1} 9%, white)", f"color-mix(in srgb, {c1} 70%, #1E2340)")
+    THEMES[key] = (name, "#B92B32", "#17243A", "#F4F3EF", "#17243A")
     theme(key)
 
 

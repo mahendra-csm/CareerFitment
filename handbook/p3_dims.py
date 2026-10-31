@@ -13,7 +13,7 @@ def dim(i, art, simple, measures, framework, elems, example, chart, chart_note, 
     nm = NAMES[i].replace("\n", " ")
     mark(f"{i + 1:02d} {nm}")
     eg = "".join(f'<div class="el" style="--dc:{c}">{chip(ic, c, f"color-mix(in srgb, {c} 12%, white)", "9mm", "4.6mm")}<div><b>{t}</b><span>{x}</span></div></div>' for ic, t, x in elems)
-    v = f'--dc:{c};--c1:{c};--c2:{c};--soft:color-mix(in srgb, {c} 9%, white);--deep:color-mix(in srgb, {c} 70%, #1E2340)'
+    v = '--dc:#B92B32;--c1:#B92B32;--c2:#17243A;--soft:#F4F3EF;--deep:#17243A'
     add(f'<div class="dwrap" style="{v}"><div class="dimtop sm"><div><span class="dimbadge">Dimension {i + 1:02d} of 08</span><div class="dimnum">{i + 1:02d}</div>'
         f'<h1 class="title" style="font-size:27pt">{nm}</h1><div class="dimq">“{QS[i]}”</div></div>{img(art, "dimart")}</div>'
         + callout("simple", simple)
@@ -95,7 +95,7 @@ dim(3, "ug/human-professional-skills.webp",
     [("scan-eye", "Self-awareness", "Recognising your emotions, strengths and values."), ("anchor", "Self-management", "Staying calm, focused and adaptable."),
      ("eye", "Social awareness", "Understanding others' feelings with empathy."), ("handshake", "Relationship management", "Building trust and resolving conflict.")],
     "In a group project, <b>Nikhil</b> notices a teammate has gone quiet, checks in with her privately, and adjusts the plan. That's social awareness plus relationship management, and every good team leader does it.",
-    '<div class="eqgrid">' + "".join(f'<div style="--q:{c}"><b>{v}</b><span>{t}</span></div>' for t, v, c in [("Self-awareness", 72, "#D6336C"), ("Self-management", 58, "#E8590C"), ("Social awareness", 66, "#7048E8"), ("Relationships", 61, "#1C7ED6")]) + "</div>",
+    '<div class="eqgrid">' + "".join(f'<div style="--q:{c}"><b>{v}</b><span>{t}</span></div>' for t, v, c in [("Self-awareness", 72, "#7A2A30"), ("Self-management", 58, "#9C5A5E"), ("Social awareness", 66, "#5E7189"), ("Relationships", 61, "#3D4F66")]) + "</div>",
     "Four areas, each scored out of 100. Your report names the area to practise first.",
     "Strong emotional intelligence improves communication, builds healthier relationships, helps you work in teams and prepares you to lead and adapt.",
     ["Stay calm under pressure", "Handle conflict with respect", "Listen before they respond", "Lead and support a team"],
@@ -111,7 +111,7 @@ dim(4, "ug/academic-domain-fit.webp",
     [("eye", "Seeing (visual)", "Diagrams, charts, videos, demonstrations."), ("ear", "Hearing (auditory)", "Listening, discussing, explaining aloud."),
      ("pen-line", "Reading / writing", "Notes, summaries, lists, re-writing."), ("hand", "Doing (hands-on)", "Trying, practising, experimenting.")],
     "<b>Priya</b> read her biology chapter three times and still forgot it. Then she drew the digestive system as a coloured flowchart and remembered it in one go. She's a visual learner, and now she revises with diagrams.",
-    f'<div class="two mid" style="display:grid;grid-template-columns:1fr 1fr;gap:3mm"><div class="center">{donut([("Seeing", 38, "#1C7ED6"), ("Doing", 30, "#2F9E44"), ("Reading", 19, "#F08C00"), ("Hearing", 13, "#D6336C")], 40, 0.55, ("Seeing", "top style"))}</div>{legend([("Seeing", "38%", "#1C7ED6"), ("Doing", "30%", "#2F9E44"), ("Reading / writing", "19%", "#F08C00"), ("Hearing", "13%", "#D6336C")])}</div>',
+    f'<div class="two mid" style="display:grid;grid-template-columns:1fr 1fr;gap:3mm"><div class="center">{donut([("Seeing", 38, "#3D4F66"), ("Doing", 30, "#3D4F66"), ("Reading", 19, "#9C5A5E"), ("Hearing", 13, "#7A2A30")], 40, 0.55, ("Seeing", "top style"))}</div>{legend([("Seeing", "38%", "#3D4F66"), ("Doing", "30%", "#3D4F66"), ("Reading / writing", "19%", "#9C5A5E"), ("Hearing", "13%", "#7A2A30")])}</div>',
     "Your report names your top and second style, with revision tips for each.",
     "When you study in the ways you prefer, revision is easier to start and keep up. Building flexibility across all four makes you a stronger, more adaptable learner.",
     ["Adapt when the way of working changes", "Learn new tools quickly", "Know how they learn best", "Keep learning without being told"],
@@ -179,7 +179,7 @@ DN = ["Personality type", "Interest code", "Top intelligence", "Emotional intell
 add(head("Growing with you", "See your career", "progress.",
          "You are still growing, so your profile will change too. Take the assessment again as you move up, and compare. Some results stay steady; others grow with practice.")
     + '<div class="prog">' + "".join(f'<div style="--pc:{c}"><b>{t}</b><span>{x}</span></div>' for t, x, c in [
-        ("Class 6–8", "Discover: what am I like?", "#F08C00"), ("Class 9–10", "Choose a stream", "#16A34A"), ("Class 11–12", "Choose exams, degree, college", "#0EA5E9")]) + "</div>"
+        ("Class 6–8", "Discover: what am I like?", "#9C5A5E"), ("Class 9–10", "Choose a stream", "#17243A"), ("Class 11–12", "Choose exams, degree, college", "#3D4F66")]) + "</div>"
     + h3("My results over the years", "chart-line")
     + table(["Dimension", "First time (Class __)", "Second time (Class __)", "Third time (Class __)", "What changed?"], [[f"<b>{d}</b>", "", "", "", ""] for d in DN] + [["<b>Top career field</b>", "", "", "", ""]], "fill", ["22%", "18%", "18%", "18%", "24%"])
     + two(callout("simple", "Personality and interests usually stay fairly steady. Emotional intelligence and aptitude grow with practice, so these are where you'll see the biggest progress."),

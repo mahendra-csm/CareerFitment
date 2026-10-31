@@ -12,12 +12,12 @@ import content  # noqa: F401  (fills lib.PAGES)
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "out")
 os.makedirs(OUT, exist_ok=True)
-CSS = open(os.path.join(HERE, "fonts.css")).read() + open(os.path.join(HERE, "style.css")).read() + open(os.path.join(HERE, "editorial.css")).read()
+CSS = open(os.path.join(HERE, "fonts.css")).read() + open(os.path.join(HERE, "style.css")).read() + open(os.path.join(HERE, "editorial.css")).read() + open(os.path.join(HERE, "design.css")).read()
 
 
 def tvars(key):
-    _, c1, c2, soft, deep = lib.THEMES[key]
-    return f"--c1:{c1};--c2:{c2};--soft:{soft};--deep:{deep}"
+    # one brand palette for every chapter (design system v2)
+    return "--c1:#B92B32;--c2:#17243A;--soft:#F4F3EF;--deep:#17243A"
 
 
 def toc_html():
@@ -31,8 +31,9 @@ def toc_html():
             parts.append({"no": 0, "title": "Getting started", "idx": idx, "key": "brand", "subs": [(title, idx)]})
     out = []
     for pt in parts:
-        c1 = lib.THEMES[pt["key"]][1]
-        subs = "".join(f'<div class="ts2"><span>{t}</span><i></i><b>{i + 1}</b></div>' for t, i in pt["subs"])
+        c1 = "#B92B32"
+        skip = ("Central government programmes", "Banks and SIDBI", "Incubators and funds", "State government programmes")
+        subs = "".join(f'<div class="ts2"><span>{t}</span><i></i><b>{i + 1}</b></div>' for t, i in pt["subs"] if t not in skip)
         num = f'{pt["no"]:02d}' if pt["no"] else "★"
         out.append(f'<div class="tp2" style="--tc:{c1}"><div class="tp2h"><span>{num}</span><b>{pt["title"]}</b><em>{pt["idx"] + 1}</em></div>{subs}</div>')
     return '<div class="toc2">' + "".join(out) + "</div>"

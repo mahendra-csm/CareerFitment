@@ -3,25 +3,27 @@ from lib import *
 theme("brand")
 
 # ---------------------------------------------------------------- 1. cover
-add(f'''<div class="bc"><div class="bc-edge"></div>
-<div class="bc-top"><span>Career Fitment Assessment</span><span>2026–27 Edition</span></div>
-<div class="bc-logo">{img("art/logo.png")}</div>
-<div class="bc-mid"><div class="bc-kick">The official handbook</div>
-<h1>Career Fitment<br>Handbook</h1>
-<div class="bc-rule"></div>
-<p>Know yourself. Choose your path. Build your future.</p>
-<p class="bc-sub">A practical guide and workbook for students, parents and schools: the assessment, the eight dimensions, your report, and every tool in your dashboard.</p></div>
-<div class="bc-foot"><span>OneGrasp Education Pvt. Ltd.</span><span>careerfitment.onegrasp.com</span></div></div>''', kind="cover")
+add(f'''<div class="cov">
+<div class="cov-top"><div class="cov-logo">{img("art/logo.png")}</div><div class="cov-pub">OneGrasp Education Pvt. Ltd.</div></div>
+<div class="cov-main">
+  <div class="cov-series">Career Fitment Assessment<span>2026–27 Edition</span></div>
+  <h1>Career Fitment<br>Handbook</h1>
+  <div class="cov-rule"></div>
+  <p class="cov-tag">Know Yourself. Choose Your Path. Build Your Future.</p>
+  <p class="cov-desc">A comprehensive career guidance and student development handbook for Classes 6–12.</p>
+</div>
+<div class="cov-foot"><span>For students, parents, teachers and schools</span><span>careerfitment.onegrasp.com</span></div>
+</div>''', kind="cover")
 
 # ---------------------------------------------------------------- 2. contents
 add(head("Contents", "What's inside", "this handbook.") + "{{TOC}}", section="Contents")
 
 # ---------------------------------------------------------------- 3. belongs to + start here
 mark("Start here")
-route = [("Before the test", "#0EA5E9", [("Do Activity 1 and 2", "{{REF:Activity 1: Predict yourself}}"), ("Read how the test works", "{{REF:What is a psychometric assessment?}}"), ("Get ready for test day", "{{REF:Before you begin}}")]),
-         ("After your report", "#10B981", [("Learn the 8 dimensions", "{{REF:What we measure: the 8 dimensions}}"), ("Read your report", "{{REF:How to read your report}}"), ("Do the Reality check", "{{REF:Reality check: how well do you know yourself?}}")]),
-         ("Every week", "#F97316", [("Use your dashboard tools", "{{REF:Your dashboard home}}"), ("Finish the mission cards", "{{REF:Career Library}}"), ("Follow the 30-day challenge", "{{REF:The 30-day kickstart challenge}}")]),
-         ("Parents and teachers", "#0284C7", [("Guide, not decide", "{{REF:For parents: guide, not decide}}"), ("Ten questions to ask", "{{REF:Ten questions to talk through}}"), ("For schools", "{{REF:For schools: the Institution Portal}}")])]
+route = [("Before the test", "#3D4F66", [("Do Activity 1 and 2", "{{REF:Activity 1: Predict yourself}}"), ("Read how the test works", "{{REF:What is a psychometric assessment?}}"), ("Get ready for test day", "{{REF:Before you begin}}")]),
+         ("After your report", "#17243A", [("Learn the 8 dimensions", "{{REF:What we measure: the 8 dimensions}}"), ("Read your report", "{{REF:How to read your report}}"), ("Do the Reality check", "{{REF:Reality check: how well do you know yourself?}}")]),
+         ("Every week", "#B92B32", [("Use your dashboard tools", "{{REF:Your dashboard home}}"), ("Finish the mission cards", "{{REF:Career Library}}"), ("Follow the 30-day challenge", "{{REF:The 30-day kickstart challenge}}")]),
+         ("Parents and teachers", "#17243A", [("Guide, not decide", "{{REF:For parents: guide, not decide}}"), ("Ten questions to ask", "{{REF:Ten questions to talk through}}"), ("For schools", "{{REF:For schools: the Institution Portal}}")])]
 add(head("Start here", "This handbook", "belongs to…")
     + box('<div class="own2">' + "".join(f'<div><label>{l}</label><i></i></div>' for l in ["Name", "Class / year", "School or college", "Assessment date"]) + "</div>", "soft")
     + h3("Your route through this book", "map")
@@ -74,7 +76,7 @@ add(f'''<div class="actban"><div class="actno">ACTIVITY 1 · 10 MINUTES</div><h1
 <p>Before you take the assessment, guess your own results. Then ask a parent to guess too. After your report arrives, turn to page {{{{REF:Reality check: how well do you know yourself?}}}} and see who knows you best.</p>{img("brochure/c11-i-001.png", "actart")}</div>'''
     + table(["Dimension", "", "My guess", "Parent's guess ✎"], [[f"<b>{d}</b><br><span class='small'>{h}</span>", "", o, ""] for d, h, o in rows], "pred", ["22%", "0%", "50%", "28%"])
     + two(box(h3("My top 3 career fields", "target") + lines(3)), box(h3("My dream career", "rocket") + lines(1) + h3("How well will it fit? Circle", "gauge") + pills(["Below 45%", "45–64%", "65% +"])), "mt", gap="4mm")
-    + f'<div class="seal push">{icon("lock-keyhole", "8mm", "#E5383B")}<div><b>Seal your prediction</b><span>Don’t change it after the test. That’s the fun.</span></div><div class="sig"><span>Date</span><i></i></div><div class="sig"><span>My signature</span><i></i></div><div class="sig"><span>Parent’s signature</span><i></i></div></div>',
+    + f'<div class="seal push">{icon("lock-keyhole", "8mm", "#B92B32")}<div><b>Seal your prediction</b><span>Don’t change it after the test. That’s the fun.</span></div><div class="sig"><span>Date</span><i></i></div><div class="sig"><span>My signature</span><i></i></div><div class="sig"><span>Parent’s signature</span><i></i></div></div>',
     section="Activity")
 
 # ---------------------------------------------------------------- 4. activity: 2-minute interest quiz
@@ -85,7 +87,7 @@ qs = {"R": ["Fixing a bicycle or gadget", "Building a model or a robot", "Workin
       "S": ["Teaching a friend something", "Helping someone who is upset", "Volunteering for a good cause"],
       "E": ["Leading a team or a club", "Convincing people to agree with you", "Selling something or starting a small business"],
       "C": ["Making a neat plan or timetable", "Keeping accounts or records", "Organising files, notes or a cupboard"]}
-cols = {"R": "#E8590C", "I": "#3B5BDB", "A": "#AE3EC9", "S": "#2F9E44", "E": "#E03131", "C": "#0C8599"}
+cols = {"R": "#9C5A5E", "I": "#17243A", "A": "#7A2A30", "S": "#3D4F66", "E": "#B92B32", "C": "#5E7189"}
 items = [(k, t) for i in range(3) for k in qs for t in [qs[k][i]]]
 cells = "".join(f'<div class="qz"><i></i><span>{t}</span><b style="background:{cols[k]}">{k}</b></div>' for k, t in items)
 car = {"R": "Engineer, pilot, chef, architect, farmer", "I": "Doctor, scientist, data analyst, programmer", "A": "Designer, writer, filmmaker, UX, architect",

@@ -1,0 +1,120 @@
+/* =====================================================================
+   OneGrasp Handbook — Design System v2 (institutional editorial)
+   Palette  : red #B92B32 (accent, sparingly) · navy #17243A (headings)
+              paper #FFFFFF · stone #F4F3EF · body #333B46 · muted #747C87 · rule #E3E5E8
+   Type     : Poppins SemiBold — titles · Inter Medium — headings/labels · Inter Regular — body
+   Grid     : A4, mirrored margins — inner 24 mm (binding), outer 17 mm, top 25 mm, bottom 22 mm
+   ===================================================================== */
+:root { --red: #B92B32; --navy: #17243A; --stone: #F4F3EF; --body: #333B46; --muted: #747C87; --rule: #E3E5E8; --ink: #17243A; --hair: #E3E5E8; --tint: #F4F3EF; }
+
+/* ---- base type ---- */
+body { font-family: 'Inter', sans-serif; font-size: 9.8pt; line-height: 1.6; color: var(--body); font-feature-settings: "tnum" 0, "kern" 1; }
+p, li, td, dd, .cob, .lead { font-family: 'Inter', sans-serif; }
+b, strong { font-weight: 600; color: var(--navy); }
+.small, figcaption { font-family: 'Inter', sans-serif; font-size: 8pt; color: var(--muted); }
+
+/* ---- grid: binding margin on the spine side ---- */
+.page .pc { top: 25mm; bottom: 22mm; left: 24mm; right: 17mm; }
+.page:nth-child(even) .pc { left: 17mm; right: 24mm; }
+
+/* ---- running head / folio / chapter marker ---- */
+.rh { top: 12mm; left: 24mm; right: 17mm; font: 500 7pt 'Inter'; letter-spacing: .04em; text-transform: none; color: var(--muted); border-bottom: .25mm solid var(--rule); padding-bottom: 2.4mm; }
+.rh.l { left: 17mm; right: 24mm; }
+.rh-book { color: var(--muted); } .rh-sec { color: var(--navy); font-weight: 600; }
+.tab { display: none; }
+.folio { bottom: 11mm; font: 500 7pt 'Inter'; color: var(--muted); }
+.folio b { font: 600 8.5pt 'Inter'; color: var(--navy); }
+.folio.r { right: 17mm; } .folio.l { left: 17mm; }
+.folio span::before { content: "OneGrasp Career Fitment Handbook"; } .folio span { font-size: 0; } .folio span::before { font-size: 7pt; }
+
+/* ---- headings ---- */
+.hd { margin-bottom: 7mm; }
+.kicker { font: 500 7.6pt 'Inter'; letter-spacing: .06em; text-transform: none; color: var(--red); margin-bottom: 2mm; }
+.title { font: 600 24pt/1.15 'Poppins' !important; letter-spacing: -.01em; color: var(--navy); }
+.title .c1 { color: var(--navy); font-weight: 400; }
+.hd.center .title { font-size: 21pt !important; }
+.lead { font: 400 10.8pt/1.62 'Inter'; color: var(--body); margin-top: 3.4mm; max-width: 148mm; }
+.hd .lead::before { width: 12mm; height: .7mm; background: var(--red); margin-bottom: 3.4mm; }
+.h3 { font: 600 10.6pt/1.35 'Inter'; color: var(--navy); border-bottom: .25mm solid var(--rule); margin: 6mm 0 2.4mm; padding-bottom: 1.6mm; letter-spacing: 0; }
+h4, .card h4, .st h4, .vs h4, .ms > b, .ins b, .el b, .dq span, .view b, .dom b, .faq b, .q10 b { font-family: 'Inter', sans-serif !important; font-weight: 600 !important; color: var(--navy) !important; }
+
+/* labels: sentence case, medium weight — no shouty uppercase */
+.cot b, .findit b, .msh, .actno, .th-no, .dimbadge, .tryc b, .view em, .dv-part, .dv-lh, .own2 label, .ownf label, .tbl th, .tbl.fund2 tr.gh td, .sig span, .bc-kick, .cov-series { text-transform: none !important; letter-spacing: .02em !important; font-family: 'Inter', sans-serif !important; font-weight: 600 !important; }
+.cot b { font-size: 7.8pt; color: var(--red); }
+.findit b { font-size: 7.8pt; color: var(--red); }
+.tbl th { font-size: 7.8pt; color: var(--navy); }
+
+/* ---- accents: red only on numbers and markers ---- */
+.stat b, .st .stn, .vsn, .cnum, .why span, .nlist li span, .fwn, .dimnum, .th-st b, .road15 span, .rth span, .flow6 span, .q10 span, .hl b { color: var(--red) !important; font-family: 'Poppins', sans-serif !important; }
+.stat b { font-weight: 600; } .dimnum { font-weight: 300 !important; }
+.box { border-top-color: var(--navy); } .card, .ms, .done, .seal, .canvas div, .steps, .vs:first-child, .stats { border-top-color: var(--navy) !important; }
+.tbl { border-top-color: var(--navy); border-bottom-color: var(--navy); } .tbl th { border-bottom-color: var(--navy); }
+.box.soft { background: var(--stone); }
+.callout { border-left-color: var(--red); } .callout[style*="#B42318"] { border-left-color: #8E1F25; }
+.band { background: var(--navy) !important; }
+.ticks li::before { background: var(--red); }
+
+/* ---- worksheets: structured, generous writing space ---- */
+.tbl.fill td { height: 9.5mm; }
+.tbl.fill.dense td { height: 7mm; }
+.wline { height: 9mm; border-bottom-color: #CBD0D6; }
+.check i { border-color: var(--navy); }
+.opt { border-color: #CBD0D6; font-family: 'Inter'; color: var(--body); }
+
+/* ---- screenshots: one consistent frame ---- */
+.laptop .lscreen { background: #1D2433; }
+.browser, .paper { border: .25mm solid #C9CED5; }
+.bbar { background: var(--stone); }
+.laptop .pin { background: var(--red); font-family: 'Inter'; }
+.lab > span { border-color: var(--red); color: var(--red); font-family: 'Inter'; }
+
+/* ---- chapter openers: navy, typographic ---- */
+.dv { background: var(--navy) !important; }
+.dv-logo { background: #fff; }
+.dv-num { color: var(--red) !important; opacity: 1; font: 300 110pt/1 'Poppins' !important; top: 70mm; }
+.dv-part { color: rgba(255,255,255,.7); font-size: 8pt; }
+.dv-title { font: 600 34pt/1.1 'Poppins' !important; }
+.dv-sub { font-family: 'Inter'; color: rgba(255,255,255,.82); }
+.dv-list { border-top-color: rgba(255,255,255,.35); }
+.dv-list li { font-family: 'Inter'; color: rgba(255,255,255,.9); }
+.dv-list li span { color: var(--red) !important; opacity: 1; font-family: 'Inter'; }
+.dv-foot { font-family: 'Inter'; color: rgba(255,255,255,.55); }
+
+/* ---- cover ---- */
+.cov { position: absolute; inset: 0; background: #fff; }
+.cov::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 9mm; background: var(--red); }
+.cov-top { position: absolute; left: 28mm; right: 22mm; top: 24mm; display: flex; justify-content: space-between; align-items: center; padding-bottom: 6mm; border-bottom: .3mm solid var(--rule); }
+.cov-logo img { height: 15mm; display: block; }
+.cov-pub { font: 600 8pt 'Inter'; letter-spacing: .12em; text-transform: uppercase; color: var(--navy); }
+.cov-main { position: absolute; left: 28mm; right: 22mm; top: 96mm; }
+.cov-series { font: 600 9pt 'Inter'; color: var(--red); display: flex; gap: 4mm; }
+.cov-series span { color: var(--muted); font-weight: 500; }
+.cov h1 { font: 600 50pt/1.04 'Poppins'; color: var(--navy); letter-spacing: -.02em; margin-top: 6mm; }
+.cov-rule { width: 30mm; height: 1.2mm; background: var(--red); margin: 10mm 0 8mm; }
+.cov-tag { font: 500 14pt/1.4 'Inter'; color: var(--navy); }
+.cov-desc { font: 400 10.5pt/1.6 'Inter'; color: var(--body); margin-top: 3mm; max-width: 120mm; }
+.cov-foot { position: absolute; left: 28mm; right: 22mm; bottom: 22mm; display: flex; justify-content: space-between; font: 500 8.5pt 'Inter'; color: var(--muted); border-top: .3mm solid var(--rule); padding-top: 5mm; }
+.cov-foot span:last-child { color: var(--navy); font-weight: 600; }
+
+/* ---- contents ---- */
+.tp2h { border-bottom-color: var(--navy); }
+.tp2h span { color: var(--red); font-family: 'Poppins'; } .tp2h b, .tp2h em { font-family: 'Inter'; color: var(--navy); }
+.ts2 { font-family: 'Inter'; font-size: 8.6pt; }
+
+/* ---- committee feature page ---- */
+.feat { display: grid; grid-template-columns: 62mm 1fr; gap: 9mm; align-items: start; margin-bottom: 4mm; }
+.featimg { width: 62mm; height: 74mm; object-fit: cover; display: block; }
+.featrole { font: 600 10pt 'Inter'; color: var(--red); margin-bottom: 4mm; }
+.featdl { display: grid; grid-template-columns: 40mm 1fr; gap: 3mm 4mm; border-top: .4mm solid var(--navy); padding-top: 4mm; }
+.featdl dt { font: 600 8.6pt 'Inter'; color: var(--navy); } .featdl dd { font: 400 9.4pt 'Inter'; color: var(--body); }
+
+/* ---- charts: muted, grayscale-safe ---- */
+.wheel .wn, .wheel .wl, .hex .hxl { font-family: 'Inter'; } .wheel .wc2 { font-family: 'Poppins'; fill: var(--navy); } .wheel .wc1 { font-family: 'Inter'; }
+.radar .rl, .donut .dc2 { font-family: 'Inter'; } .donut .dc1, .ring .rv, .gauge .gv { font-family: 'Poppins'; fill: var(--navy); }
+.hbt { background: #ECEEF1; }
+
+/* ---- back cover ---- */
+.bk { background: var(--navy) !important; } .bk-t h1 span { color: #E4A3A6; }
+.toc2 { column-gap: 10mm; } .tp2 { margin-bottom: 3.6mm; } .tp2h { padding-bottom: 1mm; margin-bottom: .8mm; }
+.ts2 { font-size: 8.4pt; line-height: 1.5; }
+.hand { font: 500 10pt 'Inter' !important; color: var(--navy) !important; }

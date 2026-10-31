@@ -18,10 +18,10 @@ add(head("Reading guide", "How to read your report", "in 20 minutes.",
               ("Compare with your own choice (3 min)", "“Your choice vs your result” or the Career Selector shows how your dream career fits. A gap is not a no; it's a plan to build."),
               ("Read strengths and growth areas (3 min)", "Pick one strength to use and one area to practise this month."),
               ("Read the roadmap and next steps (4 min)", "Circle the very first step. That's your homework for this week.")])
-    + two(box(h3("Scores (0–100)", "gauge") + table(["Score", "Label", "Read it as"], [["75–100", tag("Very High", "#16A34A"), "Clear, strong preference or ability"], ["65–74", tag("High", "#16A34A"), "A real strength"],
-                                                                                    ["50–64", tag("Medium", "#0EA5E9"), "Balanced either way"], ["35–49", tag("Developing", "#F08C00"), "Not your first instinct yet"], ["0–34", tag("Emerging", "#F08C00"), "Early days; a place to practise"]], "dense")),
-          box(h3("Fit % and match labels", "target") + table(["Fit", "Label", "Do this"], [["65%+", tag("Strong match", "#16A34A"), "Explore deeply; test-drive"], ["45–64%", tag("Good match", "#0EA5E9"), "Keep on the list; try a task"],
-                                                                                         ["under 45%", tag("Worth exploring", "#F08C00"), "Read about it; stay curious"]], "dense")
+    + two(box(h3("Scores (0–100)", "gauge") + table(["Score", "Label", "Read it as"], [["75–100", tag("Very High", "#17243A"), "Clear, strong preference or ability"], ["65–74", tag("High", "#17243A"), "A real strength"],
+                                                                                    ["50–64", tag("Medium", "#3D4F66"), "Balanced either way"], ["35–49", tag("Developing", "#9C5A5E"), "Not your first instinct yet"], ["0–34", tag("Emerging", "#9C5A5E"), "Early days; a place to practise"]], "dense")),
+          box(h3("Fit % and match labels", "target") + table(["Fit", "Label", "Do this"], [["65%+", tag("Strong match", "#17243A"), "Explore deeply; test-drive"], ["45–64%", tag("Good match", "#3D4F66"), "Keep on the list; try a task"],
+                                                                                         ["under 45%", tag("Worth exploring", "#9C5A5E"), "Read about it; stay curious"]], "dense")
               + p("Fit % compares your whole profile with what a field rewards. It is <b>not</b> a probability of success.", "small mt")), "mt", gap="4mm")
     + callout("simple", "In Personality, Learning Style and Motivators a score shows a <b>preference</b>, not quality. Only Aptitude has right answers, and even Aptitude grows with practice.", cls="push"),
     section=S)
@@ -49,9 +49,9 @@ add(head("Careers that fit you", "Three ways to see", "your future.",
          "Your report compares what fits you, what fits your stream, and the career you dream of, side by side.")
     + two(paper("shots/r11-11.jpg", "Career cluster fit: how closely you match each career cluster."), paper("shots/r11-12.jpg", "Your career path at a glance: the three views."), gap="6mm")
     + grid([f'<div class="view" style="--vc:{c}"><span>{n}</span><b>{t}</b><em>{q}</em><p>{x}</p></div>' for n, t, q, x, c in [
-        ("1", "Career Fitment", "What fits YOU", "Your top 5 career areas, ranked purely by your answers. Each shows key roles, skills to build, salary in India (indicative) and entrance exams.", "#10B981"),
-        ("2", "Career Suitability", "What fits your STREAM", "Once you have a stream (MPC, BiPC, MEC, CEC, HEC), the careers it already reaches, plus companies that hire and funded routes.", "#0EA5E9"),
-        ("3", "Career Selector", "Your DREAM career", "The career you choose, how well it fits, and the realistic route from where you are today.", "#8B5CF6")]], 3, "mt")
+        ("1", "Career Fitment", "What fits YOU", "Your top 5 career areas, ranked purely by your answers. Each shows key roles, skills to build, salary in India (indicative) and entrance exams.", "#17243A"),
+        ("2", "Career Suitability", "What fits your STREAM", "Once you have a stream (MPC, BiPC, MEC, CEC, HEC), the careers it already reaches, plus companies that hire and funded routes.", "#3D4F66"),
+        ("3", "Career Selector", "Your DREAM career", "The career you choose, how well it fits, and the realistic route from where you are today.", "#5E7189")]], 3, "mt")
     + callout("simple", "If all three views agree, you have a clear path. If they disagree, that's useful too: it shows exactly what you'd need to build or change to reach your dream.", cls="push"),
     section=S)
 
@@ -77,7 +77,7 @@ add(head("Choosing your stream", "From your top fields", "to a stream.",
     section=S)
 
 mark("The 15 career domains")
-cols = ["#E03131", "#F08C00", "#2F9E44", "#1C7ED6", "#D6336C", "#0C8599", "#7048E8", "#E8590C", "#3B5BDB", "#5C940D", "#AE3EC9", "#0B7285", "#495057", "#2B8A3E", "#C92A2A"]
+cols = ["#B92B32", "#9C5A5E", "#3D4F66", "#3D4F66", "#7A2A30", "#5E7189", "#5E7189", "#9C5A5E", "#17243A", "#8A97A8", "#7A2A30", "#5E7189", "#8A97A8", "#3D4F66", "#B92B32"]
 add(head("Reference", "The 15 career", "domains.", "Your report ranks careers across these 15 broad fields. Each domain card in the report adds what it is, key roles, skills, how to get in, salary in India and abroad, and future scope.")
     + grid([f'<div class="dom" style="--dc:{cols[i]}"><span>{d["key"]}</span><b>{d["name"]}</b><p>{d["tagline"]}</p><em>{", ".join(d["roles"][:3])}</em><i>{d["salary"].split(" · ")[0].replace(" entry", " to start")}</i></div>' for i, d in enumerate(DOM)], 3, gap="2.6mm")
     + p("Salaries are typical starting ranges in India: indicative, not guarantees.", "small push"),
@@ -95,13 +95,13 @@ mark("Meet Ananya: a worked example")
 an = [100, 100, 60, 25, 74, 19, 70, 25]
 doms = [("Computer Science / IT", 92), ("AI / Data Science", 92), ("Pure Science", 90), ("Research", 89), ("Mathematics / Statistics", 88), ("Biotechnology", 88), ("Engineering", 87), ("Economics", 86)]
 add(head("Worked example", "Meet Ananya:", "her best fits and dream career.", "Ananya Rao is a sample Class 11 MPC student we created to show every screen in this handbook. Her answers were generated for demonstration: an ISFJ, Investigative, logical learner who dreams of software engineering.")
-    + two(box(h3("Her top career fields", "target") + hbars([(d, v, "#10B981" if i < 2 else "#6EE7B7") for i, (d, v) in enumerate(doms)], maxv=100, unit="%")
+    + two(box(h3("Her top career fields", "target") + hbars([(d, v, "#17243A" if i < 2 else "#9AA5B1") for i, (d, v) in enumerate(doms)], maxv=100, unit="%")
               + p("Computer Science / IT and AI / Data Science tie at the top: both reward an investigative, logical, organised profile.", "small mt")),
           box(h3("Her dream career: Software Engineer", "rocket")
-              + '<div class="grid" style="grid-template-columns:repeat(4,1fr);gap:2mm">' + ring(92, "Fits her profile", "#10B981", 16) + ring(85, "Fits her stream", "#0EA5A4", 16) + ring(25, "Aptitude today", "#F59E0B", 16) + ring(67, "Overall fitment", "#065F46", 16) + "</div>"
+              + '<div class="grid" style="grid-template-columns:repeat(4,1fr);gap:2mm">' + ring(92, "Fits her profile", "#17243A", 16) + ring(85, "Fits her stream", "#3D4F66", 16) + ring(25, "Aptitude today", "#B92B32", 16) + ring(67, "Overall fitment", "#17243A", 16) + "</div>"
               + callout("simple", "Her dream career <b>matches</b> her best-fit field. Her profile and stream fit strongly; her aptitude score is the gap to work on, and aptitude grows with practice.")), ratio="1fr 1fr", gap="4mm")
     + two(box(h3("Strengths to use", "trophy") + bullets(["Clear personality (100/100)", "Clear career interest (100/100)", "Learning style (74/100)"], "tight"), "soft"),
-          box(h3("Areas to grow", "sprout") + bullets(["Motivator clarity (19/100)", "Aptitude and reasoning (25/100)", "Emotional intelligence (25/100)"], "tight", "arrow-up-right", "#F59E0B"), "soft"), gap="4mm")
+          box(h3("Areas to grow", "sprout") + bullets(["Motivator clarity (19/100)", "Aptitude and reasoning (25/100)", "Emotional intelligence (25/100)"], "tight", "arrow-up-right", "#B92B32"), "soft"), gap="4mm")
     + h3("What Ananya could do next", "footprints")
     + steps([("Week 1", "Read 5 careers in Computer Science in the Career Library.", "book-open"), ("Week 2", "Test-drive software engineering.", "play"),
              ("Week 3", "Make a JEE Main study plan; take one mock.", "clipboard-list"), ("Week 4", "Start a free coding programme in Internships.", "laptop")], cols=4),
@@ -113,8 +113,8 @@ add(f'''<div class="actban b3"><div class="actno">ACTIVITY 3 · AFTER YOUR REPOR
 <p>Remember Activity 1? Open your sealed prediction (page {{{{REF:Activity 1: Predict yourself}}}}) and your report side by side. Score one point for every match. Who knows you best, you or your parent?</p>{img("brochure/c11-i-005.png", "actart")}</div>'''
     + table(["What", "My guess", "Parent's guess", "My report says", "Me ✓", "Parent ✓"], [[f"<b>{r}</b>", "", "", "", "☐", "☐"] for r in rc] + [["<b>TOTAL</b>", "", "", "", "<b>/10</b>", "<b>/10</b>"]], "fill", ["22%", "17%", "17%", "22%", "11%", "11%"])
     + grid([f'<div class="band2" style="--b:{c}"><b>{s}</b><span>{t}</span><p>{x}</p></div>' for s, t, x, c in [
-        ("8–10", "You know yourself well", "Great. Now act on it: start the 30-day challenge in Part 10.", "#16A34A"),
-        ("5–7", "Some surprises", "Read the deep dives for the dimensions you missed. Surprises are where you learn the most.", "#F59E0B"),
-        ("0–4", "Big discovery", "That's exactly why the assessment exists. Talk it through with a parent or counsellor.", "#8B5CF6")]], 3, "mt", gap="3mm")
+        ("8–10", "You know yourself well", "Great. Now act on it: start the 30-day challenge in Part 10.", "#17243A"),
+        ("5–7", "Some surprises", "Read the deep dives for the dimensions you missed. Surprises are where you learn the most.", "#B92B32"),
+        ("0–4", "Big discovery", "That's exactly why the assessment exists. Talk it through with a parent or counsellor.", "#5E7189")]], 3, "mt", gap="3mm")
     + two(box(h3("My biggest surprise", "sparkles") + lines(2)), box(h3("What I'll do about it", "flag") + lines(2)), "mt push", gap="4mm"),
     section=S)

@@ -2,11 +2,25 @@ from lib import *
 from tools import *
 
 divider(5, "dash", "Your Dashboard: Explore", "Your report becomes a dashboard you use. This part shows you how to find your way around, then gives each exploring tool its own chapter with missions you can finish this week.",
-        ["Your dashboard home", "Finding your way, and your results", "Career Library", "Entrance Exams", "Scholarships", "Study Abroad", "Internships & Jobs"],
+        ["How to use your dashboard", "Your dashboard home", "Finding your way, and your results", "Your results pages", "Career Library", "Entrance Exams", "Scholarships", "Study Abroad", "Internships & Jobs"],
         "feat/progress.webp")
 S = "Your Dashboard"
 
 # ---------------------------------------------------------------- home
+mark("How to use your dashboard")
+add(head("Start here", "How to use", "your dashboard.", "Your dashboard is where the report turns into action. Use it in this order the first time, then come back every week.")
+    + two(vsteps([("Sign in", "Go to careerfitment.onegrasp.com and sign in with the email and password you used for the assessment."),
+                  ("Open your report", "On the home screen tap <b>Open my full report</b>. Use <b>Download</b> to save the PDF."),
+                  ("Explore your results", "In the left menu, open <b>Your results</b>: profile, 8 dimensions, best-fit fields, how you think, my plan."),
+                  ("Pick a tool", "Choose a tool from <b>Explore</b> in the left menu, starting with your top career field in the Career Library."),
+                  ("Do the missions", "Each tool chapter in this book ends with a mission card. Tick tasks off as you finish them on the dashboard."),
+                  ("Track your progress", "Open <b>My Progress</b> to see lessons done, time spent and your streak; collect certificates as you finish courses.")]),
+          laptop("shots/dash-home.jpg", "The dashboard home: report at the top, tools below, menu on the left.") + p("", "mt") + laptop("shots/progress.jpg", "My Progress: everything you have done, in one place."), ratio="1fr 1fr", gap="5mm")
+    + h3("A simple weekly routine", "calendar-check")
+    + table(["When", "What to do", "Where"], [["Once a week", "Do the three Career GPS missions", "Career GPS"], ["Twice a week", "Work on one tool's mission card", "Any tool in the Explore menu"],
+                                              ["Every day (10 min)", "One lesson, game or speaking challenge", "Money, AI, Communication Lab"], ["Every month", "Check your progress and update your plan", "My Progress · My plan"]], "dense", ["22%", "48%", "30%"]),
+    section=S)
+
 mark("Your dashboard home")
 add(head("Dashboard home", "Your report becomes", "a dashboard you use.",
          "Sign in at careerfitment.onegrasp.com. You land on the dashboard home: your report at the top, your toolkit below, the menu on the left.")
@@ -28,12 +42,19 @@ add(head("Navigation", "Finding your way,", "and your results.", "The left menu 
     + callout("task", "Open <b>My plan</b> and tick the three “next 30 days” items this month. They're chosen for your top field.", cls="push"),
     section=S)
 
+mark("Your results pages")
+add(head("Your results", "Your report,", "made interactive.", "The <b>Your results</b> pages in the left menu show the same results as your PDF report, but you can tap into each one.")
+    + two(browser("shots/res-dims.jpg", "8 Dimensions: tap a dimension for its score, meaning and actions."), browser("shots/res-mind.jpg", "How you think: intelligences, aptitudes, motivators and learning styles."), gap="4mm")
+    + two(browser("shots/res-fields.jpg", "Best-fit fields: ranked, with a fit % and the reason."), browser("shots/res-plan.jpg", "My plan: next 30 and 90 days, with tick boxes."), "mt", gap="4mm")
+    + callout("task", "Tick all three “next 30 days” items in <b>My plan</b> this month. They're picked for your top field.", cls="push"),
+    section=S)
+
 # ---------------------------------------------------------------- 1 Career Library
 mark("Career Library")
 tool_theme("t-careers", "Career Library", "#2563EB", "#06B6D4")
 opener(1, "Career Library", "930 careers explained simply, with salaries, skills and a degree roadmap for each, plus a Test-Drive and a Family Decision Room.", "feat/careers.webp",
        [("930", "careers"), ("8", "fields"), ("2,500+", "roadmaps")],
-       pills(["Class 6–8: explore", "Class 9–10: choose a stream", "Class 11–12: choose a degree", "UG: choose a role"]),
+       pills(["Class 6–8: explore", "Class 9–10: choose a stream", "Class 11–12: choose a degree", "Parents: compare paths"]),
        ["Most students can name only 10–15 careers. Seeing hundreds, with real pay and real routes, widens your choices.", "A degree roadmap turns a dream into year-by-year steps.", "Test-Drive lets you feel a career before you spend years on it."],
        [("search", "Search 930 careers", "By job, skill or subject."), ("layers", "8 fields", "Technology to trades."), ("route", "Degree roadmaps", "Year-by-year plans for 1,500+ roles."),
         ("indian-rupee", "Salary and demand", "Indicative pay in India."), ("play", "Career Test-Drive", "Live a day in a career."), ("users", "Family Decision Room", "Compare two paths together.")],
@@ -55,7 +76,7 @@ mark("Entrance Exams")
 tool_theme("t-exams", "Entrance Exams", "#7C3AED", "#A855F7")
 opener(2, "Entrance Exams", "Every major entrance exam in one place: check if you're eligible, plan backwards from the date, practise with mocks and stay calm.", "feat/exams.webp",
        [("29", "exams"), ("44", "lessons"), ("34", "tools & planners")],
-       pills(["Class 6: JNVST, AISSEE", "Class 8: NMMS", "Class 11–12: JEE, NEET, CUET, CLAT…", "UG: GATE, CAT, CUET-PG, UPSC…"]),
+       pills(["Class 6: JNVST, AISSEE", "Class 8: NMMS", "Class 9–10: olympiads, NSEJS", "Class 11–12: JEE, NEET, CUET, CLAT, NDA…"]),
        ["Knowing early which exams you qualify for means no missed deadlines and no last-minute panic.", "A plan that counts back from the exam date turns a huge syllabus into weekly steps.", "Mocks with real marking show exactly what to revise."],
        [("user-round-pen", "Fill your profile once", "See only exams open to you."), ("bell", "Follow exams", "Deadline reminders."), ("calendar-days", "Study planner", "Syllabus built in for 7 major exams."),
         ("timer", "Mock tests", "Real marking scheme + analysis."), ("route", "Stage roadmap", "What to do this year."), ("heart-pulse", "Wellbeing", "Stress support and backup paths.")],
@@ -77,7 +98,7 @@ mark("Scholarships")
 tool_theme("t-sch", "Scholarships", "#16A34A", "#84CC16")
 opener(3, "Scholarships", "Find the money you qualify for: central, state and private schemes, with a deadline calendar, essay help and a safe document vault.", "feat/scholarships.webp",
        [("40", "scholarships"), ("53", "lessons"), ("47", "tools")],
-       pills(["Class 8: NMMS", "Class 11–12: Pankh, INSPIRE, Pragati", "UG & PG: CSSS, Reliance, PM YASASVI", "Abroad: Chevening, DAAD, Fulbright"]),
+       pills(["Class 8: NMMS", "Class 11–12: Pankh, INSPIRE, Pragati", "After Class 12: CSSS, Reliance, PM YASASVI", "Parents: income & category schemes"]),
        ["Cost should never decide a career on its own.", "Many families never apply for money they already qualify for.", "Deadlines are strict: a calendar and tracker mean you never miss one."],
        [("search", "Find for me", "Only schemes you qualify for."), ("calendar", "Deadline calendar", "Every official date."), ("clipboard-list", "My applications", "Track planning → won."),
         ("pen-line", "Essay helper", "Prompts and a checklist."), ("folder-lock", "Document vault", "Upload once, reuse."), ("shield-alert", "Scam check", "Real ones never ask you to pay.")],
@@ -99,7 +120,7 @@ mark("Study Abroad")
 tool_theme("t-abroad", "Study Abroad", "#C026D3", "#7C3AED")
 opener(4, "Study Abroad", "Abroad Compass: decide whether to go, where and for what, and check the money works before anyone sells you a university.", "feat/study-abroad.webp",
        [("6", "steps"), ("30", "lessons"), ("8", "countries")],
-       pills(["Class 11–12: UG abroad", "UG: master's abroad", "Parents: the money check"]),
+       pills(["Class 9–10: plan early", "Class 11–12: degree abroad", "Parents: the money check"]),
        ["Study abroad is one of the biggest money decisions a family makes.", "A calm, step-by-step check avoids expensive mistakes and agent pressure.", "The ROI calculator shows how many years a degree takes to pay back."],
        [("globe", "Compare countries", "US, Canada, UK, Australia, Germany, France, Ireland, NZ."), ("book-open", "Course finder", "What to study, where."), ("building-2", "Universities", "Reach, match or safe."),
         ("calculator", "ROI calculator", "Years to pay back."), ("file-text", "SOP & LOR helper", "Statements that sound like you."), ("shield-alert", "Agent checks", "Before you pay anyone.")],
@@ -107,7 +128,7 @@ opener(4, "Study Abroad", "Abroad Compass: decide whether to go, where and for w
 howto("Study Abroad", [("sa-countries", "Compare up to four countries."), ("sa-roi", "ROI calculator."), ("sa-unis", "Universities: reach, match, safe.")],
       [("Decide", "Is abroad right for you, and when?"), ("Pick a country", "Real costs, work rights, what's next."), ("Pick a course", "Match it to your report."), ("Shortlist universities", "2 reach, 3 match, 2 safe."),
        ("Run the money check", "ROI, loans, scholarships, then prepare SOP, LOR, documents.")],
-      [callout("warn", "The calculator gives a planning estimate, not a loan offer. Real budgets have extra costs."), callout("example", "An MS in Germany: low tuition but ₹10–12 lakh a year to live. Budget for it before you apply.")], "Study Abroad")
+      [callout("warn", "The calculator gives a planning estimate, not a loan offer. Real budgets have extra costs."), callout("parent", "Check the total cost (tuition + living + travel) before paying any application fee or agent.")], "Study Abroad")
 mission("Study Abroad",
         [("Compare 3 countries", "30 min", ["Compare costs, work rights, visas", "Fill the comparison table", "Pick your top country"]),
          ("Do the money check", "20 min", ["Run the ROI calculator", "Check 2 abroad scholarships", "Fill the budget box"]),
@@ -122,7 +143,7 @@ mark("Internships & Jobs")
 tool_theme("t-intern", "Internships & Jobs", "#0D9488", "#22C55E")
 opener(5, "Internships & Jobs", "209 free internship programmes from 135 companies, and fresh jobs every day, checked for scam warning signs.", "feat/internships.webp",
        [("209", "free programmes"), ("135", "companies"), ("₹0", "to join")],
-       pills(["Class 9–12: beginner programmes", "UG: internships & fresher jobs", "Everyone: certificates for your CV"]),
+       pills(["Class 9–12: beginner programmes", "Class 11–12: summer internships", "Everyone: certificates for your CV"]),
        ["Employers look for proof, not just marks.", "Certificates and projects from real companies make a CV stand out.", "Fake job offers target freshers; Trust Shield checks every listing."],
        [("laptop", "Free programmes", "Self-paced, from real companies."), ("signal", "Levels", "Beginner, intermediate, advanced."), ("filter", "Filters", "Tech, consulting, finance, AI…"),
         ("award", "Certificates", "Add them to your CV."), ("briefcase", "Fresh jobs", "Internships and fresher roles daily."), ("shield-check", "Trust Shield", "Scam signs checked.")],
@@ -138,3 +159,16 @@ mission("Internships & Jobs",
         wtable(["Programme / role", "Company", "Skill I learned", "Hours", "Certificate / status"], 5, ["26%", "18%", "26%", "10%", "20%"]),
         "You have proof of skills that employers can see.", "Internships & Jobs")
 
+theme("dash")
+mark("Where do I find…?")
+add(head("Quick map", "Where do I find", "…?", "Keep this page next to your screen. Every path starts from the left menu of the dashboard.")
+    + table(["I want to…", "Go to"], [
+        ["Reopen or download my report", "Home › Open my full report › Download"], ["See my type and interest code", "Your results › Your profile"], ["See one dimension in detail", "Your results › 8 Dimensions"],
+        ["See my best-fit careers", "Your results › Best-fit fields"], ["Know what to do this month", "Your results › My plan · Career GPS"], ["Find a career's salary and roadmap", "Career Library › search"],
+        ["Check if I can take an exam", "Entrance Exams › Your exams"], ["Make a study plan or take a mock", "Entrance Exams › Prepare"], ["Find scholarships I qualify for", "Scholarships › Find"],
+        ["See scholarship deadlines", "Scholarships › Calendar"], ["Compare countries to study in", "Study Abroad › Countries"], ["Check if a degree abroad pays back", "Study Abroad › Money › ROI"],
+        ["Find a free internship", "Internships"], ["Find a real job", "Jobs · Resume & Interview › Jobs for you"], ["Learn money skills", "Financial Literacy"],
+        ["Check a suspicious message", "Financial Literacy › Scam Shield"], ["Get help with a legal problem", "Law & Rights › Find help"], ["Plan a research project", "Research › Start a project"],
+        ["Find startup funding", "Startups › Funding"], ["Learn AI for free", "AI & Certifications › Courses"], ["Practise speaking", "Communication Lab › Daily challenge"],
+        ["Build a resume", "Resume & Interview › Resume builder"], ["Practise an interview", "Resume & Interview › Mock interview"], ["See everything I've done", "My Progress"]], "dense", widths=["48%", "52%"]),
+    section="Quick map")

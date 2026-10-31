@@ -10,7 +10,7 @@ mark("Financial Literacy")
 tool_theme("t-money", "Financial Literacy", "#CA8A04", "#16A34A")
 opener(6, "Financial Literacy", "Money skills, one level at a time: short lessons, a life simulation, eight money labs and Scam Shield games, with virtual money so mistakes cost nothing.", "feat/money.webp",
        [("6", "levels"), ("16", "lessons"), ("19", "tools")],
-       pills(["Class 6–8: needs vs wants", "Class 9–12: saving, banking, scams", "UG: salary, tax, credit, EMIs"]),
+       pills(["Class 6–8: needs vs wants", "Class 9–12: saving, banking, scams", "Class 11–12: salary, tax, credit, EMIs"]),
        ["Every career pays a salary; few schools teach what to do with it.", "Scams cost Indian families crores every year; spotting them is a life skill.", "Compounding rewards people who start early, even with ₹500 a month."],
        [("route", "Level path", "Basics → salary & tax → credit."), ("play", "Money Life", "Run 12 months, or 10 years."), ("flask-conical", "8 Money Labs", "EMI, inflation, compounding…"),
         ("shield", "Scam Shield", "6 games to spot fakes."), ("credit-card", "Money cards", "One idea, one minute."), ("receipt", "Habits", "Track what you really spend.")],
@@ -55,7 +55,7 @@ mark("AI & Certifications")
 tool_theme("t-ai", "AI & Certifications", "#DB2777", "#A855F7")
 opener(8, "AI & Certifications", "Learn AI for free and get certified: courses from the Government of India's YUVA AI for All to Harvard, Google, IBM and Kaggle, plus AI tools rated for your age.", "feat/ai.webp",
        [("4", "levels"), ("Free", "certificates"), ("Age-rated", "tools")],
-       pills(["Everyone: AI Aware", "Class 9–12: AI User & Maker", "UG: AI Builder"]),
+       pills(["Everyone: AI Aware", "Class 9–10: AI User", "Class 11–12: AI Maker & Builder"]),
        ["AI and big data are among the fastest-growing skills employers want (WEF 2025).", "Free certificates from Google, IBM or Harvard add real weight to a CV.", "Using AI safely and honestly is now part of being a good student."],
        [("layers", "4 levels", "Aware → User → Maker → Builder."), ("award", "Free courses", "End in a certificate or badge."), ("cpu", "AI tools", "Rated for age, privacy, cost."),
         ("shield", "Use AI safely", "5 rules, honesty, deepfakes."), ("graduation-cap", "Partners", "Google, Microsoft, IBM, Harvard."), ("check", "OneGrasp certificates", "For finished courses.")],
@@ -99,7 +99,7 @@ mark("Resume & Interview")
 tool_theme("t-job", "Resume & Interview", "#E11D48", "#F97316")
 opener(10, "Resume & Interview", "From your resume to your first offer: an ATS-friendly resume with AI help, jobs matched with a fit score, tailored cover letters and interview practice out loud.", "feat/jobready.webp",
        [("6", "steps to an offer"), ("100", "interview questions"), ("PDF", "resume download")],
-       pills(["Class 11–12: first resume for internships", "UG: placements and first job"]),
+       pills(["Class 11–12: first resume for internships", "Parents: help with the first CV"]),
        ["Most companies screen resumes with software (ATS) before a human reads them.", "Tailoring each application raises your chances sharply.", "Practising answers out loud is the best cure for interview nerves."],
        [("target", "Target role", "Your job plan starts here."), ("file-text", "Resume builder", "Role kit + AI bullets + ATS check."), ("briefcase", "Jobs for you", "Live jobs with a fit score."),
         ("mail", "Cover letters", "Tailored in one click."), ("messages-square", "100 questions", "With model answers."), ("mic", "Mock interviews", "Feedback on content and delivery.")],
@@ -142,7 +142,7 @@ mark("Spotlight")
 tool_theme("t-spot", "Spotlight", "#D97706", "#E11D48")
 opener(12, "Spotlight", "Career boosters from OneGrasp: present research at an international conference, publish a paper, get an ISBN for your book, start a journal with an ISSN, or be featured in Awardees Magazine.", "feat/spotlight.webp",
        [("5", "boosters"), ("DOI", "for abstracts"), ("Free", "to ask")],
-       pills(["Class 11–12 and UG researchers", "Young authors", "Faculty and professionals"]),
+       pills(["Class 11–12 researchers", "Young authors", "Faculty and professionals"]),
        ["A published paper, a DOI or an ISBN is permanent, checkable proof of your work.", "Presenting internationally builds confidence and a network.", "The team guides you through official rules step by step."],
        [("presentation", "Submit an abstract", "To a OneGrasp conference."), ("pen-line", "Writing help", "Question → publication-ready draft."), ("book", "Get an ISBN", "For your own book."),
         ("newspaper", "Start a journal", "What an ISSN needs."), ("star", "Awardees Magazine", "Articles, stories, podcasts."), ("wallet", "Paid, but free to ask", "Fee shared before anything.")],

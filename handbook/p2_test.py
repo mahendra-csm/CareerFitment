@@ -1,7 +1,7 @@
 from lib import *
 
 divider(2, "test", "The Assessment", "What the Career Fitment Assessment is, who it is for, the science behind it, and exactly how to take it, screen by screen.",
-        ["What is a psychometric assessment?", "Four editions for four stages", "The science behind every question", "Before you begin",
+        ["What is a psychometric assessment?", "What we measure: the 8 dimensions", "The science behind every question", "Before you begin",
          "Registering, step by step", "Inside the exam screen", "Six kinds of questions", "Built to be trusted", "After you finish"],
         "feat/exams.webp")
 S = "The Assessment"
@@ -22,25 +22,25 @@ add(head("The test", "Is it just", "another exam?",
              ("route", "A roadmap", "Subjects, exams, degrees, skills and jobs, step by step."), ("layout-dashboard", "A dashboard", "20+ tools to act on it, all year.")], 4, "compact"),
     section=S)
 
-mark("Four editions for four stages")
-eds = [("Class 6–8", "Career Discovery", "What am I like, and what could I enjoy?", "About 60", "Career DNA, top 5 of 15 domains, a 20-year picture", "#F08C00", "sparkles"),
-       ("Class 9–10", "Stream Selection", "Which stream after Class 10?", "About 60", "Best-fit domains, stream guidance, your choice vs your result", "#16A34A", "git-fork"),
-       ("Class 11–12", "Career Planning", "Which exam, degree and college?", "75", "Fitment, Suitability and Career Selector; a 15-step roadmap", "#0EA5E9", "map"),
-       ("Undergraduates", "Employability Readiness", "What job, what skills, PG or work?", "100", "17 career clusters, skill gap, 2026–2046 career horizon", "#7048E8", "briefcase")]
-add(head("Who it is for", "One assessment,", "four editions.",
-         "A Class 7 student and a final-year engineering student face very different decisions. So each class group takes a test written for its own age, and gets a report built for its own next step.")
-    + grid([f'''<div class="ed" style="--ec:{c}"><div class="edh">{icon(ic, "7mm", "#fff")}<span>{a}</span><h4>{n}</h4></div>
-<div class="edb"><p class="edq">“{q}”</p><div class="edk"><b>{qs}</b><span>questions</span></div><p>{r}</p></div></div>''' for a, n, q, qs, r, c, ic in eds], 4)
-    + p("Every edition allows up to 90 minutes. Question counts can change slightly as the question banks are updated.", "small mt")
-    + h3("Which one should I take?", "help-circle")
-    + two(table(["If you are…", "Take"], [["In Class 6, 7 or 8", "Career Discovery"], ["In Class 9 or 10", "Stream Selection"], ["In Class 11 or 12", "Career Planning"],
-                                          ["In any year of a degree", "Employability Readiness"], ["Working already", "The professional wellbeing check"]], widths=["55%", "45%"]),
-          callout("simple", "You don't have to choose. When you register you pick your class, and the right edition opens automatically.")
-          + callout("try", "Take it again when you move up a stage, for example in Class 8, Class 10 and Class 12. Watching your profile grow is part of the journey.")),
+NAMES = ["Personality", "Career\nInterests", "Multiple\nIntelligences", "Emotional\nIntelligence", "Learning\nStyle", "Motivators", "Strengths", "Aptitude"]
+QS = ["How do I naturally work and decide?", "What kind of work excites me?", "In which ways am I smart?", "How well do I handle feelings and people?",
+      "How do I prefer to study?", "What drives me?", "What do I naturally contribute?", "How quickly can I pick up new skills?"]
+mark("What we measure: the 8 dimensions")
+add(head("What we measure", "The 8 dimensions.", "One complete you.", center=True)
+    + f'<div class="center" style="margin:-1mm 0 2mm">{wheel(NAMES, DIMC, size=118)}</div>'
+    + grid([f'<div class="dq" style="--dc:{DIMC[i]}"><b>{i + 1:02d}</b><span>{NAMES[i].replace(chr(10), " ")}</span><p>{QS[i]}</p></div>' for i in range(8)], 4, gap="2.4mm")
+    + h3("How the eight work together", "puzzle")
+    + cards([("user", "Who you are", "Personality and Emotional Intelligence describe how you work, decide and get on with people.", DIMC[0]),
+             ("heart", "What pulls you", "Career Interests and Motivators show the work that excites you and why you keep going.", DIMC[1]),
+             ("brain", "How you think", "Multiple Intelligences and Learning Style show the ways you are smart and how you learn.", DIMC[2]),
+             ("trophy", "What you can do", "Strengths and Aptitude show what you naturally give and how fast you learn a field's skills.", DIMC[6])], 4, "compact")
+    + callout("simple", "No single dimension decides your career. The best-fit careers are where <b>several dimensions agree</b>: for example, an Investigative interest + a Logical intelligence + a strong Numerical aptitude all point toward science and data.", cls="push"),
     section=S)
 
+
+
 mark("The science behind every question")
-fw = [("01", "Personality", "Personality-type preferences (MBTI-style): introvert–extravert, sensing–intuition, thinking–feeling, judging–perceiving. Some stages use the Big Five traits.", "Carl Jung's types; Myers & Briggs"),
+fw = [("01", "Personality", "Personality-type preferences (MBTI-style): introvert–extravert, sensing–intuition, thinking–feeling, judging–perceiving.", "Carl Jung's types; Myers & Briggs"),
       ("02", "Career Interests", "Holland's RIASEC model: Realistic, Investigative, Artistic, Social, Enterprising, Conventional.", "John L. Holland, 1959"),
       ("03", "Multiple Intelligences", "Eight ways of being smart: linguistic, logical, spatial, bodily, musical, interpersonal, intrapersonal, naturalistic.", "Howard Gardner, 1983"),
       ("04", "Emotional Intelligence", "Self-awareness, self-management, social awareness and relationship management.", "Salovey & Mayer; Goleman"),
@@ -51,8 +51,7 @@ fw = [("01", "Personality", "Personality-type preferences (MBTI-style): introver
 add(head("The science", "Built on frameworks", "psychologists trust.",
          "Every dimension is read through a model that has been studied and used for decades. Here is what sits behind each part of your report.")
     + "".join(f'<div class="fw" style="--fc:{DIMC[i]}"><span class="fwn">{n}</span><div><b>{t}</b><p>{d}</p></div><span class="fwo">{icon("book-marked", "3.6mm", DIMC[i])} {o}</span></div>' for i, (n, t, d, o) in enumerate(fw))
-    + two(callout("simple", "A <b>framework</b> is a well-tested way of describing people. It means the same answers always give the same result, and every result can be explained in plain words."),
-          callout("good", "Class 11–12 adds <b>subject fit</b>, <b>career and stream fit</b> and your <b>career aspiration</b>. Undergraduates take eight career-readiness areas instead (page {{REF:Undergraduates: 8 areas of career readiness}})."), "push", gap="4mm"),
+    + callout("simple", "A <b>framework</b> is a well-tested way of describing people. It means the same answers always give the same result, and every result can be explained in plain words. Each dimension has its own page in Part 3.", cls="push"),
     section=S)
 
 mark("Before you begin")
@@ -61,7 +60,7 @@ add(head("Prepare", "Before you", "begin.",
     + two(box(h3("Your checklist", "list-checks") + check_list([
         "A laptop (easiest), tablet or phone, charged", "A stable internet connection", "Up to 90 minutes in a quiet place, in one sitting",
         "Your login email and password, or your school's link", "Class 11–12: your stream and the career you're aiming for",
-        "Undergraduates: your degree, specialisation and year", "Headphones, if you want questions read aloud", "Water, and notifications switched off"])),
+        "Headphones, if you want questions read aloud", "Water, and notifications switched off"])),
           box(f'<div class="bigtip">{icon("heart", "10mm", "var(--c1)")}<span class="serif">Answer as you <b class="c1">really are</b>, not as you think you <b>should</b> be.</span></div>'
               + p("There are no good or bad results, only better fits. If you answer the way a parent, teacher or friend would like, the report will describe them, not you.")
               + p("If two options both feel true, pick the one that is true <b>more often</b>.", "small"), "soft"))
@@ -78,10 +77,10 @@ mark("Registering, step by step")
 add(head("Getting in", "Registering,", "step by step.",
          "Registration takes about two minutes. Students can sign up themselves, or join through their school or college link so the institution can follow their progress.")
     + two(laptop("shots/probe.jpg", "<b>Step 1.</b> Enter your name and pick your class or stage."), laptop("shots/flow-0.jpg", "<b>Step 4.</b> Class 11–12: your stream and dream career."), gap="6mm")
-    + steps([("Set your milestone", "Go to careerfitment.onegrasp.com, enter your name and pick your class: 6, 7, 8, 9–10, 11, 12, Undergraduate or Working Professional.", "flag"),
+    + steps([("Set your milestone", "Go to careerfitment.onegrasp.com, enter your name and pick your class: 6, 7, 8, 9–10, 11, 12.", "flag"),
              ("Set your stage", "Say how sure you are today: no idea · confused · a bit sure · sure but need a plan.", "gauge"),
              ("Create your login", "Your email and password are your login for your report and dashboard.", "key-round"),
-             ("Quick questions", "Class 11–12 pick their stream and dream career; undergraduates pick their degree. These tailor your report.", "message-circle-question"),
+             ("Quick questions", "Class 11–12 students pick their stream and dream career. These tailor your report.", "message-circle-question"),
              ("Start", "Read “Before you begin”, tick the box and start. The test opens in full screen.", "play")], cols=5)
     + two(laptop("shots/pick.jpg", "Start typing a career and pick it from the list."), laptop("shots/flow-1.jpg", "<b>Step 5.</b> Read the instructions, then start."), "mt", gap="6mm"),
     section=S)
@@ -110,7 +109,7 @@ mk = {
 add(head("Question types", "Six kinds of", "questions.",
          "Most questions take a few seconds. Here is what each type looks like on screen, and how to answer it well.")
     + grid([f'<div class="qt"><div class="qth">{chip(["mouse-pointer-click", "sliders-horizontal", "list-plus", "chevrons-up-down", "brain", "toggle-left"][i], size="8mm", isz="4.4mm")}<b>{k}</b></div>{m}<p class="small">{icon("lightbulb", "3.4mm", "#F5B700")} {tip}</p></div>' for i, (k, (m, tip)) in enumerate(mk.items())], 3, gap="4mm")
-    + two(laptop("shots/flow-graduate-2.jpg", "The undergraduate edition: question 1 of 100."), laptop("shots/exam-mid.jpg", "Class 11–12: answers save as soon as you tap."), "mt", gap="6mm"),
+    + two(laptop("shots/flow-2.jpg", "A personality question: tap the option most like you."), laptop("shots/exam-mid.jpg", "Class 11–12: answers save as soon as you tap."), "mt", gap="6mm"),
     section=S)
 
 mark("Built to be trusted")

@@ -2,7 +2,7 @@ from lib import *
 
 THEMES["action"] = ("Your Action Plan", "#F59E0B", "#EF4444", "#FFF7E6", "#92400E")
 divider(10, "action", "Your Action Plan", "Reading changes nothing. Doing does. This part is your workbook: a 30-day kickstart, a month-by-month plan for your stage, and trackers to keep you going all year.",
-        ["The 30-day kickstart challenge", "Your year: Class 6–10", "Your year: Class 11–12", "Your years: undergraduate", "My profile on one page", "My weekly tracker", "My achievements and certificates"],
+        ["The 30-day kickstart challenge", "Your year: Class 6–10", "Your year: Class 11–12", "Your 90-day plan", "My profile on one page", "My weekly tracker", "My achievements and certificates"],
         "feat/progress.webp")
 S = "Your Action Plan"
 
@@ -58,16 +58,16 @@ add(head("Your year", "Class 11–12:", "two years, month by month.", "Typical t
     + callout("parent", "Class 12 is stressful. Use Entrance Exams › Wellbeing together, and remember the backup plan is a real plan, not a failure.", cls="push"),
     section=S)
 
-mark("Your years: undergraduate")
-years = [("Year 1", "#0EA5E9", ["Take the UG assessment; read your skill gap", "AI Aware + one free certificate", "Communication Lab track", "Explore 3 career clusters"]),
-         ("Year 2", "#8B5CF6", ["Finish 2 internship programmes", "Research Studio or Startups course", "Build your portfolio website", "Close one “Needs work” skill"]),
-         ("Year 3", "#F97316", ["A real internship (Jobs)", "Resume + mock interviews", "Present at a conference (Spotlight)", "Decide: job, PG or abroad"]),
-         ("Year 4", "#16A34A", ["Placements: jobs with fit score", "PG exams if chosen (CAT ~Nov, GATE ~Feb, CUET-PG ~Mar)", "Abroad applications (Sep–Jan)", "Scholarships for PG"])]
-add(head("Your years", "Undergraduate:", "four years to work-ready.", "Your skill gap tells you what to build; this plan tells you when.")
-    + grid([f'<div class="yr" style="--yc:{c}"><b>{y}</b>' + bullets(items, "tight", "check", c) + "</div>" for y, c, items in years], 4, gap="3mm")
-    + h3("My skill gap plan", "gauge")
-    + table(["Skill (from my report)", "Now (1–5)", "Target", "How I'll close it", "By when"], [["&nbsp;", "", "", "", ""] for _ in range(5)], "fill", ["30%", "12%", "12%", "30%", "16%"])
-    + callout("simple", "Every year, aim for one new <b>certificate</b>, one <b>project</b>, one piece of <b>real experience</b> and one <b>skill</b> moved from “Needs work” to “Ready”.", cls="push"),
+mark("Your 90-day plan")
+add(head("Reading guide", "Turn your report into", "a 90-day plan.", "Fill this in with your report open. Keep it on your desk, or photograph it and pin it to your phone.")
+    + two(box(h3("My report in one line", "pen-line") + p("My type is ________ · my interest code is ________", "small") + lines(1) + h3("My top 3 fields", "target") + lines(3)),
+          box(h3("One strength to use", "trophy") + lines(2) + h3("One area to grow", "sprout") + lines(2)), gap="4mm")
+    + table(["When", "Goal", "Dashboard tool I'll use", "Done"], [
+        ["<b>Days 1–30</b> · Explore", "Read 5 careers from my top field", "Career Library, Test-Drive", "☐"], ["", "", "", "☐"],
+        ["<b>Days 31–60</b> · Do", "One small task or free course", "Internships, AI & Certifications", "☐"], ["", "", "", "☐"],
+        ["<b>Days 61–90</b> · Build", "One project or proof", "Portfolio, Career Passport", "☐"], ["", "", "", "☐"]], "mt", widths=["22%", "38%", "32%", "8%"])
+    + two(callout("try", "The dashboard's <b>My plan</b> page and weekly <b>Career GPS</b> missions turn this sheet into ticked-off tasks (Parts 5 and 6)."),
+          callout("parent", "Sign the bottom of this page with your child: <span class='hand' style='font-size:13pt'>We agree to try this together.</span>"), "push", gap="4mm"),
     section=S)
 
 mark("My profile on one page")

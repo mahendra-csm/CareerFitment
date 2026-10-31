@@ -1,46 +1,26 @@
 from lib import *
 
 divider(1, "meet", "Meet OneGrasp", "Who we are, what we do, and why we built a career assessment that looks far beyond marks.",
-        ["What is OneGrasp?", "Everything OneGrasp does", "Why career choices go wrong", "The future of work", "Real schools, real students"],
-        "brochure/ug-i-001.png")
+        ["What is OneGrasp?", "Why career choices go wrong", "The future of work", "Real schools, real students"],
+        "brochure/c11-i-001.png")
 S = "Meet OneGrasp"
 
 mark("What is OneGrasp?")
 add(head("About us", "What is", "OneGrasp?",
          "OneGrasp Education Pvt. Ltd. is an education company based in Hyderabad, India. We help students, families, professionals and institutions make better decisions about learning and work.")
     + two(callout("simple", "OneGrasp is like a <b>GPS for your career</b>. First it finds where you are today (your strengths, interests and personality). Then it shows the roads that suit you, and finally it gives you turn-by-turn directions: subjects, exams, colleges, skills, money and jobs.")
-          + p("Our best-known product is the <b>Career Fitment Assessment</b>: a psychometric career assessment for students from Class 6 to undergraduates. It measures eight dimensions of a student and turns them into a personal report and a dashboard of more than twenty tools.")
+          + p("Our best-known product is the <b>Career Fitment Assessment</b>: a psychometric career assessment for students from Class 6 to Class 12. It measures eight dimensions of a student and turns them into a personal report and a dashboard of more than twenty tools.")
           + p("Around the assessment, OneGrasp runs international scientific conferences, startup and entrepreneurship programmes, certifications, workshops and internships, one-to-one career counselling, and admissions guidance for India and abroad.")
           + h3("Our belief", "heart")
           + p("Every student is good at something. A career assessment should never label a child. It should show where they will thrive, what to try next, and how to get there with honest facts about exams, colleges, costs and jobs."),
           photo("gallery/new1.webp", "Career guidance in a partner school", style="height:66mm") + p("", "mt")
-          + stats([("4", "editions, Class 6 to UG", "layers"), ("8", "dimensions", "radar")]) + stats([("20+", "dashboard tools", "layout-grid"), ("100%", "facts linked to sources", "badge-check")]),
+          + stats([("6–12", "classes covered", "layers"), ("8", "dimensions", "radar")]) + stats([("20+", "dashboard tools", "layout-grid"), ("100%", "facts linked to sources", "badge-check")]),
           ratio="1.15fr 0.85fr", gap="6mm")
     + h3("What makes OneGrasp different", "sparkles")
     + cards([("flask-conical", "Built on science", "Well-known frameworks: personality type, Holland's RIASEC interests, Gardner's intelligences, emotional intelligence and reasoning aptitude.", "#E5383B"),
-             ("users", "Written for each age", "Class 6–8, Class 9–10, Class 11–12 and undergraduates each get questions and a report made for their stage.", "#4C5FD5"),
+             ("users", "Written for each age", "Questions and a report written for each class, from Class 6 to Class 12.", "#4C5FD5"),
              ("map", "A plan, not just a PDF", "The report opens a dashboard of lessons, tools and weekly tasks, so it never sits in a drawer.", "#16A34A"),
              ("shield-check", "Facts you can check", "Every exam, scholarship and funding programme links to its official source.", "#F08C00")], 4, "compact"),
-    section=S)
-
-mark("Everything OneGrasp does")
-svc = [("clipboard-check", "Career Fitment Assessment", "Class 6 to UG; instant report and dashboard", "#E5383B"),
-       ("messages-square", "Career counselling", "One-to-one sessions with students and parents", "#4C5FD5"),
-       ("plane", "Admissions guidance", "Colleges and courses in India and abroad", "#0EA5E9"),
-       ("presentation", "Scientific conferences", "Online, peer-reviewed, DOI-indexed, 11 disciplines", "#7048E8"),
-       ("rocket", "Startup programmes", "Spot, Build, Pitch with universities", "#D946EF"),
-       ("award", "Certifications & internships", "Hands-on learning with verifiable certificates", "#F08C00"),
-       ("chalkboard" if False else "book-open-check", "Faculty development", "Programmes for teachers on campus or online", "#16A34A"),
-       ("star", "Spotlight boosters", "Publish, ISBN, ISSN and Awardees Magazine", "#E64980")]
-cells = []
-for i, (ic, t, x, c) in enumerate(svc):
-    cells.append(f'<div class="hubc" style="--hc:{c}">{chip(ic, c, f"color-mix(in srgb, {c} 14%, white)", "11mm", "5.6mm")}<h4>{t}</h4><p>{x}</p></div>')
-hub = cells[:4] + [f'<div class="hubm">{img("art/logo.png")}<span>One login.<br>One partner.<br>Every step.</span></div>'] + cells[4:]
-add(head("Our work", "One company,", "many ways to help.",
-         "Most families meet OneGrasp through the Career Fitment Assessment. Behind it is a whole ecosystem built to support a student from Class 6 to their first job.")
-    + '<div class="hub">' + "".join(hub[:4]) + hub[4] + "".join(hub[5:]) + "</div>"
-    + callout("example", "A Class 11 student takes the assessment in her school's computer lab. Her report says Computer Science fits her best. She uses the dashboard to plan for JEE Main, finds two scholarships, joins a free coding internship, and later presents a small research project at a OneGrasp student conference. <b>One partner, every step.</b>")
-    + band("Schools and colleges can run the assessment on campus: an orientation, the test in the computer lab, and a personal report for every student. The Institution Portal then tracks every student daily.", "For institutions:", "school", "push"),
     section=S)
 
 mark("Why career choices go wrong")
@@ -67,9 +47,8 @@ fading = ["Cashiers and ticket clerks", "Administrative assistants and secretari
           "Data entry and manual bookkeeping", "Scripted telemarketing and call-centre work", "Repetitive assembly-line and sorting work", "Generic content writing without expertise"]
 add(head("The next decade", "The world of work", "is changing fast.",
          "AI is taking over routine tasks. The World Economic Forum's <i>Future of Jobs Report 2025</i> shows which skills and jobs are rising, and which are fading.")
-    + two(box(h3("Skills employers want most", "trending-up") + hbars([("Analytical thinking", 96, "#E5383B"), ("Resilience, flexibility, agility", 90, "#F08C00"), ("Leadership & social influence", 84, "#7048E8"),
-                                                                    ("Creative thinking", 80, "#4C5FD5"), ("Motivation & self-awareness", 76, "#16A34A"), ("AI and big data", 72, "#0EA5E9")], maxv=100, unit="")
-              + p("Relative importance, illustrative. Source: WEF, Future of Jobs Report 2025. None of these skills shows on a mark sheet.", "small mt")),
+    + two(box(h3("Skills employers want most", "trending-up") + numbered(["Analytical thinking", "Resilience, flexibility and agility", "Leadership and social influence", "Creative thinking", "Motivation and self-awareness", "AI and big data"])
+              + p("Source: World Economic Forum, Future of Jobs Report 2025. None of these skills shows on a mark sheet.", "small mt")),
           box(h3("Fading or automating", "trending-down") + bullets(fading, "tight", "minus", "#DC2626"), "soft"), ratio="1.1fr 0.9fr")
     + h3("Rising and future-proof", "rocket")
     + grid([f'<div class="rise"><b>{t}</b><span>{d}</span></div>' for t, d in rising], 5, gap="2.4mm")

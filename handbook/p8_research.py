@@ -8,7 +8,7 @@ from tools import opener, howto, mission
 mark("The Research Studio")
 opener(14, "Research Studio", "From a good question to your first conference talk: eight short units, a project planned backwards from a real conference date, a mentor check and a practice recorder.", "feat/research.webp",
        [("8", "studio units"), ("14", "lessons"), ("5", "levels")],
-       pills(["Class 9–12: first project", "UG: papers and conferences", "Teachers: mentor checks"]),
+       pills(["Class 9–12: first project", "Class 11–12: conferences", "Teachers: mentor checks"]),
        ["Research shows colleges and employers that you can think independently.", "Planning back from a real conference date turns curiosity into a finished project.", "Presenting your work builds confidence that lasts."],
        [("book-open", "8 studio units", "Question → method → abstract → talk."), ("flag", "Start a project", "Pick a conference, plan back."), ("search", "Conference finder", "India and worldwide."),
         ("clipboard-check", "Mentor check", "7 items scored 1–4."), ("mic", "Practice recorder", "3 or 10 minutes; stays on device."), ("id-card", "Research profile", "A public page with a QR code.")],

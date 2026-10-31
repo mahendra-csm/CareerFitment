@@ -2,7 +2,7 @@ import json, os
 from lib import *
 
 divider(7, "startup", "Startups & Funding", "OneGrasp's startup programmes, and every grant, loan, subsidy, equity and credit-guarantee programme in the dashboard's Funding directory: 311 of them.",
-        ["The Startups course", "How to use the Funding directory", "Central government programmes", "Banks and SIDBI", "Incubators and funds", "State government programmes"], "feat/startups.webp")
+        ["The Startups course", "Spot, Build, Pitch", "How to use the Funding directory", "Central government programmes", "Banks and SIDBI", "Incubators and funds", "State government programmes"], "feat/startups.webp")
 S = "Startups & Funding"
 F = json.load(open(os.path.join(os.path.dirname(__file__), "funding.json")))
 P = F["programmes"]
@@ -12,7 +12,7 @@ from tools import opener, howto, mission
 mark("The Startups course")
 opener(13, "Startups", "Build a startup, lesson by lesson: 11 modules, 52 video lessons, a quiz after each, a mission on your own idea, and 311 funding programmes when you're ready.", "feat/startups.webp",
        [("11", "modules"), ("52", "video lessons"), ("311", "funding programmes")],
-       pills(["Class 9–12: founder mindset", "UG: build and pitch", "Anyone with an idea"]),
+       pills(["Class 9–12: founder mindset", "Class 11–12: build and pitch", "Anyone with an idea"]),
        ["Entrepreneurship is learned by doing, not by reading about it.", "Every module ends with a mission on your own idea, so you finish with a real plan.", "Funding is listed in one place, with amounts and deadlines."],
        [("target", "Placement quiz", "2 minutes to the right module."), ("video", "Video lessons", "Short talks + reads."), ("circle-check", "Quizzes", "Pass one to unlock the next."),
         ("flag", "Missions", "Each builds your Startup Portfolio."), ("clapperboard", "Founder videos", "A library of talks."), ("wallet", "Funding", "Grants, loans, incubators.")],
@@ -30,6 +30,20 @@ mission("Startups",
             ("Proof", "What the 5 interviews said", "messages-square"), ("First customers", "How I'll reach 10 people", "megaphone"), ("Money", "Who pays, how much, why", "indian-rupee"),
             ("Team", "Who I need", "users"), ("Funding to try", "2 programmes from Part 7", "wallet")]) + "</div>",
         "You have a tested problem and a one-page plan.", S)
+
+mark("Spot, Build, Pitch")
+add(head("Entrepreneurship", "Entrepreneurship is best", "learned by doing.",
+         "Most students meet entrepreneurship as a chapter, a guest lecture or a case study. OneGrasp's startup programmes give them a real occasion to take one problem, build a first answer and defend it in front of people who ask hard questions.")
+    + grid([f'<div class="sbp" style="--sc:{c}"><span>{n}</span>{icon(ic, "9mm", "#fff")}<h4>{t}</h4><p>{x}</p></div>' for n, t, x, ic, c in [
+        ("01", "SPOT", "Observe, investigate and define a real problem.", "search", "#D946EF"), ("02", "BUILD", "Develop a prototype or a structured business solution.", "hammer", "#F43F5E"),
+        ("03", "PITCH", "Present the idea, answer questions and plan the next steps.", "presentation", "#F97316")]], 3, gap="4mm")
+    + h3("From problem to pitch: what students actually do", "route")
+    + steps([("Meet a real-world problem", "Chosen by the team.", "globe"), ("Find out who lives with it", "Talk to real users.", "users"), ("Build and test a first solution", "Something people can handle.", "wrench"),
+             ("Shape a business model", "Who pays, and why.", "wallet"), ("Present it", "Answer hard questions.", "mic")], cols=5)
+    + two(box(h3("In the lecture hall", "book") + p("<b>Learning about business:</b> a chapter on business models, a guest lecture, a case study.")),
+          box(h3("In the OneGrasp programme", "rocket") + p("<b>Building and testing an idea:</b> a real problem chosen by the team, a first solution people can handle, a panel that asks hard questions."), "grad"), "mt", gap="4mm")
+    + band("OneGrasp designs the cohort with the institution and delivers it on campus. Talk to us at support@onegrasp.com.", "For universities:", "building-2", "push"),
+    section=S)
 
 mark("How to use the Funding directory")
 kinds = [("Grant", sum(p["kind"] == "grant" for p in P), "#16A34A"), ("Subsidy", sum(p["kind"] == "subsidy" for p in P), "#0EA5E9"), ("Loan", sum(p["kind"] == "loan" for p in P), "#F59E0B"),

@@ -482,3 +482,7 @@ body { letter-spacing: -.005em; }
 
 .wall { gap: 2mm 2.4mm; } .wm img { width: 20mm; height: 20mm; aspect-ratio: auto; } .wm b { font: 600 6.8pt/1.15 'Poppins'; } .wm span { font: 600 6pt 'Poppins'; }
 .hd.center .title { font-size: 22pt; }
+.prog { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-bottom: 3mm; } .prog div { background: var(--pc); color: #fff; padding: 4mm; clip-path: polygon(0 0, 92% 0, 100% 50%, 92% 100%, 0 100%, 8% 50%); padding-left: 8mm; }
+.prog b { display: block; font: 700 12pt 'Poppins'; color: #fff; } .prog span { font-size: 9pt; }
+.flow5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2.4mm; } .flow5 div { background: var(--soft); border-radius: 3mm; padding: 3mm; text-align: center; border-top: 1.2mm solid var(--c1); }
+.flow5 b { display: block; font: 700 11pt 'Poppins'; color: var(--c1); } .flow5 span { font-size: 8.4pt; color: var(--muted); }

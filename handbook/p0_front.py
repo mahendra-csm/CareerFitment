@@ -19,7 +19,7 @@ add(head("Contents", "What's inside", "this handbook.") + "{{TOC}}", section="Co
 # ---------------------------------------------------------------- 3. belongs to + start here
 mark("Start here")
 route = [("Before the test", "#0EA5E9", [("Do Activity 1 and 2", "{{REF:Activity 1: Predict yourself}}"), ("Read how the test works", "{{REF:What is a psychometric assessment?}}"), ("Get ready for test day", "{{REF:Before you begin}}")]),
-         ("After your report", "#10B981", [("Learn the 8 dimensions", "{{REF:The whole you, at a glance}}"), ("Read your report", "{{REF:How to read your report}}"), ("Do the Reality check", "{{REF:Reality check: how well do you know yourself?}}")]),
+         ("After your report", "#10B981", [("Learn the 8 dimensions", "{{REF:What we measure: the 8 dimensions}}"), ("Read your report", "{{REF:How to read your report}}"), ("Do the Reality check", "{{REF:Reality check: how well do you know yourself?}}")]),
          ("Every week", "#F97316", [("Use your dashboard tools", "{{REF:Your dashboard home}}"), ("Finish the mission cards", "{{REF:Career Library}}"), ("Follow the 30-day challenge", "{{REF:The 30-day kickstart challenge}}")]),
          ("Parents and teachers", "#0284C7", [("Guide, not decide", "{{REF:For parents: guide, not decide}}"), ("Ten questions to ask", "{{REF:Ten questions to talk through}}"), ("For schools", "{{REF:For schools: the Institution Portal}}")])]
 add(head("Start here", "This handbook", "belongs to…")

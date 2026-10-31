@@ -12,7 +12,7 @@ import content  # noqa: F401  (fills lib.PAGES)
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "out")
 os.makedirs(OUT, exist_ok=True)
-CSS = open(os.path.join(HERE, "fonts.css")).read() + open(os.path.join(HERE, "style.css")).read()
+CSS = open(os.path.join(HERE, "fonts.css")).read() + open(os.path.join(HERE, "style.css")).read() + open(os.path.join(HERE, "editorial.css")).read()
 
 
 def tvars(key):
@@ -56,9 +56,11 @@ for i, pg in enumerate(lib.PAGES):
     if pg["kind"] in ("cover", "back", "divider", "full"):
         chrome = ""
     else:
-        chrome = (f'<div class="strip"><span class="sl">{sec}</span><span class="pn">{n}</span></div>'
-                  f'<img src="assets/art/logo.png" class="plogo"><div class="deco"><i class="y"></i><i class="r"></i><i class="b"></i></div>'
-                  f'<div class="pfoot">OneGrasp · Career Fitment Handbook · 2026–27</div>')
+        part = lib.THEMES[pg["theme"]][0]
+        side = "r" if n % 2 else "l"
+        chrome = (f'<div class="rh {side}"><span class="rh-book">Career Fitment Handbook</span><span class="rh-sec">{sec}</span></div>'
+                  f'<div class="tab {side}"></div>'
+                  f'<div class="folio {side}"><b>{n}</b><span>OneGrasp</span></div>')
     sheets.append(f'<section class="page {pg["kind"]}" data-n="{n}" style="{tvars(pg["theme"])}">{chrome}<div class="pc">{body}</div></section>')
 
 doc = (f'<!doctype html><html lang="en"><head><meta charset="utf-8"><base href="../"><title>OneGrasp Career Fitment Handbook</title>'

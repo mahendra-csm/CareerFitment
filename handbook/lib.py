@@ -46,10 +46,13 @@ def mark(title):
 
 # ---------------------------------------------------------------- icons
 _ICON_CACHE = {}
+ICONS = False  # editorial design: no decorative icons
 ALIAS = {"help-circle": "circle-help", "alert-triangle": "triangle-alert", "bar-chart": "chart-column", "pie-chart": "chart-pie", "home": "house"}
 
 
 def icon(name, size="5mm", color="currentColor", stroke=2, cls="ic"):
+    if not ICONS:
+        return ""
     if name not in _ICON_CACHE:
         p = os.path.join(HERE, "vendor", "lucide", ALIAS.get(name, name) + ".svg")
         if not os.path.exists(p):
@@ -67,9 +70,7 @@ def icon(name, size="5mm", color="currentColor", stroke=2, cls="ic"):
 
 def chip(name, color=None, bg=None, size="10mm", isz="5.2mm"):
     """An icon in a soft round chip."""
-    c = color or "var(--c1)"
-    b = bg or "var(--soft)"
-    return f'<span class="chip" style="width:{size};height:{size};background:{b}">{icon(name, isz, c)}</span>'
+    return ""
 
 
 # ---------------------------------------------------------------- basic blocks
@@ -111,7 +112,7 @@ def head(kicker, t1, t2="", lead="", center=False):
     br = "<br>" if t2 else ""
     ld = f'<p class="lead">{lead}</p>' if lead else ""
     cc = " center" if center else ""
-    return f'<header class="hd{cc}"><div class="kicker">{kicker}</div><h1 class="title">{t1}{br}{t2h}</h1><div class="dashes"><i></i><i></i><i></i><i></i></div>{ld}</header>'
+    return f'<header class="hd{cc}"><div class="kicker">{kicker}</div><h1 class="title">{t1}{br}{t2h}</h1>{ld}</header>'
 
 
 def p(t, cls=""):
@@ -157,7 +158,7 @@ def cards(items, cols=3, cls=""):
 
 def bullets(items, cls="", ic="check", color=None):
     c = color or "var(--c1)"
-    return f'<ul class="ticks {cls}">' + "".join(f'<li>{icon(ic, "3.6mm", c, 2.6)}<span>{i}</span></li>' for i in items) + "</ul>"
+    return f'<ul class="ticks {cls}">' + "".join(f'<li><span>{i}</span></li>' for i in items) + "</ul>"
 
 
 def numbered(items, cls=""):
@@ -179,7 +180,7 @@ def steps(items, cls="", cols=None):
     cols = cols or n
     out = []
     for i, it in enumerate(items, 1):
-        ic = icon(it[2], "5mm", "#fff") if len(it) > 2 else f"<b>{i}</b>"
+        ic = f"<b>{i:02d}</b>"
         out.append(f'<div class="st"><div class="stn">{ic}</div><div class="stk">STEP {i}</div><h4>{it[0]}</h4><p>{it[1]}</p></div>')
     return f'<div class="steps {cls}" style="grid-template-columns:repeat({cols},1fr)">' + "".join(out) + "</div>"
 
@@ -193,26 +194,26 @@ def vsteps(items, cls=""):
 
 
 CALLOUT = {
-    "simple": ("lightbulb", "In simple words", "#F5B700", "#FFF8E1"),
-    "example": ("user-round", "Example", "#2563EB", "#EAF1FF"),
-    "try": ("list-checks", "Try this", "#16A34A", "#EAF8EF"),
-    "parent": ("heart-handshake", "For parents", "#DB2777", "#FDEEF5"),
-    "warn": ("triangle-alert", "Watch out", "#DC2626", "#FDEDED"),
-    "good": ("info", "Good to know", "#0891B2", "#E8F7FB"),
-    "ananya": ("sparkles", "Ananya's story", "#7C3AED", "#F3EEFF"),
-    "teacher": ("school", "For teachers", "#0D9488", "#E6F7F5"),
-    "task": ("flag", "Your task", "#EA580C", "#FFF1E7"),
+    "simple": ("", "In simple words", "var(--c1)", ""),
+    "example": ("", "Example", "var(--c1)", ""),
+    "try": ("", "Try this", "var(--c1)", ""),
+    "parent": ("", "For parents", "var(--c1)", ""),
+    "warn": ("", "Caution", "#B42318", ""),
+    "good": ("", "Good to know", "var(--c1)", ""),
+    "ananya": ("", "Ananya's story", "var(--c1)", ""),
+    "teacher": ("", "For teachers", "var(--c1)", ""),
+    "task": ("", "Your task", "var(--c1)", ""),
 }
 
 
 def callout(kind, text, title=None, cls=""):
     ic, label, c, bg = CALLOUT[kind]
-    return (f'<div class="callout {cls}" style="--k:{c};background:{bg}"><div class="cot">{icon(ic, "4.6mm", c, 2.4)}<b>{title or label}</b></div>'
+    return (f'<div class="callout {cls}" style="--k:{c}"><div class="cot"><b>{title or label}</b></div>'
             f'<div class="cob">{text}</div></div>')
 
 
 def findit(*crumbs):
-    return (f'<div class="findit">{icon("map-pin", "4mm", "var(--c1)")}<b>Find it</b>'
+    return (f'<div class="findit"><b>Find it</b>'
             + '<span class="sep">›</span>'.join(f"<span class='cr'>{c}</span>" for c in crumbs) + "</div>")
 
 
@@ -232,7 +233,7 @@ def quote(text, who="", cls=""):
 
 def band(text, title="", ic="sparkles", cls=""):
     t = f"<b>{title}</b> " if title else ""
-    return f'<div class="band {cls}">{icon(ic, "6mm", "#fff")}<div>{t}{text}</div></div>'
+    return f'<div class="band {cls}"><div>{t}{text}</div></div>'
 
 
 def tag(t, c="var(--c1)"):

@@ -7,7 +7,7 @@ S = "Parents & Schools"
 mark("For parents: guide, not decide")
 add(head("For parents", "Guide,", "not decide.",
          "Your child's report is a map of who they are today. Your role is to help them read it, test it in real life, and make their own choice, with your support.")
-    + two(img("home/faq.webp", "pic", style="height:72mm;object-position:center"),
+    + two(photo("gallery/old04.webp", "Reading the report together in a partner school.", style="height:72mm", tape=False),
           quote("A child who chooses a path that fits them works harder, stays longer and recovers faster from setbacks than one who was told what to do.")
           + callout("parent", "Your experience is valuable. Use the report as a <b>neutral third voice</b> at the table, so the conversation is about facts, not who wins."), ratio="0.9fr 1.1fr", gap="5mm")
     + two(box(h3("Do", "thumbs-up") + bullets(["Read the report together, slowly, the first time", "Start with strengths. Say them out loud.", "Ask what surprised them, and what felt true",

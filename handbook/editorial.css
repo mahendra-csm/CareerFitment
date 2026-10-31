@@ -1,0 +1,245 @@
+/* =====================================================================
+   Editorial layer: book typography and layout. Overrides style.css.
+   Principles: one type family (Poppins), one accent per part, hairline
+   rules instead of boxes, no shadows, no gradients, no decorative icons,
+   square photographs, generous but consistent white space.
+   ===================================================================== */
+:root { --ink: #1B1D29; --body: #33364A; --muted: #6B6F80; --rule: #D8D5CF; --hair: #E7E4DE; --paper: #FFFFFF; --tint: #F5F3EF; }
+body { font-family: 'Poppins', sans-serif; font-size: 9.6pt; line-height: 1.62; color: var(--body); letter-spacing: 0; }
+* { box-shadow: none !important; text-shadow: none !important; }
+.page { background: #fff; }
+/* ---- grid: mirrored margins (recto/verso) ---- */
+.page .pc { top: 24mm; bottom: 20mm; left: 22mm; right: 18mm; }
+.page:nth-child(even) .pc { left: 18mm; right: 22mm; }
+/* ---- running head, thumb tab, folio ---- */
+.strip, .plogo, .deco, .pfoot { display: none !important; }
+.rh { position: absolute; top: 11mm; left: 22mm; right: 18mm; display: flex; justify-content: space-between; font: 500 6.6pt 'Poppins'; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); border-bottom: .3mm solid var(--hair); padding-bottom: 2mm; }
+.rh.l { left: 18mm; right: 22mm; flex-direction: row-reverse; }
+.rh-sec { color: var(--c1); }
+.tab { position: absolute; top: 34mm; width: 3.2mm; height: 22mm; background: var(--c1); }
+.tab.r { right: 0; } .tab.l { left: 0; }
+.folio { position: absolute; bottom: 9mm; font: 500 7pt 'Poppins'; color: var(--muted); display: flex; gap: 3mm; align-items: baseline; }
+.folio b { font: 600 9pt 'Poppins'; color: var(--ink); }
+.folio.r { right: 18mm; } .folio.l { left: 18mm; flex-direction: row-reverse; }
+
+/* ---- type scale ---- */
+.hd { margin-bottom: 6mm; }
+.kicker { font: 600 7pt 'Poppins'; letter-spacing: .22em; color: var(--c1); margin-bottom: 2.4mm; }
+.title { font: 600 23pt/1.12 'Poppins' !important; letter-spacing: -.015em; color: var(--ink); }
+.title .c1 { color: var(--ink); font-weight: 300; }
+.hd.center .title { font-size: 21pt !important; }
+.dashes { display: none; }
+.lead { font: 400 10.6pt/1.6 'Poppins'; color: var(--body); margin-top: 3mm; max-width: 150mm; }
+.hd .lead::before { content: ""; display: block; width: 14mm; height: .6mm; background: var(--c1); margin-bottom: 3mm; }
+.hd.center .lead::before { margin-left: auto; margin-right: auto; }
+.h3 { font: 600 10.4pt/1.3 'Poppins'; color: var(--ink); margin: 5mm 0 2mm; padding-bottom: 1.4mm; border-bottom: .3mm solid var(--hair); display: block; }
+.h3:first-child { margin-top: 0; }
+h4 { font-family: 'Poppins' !important; }
+p { margin-bottom: 2mm; }
+.small { font-size: 8pt; color: var(--muted); }
+b, strong { font-weight: 600; color: var(--ink); }
+.c1, .c2 { color: var(--c1); }
+.push { margin-top: 6mm !important; }
+
+/* ---- containers: no boxes, rules only ---- */
+.box { background: none; border: 0; border-top: .4mm solid var(--ink); border-radius: 0; padding: 3mm 0 0; }
+.box.soft { background: var(--tint); border: 0; padding: 4mm 4.5mm; }
+.box.navy, .box.grad { background: var(--ink) !important; border: 0; padding: 5mm; }
+.card { background: none; border: 0; border-top: .4mm solid var(--ink); border-radius: 0; padding: 2.6mm 0 0; }
+.card h4 { font: 600 9.8pt/1.3 'Poppins'; margin: 0 0 1mm; color: var(--ink); }
+.card p { font-size: 8.8pt; color: var(--body); }
+.compact .card { padding: 2.2mm 0 0; } .compact .card h4 { font-size: 9.2pt; margin-top: 0; } .compact .card p { font-size: 8.4pt; }
+.cnum { background: none !important; color: var(--c1); font: 600 9pt 'Poppins'; padding: 0; min-width: 0; height: auto; line-height: 1.4; }
+.chip { display: none !important; }
+
+/* ---- statistics ---- */
+.stats { gap: 0; border-top: .4mm solid var(--ink); border-bottom: .3mm solid var(--hair); margin: 2mm 0 4mm; }
+.stat { background: none !important; border: 0; border-left: .3mm solid var(--hair); border-radius: 0; padding: 3mm 4mm; }
+.stat:first-child { border-left: 0; padding-left: 0; }
+.stat::after { display: none; }
+.stat b { font: 600 19pt/1.1 'Poppins'; color: var(--c1) !important; margin: 0 0 1mm; }
+.stat span { font-size: 7.8pt; color: var(--muted) !important; }
+.stats.glass, .stats.grad { border-color: rgba(255,255,255,.4); } .stats.glass .stat, .stats.grad .stat { border-color: rgba(255,255,255,.25); } .stats.glass .stat b, .stats.grad .stat b { color: #fff !important; } .stats.glass .stat span, .stats.grad .stat span { color: rgba(255,255,255,.8) !important; }
+
+/* ---- lists ---- */
+.ticks li { display: block; position: relative; padding-left: 4.4mm; margin-bottom: 1.3mm; }
+.ticks li::before { content: ""; position: absolute; left: 0; top: 2.5mm; width: 2.2mm; height: .45mm; background: var(--c1); }
+.nlist li span { font: 600 9pt 'Poppins'; color: var(--c1); }
+
+/* ---- steps ---- */
+.steps { gap: 0; border-top: .4mm solid var(--ink); }
+.steps::before { display: none; }
+.st { background: none; border: 0; border-left: .3mm solid var(--hair); border-radius: 0; margin-top: 0; padding: 3mm 3.4mm 0; text-align: left; }
+.st:first-child { border-left: 0; padding-left: 0; }
+.st .stn { position: static; transform: none; width: auto; height: auto; background: none !important; border: 0; color: var(--c1); font: 600 15pt/1 'Poppins'; display: block; margin-bottom: 1.6mm; }
+.st .stn b { font-weight: 600; }
+.st .stk { display: none; }
+.st h4 { font: 600 9.4pt/1.3 'Poppins'; } .st p { font-size: 8.4pt; color: var(--body); }
+.vsteps { gap: 0; } .vsteps::before { display: none; }
+.vs { grid-template-columns: 10mm 1fr; gap: 2mm; border-top: .3mm solid var(--hair); padding: 2.4mm 0; }
+.vs:first-child { border-top: .4mm solid var(--ink); }
+.vsn { width: auto; height: auto; background: none !important; border: 0; color: var(--c1); font: 600 13pt/1.1 'Poppins'; text-align: left; }
+.vs h4 { font: 600 9.6pt 'Poppins'; margin: 0 0 .4mm; } .vs p { font-size: 8.8pt; color: var(--body); }
+
+/* ---- notes (callouts) ---- */
+.callout { background: none !important; border: 0; border-left: .6mm solid var(--k); border-radius: 0; padding: .6mm 0 .6mm 4mm; margin: 3mm 0; }
+.cot { margin-bottom: .6mm; } .cot b { font: 600 6.8pt 'Poppins'; letter-spacing: .2em; color: var(--k); }
+.cob { font-size: 9pt; color: var(--body); line-height: 1.55; }
+.findit { background: none; border: 0; border-top: .3mm solid var(--hair); border-bottom: .3mm solid var(--hair); border-radius: 0; padding: 1.8mm 0; font-size: 8.4pt; }
+.findit b { color: var(--c1); font: 600 6.8pt 'Poppins'; letter-spacing: .2em; }
+.findit .cr { background: none; padding: 0; font-weight: 500; color: var(--ink); }
+.band { background: var(--ink) !important; border-radius: 0; padding: 4mm 5mm; font-size: 9pt; }
+.band b { color: #fff; }
+.quote { font: 400 13.5pt/1.5 'Poppins' !important; color: var(--ink); padding: 0 0 0 6mm; border-left: .6mm solid var(--c1); }
+.quote .qm { display: none; }
+.tag { background: none !important; padding: 0; font: 600 7pt 'Poppins'; letter-spacing: .06em; color: var(--t); }
+.pills { gap: 0; display: block; line-height: 1.8; }
+.pill { background: none; border: 0; border-radius: 0; padding: 0; font: 400 8.6pt 'Poppins'; color: var(--body); }
+.pill + .pill::before { content: "  ·  "; color: var(--c1); white-space: pre; }
+
+/* ---- tables ---- */
+.tbl { border: 0; border-radius: 0; border-top: .4mm solid var(--ink); border-bottom: .4mm solid var(--ink); font-size: 8.6pt; background: none; }
+.tbl th { background: none !important; color: var(--ink); font: 600 7pt 'Poppins'; letter-spacing: .1em; text-transform: uppercase; border-bottom: .3mm solid var(--ink); padding: 2.2mm 2.4mm 1.8mm; }
+.tbl th:first-child, .tbl td:first-child { padding-left: 0; }
+.tbl td { border-top: .25mm solid var(--hair); padding: 1.8mm 2.4mm; }
+.tbl tr:nth-child(even) td { background: none; }
+.tbl.fill td { border-top: .25mm solid var(--rule); }
+.tbl.fund2 tr.gh td { background: none !important; color: var(--c1); font: 600 7pt 'Poppins'; letter-spacing: .1em; text-transform: uppercase; border-top: .4mm solid var(--ink); padding-top: 2.4mm; }
+
+/* ---- images ---- */
+.laptop .lscreen { border-radius: 2mm 2mm 0 0; } .lbase { border-radius: 0 0 3mm 3mm; }
+.laptop .pin { background: var(--ink); border: .5mm solid #fff; font: 600 7.6pt/6.4mm 'Poppins'; }
+.browser { border: .3mm solid var(--rule); border-radius: 0; }
+.bbar { height: 3.4mm; background: var(--tint); } .bbar i { width: 1.3mm; height: 1.3mm; background: #CFCAC2 !important; } .bbar span { display: none; }
+.paper { border-radius: 0; padding: 0; border: .3mm solid var(--rule); } .paper img { border-radius: 0; }
+.photo { padding: 0; border-radius: 0; background: none; } .photo .tape { display: none; } .photo img { border-radius: 0; }
+.photo figcaption, figcaption { font: 400 7.4pt/1.45 'Poppins'; color: var(--muted); text-align: left; margin-top: 1.4mm; }
+.pic { border-radius: 0; }
+.dimart, .actart, .th-art, .dv-art, .dv-art2, .uga, .toolhead img { display: none !important; }
+
+/* ---- part openers ---- */
+.dv { background: var(--c1) !important; }
+.dv-dots, .dv-blob { display: none; }
+.dv-logo { left: 22mm; top: 22mm; background: #fff; border-radius: 0; padding: 4mm 5mm; }
+.dv-logo img { height: 14mm; } .dv-logo span { display: none; }
+.dv-num { right: auto; left: 20mm; top: 78mm; font: 300 120pt/1 'Poppins' !important; color: rgba(255,255,255,.35); }
+.dv-txt { left: 22mm; right: 26mm; top: 132mm; }
+.dv-part { background: none; padding: 0; border-radius: 0; font: 600 8pt 'Poppins'; letter-spacing: .3em; margin-bottom: 3mm; }
+.dv-title { font: 600 34pt/1.08 'Poppins' !important; letter-spacing: -.015em; }
+.dv-sub { font: 400 11pt/1.6 'Poppins'; max-width: 135mm; }
+.dv-list { left: 22mm; right: 22mm; width: auto; bottom: 26mm; background: none; border: 0; border-top: .4mm solid rgba(255,255,255,.7); border-radius: 0; padding: 4mm 0 0; }
+.dv-lh { color: #fff; font: 600 7pt 'Poppins'; letter-spacing: .24em; opacity: .8; }
+.dv-list ol { columns: 2; column-gap: 10mm; } .dv-list li { font-size: 9.2pt; break-inside: avoid; } .dv-list li span { color: #fff; opacity: .65; font: 600 8.6pt 'Poppins'; }
+.dv-foot { left: 22mm; right: 22mm; border-top: 0; padding-top: 0; font: 500 7pt 'Poppins'; }
+
+/* ---- tool chapter opener: typographic, no banner ---- */
+.th { background: none !important; color: var(--ink); border-radius: 0; padding: 0 0 5mm; min-height: 0; margin: 0 0 5mm; border-bottom: .4mm solid var(--ink); }
+.th-dots { display: none; }
+.th-no { position: static; display: inline-block; background: none; padding: 0; color: var(--c1); font: 600 7pt 'Poppins'; letter-spacing: .24em; border-radius: 0; margin-bottom: 2mm; }
+.th-txt { width: 100%; } .th-txt .kicker { display: none; }
+.th-txt h1 { font: 600 30pt/1.08 'Poppins' !important; color: var(--ink); margin: 0 0 3mm; }
+.th-txt p { color: var(--body); font-size: 10.6pt; max-width: 150mm; }
+.th-st { margin-top: 4mm; gap: 0; } .th-st div { background: none; border: 0; border-left: .3mm solid var(--hair); border-radius: 0; padding: 0 6mm; }
+.th-st div:first-child { border-left: 0; padding-left: 0; }
+.th-st b { color: var(--c1); font: 600 18pt/1.1 'Poppins'; } .th-st span { color: var(--muted); font-size: 7.8pt; }
+.why { grid-template-columns: 7mm 1fr; } .why span { background: none !important; color: var(--c1); width: auto; height: auto; font: 600 10pt/1.4 'Poppins'; text-align: left; }
+.inside { gap: 0 6mm; } .ins { display: block; background: none; border: 0; border-top: .3mm solid var(--hair); border-radius: 0; padding: 2.2mm 0; }
+.ins b { font: 600 9pt 'Poppins'; } .ins span { font-size: 8.2pt; }
+.ms { border: 0; border-top: .4mm solid var(--ink); border-radius: 0; background: none; }
+.msh { background: none !important; color: var(--c1); padding: 2mm 0 0; font: 600 6.8pt 'Poppins'; letter-spacing: .2em; } .msh em { color: var(--muted); }
+.ms > b { padding: 1mm 0 1.6mm; font: 600 10pt 'Poppins'; } .ms .check { padding: 0; }
+.check i { border: .35mm solid var(--ink); border-radius: 0; width: 3.4mm; height: 3.4mm; }
+.done { background: none; border: 0; border-top: .4mm solid var(--ink); border-radius: 0; padding: 3mm 0 0; grid-template-columns: 1.3fr 0.8fr 1fr; }
+.done b { color: var(--ink); font: 600 10pt 'Poppins'; }
+.sig i { border-bottom: .3mm solid var(--ink); }
+
+/* ---- activity openers ---- */
+.actban { background: none !important; color: var(--ink); border-radius: 0; padding: 0 0 4mm; min-height: 0; margin: 0 0 5mm; border-bottom: .4mm solid var(--ink); }
+.actban::before { display: none; }
+.actno { background: none; color: var(--c1); padding: 0; border-radius: 0; font: 600 7pt 'Poppins'; letter-spacing: .24em; }
+.actban h1 { font: 600 28pt/1.1 'Poppins' !important; color: var(--ink); width: 100%; } .actban h1 span { color: var(--ink); font-weight: 300; }
+.actban p { color: var(--body); width: 100%; max-width: 150mm; font-size: 10.4pt; }
+.seal { background: none; border: 0; border-top: .4mm solid var(--ink); border-radius: 0; padding: 3mm 0 0; grid-template-columns: 1.3fr .7fr 1fr 1fr; }
+.seal b { color: var(--ink); font: 600 10pt 'Poppins'; }
+.opt { border: .3mm solid var(--rule); border-radius: 10mm; font: 400 7.6pt 'Poppins'; }
+.qz { background: none; border: 0; border-top: .25mm solid var(--hair); border-radius: 0; padding: 2mm 0; grid-template-columns: 6mm 1fr 6mm; }
+.qz i { border: .35mm solid var(--ink); border-radius: 0; } .qz b { background: none !important; color: var(--muted); font: 600 8pt 'Poppins'; }
+.tally div { background: none; border: 0; border-top: .4mm solid var(--ink); border-radius: 0; } .tally b { color: var(--ink); font: 600 15pt 'Poppins'; } .tally i { border: .3mm solid var(--rule); border-radius: 0; background: none; }
+.code3 i { border: .35mm solid var(--ink); border-radius: 0; }
+.band2 { background: none; border-top: .4mm solid var(--b); border-radius: 0; padding: 2.4mm 0 0; } .band2 b { font: 600 14pt 'Poppins'; }
+
+/* ---- miscellaneous components, flattened ---- */
+.logo-card { background: none; border: 0; border-radius: 0; border-right: .3mm solid var(--hair); height: 24mm; }
+.grid > .logo-card:last-child { border-right: 0; }
+.logo-card span { font: 500 7pt/1.35 'Poppins'; color: var(--muted); }
+.dimtop.sm { grid-template-columns: 1fr; } .dimbadge { background: none !important; color: var(--dc); padding: 0; border-radius: 0; font: 600 7pt 'Poppins'; letter-spacing: .22em; }
+.dimnum { font: 300 46pt/1 'Poppins' !important; color: var(--dc); margin: 1mm 0; } .dimq { font: 400 11pt 'Poppins' !important; color: var(--muted); }
+.els.c4 .el, .el { background: none; border: 0; border-top: .3mm solid var(--hair); border-radius: 0; padding: 2mm 0; display: block; }
+.el b { font: 600 8.6pt 'Poppins'; } .el span { font-size: 7.8pt; }
+.tryc { background: none; border: 0; border-top: .4mm solid var(--dc); border-radius: 0; padding: 2mm 0 0; } .tryc b { font: 600 7pt 'Poppins'; letter-spacing: .14em; text-transform: uppercase; }
+.typecard { background: var(--ink) !important; border-radius: 0; } .typecard b { font: 600 15pt 'Poppins'; }
+.eqgrid div { background: none; border: 0; border-top: .4mm solid var(--q); border-radius: 0; } .eqgrid b { font: 600 18pt 'Poppins'; }
+.sg { border-radius: 0; background: none !important; border-top: .3mm solid var(--hair); padding: 2mm 0; }
+.dq { background: none; border: 0; border-top: .4mm solid var(--dc); border-radius: 0; padding: 2mm 0 0; } .dq b { font: 600 10pt 'Poppins'; } .dq p { font: 400 8pt 'Poppins'; }
+.fw { background: none; border: 0; border-top: .3mm solid var(--hair); border-radius: 0; padding: 2.4mm 0; grid-template-columns: 10mm 1fr 42mm; }
+.fwn { font: 600 13pt 'Poppins'; } .fwo { background: none; padding: 0; font: 400 7.6pt 'Poppins'; color: var(--muted); }
+.lab > span { background: none; color: var(--ink); border: .3mm solid var(--ink); font: 600 7.4pt/6mm 'Poppins'; }
+.pp .ppn { background: var(--ink); border-radius: 50%; } .pp b { font: 600 9pt 'Poppins'; }
+.dom { background: none; border: 0; border-top: .4mm solid var(--dc); border-radius: 0; padding: 2mm 0 0; } .dom span { font: 600 11pt 'Poppins'; } .dom b { font: 600 8.8pt 'Poppins'; }
+.view { background: none; border: 0; border-top: .4mm solid var(--vc); border-radius: 0; padding: 2.6mm 0 0; } .view > span { background: none; color: var(--vc); width: auto; height: auto; font: 600 12pt 'Poppins'; }
+.view b { font: 600 10.4pt 'Poppins'; } .view em { letter-spacing: .14em; font: 600 6.8pt 'Poppins'; }
+.road15 div { background: none; border-top: .3mm solid var(--hair); border-radius: 0; padding: 1.8mm 0; font: 500 8pt 'Poppins'; }
+.road15 span { background: none; color: var(--c1); width: auto; font: 600 8pt 'Poppins'; }
+.flow5 div, .flow6 div { background: none !important; border: 0; border-top: .4mm solid var(--c1); border-radius: 0; padding: 2mm 0 0; color: var(--ink); text-align: left; clip-path: none; }
+.flow5 b { font: 600 10pt 'Poppins'; } .flow6 span { background: none; color: var(--c1); }
+.flow6 { gap: 4mm; overflow: visible; }
+.navmap { gap: 0; } .ng { background: none; border: 0; border-top: .4mm solid var(--g); border-radius: 0; padding: 2mm 0 3mm; }
+.ng span { background: none; padding: 0 2.4mm 0 0; font: 400 8.4pt 'Poppins'; }
+.mlab, .hl, .disc, .yr, .goal, .gain, .faq, .q10, .day, .kn, .rise, .trap, .ed, .hubc, .gl, .dec, .pill2, .ugc, .cm, .person, .sbp, .stair, .rt, .prog div { background: none !important; border: 0 !important; border-top: .4mm solid var(--c1) !important; border-radius: 0 !important; clip-path: none !important; color: var(--ink) !important; }
+.mlab, .hl, .disc, .yr, .goal, .faq, .q10, .day, .kn, .dec, .pill2, .cm, .person, .rise { padding: 2.2mm 0 0 !important; }
+.disc { display: block; } .disc b, .mlab b, .hl b, .faq b, .q10 b, .kn b, .dec b { font-weight: 600 !important; }
+.hl b { color: var(--c1); font: 600 12pt 'Poppins'; } .q10 span { font: 300 18pt 'Poppins' !important; }
+.sbp > span, .sbp h4, .sbp p { color: var(--ink) !important; } .sbp { padding: 3mm 0 0 !important; } .sbp h4 { font: 600 16pt 'Poppins'; }
+.stair { grid-template-columns: 14mm 46mm 1fr; padding: 2mm 0 !important; border-top: .3mm solid var(--hair) !important; } .stair:first-child { border-top: .4mm solid var(--ink) !important; }
+.stair b, .stair span, .stair em { color: var(--ink) !important; } .stair span { color: var(--c1) !important; }
+.gh, .trh, .edh { background: none !important; color: var(--ink) !important; padding: 2.6mm 0 1mm !important; } .gh h4, .trh h4, .edh h4 { color: var(--ink) !important; }
+.gain ul { padding: 1mm 0 0; }
+.rth { background: none !important; color: var(--ink); padding: 2mm 0 1.6mm; font: 600 9.6pt 'Poppins'; border-bottom: .3mm solid var(--hair); }
+.rth span { background: none; color: var(--rc); width: auto; height: auto; font: 600 9.6pt 'Poppins'; }
+.rtl { padding: 1.8mm 0; } .rtl b { color: var(--ink); }
+.prog div { padding: 2.4mm 4mm 0 0 !important; border-top-color: var(--pc) !important; } .prog b, .prog span { color: var(--ink) !important; }
+.knp { border-width: .6mm; }
+.cm { grid-template-columns: 15mm 1fr; } .cm img { width: 15mm; height: 15mm; border-radius: 0; }
+.cflag, .cflag.in { background: none !important; color: var(--c1); padding: 0; font: 600 6.4pt 'Poppins'; letter-spacing: .08em; }
+.wm img { border: .5mm solid #fff; outline: .3mm solid var(--rule); }
+.wm.wi img { outline-color: var(--c1); }
+.wm span, .wm.wi span { background: none !important; color: var(--muted); padding: 0; } .wm.wi span { color: var(--c1); }
+.faces img { border: 0; }
+.vs-row { border: 0; border-radius: 0; } .vs-row .myth, .vs-row .fact { background: none; border-top: .4mm solid var(--ink); }
+.streak i { border: .3mm solid var(--ink); }
+.own2 label, .ownf label { color: var(--muted); } .own2 i, .wline { border-bottom: .3mm solid var(--rule); }
+.canvas div { border: 0; border-top: .4mm solid var(--ink); border-radius: 0; background: none; }
+.canvas b { font: 600 9pt 'Poppins'; }
+.bud i { border-bottom: .3mm solid var(--rule); }
+.hlp img { border-radius: 0; }
+.statline span { background: none; padding: 0 4mm 0 0; } .statline b { color: var(--c1); }
+.toolhead { background: none; border-radius: 0; padding: 0; grid-template-columns: 1fr; }
+.collage .photo img { height: calc(100% - 5mm); }
+.legend i { border-radius: 0; }
+.hbt, .hbt i, .slt, .bar, .bar i { border-radius: 0 !important; }
+
+/* ---- contents ---- */
+.toc2 { column-gap: 12mm; }
+.tp2h { border-bottom: .4mm solid var(--ink); }
+.tp2h span { background: none; color: var(--tc); width: auto; height: auto; font: 600 10pt 'Poppins'; text-align: left; }
+.tp2h b { font: 600 10.4pt 'Poppins'; } .tp2h em { color: var(--ink); font: 600 10pt 'Poppins'; }
+.ts2 { font: 400 8.4pt/1.75 'Poppins'; padding-left: 0; color: var(--body); } .ts2 i { border-bottom: .25mm dotted var(--rule); }
+
+/* ---- back cover ---- */
+.bk { background: var(--ink) !important; }
+.bk .dv-dots, .bk .dv-blob { display: none; }
+.bk-logo { border-radius: 0; } .bk-photos div { border-radius: 0; border: 0; }
+.bk-cta { border-radius: 0; } .bk-t h1 { font: 600 30pt/1.15 'Poppins' !important; } .bk-t h1 span { color: #F2A19E; }
+.pc > .push, .zi > .push, .dwrap > .push { margin-top: 6mm !important; }
+img[src*="assets/feat/"], img[src*="assets/home/"], img[src*="assets/ug/"], img[src*="c11-i-001"] { display: none !important; }
+.bk-url { font: 600 15pt 'Poppins' !important; white-space: nowrap; } .bk-cta { grid-template-columns: 32mm 1fr; }

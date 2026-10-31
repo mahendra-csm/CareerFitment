@@ -1,0 +1,256 @@
+<!doctype html><html><head><meta charset="utf-8"><base href="../"><style>@font-face { font-family: 'Poppins'; font-style: normal; font-weight: 400; src: url(assets/fonts/poppins-400.woff2) format('woff2'); }
+@font-face { font-family: 'Poppins'; font-style: normal; font-weight: 500; src: url(assets/fonts/poppins-500.woff2) format('woff2'); }
+@font-face { font-family: 'Poppins'; font-style: normal; font-weight: 600; src: url(assets/fonts/poppins-600.woff2) format('woff2'); }
+@font-face { font-family: 'Poppins'; font-style: normal; font-weight: 700; src: url(assets/fonts/poppins-700.woff2) format('woff2'); }
+@font-face { font-family: 'Poppins'; font-style: normal; font-weight: 800; src: url(assets/fonts/poppins-800.woff2) format('woff2'); }
+@font-face { font-family: 'Poppins'; font-style: normal; font-weight: 900; src: url(assets/fonts/poppins-800.woff2) format('woff2'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; src: url(assets/fonts/Inter-Regular.ttf) format('truetype'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 500; src: url(assets/fonts/Inter-Medium.ttf) format('truetype'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 600; src: url(assets/fonts/Inter-SemiBold.ttf) format('truetype'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 700; src: url(assets/fonts/Inter-Bold.ttf) format('truetype'); }
+/* =====================================================================
+   OneGrasp Career Fitment Handbook — v5 "Sales edition"
+   Poster-grade pages: navy / red / white, huge type, big product shots,
+   a call to action on every spread. Dimension colours only where they code
+   the 8 dimensions.
+   ===================================================================== */
+:root { --red: #D62F38; --red2: #B3232B; --navy: #0E1A2E; --navy2: #17243A; --ink: #0E1A2E; --body: #384252; --muted: #7A8494; --line: #E3E7EC;
+  --sun: #FFC83D; --paper: #F4F2EE;
+  --d1: #7754B8; --d2: #D62F38; --d3: #2196C8; --d4: #279B70; --d5: #F09A24; --d6: #E5B73B; --d7: #E85D8E; --d8: #3BB7B0; }
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font: 400 9.6pt/1.5 'Inter', sans-serif; color: var(--body); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+b { font-weight: 600; color: inherit; }
+.page { position: relative; width: 210mm; height: 297mm; overflow: hidden; page-break-after: always; background: #fff; }
+.abs { position: absolute; }
+.navy { background: var(--navy); color: #fff; } .red { background: var(--red); color: #fff; } .paper { background: var(--paper); }
+
+/* type */
+.eyebrow { font: 700 8pt 'Inter'; letter-spacing: .22em; text-transform: uppercase; }
+.mega { font: 800 52pt/.95 'Poppins'; letter-spacing: -.035em; }
+.huge { font: 800 40pt/1 'Poppins'; letter-spacing: -.03em; }
+.big { font: 700 26pt/1.08 'Poppins'; letter-spacing: -.02em; }
+.mid { font: 700 15pt/1.2 'Poppins'; letter-spacing: -.01em; }
+.lede { font: 400 11.5pt/1.55 'Inter'; }
+.hl { color: var(--red); } .navy .hl, .red .hl2 { color: var(--sun); }
+.u { box-shadow: inset 0 -.35em 0 rgba(214,47,56,.35); }
+
+/* folio */
+.fol { position: absolute; bottom: 9mm; left: 16mm; right: 16mm; display: flex; justify-content: space-between; font: 600 7pt 'Inter'; letter-spacing: .14em; text-transform: uppercase; opacity: .6; }
+
+/* stat row */
+.stats { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; }
+.stats div { border-left: .4mm solid currentColor; padding: 0 5mm; }
+.stats div:first-child { border-left: 0; padding-left: 0; }
+.stats b { display: block; font: 800 30pt/1 'Poppins'; letter-spacing: -.03em; }
+.stats span { display: block; margin-top: 1.6mm; font: 500 8.4pt/1.3 'Inter'; opacity: .8; }
+
+/* screenshot frame: thin border + solid offset block (no shadow) */
+.shot { position: absolute; }
+.shot img { display: block; width: 100%; border: .35mm solid rgba(14,26,46,.18); position: relative; z-index: 1; background: #fff; }
+.shot::before { content: ""; position: absolute; left: 5mm; top: 5mm; right: -5mm; bottom: -5mm; background: var(--blk, var(--red)); z-index: 0; }
+.shot.nob::before { display: none; }
+.crop { overflow: hidden; } .crop img { object-fit: cover; object-position: top left; height: 100%; }
+
+/* CTA */
+.cta { display: grid; grid-template-columns: 24mm 1fr; gap: 4mm; align-items: center; }
+.cta img { width: 24mm; height: 24mm; background: #fff; padding: 1.4mm; }
+.cta b { display: block; font: 700 11pt/1.2 'Poppins'; }
+.cta span { font: 500 8.2pt/1.4 'Inter'; opacity: .85; }
+
+/* lists */
+.ticks { list-style: none; display: grid; gap: 2mm; }
+.ticks li { display: grid; grid-template-columns: 5mm 1fr; gap: 1.6mm; font-size: 9.4pt; line-height: 1.4; }
+.ticks li::before { content: ""; width: 3.2mm; height: 3.2mm; margin-top: 1mm; background: var(--red); clip-path: polygon(0 0, 100% 50%, 0 100%); }
+
+/* page 2: hook */
+.p2 .slash { position: absolute; right: 0; top: 150mm; width: 210mm; height: 147mm; background: var(--red); clip-path: polygon(0 28%, 100% 0, 100% 100%, 0 100%); }
+
+/* traps */
+.trap { border-top: 1.4mm solid var(--red); padding-top: 3mm; }
+.trap .n { font: 800 40pt/1 'Poppins'; color: transparent; -webkit-text-stroke: .5mm var(--red); }
+.trap b { display: block; font: 700 13pt/1.2 'Poppins'; color: var(--ink); margin-top: 2mm; }
+.trap q { display: block; font: 600 9.6pt/1.45 'Inter'; color: var(--red2); margin: 2mm 0 1.4mm; quotes: "“" "”"; }
+.trap p { font-size: 8.8pt; line-height: 1.45; }
+
+/* periodic table of you */
+.el { position: relative; color: #fff; padding: 4mm 4mm 3.6mm; height: 52mm; background: var(--c); }
+.el .no { position: absolute; right: 4mm; top: 3.4mm; font: 700 9pt 'Poppins'; opacity: .85; }
+.el .sym { font: 800 40pt/1 'Poppins'; letter-spacing: -.03em; }
+.el .nm { font: 700 10.4pt/1.15 'Poppins'; margin-top: 2.4mm; }
+.el .q { font: 500 8pt/1.35 'Inter'; opacity: .9; margin-top: 1.4mm; }
+.shows { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 8mm; }
+.shows div { display: grid; grid-template-columns: 9mm 1fr; gap: 2mm; font-size: 8.6pt; line-height: 1.4; color: rgba(255,255,255,.88); }
+.shows div i { font: 800 10pt 'Poppins'; font-style: normal; color: var(--c); }
+.shows div b { color: #fff; }
+
+/* report fan */
+.fan img { position: absolute; width: 74mm; border: .35mm solid rgba(0,0,0,.15); background: #fff; }
+.rlist { list-style: none; counter-reset: r; }
+.rlist li { counter-increment: r; display: grid; grid-template-columns: 14mm 1fr; gap: 2mm; padding: 2.6mm 0; border-top: .3mm solid rgba(255,255,255,.35); }
+.rlist li::before { content: counter(r, decimal-leading-zero); font: 800 18pt/1 'Poppins'; color: var(--sun); }
+.rlist b { display: block; font: 700 11pt/1.2 'Poppins'; color: #fff; } .rlist span { font-size: 8.8pt; color: rgba(255,255,255,.85); }
+
+/* three views */
+.view .num { font: 800 64pt/.8 'Poppins'; color: var(--red); letter-spacing: -.04em; }
+.view .k { font: 700 8pt 'Inter'; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin-top: 3mm; }
+.view b { display: block; font: 700 16pt/1.1 'Poppins'; color: var(--ink); margin-top: 1mm; }
+.view p { font-size: 9pt; line-height: 1.45; margin-top: 2mm; }
+
+/* tool numbers grid */
+.tools { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: .4mm solid rgba(255,255,255,.4); }
+.tools div { padding: 3.4mm 3mm 3.6mm 0; border-bottom: .3mm solid rgba(255,255,255,.2); }
+.tools b { display: block; font: 800 20pt/1 'Poppins'; color: #fff; letter-spacing: -.02em; }
+.tools b small { font-size: 9pt; font-weight: 600; letter-spacing: 0; color: var(--sun); margin-left: 1mm; }
+.tools span { display: block; font: 600 8.6pt 'Inter'; color: #fff; margin-top: 1.2mm; }
+.tools em { display: block; font: 400 7.6pt/1.3 'Inter'; font-style: normal; color: rgba(255,255,255,.7); margin-top: .6mm; }
+
+/* feature blocks */
+.feat .tag { display: inline-block; font: 700 7.4pt 'Inter'; letter-spacing: .16em; text-transform: uppercase; color: #fff; background: var(--navy); padding: 1mm 2.4mm; }
+.feat h3 { font: 700 17pt/1.1 'Poppins'; color: var(--ink); margin: 2.4mm 0 2mm; letter-spacing: -.01em; }
+.feat .nums { display: flex; gap: 6mm; margin: 2mm 0 2.6mm; }
+.feat .nums b { display: block; font: 800 20pt/1 'Poppins'; color: var(--red); } .feat .nums span { font: 500 7.6pt 'Inter'; color: var(--muted); }
+
+/* trust */
+.faces { display: grid; grid-template-columns: repeat(13, 1fr); gap: 1.6mm; }
+.faces img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 50%; display: block; filter: grayscale(.15); }
+.logos { display: grid; grid-template-columns: repeat(6, 1fr); gap: 4mm; align-items: center; }
+.logos img { max-width: 100%; max-height: 13mm; margin: auto; display: block; object-fit: contain; }
+.say { border-top: 1.2mm solid var(--red); padding-top: 3mm; }
+.say p { font: 600 10.4pt/1.42 'Poppins'; color: var(--ink); }
+.say span { display: block; margin-top: 2mm; font: 700 7.6pt 'Inter'; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+
+/* final CTA */
+.bigqr { width: 64mm; height: 64mm; background: #fff; padding: 3mm; }
+.who div { border-top: .4mm solid rgba(255,255,255,.5); padding-top: 2.6mm; }
+.who b { display: block; font: 700 12pt 'Poppins'; } .who span { font-size: 8.8pt; line-height: 1.45; opacity: .9; }
+</style></head><body><section class="page "><div class="abs" style="inset:0;background:var(--red)"></div>
+<div class="abs" style="left:19mm;top:34mm;width:172mm;height:172mm;border-radius:50%;border:.5mm solid rgba(255,255,255,.18)"></div>
+<div class="abs" style="left:41mm;top:56mm;width:128mm;height:128mm;border-radius:50%;border:.5mm solid rgba(255,255,255,.25)"></div>
+<div class="abs eyebrow" style="left:18mm;right:18mm;top:18mm;display:flex;justify-content:space-between;color:#fff"><span>OneGrasp Education Pvt. Ltd.</span><span>Career Fitment Assessment</span></div>
+<div class="abs" style="left:72mm;top:87mm;width:66mm;height:66mm;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><img src="assets/art/logo.png" style="width:48mm"></div>
+<div class="abs" style="left:16mm;right:16mm;top:170mm;text-align:center;color:#fff">
+ <div class="eyebrow" style="opacity:.9">Career Fitment Assessment · Classes 6–12</div>
+ <div class="huge" style="margin-top:4mm">Career Fitment Handbook</div>
+ <div style="display:inline-block;margin-top:5mm;background:#fff;color:var(--red);font:700 8.6pt Inter;padding:1.2mm 4mm">2026–27 Edition</div>
+ <div class="mid" style="margin-top:8mm">Know Yourself. Choose Your Path. Build Your Future.</div>
+ <p class="lede" style="margin-top:2mm;opacity:.9">A comprehensive career guidance and student development handbook for Classes 6–12.</p></div>
+<div class="abs" style="left:18mm;right:18mm;bottom:13mm;display:flex;justify-content:space-between;color:#fff;font:600 8pt Inter;border-top:.3mm solid rgba(255,255,255,.4);padding-top:3.4mm"><span>For students, parents, teachers and schools</span><span>careerfitment.onegrasp.com</span></div></section><section class="page p2"><div class="abs navy" style="inset:0"></div><div class="slash"></div>
+<div class="abs" style="left:16mm;right:16mm;top:20mm;color:#fff">
+ <div class="eyebrow" style="color:var(--sun)">For Class 6 to Class 12</div>
+ <div class="mega" style="margin-top:6mm">Stop guessing<br>your career.<br><span class="hl">Start knowing it.</span></div>
+ <p class="lede" style="margin-top:7mm;max-width:118mm;color:rgba(255,255,255,.88)">One assessment reads eight dimensions of who you are. A personal report shows the careers that fit, and a dashboard of 12 tools turns it into a plan you can act on, every week.</p>
+ <div class="stats" style="margin-top:11mm;max-width:178mm"><div><b>8</b><span>dimensions of you,<br>measured in one sitting</span></div><div><b>930</b><span>careers explained,<br>with pay in India</span></div><div><b>2,500+</b><span>degree roadmaps,<br>year by year</span></div><div><b>12</b><span>tools in your<br>dashboard</span></div></div>
+</div>
+<div class="shot " style="left:82mm;top:176mm;width:140mm;--blk:var(--sun)"><div class="crop" style="height:88mm;"><img src="assets/s2/landing.jpg" style="height:88mm;"></div></div>
+<div class="abs" style="left:16mm;top:226mm;width:58mm;color:#fff"><img src="assets/art/qr.png" style="width:30mm;background:#fff;padding:1.6mm;display:block"><b style="display:block;font:700 12pt/1.2 Poppins;margin-top:3mm">Scan to take<br>the assessment</b><span style="font:500 8pt Inter;opacity:.85">careerfitment.onegrasp.com</span></div><div class="fol"><span>Career Fitment Handbook 2026–27</span><span>2</span></div></section><section class="page "><div class="abs" style="left:16mm;right:16mm;top:18mm">
+ <div class="eyebrow hl">Why career choices go wrong</div>
+ <div class="huge" style="margin-top:5mm;color:var(--ink)">Three traps decide<br>too many careers.</div>
+ <p class="lede" style="margin-top:5mm;max-width:150mm">Ask ten adults why they chose their career and many will say “I didn't really choose.” Here are the three most common traps, and what OneGrasp puts in their place.</p>
+ <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:7mm;margin-top:9mm"><div class="trap"><div class="n">01</div><b>Marks</b><q>You scored 95 in maths, so take engineering.</q><p>Marks show how you did in an exam. They do not show what you'd enjoy doing for 30 years.</p></div><div class="trap"><div class="n">02</div><b>Peer pressure</b><q>All my friends are taking MPC.</q><p>Your friends have different strengths and dreams. Following the crowd feels safe, until it doesn't.</p></div><div class="trap"><div class="n">03</div><b>Guesswork</b><q>My cousin did B.Com, so…</q><p>Most families know only a handful of careers. Our library explains 930.</p></div></div>
+</div>
+<div class="abs paper" style="left:0;right:0;top:150mm;bottom:0"></div>
+<div class="abs" style="left:16mm;right:16mm;top:160mm">
+ <div class="eyebrow" style="color:var(--muted)">What OneGrasp does instead</div>
+ <div class="big" style="margin-top:3mm;color:var(--ink)">From “I don't know” to a <span class="hl">clear plan.</span></div>
+ <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:8mm;border-top:.4mm solid var(--ink)"><div style="padding:4mm 5mm 0 0"><div style="font:800 26pt/1 Poppins;color:var(--red)">1</div><b style="display:block;font:700 12.5pt Poppins;color:var(--ink);margin-top:2mm">The assessment</b><p style="font-size:9pt;margin-top:1.4mm">8 dimensions of you, in one sitting. Any device, saves as you go.</p></div><div style="padding:4mm 5mm 0 0"><div style="font:800 26pt/1 Poppins;color:var(--red)">2</div><b style="display:block;font:700 12.5pt Poppins;color:var(--ink);margin-top:2mm">Your report</b><p style="font-size:9pt;margin-top:1.4mm">Instant and personal: careers that fit you, and the path to them.</p></div><div style="padding:4mm 5mm 0 0"><div style="font:800 26pt/1 Poppins;color:var(--red)">3</div><b style="display:block;font:700 12.5pt Poppins;color:var(--ink);margin-top:2mm">Your dashboard</b><p style="font-size:9pt;margin-top:1.4mm">Lessons, tools and next steps, linked to your report.</p></div></div>
+ <div style="display:grid;grid-template-columns:1fr 1fr;gap:6mm;margin-top:10mm">
+  <div style="background:#fff;padding:4mm 5mm"><div class="eyebrow" style="color:var(--red)">Myth</div><div class="mid" style="color:var(--ink);margin-top:1.6mm">“JEE or NEET decides everything.”</div><p style="margin-top:2mm;font-size:9pt"><b style="color:var(--ink)">Fact:</b> our library covers 930 careers. Many great routes need neither exam.</p></div>
+  <div style="background:#fff;padding:4mm 5mm"><div class="eyebrow" style="color:var(--red)">Myth</div><div class="mid" style="color:var(--ink);margin-top:1.6mm">“Marks are enough to choose.”</div><p style="margin-top:2mm;font-size:9pt"><b style="color:var(--ink)">Fact:</b> marks show how you did. Fit shows where you will do well.</p></div></div>
+</div><div class="fol"><span>Career Fitment Handbook 2026–27</span><span>3</span></div></section><section class="page "><div class="abs navy" style="inset:0"></div>
+<div class="abs" style="left:16mm;right:16mm;top:18mm;color:#fff">
+ <div class="eyebrow" style="color:var(--sun)">What we measure</div>
+ <div class="huge" style="margin-top:5mm">The elements<br>of <span class="hl">you.</span></div>
+ <p class="lede" style="margin-top:5mm;max-width:150mm;color:rgba(255,255,255,.85)">Eight dimensions, each answering one simple question. Together they show where you will thrive, built on frameworks psychologists have used for decades.</p>
+ <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2.4mm;margin-top:9mm"><div class="el" style="--c:var(--d1)"><div class="no">01</div><div class="sym">Pe</div><div class="nm">Personality</div><div class="q">How do I naturally work and decide?</div></div><div class="el" style="--c:var(--d2)"><div class="no">02</div><div class="sym">In</div><div class="nm">Career Interests</div><div class="q">What kind of work excites me?</div></div><div class="el" style="--c:var(--d3)"><div class="no">03</div><div class="sym">Mi</div><div class="nm">Multiple Intelligences</div><div class="q">In which ways am I smart?</div></div><div class="el" style="--c:var(--d4)"><div class="no">04</div><div class="sym">Eq</div><div class="nm">Emotional Intelligence</div><div class="q">How well do I handle feelings and people?</div></div><div class="el" style="--c:var(--d5)"><div class="no">05</div><div class="sym">Ls</div><div class="nm">Learning Style</div><div class="q">How do I prefer to study?</div></div><div class="el" style="--c:var(--d6)"><div class="no">06</div><div class="sym">Mo</div><div class="nm">Motivators</div><div class="q">What drives me?</div></div><div class="el" style="--c:var(--d7)"><div class="no">07</div><div class="sym">St</div><div class="nm">Strengths</div><div class="q">What do I naturally contribute?</div></div><div class="el" style="--c:var(--d8)"><div class="no">08</div><div class="sym">Ap</div><div class="nm">Aptitude</div><div class="q">How quickly can I pick up new skills?</div></div></div>
+ <div class="eyebrow" style="margin-top:9mm;color:rgba(255,255,255,.7)">What your report shows for each one</div>
+ <div class="shows" style="margin-top:4mm"><div style="--c:var(--d1)"><i>Pe</i><span><b>Personality.</b> Your four-letter type, a score for each preference, strengths and next steps.</span></div><div style="--c:var(--d2)"><i>In</i><span><b>Career Interests.</b> Your three-letter interest code (Holland's RIASEC) and how strongly you lean to each type.</span></div><div style="--c:var(--d3)"><i>Mi</i><span><b>Multiple Intelligences.</b> All eight intelligences ranked (Gardner), with your top two named.</span></div><div style="--c:var(--d4)"><i>Eq</i><span><b>Emotional Intelligence.</b> Your EQ level, a score for each of four areas and what to practise first.</span></div><div style="--c:var(--d5)"><i>Ls</i><span><b>Learning Style.</b> Your preferred style, with revision tips that suit it.</span></div><div style="--c:var(--d6)"><i>Mo</i><span><b>Motivators.</b> Your core driver and how your other drivers rank.</span></div><div style="--c:var(--d7)"><i>St</i><span><b>Strengths.</b> Your two signature strengths and the fields that reward them.</span></div><div style="--c:var(--d8)"><i>Ap</i><span><b>Aptitude.</b> Your overall aptitude, your sharpest area and practice tips for exams.</span></div></div>
+ <div style="margin-top:9mm;border-top:.4mm solid rgba(255,255,255,.35);padding-top:4mm;display:grid;grid-template-columns:30mm 1fr;gap:4mm;font:500 8.4pt/1.5 Inter;color:rgba(255,255,255,.8)"><span class="eyebrow" style="color:var(--sun)">Built on</span><span>Personality-type preferences (Jung; Myers and Briggs) · Holland's RIASEC interests · Gardner's multiple intelligences · Emotional intelligence (Salovey and Mayer; Goleman) · Learning preferences similar to VARK · Work-values research · Strengths-based psychology · Standard reasoning tests</span></div>
+</div><div class="fol"><span>Career Fitment Handbook 2026–27</span><span>4</span></div></section><section class="page "><div class="abs red" style="inset:0"></div>
+<div class="abs" style="left:16mm;top:18mm;width:96mm;color:#fff">
+ <div class="eyebrow hl2">Your report</div>
+ <div class="huge" style="margin-top:5mm">A report you'll actually want to read.</div>
+ <p class="lede" style="margin-top:5mm;color:rgba(255,255,255,.9)">Clear charts, plain words and real next steps, built only from your own answers. Delivered instantly: on screen, as a PDF and by email.</p>
+ <ol class="rlist" style="margin-top:8mm">
+  <li><div><b>8-dimension scorecard</b><span>Your real result in each dimension, on one page.</span></div></li>
+  <li><div><b>A deep dive per dimension</b><span>What it means, where you're strong, where to grow.</span></div></li>
+  <li><div><b>Career cluster fit</b><span>How closely you match 16 career clusters.</span></div></li>
+  <li><div><b>Fitment · Suitability · Selector</b><span>Three views of your options.</span></div></li>
+  <li><div><b>A step-by-step roadmap</b><span>From school to senior roles.</span></div></li>
+  <li><div><b>Exams, funding and the future</b><span>Entrance exams, funded routes, rising careers.</span></div></li>
+  <li><div><b>A page for parents</b><span>How to guide, not decide.</span></div></li>
+ </ol></div>
+<div class="fan">
+ <img src="assets/shots/r910-00.jpg" style="left:118mm;top:22mm;width:78mm">
+ <img src="assets/shots/r910-02.jpg" style="left:116mm;top:132mm;width:82mm">
+ <img src="assets/shots/r910-07.jpg" style="left:126mm;top:196mm;width:70mm;height:82mm;object-fit:cover;object-position:top">
+</div>
+<div class="abs" style="left:16mm;bottom:22mm;width:90mm;color:#fff;background:var(--navy);padding:4mm"><div class="cta"><img src="assets/art/qr.png"><div><b>See a sample report</b><span>Scan, sign up, and your own report is ready the moment you finish.</span></div></div></div><div class="fol"><span>Career Fitment Handbook 2026–27</span><span>5</span></div></section><section class="page "><div class="abs" style="left:16mm;right:16mm;top:18mm">
+ <div class="eyebrow hl">The heart of your report</div>
+ <div class="huge" style="margin-top:5mm;color:var(--ink)">Three ways to see<br>your future.</div>
+ <p class="lede" style="margin-top:5mm;max-width:150mm">Your report compares what fits you, what fits where you are now, and the career you dream of, side by side.</p>
+ <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8mm;margin-top:9mm">
+  <div class="view"><div class="num">1</div><div class="k">What fits you</div><b>Career Fitment</b><p>Your top 5 career areas, ranked purely by your answers. Each shows key roles, skills to build, salary range in India (indicative) and entrance exams.</p></div>
+  <div class="view"><div class="num">2</div><div class="k">What fits your stream</div><b>Career Suitability</b><p>Careers you can reach from MPC, BiPC, MEC, CEC or HEC today, plus top companies that hire and funded routes such as NDA, IIST and apprenticeships.</p></div>
+  <div class="view"><div class="num">3</div><div class="k">Your dream career</div><b>Career Selector</b><p>Choose the career you want. See how well it fits, and every step from subjects and exams to degrees, colleges, skills, jobs and career growth.</p></div>
+ </div></div>
+<div class="shot " style="left:16mm;top:168mm;width:84mm;--blk:var(--navy)"><div class="crop" style="height:100mm;"><img src="assets/shots/r11-11.jpg" style="height:100mm;"></div></div>
+<div class="shot " style="left:108mm;top:168mm;width:84mm;--blk:var(--red)"><div class="crop" style="height:100mm;"><img src="assets/shots/r11-12.jpg" style="height:100mm;"></div></div>
+<div class="abs" style="left:16mm;right:16mm;bottom:15mm;font:500 7.6pt Inter;color:var(--muted)">Real pages from a sample report. Salaries are indicative ranges for India.</div><div class="fol"><span>Career Fitment Handbook 2026–27</span><span>6</span></div></section><section class="page "><div class="abs navy" style="inset:0"></div>
+<div class="abs" style="left:16mm;right:16mm;top:18mm;color:#fff">
+ <div class="eyebrow" style="color:var(--sun)">After the report</div>
+ <div class="huge" style="margin-top:5mm">Your report becomes<br>a dashboard <span class="hl">you use.</span></div>
+ <p class="lede" style="margin-top:5mm;max-width:150mm;color:rgba(255,255,255,.85)">One login opens every tool, linked to your report. Your progress is always saved, and you pick up where you left off.</p></div>
+<div class="shot " style="left:16mm;top:92mm;width:120mm;--blk:var(--red)"><div class="crop" style="height:75mm;"><img src="assets/s2/library.jpg" style="height:75mm;"></div></div>
+<div class="shot " style="left:128mm;top:120mm;width:78mm;--blk:var(--sun)"><div class="crop" style="height:49mm;"><img src="assets/s2/progress.jpg" style="height:49mm;"></div></div>
+<div class="abs tools" style="left:16mm;right:16mm;top:182mm"><div><b>930<small></small></b><span>Career Library</span><em>What careers do and pay</em></div><div><b>29<small>exams</small></b><span>Entrance Exams</span><em>Eligibility, planner, mocks</em></div><div><b>40<small>schemes</small></b><span>Scholarships</span><em>Money you qualify for</em></div><div><b>6<small>steps</small></b><span>Study Abroad</span><em>Where, what and the money</em></div><div><b>209<small>free</small></b><span>Internships</span><em>Programmes from 135 companies</em></div><div><b>Daily<small></small></b><span>Jobs</span><em>Fresh, scam-checked listings</em></div><div><b>6<small>levels</small></b><span>Money Skills</span><em>Games, labs, Scam Shield</em></div><div><b>24<small>guides</small></b><span>Law & Rights</span><em>Helplines, letters, rights</em></div><div><b>8<small>units</small></b><span>Research</span><em>From a question to a conference</em></div><div><b>52<small>videos</small></b><span>Startups</span><em>11 modules, lesson by lesson</em></div><div><b>20<small>courses</small></b><span>AI & Certifications</span><em>Free, with certificates</em></div><div><b>100<small>questions</small></b><span>Resume & Interview</span><em>ATS resume + mock interview</em></div></div><div class="fol"><span>Career Fitment Handbook 2026–27</span><span>7</span></div></section><section class="page "><div class="abs" style="left:16mm;right:16mm;top:18mm">
+ <div class="eyebrow hl">Skills for life and work</div>
+ <div class="huge" style="margin-top:5mm;color:var(--ink)">Job-ready before<br>college even starts.</div></div>
+<div class="abs feat" style="left:16mm;top:70mm;width:84mm">
+ <span class="tag">AI & Certifications</span><h3>Learn AI for free. Get certified.</h3>
+ <div class="nums"><div><b>20</b><span>free certificate courses</span></div><div><b>16</b><span>AI tools, rated</span></div><div><b>₹0</b><span>for every course</span></div></div>
+ <ul class="ticks"><li>Start with YUVA AI for All, the Government of India's national AI course, with an official certificate</li><li>Four levels: AI Aware → User → Maker → Builder, with courses from IBM, Kaggle, Hugging Face and Anthropic Academy</li><li>Every tool rated for age, privacy and what's free</li></ul></div>
+<div class="shot " style="left:108mm;top:68mm;width:88mm;--blk:var(--navy)"><div class="crop" style="height:55mm;"><img src="assets/s2/ai.jpg" style="height:55mm;"></div></div>
+<div class="shot " style="left:16mm;top:150mm;width:84mm;--blk:var(--red)"><div class="crop" style="height:52mm;"><img src="assets/s2/resume.jpg" style="height:52mm;"></div></div>
+<div class="abs feat" style="left:110mm;top:148mm;width:86mm">
+ <span class="tag">Resume builder</span><h3>A resume that gets past the robots.</h3>
+ <ul class="ticks"><li>Built-in ATS check, scored as you type, and “Match a job” for each role</li><li>Write your summary with AI; import your OneGrasp certificates</li><li>Four one-column templates: Modern, Classic, Compact, Executive. Download a PDF</li></ul></div>
+<div class="abs feat" style="left:16mm;top:222mm;width:84mm">
+ <span class="tag">Mock interview</span><h3>Practise out loud. Get feedback.</h3>
+ <ul class="ticks"><li>The 100 questions asked most in internship, placement, college and scholarship interviews, with model answers</li><li>Five-question rounds in 10 categories; feedback on what you said and how you said it</li></ul></div>
+<div class="shot " style="left:108mm;top:222mm;width:88mm;--blk:var(--sun)"><div class="crop" style="height:52mm;"><img src="assets/s2/interview-practice.jpg" style="height:52mm;"></div></div><div class="fol"><span>Career Fitment Handbook 2026–27</span><span>8</span></div></section><section class="page "><div class="abs" style="left:16mm;right:16mm;top:18mm">
+ <div class="eyebrow hl">Why families trust OneGrasp</div>
+ <div class="huge" style="margin-top:5mm;color:var(--ink)">Built by scientists.<br>Chosen by schools.</div>
+ <p class="lede" style="margin-top:5mm;max-width:155mm">OneGrasp's International Scientific Committee: researchers and professors from 15 countries who review abstracts, chair sessions and deliver keynotes.</p>
+ <div class="faces" style="margin-top:6mm"><img src="assets/committee/dr-manjunath-g-n.jpg"><img src="assets/committee/dr-rudrarup-gupta.jpg"><img src="assets/committee/dr-rohan-singh.jpg"><img src="assets/committee/dr-g-vikram.jpg"><img src="assets/committee/dr-bishnu-pada-bose.jpg"><img src="assets/committee/dr-bright-keswani.jpg"><img src="assets/committee/dr-c-bindu-ashwini.jpg"><img src="assets/committee/dr-chintan-patel.jpg"><img src="assets/committee/dr-jahanavee.jpg"><img src="assets/committee/dr-pradip-das.jpg"><img src="assets/committee/dr-s-satish.jpg"><img src="assets/committee/dr-sai-suman-singamsetty.jpg"><img src="assets/committee/dr-sanjay-g-patel.jpg"><img src="assets/committee/dr-santosh-kumar-mishra.jpg"><img src="assets/committee/dr-srikanth-v.jpg"><img src="assets/committee/dr-subhash-desai.jpg"><img src="assets/committee/dr-sudarshan-rao-k.jpg"><img src="assets/committee/dr-tareq-nael-hashem.jpg"><img src="assets/committee/dr-vijay-anant-athavale.jpg"><img src="assets/committee/prof-d-k-chaturvedi.jpg"><img src="assets/committee/dr-rahmatullah-pashtoon.jpg"><img src="assets/committee/dr-maria-cecilia-colautti.jpg"><img src="assets/committee/dr-nazrul-islam.jpg"><img src="assets/committee/dr-maha-fawzy-anber.jpg"><img src="assets/committee/prof-heba-afify.jpg"><img src="assets/committee/dr-ahmed-m-saqr.jpg"><img src="assets/committee/dr-hadi-erfani.jpg"><img src="assets/committee/dr-farid-khallouki.jpg"><img src="assets/committee/dr-fatiha-hakimi.jpg"><img src="assets/committee/dr-ganesh-adhikari.jpg"><img src="assets/committee/dr-subhash-ghimre.jpg"><img src="assets/committee/dr-ju-lee-kim.jpg"><img src="assets/committee/dr-luisa-maria-arvide-cambra.jpg"><img src="assets/committee/dr-maatouk-khoukhi.jpg"><img src="assets/committee/dr-nalanda-roy.jpg"><img src="assets/committee/dr-nilesh-charankar.jpg"><img src="assets/committee/dr-praneetha-kotla.jpg"><img src="assets/committee/dr-david-wortley.jpg"><img src="assets/committee/dr-jamiu-adetola-odugbesan.jpg"></div>
+ <div style="display:grid;grid-template-columns:1fr 1fr;gap:10mm;margin-top:9mm">
+  <div><div class="eyebrow" style="color:var(--muted)">Schools that chose OneGrasp</div><div class="logos" style="grid-template-columns:repeat(4,1fr);margin-top:4mm"><img src="assets/logos/school-shanthinikethan.png"><img src="assets/logos/school-dps.png"><img src="assets/logos/school-oxford.png"><img src="assets/logos/school-excellencia.png"></div></div>
+  <div><div class="eyebrow" style="color:var(--muted)">International collaborations</div><div class="logos" style="grid-template-columns:repeat(3,1fr);margin-top:4mm"><img src="assets/logos/crossref.png"><img src="assets/logos/doi.png"><img src="assets/logos/pace.png"><img src="assets/logos/jci.png"><img src="assets/logos/metaspectra.png"><img src="assets/logos/intellimind.png"></div></div></div>
+ <div style="display:grid;grid-template-columns:repeat(3,1fr) 1.6fr;gap:0;margin-top:8mm;border-top:.4mm solid var(--ink);padding-top:3mm">
+  <div><b style="font:800 24pt/1 Poppins;color:var(--red)">39</b><div style="font:500 8pt Inter;color:var(--muted)">committee members<br>featured here</div></div>
+  <div><b style="font:800 24pt/1 Poppins;color:var(--red)">15</b><div style="font:500 8pt Inter;color:var(--muted)">countries</div></div>
+  <div><b style="font:800 24pt/1 Poppins;color:var(--red)">11</b><div style="font:500 8pt Inter;color:var(--muted)">disciplines</div></div>
+  <div><div style="font:500 8pt Inter;color:var(--muted)">Free courses in your dashboard come from</div><div class="logos" style="grid-template-columns:repeat(4,1fr);margin-top:2mm"><img src="assets/logos/google.svg" style="max-height:6mm"><img src="assets/logos/microsoft.svg" style="max-height:6mm"><img src="assets/logos/ibm.svg" style="max-height:6mm"><img src="assets/logos/harvard.svg" style="max-height:6mm"></div></div></div>
+</div>
+<div class="abs paper" style="left:0;right:0;top:196mm;bottom:0"></div>
+<div class="abs" style="left:16mm;right:16mm;top:205mm">
+ <div class="eyebrow" style="color:var(--muted)">What parents, students and counsellors say</div>
+ <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:7mm;margin-top:5mm"><div class="say"><p>“The assessment helped us understand our child beyond just marks. We had a real conversation about their strengths and interests for the first time.”</p><span>Parent, Mumbai</span></div><div class="say"><p>“I discovered that I'm good at things I never realized. It gave me confidence to explore careers I didn't think were for me.”</p><span>Student, Class 10</span></div><div class="say"><p>“The report is incredibly detailed. We used it to guide our counseling sessions with students. It made a real difference.”</p><span>School counselor</span></div></div>
+ <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:7mm;margin-top:7mm;font:500 8.4pt/1.4 Inter;color:var(--body)">
+  <div><b style="color:var(--ink)">Honest results.</b> Rushed or careless answers are flagged so the test can be retaken.</div>
+  <div><b style="color:var(--ink)">Private by design.</b> Schools see progress, never a student's individual answers.</div>
+  <div><b style="color:var(--ink)">Facts you can check.</b> Every exam and funded programme links to its official source.</div></div>
+</div><div class="fol"><span>Career Fitment Handbook 2026–27</span><span>9</span></div></section><section class="page "><div class="abs red" style="inset:0"></div>
+<div class="abs" style="right:0;top:0;width:84mm;height:140mm;background:url(assets/gallery/g14.jpg) center/cover;filter:grayscale(1);mix-blend-mode:multiply;opacity:.9"></div>
+<div class="abs" style="left:16mm;right:16mm;top:20mm;color:#fff">
+ <div class="eyebrow hl2">Take the assessment today</div>
+ <div class="mega" style="margin-top:6mm">Know yourself.<br>Choose with<br>confidence.</div>
+ <div class="big" style="margin-top:4mm;color:var(--sun)">Build your future.</div></div>
+<div class="abs" style="left:16mm;top:150mm;display:grid;grid-template-columns:64mm 1fr;gap:9mm;right:16mm;color:#fff;align-items:center">
+ <img class="bigqr" src="assets/art/qr.png">
+ <div><div class="big">careerfitment<br>.onegrasp.com</div><p class="lede" style="margin-top:4mm">Scan, register in about two minutes, and your report is ready the moment you finish.</p>
+  <p style="margin-top:5mm;font:600 10pt Inter">support@onegrasp.com · +91 89777 60442 / 43</p></div></div>
+<div class="abs who" style="left:16mm;right:16mm;top:232mm;display:grid;grid-template-columns:repeat(3,1fr);gap:7mm;color:#fff">
+ <div><b>For students</b><span>Understand yourself and see clear next steps you can take with confidence.</span></div>
+ <div><b>For parents</b><span>A shared, calm conversation, with practical questions that help you support better.</span></div>
+ <div><b>For schools</b><span>Track every student daily, send reminders and messages, and support guidance with care. Talk to us about a school-wide rollout.</span></div></div><div class="fol"><span>Career Fitment Handbook 2026–27</span><span>10</span></div></section></body></html>

@@ -2,7 +2,7 @@ from lib import *
 from tools import *
 
 divider(5, "dash", "Your Dashboard: Explore", "Your report becomes a dashboard you use. This part shows you how to find your way around, then gives each exploring tool its own chapter with missions you can finish this week.",
-        ["Your dashboard home", "Finding your way, and your results", "Career Library", "Entrance Exams", "Scholarships", "Study Abroad", "Internships & Jobs", "Where do I find…?"],
+        ["Your dashboard home", "Finding your way, and your results", "Career Library", "Entrance Exams", "Scholarships", "Study Abroad", "Internships & Jobs"],
         "feat/progress.webp")
 S = "Your Dashboard"
 
@@ -138,16 +138,3 @@ mission("Internships & Jobs",
         wtable(["Programme / role", "Company", "Skill I learned", "Hours", "Certificate / status"], 5, ["26%", "18%", "26%", "10%", "20%"]),
         "You have proof of skills that employers can see.", "Internships & Jobs")
 
-# ---------------------------------------------------------------- quick map
-theme("dash")
-mark("Where do I find…?")
-add(head("Quick map", "Where do I find", "…?", "Keep this page next to your screen. Every path starts from the left menu.")
-    + table(["I want to…", "Go to"], [
-        ["Reopen or download my report", "Home › Open my full report › Download"], ["See my type and interest code", "Your results › Your profile"], ["See one dimension in detail", "Your results › 8 Dimensions"],
-        ["Know what to do this month", "Your results › My plan · Career GPS"], ["Find a career's salary and roadmap", "Career Library › search"], ["Check if I can take an exam", "Entrance Exams › Your exams"],
-        ["Make a study plan or take a mock", "Entrance Exams › Prepare"], ["Find scholarships I qualify for", "Scholarships › Find"], ["Compare countries to study in", "Study Abroad › Countries"],
-        ["Check if a degree abroad pays back", "Study Abroad › Money › ROI"], ["Find a free internship", "Internships"], ["Find a real job", "Jobs · Resume & Interview › Jobs for you"],
-        ["Learn money skills / check a scam", "Financial Literacy · Scam Shield"], ["Get help with a legal problem", "Law & Rights › Find help"], ["Learn AI for free", "AI & Certifications › Courses"],
-        ["Practise speaking", "Communication Lab › Daily challenge"], ["Build a resume / mock interview", "Resume & Interview"], ["Find startup funding", "Startups › Funding"],
-        ["Plan a research project", "Research › Start a project"], ["See everything I've done", "My Progress"]], "", widths=["48%", "52%"]),
-    section="Quick map")

@@ -1,7 +1,7 @@
 from lib import *
 
 divider(1, "meet", "Meet OneGrasp", "Who we are, what we do, and why we built a career assessment that looks far beyond marks.",
-        ["What is OneGrasp?", "Everything OneGrasp does", "Why career choices go wrong", "The future of work", "Your journey with OneGrasp", "An assessment day on campus", "Real schools, real students"],
+        ["What is OneGrasp?", "Everything OneGrasp does", "Why career choices go wrong", "The future of work", "Real schools, real students"],
         "brochure/ug-i-001.png")
 S = "Meet OneGrasp"
 
@@ -74,33 +74,6 @@ add(head("The next decade", "The world of work", "is changing fast.",
     + h3("Rising and future-proof", "rocket")
     + grid([f'<div class="rise"><b>{t}</b><span>{d}</span></div>' for t, d in rising], 5, gap="2.4mm")
     + callout("simple", "Jobs that mix <b>human judgement</b> with <b>technology</b> are the safest. That is why the assessment measures how you think, learn, feel and relate to people, not just what you know.", cls="push"),
-    section=S)
-
-mark("Your journey with OneGrasp")
-add(head("The journey", "From “I don't know”", "to a clear plan.",
-         "Five stages take a student from the first click to real progress. Each part of this handbook covers one of them.")
-    + '<div class="road">' + "".join(f'<div class="rs" style="--rc:{c}"><div class="rsn">{icon(ic, "6.4mm", "#fff")}</div><b>{t}</b><span>{x}</span></div>' for t, x, ic, c in [
-        ("Register", "2 minutes", "user-plus", "#E5383B"), ("Assess", "Up to 90 minutes", "clipboard-check", "#0EA5E9"), ("Report", "Instant", "file-text", "#10B981"),
-        ("Dashboard", "Every week", "layout-dashboard", "#F97316"), ("Grow", "All year", "trending-up", "#8B5CF6")]) + "</div>"
-    + vsteps([("Register (about 2 minutes)", "Choose your class, say how sure you are about your career, and create your login. School students can join through their school's link. (Part 2)"),
-              ("Take the assessment (up to 90 minutes)", "Questions across the 8 dimensions, written for your age. Answers save as you go, and a timer shows the time left. (Parts 2 and 3)"),
-              ("Read your report (instant)", "Your profile, best-fit careers with a fit %, strengths and growth areas, and a long-term roadmap. Download the PDF; a copy is emailed. (Part 4)"),
-              ("Use your dashboard (every week)", "One login opens 20+ tools: careers, exams, scholarships, study abroad, internships, jobs, money, law, research, startups, AI and more. (Part 5)"),
-              ("Act and grow (all year)", "Weekly Career GPS missions, lessons that unlock step by step, certificates, a portfolio website and a verified Career Passport. (Parts 5 to 7)")])
-    + two(img("brochure/c11-i-032.png", "pic"), img("brochure/c11-i-029.png", "pic"), "mt push", gap="4mm"),
-    section=S)
-
-mark("An assessment day on campus")
-add(head("On campus", "How an assessment day", "runs in a school.",
-         "When a school or college partners with OneGrasp, our team runs the whole day with the students. Here is what happens, start to finish.")
-    + grid([photo("gallery/old02.webp", "1 · Orientation in the hall", style="height:44mm"), photo("gallery/new2.webp", "2 · The assessment in the lab", style="height:44mm"),
-            photo("gallery/old13.webp", "3 · One-to-one report reading", style="height:44mm")], 3, gap="4mm")
-    + vsteps([("Orientation on campus (30–45 minutes)", "Our team meets the students, explains what the assessment is and is not, and answers questions. Students learn that honest answers give the most useful report."),
-              ("Assessment in the computer lab (up to 90 minutes)", "Students take the test online on the school's computers, one question at a time, with a timer and a navigator. Answers save as they go."),
-              ("Instant personal reports", "Every student receives their own Career Fitment Report the moment they finish: on screen, as a PDF and by email."),
-              ("One-to-one sessions", "Counsellors sit with students (and parents where possible) to read the report together and agree the first steps."),
-              ("Daily tracking afterwards", "The Institution Portal shows who has finished, who is active in the dashboard, and who needs a reminder.")], "mt")
-    + band("Call +91 89777 60442 / 43 or write to support@onegrasp.com to plan a campus-wide rollout.", "Bring OneGrasp to your school:", "phone", "push"),
     section=S)
 
 mark("Real schools, real students")

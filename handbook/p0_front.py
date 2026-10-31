@@ -26,6 +26,72 @@ add(f'''<div class="cv">
   <div class="cv-url">{img("art/qr.png", "cv-qr")}<span>Take the assessment<br><b>careerfitment.onegrasp.com</b></span></div>
 </div></div>''', kind="cover")
 
+# ---------------------------------------------------------------- 2. partners (trust first)
+import json, os
+CM = json.load(open(os.path.join(os.path.dirname(__file__), "committee.json")))
+INTL = [o for o in CM if o["country"] not in ("India", "")]
+COUNTRIES = ["India"] + sorted({o["country"] for o in INTL})
+mark("Our partners and collaborations")
+logos = [("crossref", "Crossref", "DOI registration"), ("doi", "DOI 10.65838", "Permanent citable links"), ("pace", "PACE Council", "CPD accreditation"), ("jci", "Journal Citation Index", "Citation indexing"),
+         ("intellimind", "IntelliMindEd", "Academic partner"), ("metaspectra", "metaSpectra", "Indexing partner"), ("rmetahub", "RMetaHub", "Indexing partner"), ("kvrss", "KVRSS Group", "Partner")]
+schools = [("school-shanthinikethan", "Sree Shanthinikethan English Medium School"), ("school-dps", "Delhi Public School"), ("school-oxford", "Oxford Grammar High School"), ("school-excellencia", "Excellencia Junior College")]
+add(head("Trusted worldwide", "Our partners and", "collaborations.", "Before you turn the page: these are the international organisations, schools, platforms and scientists who work with OneGrasp.")
+    + h3("International collaborations", "globe")
+    + grid([f'<div class="logo-card">{img("logos/" + f + ".png")}<span>{n}<br><span class="small">{d}</span></span></div>' for f, n, d in logos], 4)
+    + h3("Schools that chose OneGrasp for their students", "school")
+    + grid([f'<div class="logo-card" style="height:34mm">{img("logos/" + f + ".png", style="max-height:19mm")}<span>{n}</span></div>' for f, n in schools], 4)
+    + h3("Free courses and tools in the dashboard come from", "graduation-cap")
+    + grid([f'<div class="logo-card" style="height:16mm">{img("logos/" + f + ".svg", style="max-height:8mm")}</div>' for f in ("google", "microsoft", "ibm", "harvard")], 4)
+    + h3("Our international scientific committee", "globe")
+    + '<div class="faces">' + "".join(f'<div><img src="assets/committee/{o["img"]}"><b>{o["name"].replace("Dr. ", "Dr ").replace("Prof. ", "Prof ")}</b><span>{o["country"]}</span></div>' for o in INTL[:10]) + "</div>"
+    + p(f"Professors and researchers from <b>{len(COUNTRIES)} countries</b> review abstracts and deliver keynotes: " + " · ".join(COUNTRIES) + ".", "small mt")
+    + p("All logos and trademarks belong to their respective owners.", "small center push"),
+    section="Partners")
+
+
+# ---------------------------------------------------------------- 3. activity: predict yourself
+theme("meet")
+mark("Activity 1: Predict yourself")
+rows = [
+    ("Personality type", "Circle one in each pair", '<span class="opt">E · I</span><span class="opt">S · N</span><span class="opt">T · F</span><span class="opt">J · P</span>'),
+    ("Interest code", "Circle your top 3", " ".join(f'<span class="opt">{x}</span>' for x in ["R Doing", "I Thinking", "A Creating", "S Helping", "E Leading", "C Organising"])),
+    ("Top intelligence", "Circle 2", " ".join(f'<span class="opt">{x}</span>' for x in ["Words", "Numbers", "Pictures", "Body", "Music", "People", "Self", "Nature"])),
+    ("Learning style", "Circle 1", " ".join(f'<span class="opt">{x}</span>' for x in ["Seeing", "Hearing", "Reading", "Doing"])),
+    ("Core motivator", "Circle 1", " ".join(f'<span class="opt">{x}</span>' for x in ["Achievement", "Learning", "Security", "Impact", "Freedom", "Creativity", "Leading"])),
+    ("Signature strength", "Circle 2", " ".join(f'<span class="opt">{x}</span>' for x in ["Solving", "Creating", "Organising", "Speaking", "Caring", "Persisting", "Leading", "Planning"])),
+    ("Emotional intelligence", "Rate 1–5", '<span class="opt">1</span><span class="opt">2</span><span class="opt">3</span><span class="opt">4</span><span class="opt">5</span>'),
+    ("Sharpest aptitude", "Circle 1", " ".join(f'<span class="opt">{x}</span>' for x in ["Numbers", "Words", "Logic", "Shapes", "Patterns"])),
+]
+add(f'''<div class="actban"><div class="actno">ACTIVITY 1 · 10 MINUTES</div><h1>Predict <span>yourself.</span></h1>
+<p>Before you take the assessment, guess your own results. Then ask a parent to guess too. After your report arrives, turn to page {{{{REF:Reality check: how well do you know yourself?}}}} and see who knows you best.</p>{img("brochure/c11-i-001.png", "actart")}</div>'''
+    + table(["Dimension", "", "My guess", "Parent's guess ✎"], [[f"<b>{d}</b><br><span class='small'>{h}</span>", "", o, ""] for d, h, o in rows], "pred", ["22%", "0%", "50%", "28%"])
+    + two(box(h3("My top 3 career fields", "target") + lines(3)), box(h3("My dream career", "rocket") + lines(1) + h3("How well will it fit? Circle", "gauge") + pills(["Below 45%", "45–64%", "65% +"])), "mt", gap="4mm")
+    + f'<div class="seal push">{icon("lock-keyhole", "8mm", "#E5383B")}<div><b>Seal your prediction</b><span>Don’t change it after the test. That’s the fun.</span></div><div class="sig"><span>Date</span><i></i></div><div class="sig"><span>My signature</span><i></i></div><div class="sig"><span>Parent’s signature</span><i></i></div></div>',
+    section="Activity")
+
+# ---------------------------------------------------------------- 4. activity: 2-minute interest quiz
+mark("Activity 2: The 2-minute interest quiz")
+qs = {"R": ["Fixing a bicycle or gadget", "Building a model or a robot", "Working outdoors with plants or animals"],
+      "I": ["Solving a tricky puzzle", "Finding out how something works", "Doing a science experiment"],
+      "A": ["Drawing, designing or decorating", "Writing a story or making a video", "Playing music, dancing or acting"],
+      "S": ["Teaching a friend something", "Helping someone who is upset", "Volunteering for a good cause"],
+      "E": ["Leading a team or a club", "Convincing people to agree with you", "Selling something or starting a small business"],
+      "C": ["Making a neat plan or timetable", "Keeping accounts or records", "Organising files, notes or a cupboard"]}
+cols = {"R": "#E8590C", "I": "#3B5BDB", "A": "#AE3EC9", "S": "#2F9E44", "E": "#E03131", "C": "#0C8599"}
+items = [(k, t) for i in range(3) for k in qs for t in [qs[k][i]]]
+cells = "".join(f'<div class="qz"><i></i><span>{t}</span><b style="background:{cols[k]}">{k}</b></div>' for k, t in items)
+car = {"R": "Engineer, pilot, chef, architect, farmer", "I": "Doctor, scientist, data analyst, programmer", "A": "Designer, writer, filmmaker, UX, architect",
+       "S": "Teacher, nurse, psychologist, social worker", "E": "Entrepreneur, lawyer, manager, marketer", "C": "Chartered accountant, banker, analyst, administrator"}
+add(f'''<div class="actban b2"><div class="actno">ACTIVITY 2 · 2 MINUTES</div><h1>The 2-minute <span>interest quiz.</span></h1>
+<p>Tick every activity you'd <b>enjoy</b>, even if you've never tried it. Then count your ticks for each letter. A fun warm-up, not the real assessment.</p>{img("feat/careers.webp", "actart")}</div>'''
+    + f'<div class="qzg">{cells}</div>'
+    + h3("Count your ticks", "calculator")
+    + '<div class="tally">' + "".join(f'<div style="--t:{cols[k]}"><b>{k}</b><span>{n}</span><i></i></div>' for k, n in [("R", "Realistic"), ("I", "Investigative"), ("A", "Artistic"), ("S", "Social"), ("E", "Enterprising"), ("C", "Conventional")]) + "</div>"
+    + two(box(h3("My quick code (top 3 letters)", "sparkles") + '<div class="code3"><i></i><i></i><i></i></div>' + p("Later, compare it with the interest code in your real report.", "small")),
+          table(["Letter", "Careers people with this letter often enjoy"], [[f'<b style="color:{cols[k]}">{k}</b>', v] for k, v in car.items()], "dense"), "mt", ratio="0.8fr 1.2fr", gap="4mm"),
+    section="Activity")
+
+theme("brand")
 # ---------------------------------------------------------------- 2. belongs to + how to use
 mark("How to use this handbook")
 add(head("Before you begin", "This handbook", "belongs to…")
@@ -46,40 +112,6 @@ add(head("Before you begin", "This handbook", "belongs to…")
             callout("parent", "Advice for mothers, fathers and guardians."), callout("warn", "Mistakes and scams to avoid.")], 3, gap="0 3mm"),
     section="How to use this book")
 
-# ---------------------------------------------------------------- 3. welcome letter
-mark("A welcome from OneGrasp")
-add(head("Welcome", "Every child is good at", "something.")
-    + two(quote("Most career decisions are made on marks, peer pressure or guesswork. OneGrasp replaces guesswork with self-knowledge and a clear, honest plan the whole family can see.", "The OneGrasp Team")
-          + p("Dear student, parent and teacher,", "mt")
-          + p("A career is rarely one decision. It is a chain of them: which subjects to take, which stream, which entrance exam, which degree, which college, which first job. Each choice shapes the next. When the first link is chosen on marks alone, or because a cousin did the same course, the whole chain can pull in the wrong direction.")
-          + p("The Career Fitment Assessment starts with <b>you</b>: how you think, what you enjoy, how you learn, what drives you and what you are naturally good at. It then connects that picture to <b>real</b> careers, exams, colleges and money (scholarships, funding and salaries), so the next step is clear."),
-          photo("gallery/new1.webp", "A OneGrasp session: “Which career fits me?”", style="height:78mm") + p("", "mt")
-          + p("After the report, the real work begins. Your dashboard turns the report into lessons, tools and weekly tasks, and this handbook walks you through every one of them, page by page.")
-          + p("Read it slowly. Read it together. Come back to it whenever a big decision arrives.")
-          + '<div class="sign"><span class="hand">With warm wishes,</span><b>The OneGrasp Team</b><span class="small">OneGrasp Education Pvt. Ltd., Hyderabad</span></div>', ratio="1.05fr 0.95fr", gap="7mm")
-    + h3("Start in three steps", "rocket")
-    + steps([("Scan or visit", "careerfitment.onegrasp.com on any phone, tablet or laptop.", "qr-code"),
-             ("Register in 2 minutes", "Sign up yourself, or join through your school or college link.", "user-plus"),
-             ("Take the test", "Answer honestly. Your report is ready the moment you finish.", "file-check")]),
-    section="Welcome")
-
 # ---------------------------------------------------------------- 4. contents
 add(head("Contents", "What's inside", "this handbook.") + "{{TOC}}", section="Contents")
-
-# ---------------------------------------------------------------- 5. partners
-mark("Our partners and collaborations")
-logos = [("crossref", "Crossref", "DOI registration"), ("doi", "DOI 10.65838", "Permanent citable links"), ("pace", "PACE Council", "CPD accreditation"), ("jci", "Journal Citation Index", "Citation indexing"),
-         ("intellimind", "IntelliMindEd", "Academic partner"), ("metaspectra", "metaSpectra", "Indexing partner"), ("rmetahub", "RMetaHub", "Indexing partner"), ("kvrss", "KVRSS Group", "Partner")]
-schools = [("school-shanthinikethan", "Sree Shanthinikethan English Medium School"), ("school-dps", "Delhi Public School"), ("school-oxford", "Oxford Grammar High School"), ("school-excellencia", "Excellencia Junior College")]
-add(head("Working together", "Our partners and", "collaborations.", "International organisations, partner schools and learning platforms that OneGrasp works with.")
-    + h3("International collaborations", "globe")
-    + grid([f'<div class="logo-card">{img("logos/" + f + ".png")}<span>{n}<br><span class="small">{d}</span></span></div>' for f, n, d in logos], 4)
-    + h3("Schools that chose OneGrasp for their students", "school")
-    + grid([f'<div class="logo-card" style="height:34mm">{img("logos/" + f + ".png", style="max-height:19mm")}<span>{n}</span></div>' for f, n in schools], 4)
-    + h3("Free courses and tools in the dashboard come from", "graduation-cap")
-    + grid([f'<div class="logo-card" style="height:16mm">{img("logos/" + f + ".svg", style="max-height:8mm")}</div>' for f in ("google", "microsoft", "ibm", "harvard")], 4)
-    + two(box(h3("Media partners", "megaphone") + pills(["All Conference Alert", "Conference Alerts India", "Conference Alerts", "All International Conference", "ConferenceAlerts.com", "10times", "Conference2go", "Events Notification"]), "soft"),
-          box(h3("Researchers from 70+ countries", "map") + pills(["India", "USA", "United Kingdom", "Germany", "Spain", "Argentina", "Singapore", "Korea", "UAE", "Egypt", "Morocco", "Iran", "Afghanistan", "Nepal", "Bangladesh"]), "soft"), "mt", gap="4mm")
-    + p("All logos and trademarks belong to their respective owners.", "small center push"),
-    section="Partners")
 

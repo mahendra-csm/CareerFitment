@@ -1,0 +1,314 @@
+[
+ {
+  "name": "Dr Santosh Kumar Mishra",
+  "role": "Independent Researcher (Scholar)",
+  "aff": "Population Education Resource Centre, Department of Lifelong Learning & Extension, S.N.D.T. Women's University, India",
+  "country": "India",
+  "cat": "agriculture-food-sciences",
+  "img": "dr-santosh-kumar-mishra.jpg"
+ },
+ {
+  "name": "Dr Sudarshan Rao K",
+  "role": "Professor",
+  "aff": "Mechanical Engineering, SMVITM Bantakal, India",
+  "country": "India",
+  "cat": "agriculture-food-sciences",
+  "img": "dr-sudarshan-rao-k.jpg"
+ },
+ {
+  "name": "Dr Farid Khallouki",
+  "role": "Professor / Lecturer",
+  "aff": "Biology, Moulay Ismail University of Meknes, Morocco",
+  "country": "Morocco",
+  "cat": "agriculture-food-sciences",
+  "img": "dr-farid-khallouki.jpg"
+ },
+ {
+  "name": "Dr Fatiha Hakimi",
+  "role": "Professor",
+  "aff": "Agronomy Unit, Department of Production, Protection and Plant Biotechnology, Hassan II Institute of Agronomy and Veterinary Medicine, Morocco",
+  "country": "Morocco",
+  "cat": "agriculture-food-sciences",
+  "img": "dr-fatiha-hakimi.jpg"
+ },
+ {
+  "name": "Dr Rahmatullah Pashtoon",
+  "role": "Assistant Professor",
+  "aff": "Department of National Economics, Kandahar University, Afghanistan",
+  "country": "Afghanistan",
+  "cat": "agriculture-food-sciences",
+  "img": "dr-rahmatullah-pashtoon.jpg"
+ },
+ {
+  "name": "Dr Bishnu Pada Bose",
+  "role": "Professor, Partner & Advisor",
+  "aff": "Civil & Environmental Engineering, Invosystems, Singapore",
+  "country": "Singapore",
+  "cat": "arts-culture-communication",
+  "img": "dr-bishnu-pada-bose.jpg"
+ },
+ {
+  "name": "Dr Rudrarup Gupta",
+  "role": "Research",
+  "aff": "Business & Economics, India",
+  "country": "India",
+  "cat": "business-economics",
+  "img": "dr-rudrarup-gupta.jpg"
+ },
+ {
+  "name": "Dr Rohan Singh",
+  "role": "Associate Professor",
+  "aff": "Management (HR, OB), Chandigarh University, India",
+  "country": "India",
+  "cat": "business-economics",
+  "img": "dr-rohan-singh.jpg"
+ },
+ {
+  "name": "Dr Pradip Das",
+  "role": "Associate Professor (Retd.), H.O.D.",
+  "aff": "Commerce Unit, Jagannath Kishore College, India",
+  "country": "India",
+  "cat": "business-economics",
+  "img": "dr-pradip-das.jpg"
+ },
+ {
+  "name": "Dr Nalanda Roy",
+  "role": "Full Professor / Coordinator, Asian Studies Program / Inclusive Excellence Faculty Fellow",
+  "aff": "Political Science and International Studies, Georgia Southern University, United States of America",
+  "country": "USA",
+  "cat": "business-economics",
+  "img": "dr-nalanda-roy.jpg"
+ },
+ {
+  "name": "Dr Ganesh Adhikari",
+  "role": "Associate Professor",
+  "aff": "Electronics & Communication Engineering, Nepal Engineering College, Nepal",
+  "country": "Nepal",
+  "cat": "business-economics",
+  "img": "dr-ganesh-adhikari.jpg"
+ },
+ {
+  "name": "Dr Jamiu Adetola Odugbesan",
+  "role": "Lecturer / Module Leader / Academic Advisor",
+  "aff": "Business, Entrepreneurship, and Finance, Royal Docks School of Business and Law, United Kingdom",
+  "country": "United Kingdom",
+  "cat": "business-economics",
+  "img": "dr-jamiu-adetola-odugbesan.jpg"
+ },
+ {
+  "name": "Dr Nazrul Islam",
+  "role": "Professor / Former Pro-Vice Chancellor",
+  "aff": "School of Business and Entrepreneurship, Independent University, Bangladesh / Northern University Bangladesh, Bangladesh",
+  "country": "Bangladesh",
+  "cat": "business-economics",
+  "img": "dr-nazrul-islam.jpg"
+ },
+ {
+  "name": "Dr Maatouk Khoukhi",
+  "role": "Associate Professor",
+  "aff": "Architectural Engineering Department, United Arab Emirates University (UAEU), Al Ain, United Arab Emirates",
+  "country": "UAE",
+  "cat": "business-economics",
+  "img": "dr-maatouk-khoukhi.jpg"
+ },
+ {
+  "name": "Dr Tareq Nael Hashem",
+  "role": "Researcher",
+  "aff": "Business & Economics",
+  "country": "",
+  "cat": "business-economics",
+  "img": "dr-tareq-nael-hashem.jpg"
+ },
+ {
+  "name": "Dr G. Vikram",
+  "role": "Associate Professor",
+  "aff": "School of Management, Karunya Institute of Technology and Sciences, India",
+  "country": "India",
+  "cat": "business-economics",
+  "img": "dr-g-vikram.jpg"
+ },
+ {
+  "name": "Dr Subhash Desai",
+  "role": "Former Professor Emeritus & Director",
+  "aff": "School of Pure and Applied Sciences, Sabarmati University, India",
+  "country": "India",
+  "cat": "education",
+  "img": "dr-subhash-desai.jpg"
+ },
+ {
+  "name": "Dr Maria Cecilia Colautti",
+  "role": "Secretary, ICOH Scientific Committee on Nanomaterial Workers' Health",
+  "aff": "Occupational Health / Nanotechnology (Faculty of Engineering), Universidad Nacional de la Patagonia San Juan Bosco (UNPSJB), Argentina",
+  "country": "Argentina",
+  "cat": "education",
+  "img": "dr-maria-cecilia-colautti.jpg"
+ },
+ {
+  "name": "Dr Ahmed M. Saqr",
+  "role": "Visiting Lecturer and Researcher",
+  "aff": "Engineering and Applied Sciences, Cologne University of Applied Sciences (TH K\u00f6ln), Germany",
+  "country": "Germany",
+  "cat": "engineering-technology",
+  "img": "dr-ahmed-m-saqr.jpg"
+ },
+ {
+  "name": "Dr Chintan Patel",
+  "role": "Assistant Professor",
+  "aff": "Electrical Engineering, CVM University, India",
+  "country": "India",
+  "cat": "engineering-technology",
+  "img": "dr-chintan-patel.jpg"
+ },
+ {
+  "name": "Dr Hadi Erfani",
+  "role": "Research Scholar",
+  "aff": "Chemical Engineering, Islamic Azad University (Central Tehran Branch), Iran",
+  "country": "Iran",
+  "cat": "engineering-technology",
+  "img": "dr-hadi-erfani.jpg"
+ },
+ {
+  "name": "Dr S. Satish",
+  "role": "Associate Professor",
+  "aff": "School of Aeronautical Sciences, Hindustan Institute of Technology and Science (HITS), India",
+  "country": "India",
+  "cat": "engineering-technology",
+  "img": "dr-s-satish.jpg"
+ },
+ {
+  "name": "Dr Subhash Ghimre",
+  "role": "Associate Professor & Head of Department",
+  "aff": "Geomatics Engineering, Kathmandu University, Nepal",
+  "country": "Nepal",
+  "cat": "engineering-technology",
+  "img": "dr-subhash-ghimre.jpg"
+ },
+ {
+  "name": "Dr Nilesh Charankar",
+  "role": "Lead Full-Stack Developer / Researcher / Author",
+  "aff": "Technology / Software Engineering focus, industry professional, USA",
+  "country": "USA",
+  "cat": "engineering-technology",
+  "img": "dr-nilesh-charankar.jpg"
+ },
+ {
+  "name": "Dr Sai Suman Singamsetty",
+  "role": "Data Management Specialist / Keynote Speaker / Independent Researcher",
+  "aff": "Electronics & Communication Engineering, Centurion University of Technology and Management, India",
+  "country": "India",
+  "cat": "engineering-technology",
+  "img": "dr-sai-suman-singamsetty.jpg"
+ },
+ {
+  "name": "Dr Srikanth V",
+  "role": "Professor / Program Coordinator",
+  "aff": "MCA Department, Acharya Bangalore B School, India",
+  "country": "India",
+  "cat": "engineering-technology",
+  "img": "dr-srikanth-v.jpg"
+ },
+ {
+  "name": "Dr Sanjay G. Patel",
+  "role": "Professor",
+  "aff": "Computer Science & Engineering, School of Technology, Nirma University, Ahmedabad, India",
+  "country": "India",
+  "cat": "engineering-technology",
+  "img": "dr-sanjay-g-patel.jpg"
+ },
+ {
+  "name": "Dr Vijay Anant Athavale",
+  "role": "Principal / Professor",
+  "aff": "Computer Science & Engineering, Walchand Institute of Technology (Autonomous), India",
+  "country": "India",
+  "cat": "engineering-technology",
+  "img": "dr-vijay-anant-athavale.jpg"
+ },
+ {
+  "name": "Dr Maha Fawzy Anber",
+  "role": "Head of Sustainability Department / Associate Professor of Architecture",
+  "aff": "Sustainability Department, El Shorouk Academy, Cairo, Egypt",
+  "country": "Egypt",
+  "cat": "engineering-technology",
+  "img": "dr-maha-fawzy-anber.jpg"
+ },
+ {
+  "name": "Prof D.K. Chaturvedi",
+  "role": "Dean, Faculty of Engineering / Dean, Undergraduate Studies",
+  "aff": "Faculty of Engineering, Dayalbagh Educational Institute (Deemed-to-be University), India",
+  "country": "India",
+  "cat": "engineering-technology",
+  "img": "prof-d-k-chaturvedi.jpg"
+ },
+ {
+  "name": "Dr Praneetha Kotla",
+  "role": "Associate Principal / Lead Full-Stack Developer",
+  "aff": "Information Technology / Software Engineering, Northern Illinois University, USA",
+  "country": "USA",
+  "cat": "engineering-technology",
+  "img": "dr-praneetha-kotla.jpg"
+ },
+ {
+  "name": "Dr Bright Keswani",
+  "role": "Professor",
+  "aff": "Computer Science & Engineering, Poornima University, Jaipur, India",
+  "country": "India",
+  "cat": "engineering-technology",
+  "img": "dr-bright-keswani.jpg"
+ },
+ {
+  "name": "Dr David Wortley",
+  "role": "Non-Executive Director; Vice President; Director; CEO & Founder",
+  "aff": "Multiple organizations (WLMES, ISDM, IORMA, 360in360), United Kingdom",
+  "country": "United Kingdom",
+  "cat": "health-medical-sciences",
+  "img": "dr-david-wortley.jpg"
+ },
+ {
+  "name": "Dr Manjunath G N",
+  "role": "Professor & Head of Department",
+  "aff": "Pharmacology, Sri Siddhartha Medical College, Sri Siddhartha Academy of Higher Education, India",
+  "country": "India",
+  "cat": "health-medical-sciences",
+  "img": "dr-manjunath-g-n.jpg"
+ },
+ {
+  "name": "Prof Heba Afify",
+  "role": "Professor / Associate Professor",
+  "aff": "Biomedical Engineering, Cairo University / Shorouk Academy, Egypt",
+  "country": "Egypt",
+  "cat": "health-medical-sciences",
+  "img": "prof-heba-afify.jpg"
+ },
+ {
+  "name": "Dr Ju Lee Kim",
+  "role": "Senior Researcher",
+  "aff": "R&D Center, RedGene, Republic of Korea",
+  "country": "Republic of Korea",
+  "cat": "health-medical-sciences",
+  "img": "dr-ju-lee-kim.jpg"
+ },
+ {
+  "name": "Dr C. Bindu Ashwini",
+  "role": "Assistant Professor",
+  "aff": "Psychology, RV College of Engineering, Bangalore, India",
+  "country": "India",
+  "cat": "social-sciences-humanities",
+  "img": "dr-c-bindu-ashwini.jpg"
+ },
+ {
+  "name": "Dr Luisa Maria Arvide Cambra",
+  "role": "Professor",
+  "aff": "Philology (Humanities, Arabic Philology focus), University of Almeria, Spain",
+  "country": "Spain",
+  "cat": "social-sciences-humanities",
+  "img": "dr-luisa-maria-arvide-cambra.jpg"
+ },
+ {
+  "name": "Dr Jahanavee",
+  "role": "Director of Sports / Associate Professor",
+  "aff": "Faculty of Physical Education, Sports and Yoga, Uka Tarsadia University, Bardoli, Surat, India",
+  "country": "India",
+  "cat": "sports-physical-education",
+  "img": "dr-jahanavee.jpg"
+ }
+]

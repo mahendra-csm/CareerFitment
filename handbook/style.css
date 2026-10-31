@@ -416,3 +416,35 @@ figcaption { font-size: 8pt; color: var(--muted); margin-top: 1.8mm; line-height
 .yr { background: #fff; border: 1px solid var(--line); border-top: 1.6mm solid var(--yc); border-radius: 3.4mm; padding: 3mm; } .yr > b { display: block; font: 900 14pt 'Fraunces'; color: var(--yc); margin-bottom: 1.4mm; }
 
 .tocp .tph { margin-bottom: .6mm; } .tocp .tpn { width: 7.6mm; height: 7.6mm; line-height: 7.6mm; font-size: 8pt; } .tocp .tpt { font-size: 10.4pt; } .tocs { font-size: 7.4pt; }
+
+/* v4: committee photos, activities */
+.faces { display: grid; grid-template-columns: repeat(10, 1fr); gap: 2mm; } .faces div { text-align: center; }
+.faces img { width: 100%; aspect-ratio: 1; border-radius: 50%; object-fit: cover; border: .8mm solid #fff; box-shadow: 0 .6mm 2mm rgba(0,0,0,.18); }
+.faces b { display: block; font: 700 5.8pt/1.15 'Inter'; margin-top: 1mm; } .faces span { font: 800 5.8pt 'Inter'; color: var(--c1); }
+.cm { display: grid; grid-template-columns: 17mm 1fr; gap: 2.4mm; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: 3mm; padding: 1.8mm; }
+.cm img { width: 17mm; height: 17mm; border-radius: 2.4mm; object-fit: cover; }
+.cm b { display: block; font: 800 8.4pt/1.15 'Plus Jakarta Sans'; } .cm span { display: block; font-size: 6.9pt; line-height: 1.25; color: var(--muted); } .cm .cr { color: var(--ink); font-weight: 600; }
+.cflag { display: inline-flex; align-items: center; gap: .6mm; font: 800 6.4pt 'Inter'; font-style: normal; color: #fff; background: #64748B; border-radius: 10mm; padding: .3mm 1.8mm; margin-top: .6mm; }
+.cflag.in { background: linear-gradient(90deg, var(--c1), var(--c2)); }
+.knp { width: 22mm; height: 22mm; border-radius: 50%; object-fit: cover; border: 1.2mm solid; display: block; margin: 0 auto 2mm; }
+.hlp { margin: 0; } .hlp img { width: 100%; height: 24mm; object-fit: cover; border-radius: 2.4mm; display: block; } .hlp figcaption { font-size: 7pt; margin-top: 1mm; }
+.actban { position: relative; border-radius: 6mm; padding: 6mm 7mm; color: #fff; background: linear-gradient(130deg, #E5383B, #FF8A3D 60%, #FFC83D); overflow: hidden; margin: -2mm 0 4mm; min-height: 52mm; }
+.actban.b2 { background: linear-gradient(130deg, #7C3AED, #EC4899 60%, #F59E0B); } .actban.b3 { background: linear-gradient(130deg, #059669, #0EA5E9 60%, #8B5CF6); }
+.actban::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,.25) 1px, transparent 1.1px); background-size: 5mm 5mm; }
+.actno { position: relative; display: inline-block; font: 900 8pt 'Inter'; letter-spacing: .26em; background: rgba(0,0,0,.18); border-radius: 10mm; padding: 1.2mm 3.4mm; }
+.actban h1 { position: relative; font: 800 30pt/1.05 'Fraunces'; margin: 2.4mm 0; color: #fff; width: 66%; } .actban h1 span { color: #FFF3B0; }
+.actban p { position: relative; width: 64%; font-size: 10.4pt; color: rgba(255,255,255,.95); }
+.actart { position: absolute; right: 4mm; bottom: 0; height: 50mm; max-width: 34%; object-fit: contain; filter: drop-shadow(0 3mm 6mm rgba(0,0,0,.25)); }
+.tbl.pred td { vertical-align: middle; padding: 1.8mm 2.4mm; } .tbl.pred td:nth-child(2) { padding: 0; }
+.opt { display: inline-block; border: 1.3px solid #CFC8DA; border-radius: 10mm; padding: .5mm 2.2mm; margin: .4mm .6mm .4mm 0; font: 700 7.8pt 'Inter'; color: #3A3F55; background: #fff; }
+.seal { display: grid; grid-template-columns: 10mm 1.3fr 0.7fr 1fr 1fr; gap: 3mm; align-items: center; background: #FFF4EC; border: 1.6px dashed #E5383B; border-radius: 4mm; padding: 3mm 4mm; }
+.seal b { display: block; font: 800 11pt 'Plus Jakarta Sans'; color: #E5383B; } .seal span { font-size: 8.4pt; color: var(--muted); }
+.qzg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2mm; }
+.qz { display: grid; grid-template-columns: 6mm 1fr 6mm; gap: 1.6mm; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: 2.6mm; padding: 2.2mm 2.4mm; font-size: 8.8pt; }
+.qz i { width: 4.6mm; height: 4.6mm; border: 1.6px solid #7C3AED; border-radius: 1.2mm; } .qz b { color: #fff; width: 6mm; height: 6mm; border-radius: 50%; font: 900 8pt/6mm 'Plus Jakarta Sans'; text-align: center; }
+.tally { display: grid; grid-template-columns: repeat(6, 1fr); gap: 2.4mm; }
+.tally div { border: 1.6px solid var(--t); border-radius: 3mm; padding: 2mm; text-align: center; background: color-mix(in srgb, var(--t) 8%, white); }
+.tally b { display: block; font: 900 18pt 'Fraunces'; color: var(--t); } .tally span { font-size: 7.4pt; font-weight: 700; } .tally i { display: block; margin: 1.6mm auto 0; width: 12mm; height: 9mm; border: 1.4px dashed var(--t); border-radius: 2mm; background: #fff; }
+.code3 { display: flex; gap: 3mm; justify-content: center; margin: 2mm 0; } .code3 i { width: 16mm; height: 16mm; border: 2px solid #7C3AED; border-radius: 3mm; background: #fff; }
+.band2 { border-radius: 3.4mm; padding: 3mm; background: color-mix(in srgb, var(--b) 10%, white); border-top: 1.4mm solid var(--b); }
+.band2 b { font: 900 16pt 'Fraunces'; color: var(--b); } .band2 span { display: block; font: 800 9.6pt 'Plus Jakarta Sans'; } .band2 p { font-size: 8.4pt; color: var(--muted); margin-top: .6mm; }

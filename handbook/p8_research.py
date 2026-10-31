@@ -64,39 +64,48 @@ add(head("Conferences", "From research paper", "to global recognition.", "A clea
     section=S)
 
 mark("The OneGrasp Scientific Committee")
-members = [("Dr Santosh Kumar Mishra", "SNDT Women's University", "India"), ("Dr Sudarshan Rao K", "SMVITM Bantakal", "India"), ("Dr Farid Khallouki", "Moulay Ismail University", "Morocco"),
-           ("Dr Fatiha Hakimi", "Hassan II Institute (IAV)", "Morocco"), ("Dr Rahmatullah Pashtoon", "Kandahar University", "Afghanistan"), ("Dr Bishnu Pada Bose", "Invosystems", "Singapore"),
-           ("Dr Rudrarup Gupta", "Business & Economics", "India"), ("Dr Rohan Singh", "Chandigarh University", "India"), ("Dr Pradip Das", "Jagannath Kishore College", "India"),
-           ("Dr Nalanda Roy", "Georgia Southern University", "USA"), ("Dr Ganesh Adhikari", "Nepal Engineering College", "Nepal"), ("Dr Jamiu Adetola Odugbesan", "Royal Docks School of Business", "United Kingdom"),
-           ("Dr Nazrul Islam", "Independent University", "Bangladesh"), ("Dr Maatouk Khoukhi", "UAE University", "UAE"), ("Dr Tareq Nael Hashem", "Business & Economics", ""),
-           ("Dr G. Vikram", "Karunya Institute", "India"), ("Dr Subhash Desai", "Sabarmati University", "India"), ("Dr Maria Cecilia Colautti", "UNPSJB", "Argentina"),
-           ("Dr Ahmed M. Saqr", "TH Köln", "Germany"), ("Dr Chintan Patel", "CVM University", "India"), ("Dr Hadi Erfani", "Islamic Azad University", "Iran"),
-           ("Dr S. Satish", "Hindustan Institute (HITS)", "India"), ("Dr Subhash Ghimre", "Kathmandu University", "Nepal"), ("Dr Nilesh Charankar", "Industry researcher", "USA"),
-           ("Dr Sai Suman Singamsetty", "Centurion University", "India"), ("Dr Srikanth V", "Acharya Bangalore B School", "India"), ("Dr Sanjay G. Patel", "Nirma University", "India"),
-           ("Dr Vijay Anant Athavale", "Walchand Institute of Tech.", "India"), ("Dr Maha Fawzy Anber", "El Shorouk Academy", "Egypt"), ("Prof D.K. Chaturvedi", "Dayalbagh Educational Inst.", "India"),
-           ("Dr Praneetha Kotla", "Northern Illinois University", "USA"), ("Dr Bright Keswani", "Poornima University", "India"), ("Dr David Wortley", "ISDM · IORMA", "United Kingdom"),
-           ("Dr Manjunath G N", "Sri Siddhartha Medical College", "India"), ("Prof Heba Afify", "Cairo University", "Egypt"), ("Dr Ju Lee Kim", "RedGene", "Republic of Korea"),
-           ("Dr C. Bindu Ashwini", "RV College of Engineering", "India"), ("Dr Luisa Maria Arvide Cambra", "University of Almería", "Spain"), ("Dr Jahanavee", "Uka Tarsadia University", "India")]
-pal = ["#4338CA", "#0891B2", "#DB2777", "#EA580C", "#059669", "#7C3AED", "#DC2626", "#0D9488"]
+import json as _j, os as _o
+CM = _j.load(open(_o.path.join(_o.path.dirname(__file__), "committee.json")))
+INTL = sorted([o for o in CM if o["country"] not in ("India", "")], key=lambda o: (o["country"], o["name"]))
+HOME = [o for o in CM if o["country"] in ("India", "")]
+NC = len({o["country"] for o in INTL}) + 1
 
 
-def initials(n):
-    w = [x for x in n.replace("Dr ", "").replace("Prof ", "").replace(".", " ").split() if x]
-    return (w[0][0] + w[-1][0]).upper()
+def nm(n):
+    return n.replace("Dr. ", "Dr ").replace("DR ", "Dr ").replace("Prof. ", "Prof ").replace("Dr.", "Dr ").replace("  ", " ").strip()
 
 
-add(head("Scientific committee", "The OneGrasp", "Scientific Committee.",
-         "A 50-member committee of professors, researchers and industry experts reviews abstracts, chairs sessions and delivers keynotes across 11 disciplines. Featured here: 39 members from 15 countries.")
-    + grid([f'<div class="person"><span class="avatar" style="background:{pal[i % 8]}">{initials(n)}</span><div><b>{n}</b><span>{u}</span>{f"<em class=flag>{c}</em>" if c else ""}</div></div>' for i, (n, u, c) in enumerate(members)], 3, gap="1.8mm 2.4mm")
-    + band("India · USA · UK · Germany · Spain · Argentina · Singapore · Korea · UAE · Egypt · Morocco · Iran · Afghanistan · Nepal · Bangladesh", "15 countries:", "globe", "mt push"),
+def short_aff(a):
+    parts = [x.strip() for x in a.split(",")]
+    if parts and parts[-1] in ("India",) or (len(parts) > 1 and len(parts[-1]) < 22):
+        parts = parts[:-1] if len(parts) > 1 else parts
+    t = ", ".join(parts[-2:]) if len(parts) > 1 else parts[0]
+    return t[:70]
+
+
+def card_(o, intl):
+    flag = f'<em class="cflag{" in" if intl else ""}">{icon("map-pin", "2.6mm", "#fff")} {o["country"]}</em>' if o["country"] else ""
+    return f'<div class="cm"><img src="assets/committee/{o["img"]}"><div><b>{nm(o["name"])}</b><span class="cr">{o["role"][:48]}</span><span>{short_aff(o["aff"])}</span>{flag}</div></div>'
+
+
+add(head("Scientific committee", "International", "committee members.",
+         f"A 50-member committee of professors, researchers and industry experts reviews abstracts, chairs sessions and delivers keynotes across 11 disciplines. Featured: {len(CM)} members from {NC} countries. Here are the {len(INTL)} members based outside India.")
+    + grid([card_(o, True) for o in INTL], 3, gap="2mm 2.4mm")
+    + band(" · ".join(sorted({o["country"] for o in INTL})), f"{NC - 1} countries outside India:", "globe", "mt push"),
+    section=S)
+add(head("Scientific committee", "Committee members", "in India.", f"{len(HOME)} professors and researchers from leading Indian universities and institutes.")
+    + grid([card_(o, False) for o in HOME], 3, gap="2mm 2.4mm")
+    + p("Member details as listed on onegrasp.com/events. The full committee has 50 members; 39 are featured.", "small push"),
     section=S)
 
 mark("Keynotes, awards and the conference day")
 add(head("Conferences", "Keynotes from", "leading experts.", "Committee members and invited experts open each day with keynotes that bridge research and practice.")
-    + grid([f'<div class="kn" style="--kc:{c}"><span class="avatar" style="background:{c};width:16mm;height:16mm;line-height:16mm;font-size:12pt">{initials(n)}</span><b>{n}</b><em>{r}</em><p>{t}</p></div>' for n, r, t, c in [
-        ("Dr Manjunath G N", "Professor & Head, Pharmacology, Sri Siddhartha Medical College, India", "Mental health & psychological stress in athletes · Brain–computer interfaces", "#4338CA"),
-        ("Dr Bishnu Pada Bose", "Professor, Partner & Advisor, Invosystems, Singapore", "Outcome-based vs traditional education · Greenhouse gases & global warming", "#0891B2"),
-        ("Dr Ju Lee Kim", "Senior Researcher, R&D Center, RedGene, Republic of Korea", "Organoids and gene circuits in stem-cell research", "#DB2777")]], 3, gap="4mm")
+    + grid([f'<div class="kn" style="--kc:{c}"><img class="knp" style="border-color:{c}" src="assets/committee/{ph}"><b>{n}</b><em>{r}</em><p>{t}</p></div>' for n, r, t, c, ph in [
+        ("Dr Manjunath G N", "Professor & Head, Pharmacology, Sri Siddhartha Medical College, India", "Mental health & psychological stress in athletes · Brain–computer interfaces", "#4338CA", "dr-manjunath-g-n.jpg"),
+        ("Dr Bishnu Pada Bose", "Professor, Partner & Advisor, Invosystems, Singapore", "Outcome-based vs traditional education · Greenhouse gases & global warming", "#0891B2", "dr-bishnu-pada-bose.jpg"),
+        ("Dr Ju Lee Kim", "Senior Researcher, R&D Center, RedGene, Republic of Korea", "Organoids and gene circuits in stem-cell research", "#DB2777", "dr-ju-lee-kim.jpg")]], 3, gap="4mm")
+    + h3("Moments from recent conferences", "camera")
+    + grid([f'<figure class="hlp"><img src="assets/conf/{f}.jpg"><figcaption>{c}</figcaption></figure>' for f, c in [("h01", "Dr Manjunath G N: stress in athletes"), ("h00", "Dr Bishnu Pada Bose: outcome-based education"), ("h02", "Participants joining a live plenary"), ("h10", "Dr Ju Lee Kim presenting live")]], 4, gap="2.4mm")
     + h3("Two evenings, one clear format (IST)", "clock")
     + two(table(["Day 1", ""], [["6:00", "Inaugural ceremony & welcome"], ["6:30", "Keynote I"], ["7:15", "Keynote II"], ["8:00", "Networking & Q&A"], ["8:15", "Paper session I"], ["9:00", "Paper session II"], ["9:45", "Panel & open Q&A"]], "dense", widths=["22%", "78%"]),
           table(["Day 2", ""], [["6:00", "Welcome & Day 1 recap"], ["6:30", "Keynote III"], ["7:15", "Keynote IV"], ["8:00", "Open networking"], ["8:15", "Paper sessions III & IV"], ["9:00", "Award ceremony"], ["9:45", "Valedictory & certificates"]], "dense", widths=["22%", "78%"]), gap="4mm")

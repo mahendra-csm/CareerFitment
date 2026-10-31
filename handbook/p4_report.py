@@ -151,3 +151,15 @@ add(head("Reading guide", "How to read your report", "in 20 minutes.",
     + callout("simple", "In Personality, Learning Style and Motivators a score shows a <b>preference</b>, not quality. Only Aptitude has right answers, and even Aptitude grows with practice.", cls="push"),
     section="Reading guide")
 
+
+mark("Reality check: how well do you know yourself?")
+rc = ["Personality type", "Interest code", "Top intelligence", "Learning style", "Core motivator", "Signature strength", "Emotional intelligence", "Sharpest aptitude", "Top career field", "Dream-career fit"]
+add(f'''<div class="actban b3"><div class="actno">ACTIVITY 3 · AFTER YOUR REPORT</div><h1>Reality <span>check.</span></h1>
+<p>Remember Activity 1? Open your sealed prediction (page {{{{REF:Activity 1: Predict yourself}}}}) and your report side by side. Score one point for every match. Who knows you best, you or your parent?</p>{img("brochure/c11-i-005.png", "actart")}</div>'''
+    + table(["What", "My guess", "Parent's guess", "My report says", "Me ✓", "Parent ✓"], [[f"<b>{r}</b>", "", "", "", "☐", "☐"] for r in rc] + [["<b>TOTAL</b>", "", "", "", "<b>/10</b>", "<b>/10</b>"]], "fill", ["22%", "17%", "17%", "22%", "11%", "11%"])
+    + grid([f'<div class="band2" style="--b:{c}"><b>{s}</b><span>{t}</span><p>{x}</p></div>' for s, t, x, c in [
+        ("8–10", "You know yourself well", "Great. Now act on it: start the 30-day challenge in Part 10.", "#16A34A"),
+        ("5–7", "Some surprises", "Read the deep dives for the dimensions you missed. Surprises are where you learn the most.", "#F59E0B"),
+        ("0–4", "Big discovery", "That's exactly why the assessment exists. Talk it through with a parent or counsellor.", "#8B5CF6")]], 3, "mt", gap="3mm")
+    + two(box(h3("My biggest surprise", "sparkles") + lines(2)), box(h3("What I'll do about it", "flag") + lines(2)), "mt push", gap="4mm"),
+    section="Reading guide")

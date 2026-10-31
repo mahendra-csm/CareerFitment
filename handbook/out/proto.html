@@ -1,0 +1,1264 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><base href="../"><title>OneGrasp Handbook v3 prototype</title><style>@font-face { font-family: 'Poppins'; font-style: normal; font-weight: 400; src: url(assets/fonts/poppins-400.woff2) format('woff2'); }
+@font-face { font-family: 'Poppins'; font-style: normal; font-weight: 500; src: url(assets/fonts/poppins-500.woff2) format('woff2'); }
+@font-face { font-family: 'Poppins'; font-style: normal; font-weight: 600; src: url(assets/fonts/poppins-600.woff2) format('woff2'); }
+@font-face { font-family: 'Poppins'; font-style: normal; font-weight: 700; src: url(assets/fonts/poppins-700.woff2) format('woff2'); }
+@font-face { font-family: 'Poppins'; font-style: normal; font-weight: 800; src: url(assets/fonts/poppins-800.woff2) format('woff2'); }
+@font-face { font-family: 'Poppins'; font-style: normal; font-weight: 900; src: url(assets/fonts/poppins-800.woff2) format('woff2'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; src: url(assets/fonts/Inter-Regular.ttf) format('truetype'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 500; src: url(assets/fonts/Inter-Medium.ttf) format('truetype'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 600; src: url(assets/fonts/Inter-SemiBold.ttf) format('truetype'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 700; src: url(assets/fonts/Inter-Bold.ttf) format('truetype'); }
+/* =====================================================================
+   OneGrasp Career Fitment Handbook — Design System v3 ("Premium colour")
+   Brand   : red #C72D35 · navy #17243A · white
+   Accents : orange #F09A24 · blue #2196C8 · purple #7754B8 · green #279B70 · gold #E5B73B
+   Neutral : grey #F3F4F6 · warm #F5F4F1 · body #2E3744 · muted #6B7280 · rule #E2E5EA
+   Type    : Poppins Bold/SemiBold (display) · Inter Medium (sub-heads, labels) · Inter Regular (body)
+   Icons   : Lucide, 1.75 stroke, in 2 mm-radius tinted tiles
+   Grid    : A4 · mirrored · inner 22 mm · outer 16 mm · top 22 mm · bottom 18 mm · 12-col, 5 mm gutter
+   ===================================================================== */
+:root {
+  --red: #C72D35; --navy: #17243A; --orange: #F09A24; --blue: #2196C8; --purple: #7754B8; --green: #279B70; --gold: #E5B73B;
+  --grey: #F3F4F6; --warm: #F5F4F1; --body: #2E3744; --muted: #6B7280; --rule: #E2E5EA;
+  /* text-safe darker tones of the accents (AA on white) */
+  --red-t: #B0262E; --orange-t: #B76A06; --blue-t: #1672A0; --purple-t: #6243A3; --green-t: #1F7D5A; --gold-t: #8C6A0C;
+  --acc: var(--red); --acc-t: var(--red-t);
+}
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #fff; }
+body { font: 400 9.6pt/1.55 'Inter', sans-serif; color: var(--body); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+b, strong { font-weight: 600; color: var(--navy); }
+
+/* chapter accents */
+.ch-red    { --acc: var(--red);    --acc-t: var(--red-t); }
+.ch-blue   { --acc: var(--blue);   --acc-t: var(--blue-t); }
+.ch-purple { --acc: var(--purple); --acc-t: var(--purple-t); }
+.ch-orange { --acc: var(--orange); --acc-t: var(--orange-t); }
+.ch-green  { --acc: var(--green);  --acc-t: var(--green-t); }
+.ch-gold   { --acc: var(--gold);   --acc-t: var(--gold-t); }
+.ch-navy   { --acc: var(--navy);   --acc-t: var(--navy); }
+.tint  { background: color-mix(in srgb, var(--acc) 9%, white); }
+
+/* ---------- page + chrome ---------- */
+.page { position: relative; width: 210mm; height: 297mm; overflow: hidden; page-break-after: always; background: #fff; }
+.pc { position: absolute; top: 22mm; bottom: 18mm; left: 22mm; right: 16mm; display: flex; flex-direction: column; }
+.page.even .pc { left: 16mm; right: 22mm; }
+.hdr { position: absolute; top: 9mm; left: 22mm; right: 16mm; display: flex; align-items: center; gap: 3mm; font: 500 7.4pt 'Inter'; color: var(--muted); }
+.page.even .hdr { left: 16mm; right: 22mm; flex-direction: row-reverse; }
+.hdr .chno { background: var(--acc); color: #fff; font: 700 7.6pt 'Poppins'; padding: .6mm 2.2mm; border-radius: 1mm; }
+.hdr .chname { color: var(--navy); font-weight: 600; }
+.hdr .line { flex: 1; height: .25mm; background: var(--rule); }
+.hdr .bk { color: var(--muted); }
+.edge { position: absolute; top: 0; right: 0; width: 4mm; height: 34mm; background: var(--acc); }
+.page.even .edge { right: auto; left: 0; }
+.ftr { position: absolute; bottom: 8mm; left: 22mm; right: 16mm; display: flex; justify-content: space-between; align-items: center; font: 500 7pt 'Inter'; color: var(--muted); }
+.page.even .ftr { left: 16mm; right: 22mm; flex-direction: row-reverse; }
+.ftr .fol { font: 700 9pt 'Poppins'; color: var(--navy); display: flex; align-items: center; gap: 2mm; }
+.ftr .fol::before { content: ""; width: 2.2mm; height: 2.2mm; border-radius: 50%; background: var(--acc); }
+
+/* ---------- type ---------- */
+.kick { font: 600 7.8pt 'Inter'; letter-spacing: .06em; text-transform: uppercase; color: var(--acc-t); display: flex; align-items: center; gap: 2mm; }
+.h1 { font: 700 23pt/1.12 'Poppins'; color: var(--navy); letter-spacing: -.01em; margin-top: 1.6mm; }
+.h1 em { font-style: normal; color: var(--acc-t); }
+.lead { font: 400 10.4pt/1.55 'Inter'; color: var(--body); margin-top: 2.6mm; max-width: 150mm; }
+.h2 { font: 600 11pt/1.3 'Poppins'; color: var(--navy); display: flex; align-items: center; gap: 2.2mm; margin-bottom: 2.4mm; }
+.h3 { font: 600 9.6pt/1.3 'Inter'; color: var(--navy); }
+.sm { font-size: 8.6pt; line-height: 1.5; }
+.mut { color: var(--muted); }
+.cap { font: 500 7.4pt/1.4 'Inter'; color: var(--muted); margin-top: 1.6mm; }
+
+/* ---------- icon tiles ---------- */
+.ico { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 8mm; height: 8mm; border-radius: 1.8mm; background: color-mix(in srgb, var(--acc) 13%, white); color: var(--acc-t); }
+.ico svg { width: 4.6mm; height: 4.6mm; stroke-width: 1.75; }
+.ico.lg { width: 13mm; height: 13mm; border-radius: 2.6mm; } .ico.lg svg { width: 7.4mm; height: 7.4mm; }
+.ico.sm { width: 6mm; height: 6mm; border-radius: 1.4mm; } .ico.sm svg { width: 3.6mm; height: 3.6mm; }
+.ico.solid { background: var(--acc); color: #fff; }
+.ico.white { background: rgba(255,255,255,.14); color: #fff; }
+
+/* ---------- blocks ---------- */
+.row { display: grid; gap: 4.5mm; }
+.c2 { grid-template-columns: 1fr 1fr; } .c3 { grid-template-columns: repeat(3, 1fr); } .c4 { grid-template-columns: repeat(4, 1fr); }
+.mt { margin-top: 4.5mm; } .mts { margin-top: 2.6mm; } .grow { flex: 1; }
+.card { border-radius: 2mm; padding: 3.6mm 4mm; background: var(--grey); }
+.card.t { background: color-mix(in srgb, var(--acc) 8%, white); }
+.card.line { background: #fff; border: .3mm solid var(--rule); }
+.card.top { border-top: 1.2mm solid var(--acc); }
+.card .h3 { margin-bottom: 1.2mm; }
+.ch { display: flex; align-items: center; gap: 2.4mm; margin-bottom: 2mm; }
+.callout { display: flex; gap: 3mm; align-items: flex-start; border-radius: 2mm; padding: 3.4mm 4mm; background: color-mix(in srgb, var(--acc) 9%, white); border-left: 1.4mm solid var(--acc); }
+.callout .lbl { font: 600 7.6pt 'Inter'; letter-spacing: .05em; text-transform: uppercase; color: var(--acc-t); margin-bottom: .6mm; }
+.callout p { font-size: 9.6pt; line-height: 1.5; }
+.insight { --acc: var(--gold); --acc-t: var(--gold-t); }
+.action { --acc: var(--orange); --acc-t: var(--orange-t); }
+.parent { --acc: var(--blue); --acc-t: var(--blue-t); }
+.grow-c { --acc: var(--green); --acc-t: var(--green-t); }
+
+/* table with colour-coded header */
+.tbl { width: 100%; border-collapse: collapse; font-size: 8.8pt; }
+.tbl th { background: var(--acc); color: #fff; font: 600 8pt 'Inter'; text-align: left; padding: 2mm 3mm; }
+.tbl th:first-child { border-top-left-radius: 1.6mm; } .tbl th:last-child { border-top-right-radius: 1.6mm; }
+.tbl td { padding: 1.9mm 3mm; border-bottom: .25mm solid var(--rule); vertical-align: top; }
+.tbl tr:nth-child(even) td { background: color-mix(in srgb, var(--acc) 5%, white); }
+.tbl td:first-child { font-weight: 600; color: var(--navy); }
+
+/* write-in lines */
+.wl { height: 7.5mm; border-bottom: .3mm solid #C5CBD3; }
+.field { display: flex; align-items: flex-end; gap: 2mm; font: 500 8.4pt 'Inter'; color: var(--muted); }
+.field i { flex: 1; border-bottom: .3mm solid #C5CBD3; height: 6mm; }
+.box { width: 4mm; height: 4mm; border: .35mm solid var(--navy); border-radius: .8mm; display: inline-block; flex: none; }
+
+/* ============ COVER ============ */
+.cover .top { position: absolute; left: 0; right: 0; top: 0; height: 178mm; background: var(--navy); overflow: hidden; }
+.cover .photo { position: absolute; right: 0; top: 0; width: 104mm; height: 178mm; object-fit: cover; object-position: 50% 40%; }
+.cover .photo-fade { position: absolute; right: 0; top: 0; width: 104mm; height: 178mm; background: linear-gradient(90deg, var(--navy) 0, rgba(23,36,58,0) 26mm); }
+.cover .bars { position: absolute; left: 0; right: 0; top: 178mm; height: 4mm; display: flex; }
+.cover .bars i { flex: 1; }
+.cover .brand { position: absolute; left: 20mm; top: 18mm; display: flex; align-items: center; gap: 4mm; }
+.cover .brand .lg { background: #fff; border-radius: 2mm; padding: 2.4mm 3.4mm; } .cover .brand img { height: 10mm; display: block; }
+.cover .pub { font: 600 7.6pt 'Inter'; letter-spacing: .14em; color: rgba(255,255,255,.75); text-transform: uppercase; }
+.cover .ttl { position: absolute; left: 20mm; top: 66mm; width: 96mm; color: #fff; }
+.cover .series { font: 600 8.4pt 'Inter'; letter-spacing: .12em; text-transform: uppercase; color: #F6B8BB; }
+.cover .ed { display: inline-block; margin-top: 3mm; font: 600 8pt 'Inter'; color: var(--navy); background: var(--gold); padding: 1mm 3mm; border-radius: 1mm; }
+.cover h1 { font: 700 40pt/1.02 'Poppins'; color: #fff; letter-spacing: -.02em; margin-top: 7mm; }
+.cover .redrule { width: 22mm; height: 1.4mm; background: var(--red); margin: 7mm 0 0; }
+.cover .low { position: absolute; left: 20mm; right: 20mm; top: 194mm; }
+.cover .tag { font: 600 15pt/1.3 'Poppins'; color: var(--navy); }
+.cover .tag span { color: var(--red); }
+.cover .desc { font: 400 10.6pt/1.55 'Inter'; color: var(--body); margin-top: 2.6mm; max-width: 150mm; }
+.cover .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3.4mm; margin-top: 8mm; }
+.cover .fact { border-top: 1.2mm solid var(--acc); padding-top: 2.6mm; display: flex; gap: 2.4mm; align-items: flex-start; }
+.cover .fact b { display: block; font: 700 13pt/1.1 'Poppins'; color: var(--navy); }
+.cover .fact span { font: 500 7.8pt/1.35 'Inter'; color: var(--muted); }
+.cover .cft { position: absolute; left: 20mm; right: 20mm; bottom: 12mm; display: flex; justify-content: space-between; font: 500 8pt 'Inter'; color: var(--muted); border-top: .3mm solid var(--rule); padding-top: 3.4mm; }
+.cover .cft b { color: var(--red); }
+
+/* ============ CONTENTS ============ */
+.toc { display: grid; grid-template-columns: 1fr 1fr; column-gap: 7mm; row-gap: 3.2mm; margin-top: 5mm; }
+.tp { break-inside: avoid; }
+.tph { display: flex; align-items: center; gap: 2.6mm; padding: 1.6mm 0 1.6mm; border-bottom: .5mm solid var(--acc); }
+.tph .n { width: 8.4mm; height: 8.4mm; border-radius: 1.6mm; background: var(--acc); color: #fff; font: 700 10pt 'Poppins'; display: flex; align-items: center; justify-content: center; flex: none; }
+.tph .n svg { width: 4.4mm; height: 4.4mm; stroke-width: 1.9; }
+.tph b { flex: 1; font: 600 10pt/1.2 'Poppins'; color: var(--navy); }
+.tph em { font: 700 10pt 'Poppins'; font-style: normal; color: var(--acc-t); }
+.ts { display: flex; gap: 2mm; align-items: baseline; font-size: 8.3pt; line-height: 1.42; padding-left: 11mm; margin-top: .4mm; }
+.ts span { color: var(--body); } .ts i { flex: 1; border-bottom: .3mm dotted #B8BEC7; transform: translateY(-.8mm); } .ts b { font: 500 8.3pt 'Inter'; color: var(--muted); min-width: 5mm; text-align: right; }
+.tlegend { display: flex; gap: 2mm; margin-top: 3mm; }
+.tlegend div { flex: 1; display: flex; gap: 2mm; align-items: center; background: var(--grey); border-radius: 1.6mm; padding: 2mm 2.6mm; font: 500 7.8pt/1.3 'Inter'; color: var(--body); }
+
+/* ============ DIMENSION ============ */
+.dimhero { border-radius: 2.4mm; background: color-mix(in srgb, var(--acc) 10%, white); padding: 4.6mm 5mm; display: grid; grid-template-columns: auto 1fr auto; gap: 4.4mm; align-items: center; }
+.dimhero .big { font: 700 34pt/1 'Poppins'; color: var(--acc); }
+.dimhero .q { font: 500 10.6pt/1.4 'Inter'; color: var(--acc-t); margin-top: 1mm; }
+.dimhero .h1 { margin-top: .6mm; }
+.dprog { display: flex; gap: 1mm; margin-top: 2.4mm; } .dprog i { width: 7mm; height: 1.4mm; border-radius: .7mm; background: color-mix(in srgb, var(--acc) 22%, white); } .dprog i.on { background: var(--acc); }
+.pairs { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; }
+.pair { border-radius: 2mm; border: .3mm solid var(--rule); padding: 3mm 3.4mm; display: grid; grid-template-columns: auto 1fr; gap: 1mm 2.8mm; align-items: center; }
+.pair .ends { display: flex; align-items: center; gap: 1.6mm; font: 600 8.8pt 'Inter'; color: var(--navy); }
+.pair .ends span { color: var(--muted); font-weight: 500; font-size: 7.6pt; }
+.pair p { grid-column: 2; font-size: 8.3pt; color: var(--muted); line-height: 1.4; }
+.pair .k { font: 600 7.2pt 'Inter'; letter-spacing: .05em; text-transform: uppercase; color: var(--acc-t); }
+.sl { display: grid; grid-template-columns: 17mm 1fr 17mm; gap: 2mm; align-items: center; font: 500 7.8pt 'Inter'; color: var(--body); margin-bottom: 2.2mm; }
+.sl span:last-child { text-align: right; }
+.sl .tr { height: 2.4mm; border-radius: 1.2mm; background: color-mix(in srgb, var(--acc) 16%, white); position: relative; }
+.sl .tr::after { content: ""; position: absolute; left: 50%; top: -.8mm; bottom: -.8mm; width: .3mm; background: #9AA3AE; }
+.sl .tr i { position: absolute; top: 50%; width: 4mm; height: 4mm; border-radius: 50%; background: var(--acc); border: .7mm solid #fff; transform: translate(-50%, -50%); box-shadow: 0 0 0 .3mm var(--acc); z-index: 1; }
+.typecard { display: flex; gap: 3mm; align-items: center; background: var(--navy); color: #fff; border-radius: 2mm; padding: 2.6mm 3.4mm; margin-top: 1mm; }
+.typecard b { font: 700 16pt 'Poppins'; color: #fff; letter-spacing: .04em; } .typecard span { font: 400 8pt/1.35 'Inter'; color: rgba(255,255,255,.85); }
+.ages { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.6mm; }
+.age { border-radius: 2mm; background: color-mix(in srgb, var(--orange) 10%, white); padding: 2.8mm 3mm; border-top: 1.1mm solid var(--orange); }
+.age b { display: block; font: 600 8.4pt 'Inter'; color: var(--orange-t); margin-bottom: .6mm; } .age span { font-size: 8.2pt; line-height: 1.42; display: block; }
+.refl { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; }
+
+/* ============ DASHBOARD ============ */
+.flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.4mm 6mm; }
+.fstep { position: relative; border-radius: 2mm; background: color-mix(in srgb, var(--acc) 8%, white); padding: 3.2mm 3.6mm 3.4mm; }
+.fstep .top { display: flex; align-items: center; gap: 2.4mm; margin-bottom: 1.6mm; }
+.fstep .num { font: 700 15pt/1 'Poppins'; color: var(--acc); }
+.fstep .h3 { font-size: 9.4pt; }
+.fstep p { font-size: 8.4pt; line-height: 1.45; }
+.fstep:not(:nth-child(3n))::after { content: ""; position: absolute; right: -4.4mm; top: 50%; width: 2.6mm; height: 2.6mm; border-top: .5mm solid var(--acc); border-right: .5mm solid var(--acc); transform: translateY(-50%) rotate(45deg); }
+.shot { border-radius: 2mm; border: .3mm solid #CBD2DA; overflow: hidden; background: #fff; position: relative; }
+.shot .bar { height: 5mm; background: var(--grey); border-bottom: .3mm solid #DDE2E8; display: flex; align-items: center; gap: 1.2mm; padding: 0 2.4mm; font: 500 6.4pt 'Inter'; color: var(--muted); }
+.shot .bar i { width: 1.6mm; height: 1.6mm; border-radius: 50%; background: #C9CFD7; }
+.shot .bar span { margin-left: 2mm; background: #fff; border-radius: 1mm; padding: .3mm 2.4mm; }
+.shot .im { position: relative; } .shot img { display: block; width: 100%; }
+.pin { position: absolute; width: 5mm; height: 5mm; border-radius: 50%; background: var(--red); color: #fff; font: 700 7.4pt/5mm 'Poppins'; text-align: center; border: .5mm solid #fff; transform: translate(-50%, -50%); }
+.keys { display: grid; gap: 1.8mm; margin-top: 2.6mm; }
+.key { display: grid; grid-template-columns: 5mm 1fr; gap: 2.2mm; align-items: start; font-size: 8.2pt; line-height: 1.4; }
+.key .pn { width: 5mm; height: 5mm; border-radius: 50%; background: var(--red); color: #fff; font: 700 7.4pt/5mm 'Poppins'; text-align: center; }
+.rhythm { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-radius: 2mm; overflow: hidden; border: .3mm solid var(--rule); }
+.rh { padding: 3mm 3.4mm; border-right: .3mm solid var(--rule); }
+.rh:last-child { border-right: 0; }
+.rh .when { display: flex; align-items: center; gap: 2mm; font: 600 8.6pt 'Inter'; color: #fff; background: var(--acc); margin: -3mm -3.4mm 2.4mm; padding: 2.2mm 3.4mm; }
+.rh .when svg { width: 3.8mm; height: 3.8mm; stroke-width: 2; }
+.rh b { display: block; font-size: 8.8pt; line-height: 1.35; margin-bottom: 1mm; }
+.rh span { font-size: 7.8pt; color: var(--muted); display: flex; gap: 1.2mm; align-items: center; }
+.rh span svg { width: 3mm; height: 3mm; }
+
+/* ============ 90-DAY PLAN ============ */
+.mine { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; }
+.mine .card { padding: 3mm 3.4mm; }
+.phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.4mm; }
+.ph { border-radius: 2mm; overflow: hidden; border: .3mm solid var(--rule); display: flex; flex-direction: column; }
+.ph .phh { background: var(--acc); color: #fff; padding: 3mm 3.6mm; display: flex; align-items: center; gap: 2.6mm; }
+.ph .phh b { color: #fff; font: 700 11pt/1.1 'Poppins'; display: block; } .ph .phh small { font: 500 7.6pt 'Inter'; color: rgba(255,255,255,.85); }
+.ph .phb { padding: 3mm 3.6mm; flex: 1; display: flex; flex-direction: column; gap: 2mm; }
+.ph .lab { font: 600 7.2pt 'Inter'; letter-spacing: .05em; text-transform: uppercase; color: var(--acc-t); }
+.ph .val { font: 500 9pt/1.4 'Inter'; color: var(--navy); }
+.ph .chk { display: flex; gap: 2mm; align-items: flex-end; } .ph .chk i { flex: 1; border-bottom: .3mm solid #C5CBD3; height: 5.4mm; }
+.timeline { display: grid; grid-template-columns: repeat(13, 1fr); gap: 1.2mm; align-items: end; }
+.timeline .wk { text-align: center; font: 500 6.8pt 'Inter'; color: var(--muted); }
+.timeline .wk i { display: block; height: 7mm; border-radius: 1.2mm; border: .35mm solid var(--acc); margin-bottom: 1mm; }
+.timeline .lbl { font: 600 7.6pt 'Inter'; color: var(--navy); align-self: center; }
+.sign { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6mm; margin-top: 3mm; }
+
+/* ---- v3 refinements after first render ---- */
+.callout p.sm, .card p.sm { font-size: 8.4pt; line-height: 1.46; }
+.cover .photo-fade { display: none; }
+.cover .photo { border-left: 1.4mm solid var(--red); }
+.cover .desc { max-width: 170mm; }
+.cover .trust { margin-top: 9mm; display: flex; align-items: center; gap: 5mm; }
+.cover .trust > span { font: 600 7.4pt 'Inter'; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); width: 26mm; flex: none; line-height: 1.35; }
+.cover .trust div { flex: 1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 4mm; align-items: center; }
+.cover .trust img { max-height: 13mm; max-width: 100%; margin: auto; display: block; object-fit: contain; }
+.toc { margin-top: 4mm; row-gap: 0; }
+.tp { margin-bottom: 2.6mm; }
+.tph { padding: 1mm 0; } .tph .n { width: 7.4mm; height: 7.4mm; font-size: 9pt; }
+.ts { font-size: 8.2pt; line-height: 1.36; }
+.dimhero { padding: 3.6mm 4.6mm; } .dimhero .big { font-size: 28pt; }
+.row.c3 .card { padding: 3mm 3.4mm; }
+.pair { padding: 2.4mm 3mm; gap: .6mm 2.6mm; } .pair p { font-size: 8pt; }
+.sl { display: block; margin-bottom: 2.6mm; }
+.sl .lr { display: flex; justify-content: space-between; font: 500 7.6pt 'Inter'; color: var(--body); margin-bottom: 1.2mm; }
+.sl .lr b { color: var(--acc-t); }
+.age { padding: 2.4mm 2.8mm; }
+.flow { gap: 3mm 6mm; } .fstep { padding: 2.6mm 3.2mm 2.8mm; } .fstep .top { margin-bottom: 1mm; } .fstep p { font-size: 8.2pt; }
+.lead { margin-top: 2mm; }
+.ph .phb { gap: 2.4mm; }
+.timeline .wk i { height: 9mm; }
+.mt { margin-top: 3.8mm; }
+.dimhero { grid-template-columns: auto 1fr auto; }
+.dimhero .simple { grid-column: 1 / -1; display: flex; gap: 2.6mm; align-items: flex-start; border-top: .3mm solid color-mix(in srgb, var(--acc) 30%, white); padding-top: 3mm; }
+.dimhero .simple p { font-size: 9.2pt; line-height: 1.5; }
+.dimhero .simple .lbl, .callout .lbl { font: 600 7.4pt 'Inter'; letter-spacing: .05em; text-transform: uppercase; color: var(--gold-t); }
+.callout .lbl { color: var(--acc-t); }
+.prs { display: grid; gap: 2.2mm; }
+.pr { display: grid; grid-template-columns: 8mm 1fr 42mm; gap: 2.8mm; align-items: center; border: .3mm solid var(--rule); border-radius: 2mm; padding: 2.2mm 3mm; }
+.pr .k { font: 600 8.6pt 'Inter'; color: var(--navy); } .pr p { font-size: 7.9pt; line-height: 1.35; color: var(--muted); }
+.pr .sl { margin: 0; }
+.tbl.c4t td:nth-child(3) { font-weight: 600; color: var(--navy); border-left: .3mm solid var(--rule); }
+.tbl.c4t th:nth-child(3) { border-left: .3mm solid rgba(255,255,255,.4); }
+.grow-end { margin-top: auto !important; }
+.rh { padding: 2.6mm 3.2mm; } .rh .when { margin: -2.6mm -3.2mm 2mm; padding: 1.8mm 3.2mm; } .rh b { font-size: 8.4pt; }
+.flow { margin-top: 3.4mm; }
+.dimhero { grid-template-columns: auto 74mm 1fr; align-items: center; padding: 3.6mm 4.2mm; }
+.dimhero .simple { grid-column: auto; border-top: 0; border-left: .3mm solid color-mix(in srgb, var(--acc) 35%, white); padding: 0 0 0 4mm; }
+.dimhero .simple .ico { display: none; }
+.dimhero .simple p { font-size: 8.5pt; line-height: 1.45; }
+.dimhero .simple .lbl { display: block; margin-bottom: .6mm; }
+.row.c3 .card p.sm { font-size: 8.1pt; line-height: 1.42; }
+.pr { padding: 1.8mm 2.8mm; } .pr p { font-size: 7.7pt; }
+.prs { gap: 1.8mm; }
+.age span { font-size: 8pt; line-height: 1.38; }
+.refl .field i { height: 5mm; }
+.h2 { font-size: 10.6pt; margin-bottom: 2mm; }
+.tbl th { padding: 1.6mm 2.6mm; font-size: 7.6pt; } .tbl td { padding: 1.6mm 2.6mm; font-size: 8.3pt; line-height: 1.4; }
+.row.c3 .card { padding: 2.8mm 3.2mm; } .card .ch { margin-bottom: 1.4mm; }
+.dimhero .ico.lg { width: 12mm; height: 12mm; }
+.flow .fstep .h3 { white-space: nowrap; }
+.mt { margin-top: 3.4mm; }
+.age { padding: 2.2mm 2.6mm; }
+.fstep p { line-height: 1.4; }
+.phases.grow { flex: 1; } .ph .phb { justify-content: space-between; }
+.ph .chk i { height: 6.4mm; }
+.sign { margin-top: 5mm; }
+</style></head><body><section class="page cover ch-red">
+<div class="top">
+  <img class="photo" src="assets/gallery/g02.jpg" alt="Students in a OneGrasp career session">
+  <div class="photo-fade"></div>
+  <div class="brand"><div class="lg"><img src="assets/art/logo.png" alt="OneGrasp"></div><div class="pub">OneGrasp Education Pvt. Ltd.</div></div>
+  <div class="ttl">
+    <div class="series">Career Fitment Assessment</div>
+    <div class="ed">2026–27 Edition</div>
+    <h1>Career Fitment Handbook</h1>
+    <div class="redrule"></div>
+  </div>
+</div>
+<div class="bars"><i style="background:var(--red)"></i><i style="background:var(--orange)"></i><i style="background:var(--gold)"></i><i style="background:var(--green)"></i><i style="background:var(--blue)"></i><i style="background:var(--purple)"></i></div>
+<div class="low">
+  <div class="tag">Know Yourself. <span>Choose Your Path.</span> Build Your Future.</div>
+  <p class="desc">A comprehensive career guidance and student development handbook for Classes 6–12.</p>
+  <div class="facts"><div class="fact ch-purple"><span class="ico "><svg
+  data-i="lucide lucide-brain"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z" />
+  <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z" />
+  <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4" />
+  <path d="M17.599 6.5a3 3 0 0 0 .399-1.375" />
+  <path d="M6.003 5.125A3 3 0 0 0 6.401 6.5" />
+  <path d="M3.477 10.896a4 4 0 0 1 .585-.396" />
+  <path d="M19.938 10.5a4 4 0 0 1 .585.396" />
+  <path d="M6 18a4 4 0 0 1-1.967-.516" />
+  <path d="M19.967 17.484A4 4 0 0 1 18 18" />
+</svg>
+</span><div><b>8</b><span>dimensions measured</span></div></div><div class="fact ch-blue"><span class="ico "><svg
+  data-i="lucide lucide-school"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M14 22v-4a2 2 0 1 0-4 0v4" />
+  <path d="m18 10 3.447 1.724a1 1 0 0 1 .553.894V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-7.382a1 1 0 0 1 .553-.894L6 10" />
+  <path d="M18 5v17" />
+  <path d="m4 6 7.106-3.553a2 2 0 0 1 1.788 0L20 6" />
+  <path d="M6 5v17" />
+  <circle cx="12" cy="9" r="2" />
+</svg>
+</span><div><b>6–12</b><span>classes covered</span></div></div><div class="fact ch-orange"><span class="ico "><svg
+  data-i="lucide lucide-layout-dashboard"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="7" height="9" x="3" y="3" rx="1" />
+  <rect width="7" height="5" x="14" y="3" rx="1" />
+  <rect width="7" height="9" x="14" y="12" rx="1" />
+  <rect width="7" height="5" x="3" y="16" rx="1" />
+</svg>
+</span><div><b>10</b><span>parts, with dashboard guides</span></div></div><div class="fact ch-green"><span class="ico "><svg
+  data-i="lucide lucide-list-checks"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m3 17 2 2 4-4" />
+  <path d="m3 7 2 2 4-4" />
+  <path d="M13 6h8" />
+  <path d="M13 12h8" />
+  <path d="M13 18h8" />
+</svg>
+</span><div><b>Workbook</b><span>activities and action plans</span></div></div></div>
+</div>
+<div class="trust" style="position:absolute;left:20mm;right:20mm;bottom:24mm"><span>Schools that chose OneGrasp</span><div><img src="assets/logos/school-shanthinikethan.png" alt=""><img src="assets/logos/school-dps.png" alt=""><img src="assets/logos/school-oxford.png" alt=""><img src="assets/logos/school-excellencia.png" alt=""></div></div>
+<div class="cft"><span>For students, parents, teachers and schools</span><b>careerfitment.onegrasp.com</b></div></section><section class="page even  ch-red"><div class="edge"></div><div class="hdr"><span class="chname">Contents</span><span class="line"></span><span class="bk">Career Fitment Handbook 2026–27</span></div><div class="ftr"><span class="fol">2</span><span>OneGrasp Education Pvt. Ltd. · careerfitment.onegrasp.com</span></div><div class="pc">
+<div class="kick">Contents</div>
+<h1 class="h1">What's inside <em>this handbook</em></h1>
+<div class="tlegend" style="display:none"><div class="ch-purple"><span class="ico sm"><svg
+  data-i="lucide lucide-brain"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z" />
+  <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z" />
+  <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4" />
+  <path d="M17.599 6.5a3 3 0 0 0 .399-1.375" />
+  <path d="M6.003 5.125A3 3 0 0 0 6.401 6.5" />
+  <path d="M3.477 10.896a4 4 0 0 1 .585-.396" />
+  <path d="M19.938 10.5a4 4 0 0 1 .585.396" />
+  <path d="M6 18a4 4 0 0 1-1.967-.516" />
+  <path d="M19.967 17.484A4 4 0 0 1 18 18" />
+</svg>
+</span><span><b>Understand yourself</b><br>Parts 2–4</span></div><div class="ch-orange"><span class="ico sm"><svg
+  data-i="lucide lucide-layout-dashboard"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="7" height="9" x="3" y="3" rx="1" />
+  <rect width="7" height="5" x="14" y="3" rx="1" />
+  <rect width="7" height="9" x="14" y="12" rx="1" />
+  <rect width="7" height="5" x="3" y="16" rx="1" />
+</svg>
+</span><span><b>Use the dashboard</b><br>Parts 5–8</span></div><div class="ch-blue"><span class="ico sm"><svg
+  data-i="lucide lucide-heart-handshake"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+  <path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66" />
+  <path d="m18 15-2-2" />
+  <path d="m15 18-2-2" />
+</svg>
+</span><span><b>For parents and schools</b><br>Part 9</span></div><div class="ch-green"><span class="ico sm"><svg
+  data-i="lucide lucide-flag"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
+  <line x1="4" x2="4" y1="22" y2="15" />
+</svg>
+</span><span><b>Plan and act</b><br>Part 10</span></div></div>
+<div class="toc"><div><div class="tp ch-navy"><div class="tph"><span class="n"><svg
+  data-i="lucide lucide-compass"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" />
+  <circle cx="12" cy="12" r="10" />
+</svg>
+</span><b>Getting started</b><em>3</em></div><div class="ts"><span>Start here</span><i></i><b>3</b></div><div class="ts"><span>Our partners and collaborations</span><i></i><b>4</b></div><div class="ts"><span>Our international scientific committee</span><i></i><b>5</b></div><div class="ts"><span>Activity 1: Predict yourself</span><i></i><b>6</b></div><div class="ts"><span>Activity 2: The 2-minute interest quiz</span><i></i><b>7</b></div></div><div class="tp ch-red"><div class="tph"><span class="n">01</span><b>Meet OneGrasp</b><em>8</em></div><div class="ts"><span>What is OneGrasp?</span><i></i><b>9</b></div><div class="ts"><span>Why career choices go wrong</span><i></i><b>10</b></div><div class="ts"><span>The future of work</span><i></i><b>11</b></div><div class="ts"><span>Real schools, real students</span><i></i><b>12</b></div></div><div class="tp ch-blue"><div class="tph"><span class="n">02</span><b>The Assessment</b><em>13</em></div><div class="ts"><span>What is a psychometric assessment?</span><i></i><b>14</b></div><div class="ts"><span>What we measure: the 8 dimensions</span><i></i><b>15</b></div><div class="ts"><span>The science behind every question</span><i></i><b>16</b></div><div class="ts"><span>Before you begin</span><i></i><b>17</b></div><div class="ts"><span>Registering, step by step</span><i></i><b>18</b></div><div class="ts"><span>Inside the exam screen</span><i></i><b>19</b></div><div class="ts"><span>Six kinds of questions</span><i></i><b>20</b></div><div class="ts"><span>Built to be trusted</span><i></i><b>21</b></div><div class="ts"><span>After you finish</span><i></i><b>22</b></div></div><div class="tp ch-purple"><div class="tph"><span class="n">03</span><b>The 8 Dimensions</b><em>23</em></div><div class="ts"><span>01 Personality</span><i></i><b>24</b></div><div class="ts"><span>02 Career Interests</span><i></i><b>25</b></div><div class="ts"><span>03 Multiple Intelligences</span><i></i><b>26</b></div><div class="ts"><span>04 Emotional Intelligence</span><i></i><b>27</b></div><div class="ts"><span>05 Learning Style</span><i></i><b>28</b></div><div class="ts"><span>06 Motivators</span><i></i><b>29</b></div><div class="ts"><span>07 Strengths</span><i></i><b>30</b></div><div class="ts"><span>08 Aptitude</span><i></i><b>31</b></div><div class="ts"><span>See your career progress</span><i></i><b>32</b></div></div><div class="tp ch-blue"><div class="tph"><span class="n">04</span><b>Your Report at a Glance</b><em>33</em></div><div class="ts"><span>How to read your report</span><i></i><b>34</b></div><div class="ts"><span>Your report, page by page</span><i></i><b>35</b></div><div class="ts"><span>Your scorecard and deep dives</span><i></i><b>36</b></div><div class="ts"><span>Careers that fit you</span><i></i><b>37</b></div><div class="ts"><span>Your dream career vs your result</span><i></i><b>38</b></div><div class="ts"><span>Choosing your stream</span><i></i><b>39</b></div><div class="ts"><span>The 15 career domains</span><i></i><b>40</b></div><div class="ts"><span>Your roadmap and next steps</span><i></i><b>41</b></div><div class="ts"><span>Meet Ananya: a worked example</span><i></i><b>42</b></div><div class="ts"><span>Reality check: how well do you know yourself?</span><i></i><b>43</b></div></div></div><div><div class="tp ch-orange"><div class="tph"><span class="n">05</span><b>Your Dashboard: Explore</b><em>44</em></div><div class="ts"><span>How to use your dashboard</span><i></i><b>45</b></div><div class="ts"><span>Your dashboard home</span><i></i><b>46</b></div><div class="ts"><span>Finding your way, and your results</span><i></i><b>47</b></div><div class="ts"><span>Your results pages</span><i></i><b>48</b></div><div class="ts"><span>Career Library</span><i></i><b>49</b></div><div class="ts"><span>Entrance Exams</span><i></i><b>52</b></div><div class="ts"><span>Scholarships</span><i></i><b>55</b></div><div class="ts"><span>Study Abroad</span><i></i><b>58</b></div><div class="ts"><span>Internships & Jobs</span><i></i><b>61</b></div><div class="ts"><span>Where do I find…?</span><i></i><b>64</b></div></div><div class="tp ch-green"><div class="tph"><span class="n">06</span><b>Skills for Life & Work</b><em>65</em></div><div class="ts"><span>Financial Literacy</span><i></i><b>66</b></div><div class="ts"><span>Law & Rights</span><i></i><b>69</b></div><div class="ts"><span>AI & Certifications</span><i></i><b>72</b></div><div class="ts"><span>Communication Lab</span><i></i><b>75</b></div><div class="ts"><span>Resume & Interview</span><i></i><b>78</b></div><div class="ts"><span>Portfolio, Passport, GPS & Progress</span><i></i><b>81</b></div><div class="ts"><span>Spotlight</span><i></i><b>84</b></div></div><div class="tp ch-gold"><div class="tph"><span class="n">07</span><b>Startups & Funding</b><em>86</em></div><div class="ts"><span>The Startups course</span><i></i><b>87</b></div><div class="ts"><span>Spot, Build, Pitch</span><i></i><b>90</b></div><div class="ts"><span>How to use the Funding directory</span><i></i><b>91</b></div></div><div class="tp ch-blue"><div class="tph"><span class="n">08</span><b>Research & Conferences</b><em>96</em></div><div class="ts"><span>The Research Studio</span><i></i><b>97</b></div><div class="ts"><span>International scientific conferences</span><i></i><b>100</b></div><div class="ts"><span>The researcher journey</span><i></i><b>101</b></div><div class="ts"><span>The OneGrasp Scientific Committee</span><i></i><b>102</b></div><div class="ts"><span>Featured member: Dr Rudrarup Gupta</span><i></i><b>103</b></div><div class="ts"><span>Keynotes, awards and the conference day</span><i></i><b>104</b></div></div><div class="tp ch-red"><div class="tph"><span class="n">09</span><b>Parents & Schools</b><em>105</em></div><div class="ts"><span>For parents: guide, not decide</span><i></i><b>106</b></div><div class="ts"><span>Ten questions to talk through</span><i></i><b>107</b></div><div class="ts"><span>For schools: the Institution Portal</span><i></i><b>108</b></div><div class="ts"><span>What everyone gains</span><i></i><b>109</b></div><div class="ts"><span>Questions people often ask</span><i></i><b>110</b></div></div><div class="tp ch-orange"><div class="tph"><span class="n">10</span><b>Your Action Plan</b><em>111</em></div><div class="ts"><span>The 30-day kickstart challenge</span><i></i><b>112</b></div><div class="ts"><span>Your year: Class 6–10</span><i></i><b>114</b></div><div class="ts"><span>Your year: Class 11–12</span><i></i><b>115</b></div><div class="ts"><span>Your 90-day plan</span><i></i><b>116</b></div><div class="ts"><span>My profile on one page</span><i></i><b>117</b></div><div class="ts"><span>My weekly tracker</span><i></i><b>118</b></div><div class="ts"><span>My achievements and certificates</span><i></i><b>119</b></div></div></div></div></div></section><section class="page even  ch-purple"><div class="edge"></div><div class="hdr"><span class="chno">03</span><span class="chname">The 8 Dimensions</span><span class="line"></span><span class="bk">Career Fitment Handbook 2026–27</span></div><div class="ftr"><span class="fol">24</span><span>OneGrasp Education Pvt. Ltd. · careerfitment.onegrasp.com</span></div><div class="pc">
+<div class="dimhero">
+  <span class="ico lg solid"><svg
+  data-i="lucide lucide-fingerprint"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+  <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+  <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
+  <path d="M2 12a10 10 0 0 1 18-6" />
+  <path d="M2 16h.01" />
+  <path d="M21.8 16c.2-2 .131-5.354 0-6" />
+  <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
+  <path d="M8.65 22c.21-.66.45-1.32.57-2" />
+  <path d="M9 6.8a6 6 0 0 1 9 5.2v2" />
+</svg>
+</span>
+  <div><div class="kick">Dimension 01 of 08</div><h1 class="h1">Personality</h1><div class="q">“How do I naturally work and decide?”</div>
+  <div class="dprog"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+  <div class="simple"><span class="ico sm"><svg
+  data-i="lucide lucide-lightbulb"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
+  <path d="M9 18h6" />
+  <path d="M10 22h4" />
+</svg>
+</span><p><span class="lbl">In simple words</span> Your personality is your <b>natural style</b>, like being left- or right-handed. You can use both hands, but one feels easier. This dimension finds the style that feels easiest for you, so you can choose work where you don't have to fight yourself every day.</p></div>
+</div>
+<div class="row c3 mt">
+  <div class="card t"><div class="ch"><span class="ico sm"><svg
+  data-i="lucide lucide-ruler"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z" />
+  <path d="m14.5 12.5 2-2" />
+  <path d="m11.5 9.5 2-2" />
+  <path d="m8.5 6.5 2-2" />
+  <path d="m17.5 15.5 2-2" />
+</svg>
+</span><span class="h3">What it measures</span></div><p class="sm">Where you get your energy, how you take in information, how you make decisions and how you like to plan. These patterns shape how you prefer to work with others, handle tasks and make choices.</p></div>
+  <div class="card t"><div class="ch"><span class="ico sm"><svg
+  data-i="lucide lucide-book-open"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 7v14" />
+  <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" />
+</svg>
+</span><span class="h3">The framework</span></div><p class="sm">Personality-type preferences in four pairs, widely known as MBTI-style typing (from Carl Jung's work, developed by Myers and Briggs). Some stages also look at the five everyday traits psychologists call the Big Five.</p></div>
+  <div class="card t"><div class="ch"><span class="ico sm"><svg
+  data-i="lucide lucide-target"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="10" />
+  <circle cx="12" cy="12" r="6" />
+  <circle cx="12" cy="12" r="2" />
+</svg>
+</span><span class="h3">Why it matters</span></div><p class="sm">Different work settings suit different patterns. Knowing your personality helps you pick paths where you contribute in your natural way, enjoy the work and grow steadily.</p></div>
+</div>
+<div class="row mt" style="grid-template-columns:1.18fr .82fr">
+  <div><div class="h2"><span class="ico sm"><svg
+  data-i="lucide lucide-layers"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z" />
+  <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65" />
+  <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65" />
+</svg>
+</span>The four preference pairs</div>
+    <div class="prs"><div class="pr"><span class="ico "><svg
+  data-i="lucide lucide-battery-charging"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M15 7h1a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2" />
+  <path d="M6 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h1" />
+  <path d="m11 7-3 5h4l-3 5" />
+  <line x1="22" x2="22" y1="11" y2="13" />
+</svg>
+</span><div><div class="k">Energy</div><p>Do you recharge alone or with people?</p></div><div class="sl"><div class="lr"><b>Introvert</b><span>Extravert</span></div><div class="tr"><i style="left:28%"></i></div></div></div><div class="pr"><span class="ico "><svg
+  data-i="lucide lucide-eye"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+  <circle cx="12" cy="12" r="3" />
+</svg>
+</span><div><div class="k">Information</div><p>Facts and details, or patterns and possibilities?</p></div><div class="sl"><div class="lr">Sensing<span><b>Intuition</b></span></div><div class="tr"><i style="left:64%"></i></div></div></div><div class="pr"><span class="ico "><svg
+  data-i="lucide lucide-scale"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" />
+  <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" />
+  <path d="M7 21h10" />
+  <path d="M12 3v18" />
+  <path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2" />
+</svg>
+</span><div><div class="k">Decisions</div><p>Logic first, or values and people first?</p></div><div class="sl"><div class="lr">Thinking<span><b>Feeling</b></span></div><div class="tr"><i style="left:72%"></i></div></div></div><div class="pr"><span class="ico "><svg
+  data-i="lucide lucide-calendar-check"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8 2v4" />
+  <path d="M16 2v4" />
+  <rect width="18" height="18" x="3" y="4" rx="2" />
+  <path d="M3 10h18" />
+  <path d="m9 16 2 2 4-4" />
+</svg>
+</span><div><div class="k">Planning</div><p>A clear plan, or keep options open?</p></div><div class="sl"><div class="lr"><b>Judging</b><span>Perceiving</span></div><div class="tr"><i style="left:30%"></i></div></div></div></div></div>
+  <div style="display:flex;flex-direction:column;gap:3.4mm">
+    <div><div class="typecard"><b>ISFJ</b><span>“The Defender” · quiet, practical, caring, organised</span></div>
+    <p class="cap">Each slider shows which side you lean to and how clearly. Your four letters together make your type, for example ISFJ. <i>Illustrative.</i></p></div>
+    <div class="callout grow-c" style="flex:1"><span class="ico sm"><svg
+  data-i="lucide lucide-users"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <circle cx="9" cy="7" r="4" />
+  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+</svg>
+</span><div><div class="lbl">Example</div><p class="sm">Before a school trip, <b>Ravi</b> makes a checklist a week early (Judging); <b>Meera</b> packs the night before and enjoys deciding on the spot (Perceiving). Neither is wrong. But Ravi may enjoy project management, and Meera may thrive in fast-changing roles like journalism or event work.</p></div></div>
+  </div>
+</div>
+<div class="h2 mt"><span class="ico sm"><svg
+  data-i="lucide lucide-briefcase"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+  <rect width="20" height="14" x="2" y="6" rx="2" />
+</svg>
+</span>Careers that often suit each pattern</div>
+<table class="tbl c4t"><colgroup><col style="width:19%"><col style="width:31%"><col style="width:19%"><col style="width:31%"></colgroup><tr><th>If you lean towards…</th><th>You may enjoy careers such as…</th><th>If you lean towards…</th><th>You may enjoy careers such as…</th></tr><tr><td>Introversion + Sensing</td><td>Accountant, lab scientist, software developer, archivist</td><td>Intuition + Thinking</td><td>Engineer, scientist, strategist, architect, entrepreneur</td></tr><tr><td>Extraversion + Feeling</td><td>Teacher, counsellor, HR, sales, hospitality</td><td>Sensing + Judging</td><td>Doctor, civil services, operations, banking, law</td></tr></table>
+<div class="h2 mt"><span class="ico sm"><svg
+  data-i="lucide lucide-footprints"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z" />
+  <path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z" />
+  <path d="M16 17h4" />
+  <path d="M4 13h4" />
+</svg>
+</span><span>Try this at your stage</span></div>
+<div class="ages"><div class="age"><b>Class 6–8</b><span>Notice when you feel most energetic: in a group or alone.</span></div><div class="age"><b>Class 9–10</b><span>Pick one club that uses your type's strengths.</span></div><div class="age"><b>Class 11–12</b><span>Compare your type with your top career's daily work.</span></div><div class="age"><b>With your family</b><span>Ask a parent which of your four letters sound like you.</span></div></div>
+<div class="card t mt grow-end" style="padding:3mm 4mm"><div class="ch" style="margin-bottom:1mm"><span class="ico sm"><svg
+  data-i="lucide lucide-pen-line"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 20h9" />
+  <path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z" />
+</svg>
+</span><span class="h3">Fill in from your report</span><span class="mut sm" style="margin-left:auto">There is no good or bad personality, only better fits.</span></div>
+  <div class="refl"><div class="field">My score<i></i></div><div class="field">My top result<i></i></div><div class="field">One way I'll use it<i></i></div></div></div>
+</div></section><section class="page odd  ch-orange"><div class="edge"></div><div class="hdr"><span class="chno">05</span><span class="chname">Your Dashboard: Explore</span><span class="line"></span><span class="bk">Career Fitment Handbook 2026–27</span></div><div class="ftr"><span class="fol">45</span><span>OneGrasp Education Pvt. Ltd. · careerfitment.onegrasp.com</span></div><div class="pc">
+<div class="kick"><span class="ico sm"><svg
+  data-i="lucide lucide-map"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z" />
+  <path d="M15 5.764v15" />
+  <path d="M9 3.236v15" />
+</svg>
+</span>Start here</div>
+<h1 class="h1">How to use <em>your dashboard</em></h1>
+<p class="lead">Your dashboard is where the report turns into action. Use it in this order the first time, then come back every week.</p>
+<div class="flow mt"><div class="fstep"><div class="top"><span class="num">01</span><span class="ico sm solid"><svg
+  data-i="lucide lucide-log-in"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+  <polyline points="10 17 15 12 10 7" />
+  <line x1="15" x2="3" y1="12" y2="12" />
+</svg>
+</span><span class="h3">Sign in</span></div><p>Go to <b>careerfitment.onegrasp.com</b> and sign in with the email and password you used for the assessment.</p></div><div class="fstep"><div class="top"><span class="num">02</span><span class="ico sm solid"><svg
+  data-i="lucide lucide-file-text"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+  <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+  <path d="M10 9H8" />
+  <path d="M16 13H8" />
+  <path d="M16 17H8" />
+</svg>
+</span><span class="h3">Open your report</span></div><p>On the home screen tap <b>Open my full report</b>. Use <b>Download</b> to save the PDF.</p></div><div class="fstep"><div class="top"><span class="num">03</span><span class="ico sm solid"><svg
+  data-i="lucide lucide-chart-pie"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z" />
+  <path d="M21.21 15.89A10 10 0 1 1 8 2.83" />
+</svg>
+</span><span class="h3">Explore your results</span></div><p>In the left menu, open <b>Your results</b>: profile, 8 dimensions, best-fit fields, how you think, my plan.</p></div><div class="fstep"><div class="top"><span class="num">04</span><span class="ico sm solid"><svg
+  data-i="lucide lucide-compass"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" />
+  <circle cx="12" cy="12" r="10" />
+</svg>
+</span><span class="h3">Pick a tool</span></div><p>Choose a tool from <b>Explore</b> in the left menu, starting with your top career field in the Career Library.</p></div><div class="fstep"><div class="top"><span class="num">05</span><span class="ico sm solid"><svg
+  data-i="lucide lucide-list-checks"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m3 17 2 2 4-4" />
+  <path d="m3 7 2 2 4-4" />
+  <path d="M13 6h8" />
+  <path d="M13 12h8" />
+  <path d="M13 18h8" />
+</svg>
+</span><span class="h3">Do the missions</span></div><p>Each tool chapter in this book ends with a mission card. Tick tasks off as you finish them on the dashboard.</p></div><div class="fstep"><div class="top"><span class="num">06</span><span class="ico sm solid"><svg
+  data-i="lucide lucide-trending-up"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+  <polyline points="16 7 22 7 22 13" />
+</svg>
+</span><span class="h3">Track your progress</span></div><p>Open <b>My Progress</b> to see lessons done, time spent and your streak; collect certificates as you finish courses.</p></div></div>
+<div class="row mt" style="grid-template-columns:1.25fr .75fr">
+  <figure><div class="shot"><div class="bar"><i></i><i></i><i></i><span>careerfitment.onegrasp.com</span></div><div class="im"><img src="assets/shots/dash-home.jpg" alt=""><span class="pin" style="left:9%;top:11%">1</span><span class="pin" style="left:33%;top:3.5%">2</span><span class="pin" style="left:63%;top:3.5%">3</span><span class="pin" style="left:80%;top:17%">4</span><span class="pin" style="left:92%;top:17%">5</span><span class="pin" style="left:23%;top:28%">6</span><span class="pin" style="left:9%;top:22%">7</span><span class="pin" style="left:9%;top:74%">8</span></div></div><figcaption class="cap">The dashboard home: report at the top, tools below, menu on the left.</figcaption></figure>
+  <div><div class="h2"><span class="ico sm"><svg
+  data-i="lucide lucide-mouse-pointer-click"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M14 4.1 12 6" />
+  <path d="m5.1 8-2.9-.8" />
+  <path d="m6 12-1.9 2" />
+  <path d="M7.2 2.2 8 5.1" />
+  <path d="M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z" />
+</svg>
+</span>What you see</div><div class="keys"><div class="key"><span class="pn">1</span><span><b>Your name and class</b> · You're in the right account.</span></div><div class="key"><span class="pn">2</span><span><b>Search (press /)</b> · Find any tool or page.</span></div><div class="key"><span class="pn">3</span><span><b>My progress</b> · Everything you've done.</span></div><div class="key"><span class="pn">4</span><span><b>Open my full report</b> · Every page, with Download.</span></div><div class="key"><span class="pn">5</span><span><b>See my profile</b> · Results at a glance.</span></div><div class="key"><span class="pn">6</span><span><b>Your toolkit</b> · One card per tool; new ones say NEW.</span></div><div class="key"><span class="pn">7</span><span><b>Explore menu</b> · Every tool, always on the left.</span></div><div class="key"><span class="pn">8</span><span><b>Your results</b> · Profile, dimensions, fields, plan.</span></div></div></div>
+</div>
+<div class="row mt" style="grid-template-columns:.75fr 1.25fr;align-items:start">
+  <figure><div class="shot"><div class="bar"><i></i><i></i><i></i><span>careerfitment.onegrasp.com</span></div><div class="im"><img src="assets/shots/progress.jpg" alt=""></div></div><figcaption class="cap">My Progress: everything you have done, in one place.</figcaption></figure>
+  <div><div class="h2"><span class="ico sm"><svg
+  data-i="lucide lucide-repeat"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m17 2 4 4-4 4" />
+  <path d="M3 11v-1a4 4 0 0 1 4-4h14" />
+  <path d="m7 22-4-4 4-4" />
+  <path d="M21 13v1a4 4 0 0 1-4 4H3" />
+</svg>
+</span>A simple weekly routine</div>
+  <div class="rhythm" style="grid-template-columns:1fr 1fr"><div class="rh"><div class="when"><svg
+  data-i="lucide lucide-calendar-days"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8 2v4" />
+  <path d="M16 2v4" />
+  <rect width="18" height="18" x="3" y="4" rx="2" />
+  <path d="M3 10h18" />
+  <path d="M8 14h.01" />
+  <path d="M12 14h.01" />
+  <path d="M16 14h.01" />
+  <path d="M8 18h.01" />
+  <path d="M12 18h.01" />
+  <path d="M16 18h.01" />
+</svg>
+Once a week</div><b>Do the three Career GPS missions</b><span><svg
+  data-i="lucide lucide-map-pin"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+  <circle cx="12" cy="10" r="3" />
+</svg>
+Career GPS</span></div><div class="rh"><div class="when"><svg
+  data-i="lucide lucide-calendar-range"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="18" height="18" x="3" y="4" rx="2" />
+  <path d="M16 2v4" />
+  <path d="M3 10h18" />
+  <path d="M8 2v4" />
+  <path d="M17 14h-6" />
+  <path d="M13 18H7" />
+  <path d="M7 14h.01" />
+  <path d="M17 18h.01" />
+</svg>
+Twice a week</div><b>Work on one tool's mission card</b><span><svg
+  data-i="lucide lucide-map-pin"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+  <circle cx="12" cy="10" r="3" />
+</svg>
+Any tool in the Explore menu</span></div><div class="rh"><div class="when"><svg
+  data-i="lucide lucide-clock"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="10" />
+  <polyline points="12 6 12 12 16 14" />
+</svg>
+Every day (10 min)</div><b>One lesson, game or speaking challenge</b><span><svg
+  data-i="lucide lucide-map-pin"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+  <circle cx="12" cy="10" r="3" />
+</svg>
+Money, AI, Communication Lab</span></div><div class="rh"><div class="when"><svg
+  data-i="lucide lucide-calendar-check"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8 2v4" />
+  <path d="M16 2v4" />
+  <rect width="18" height="18" x="3" y="4" rx="2" />
+  <path d="M3 10h18" />
+  <path d="m9 16 2 2 4-4" />
+</svg>
+Every month</div><b>Check your progress and update your plan</b><span><svg
+  data-i="lucide lucide-map-pin"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+  <circle cx="12" cy="10" r="3" />
+</svg>
+My Progress · My plan</span></div></div></div>
+</div>
+<div class="callout action mt" style="align-items:center;padding:2.6mm 4mm"><span class="ico sm"><svg
+  data-i="lucide lucide-square-check-big"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M21 10.5V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h12.5" />
+  <path d="m9 11 3 3L22 4" />
+</svg>
+</span><div><p class="sm"><span class="lbl" style="margin-right:2mm">Mission</span>Sign in today and open every menu item once. It takes 10 minutes and you'll never feel lost again.</p></div></div>
+</div></section><section class="page even  ch-orange"><div class="edge"></div><div class="hdr"><span class="chno">10</span><span class="chname">Your Action Plan</span><span class="line"></span><span class="bk">Career Fitment Handbook 2026–27</span></div><div class="ftr"><span class="fol">116</span><span>OneGrasp Education Pvt. Ltd. · careerfitment.onegrasp.com</span></div><div class="pc">
+<div class="kick"><span class="ico sm"><svg
+  data-i="lucide lucide-map"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z" />
+  <path d="M15 5.764v15" />
+  <path d="M9 3.236v15" />
+</svg>
+</span>Reading guide</div>
+<h1 class="h1">Turn your report into <em>a 90-day plan</em></h1>
+<p class="lead">Fill this in with your report open. Keep it on your desk, or photograph it and pin it to your phone.</p>
+<div class="mine mt"><div class="card t ch-purple"><div class="ch"><span class="ico sm"><svg
+  data-i="lucide lucide-file-text"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+  <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+  <path d="M10 9H8" />
+  <path d="M16 13H8" />
+  <path d="M16 17H8" />
+</svg>
+</span><span class="h3">My report in one line</span></div><div class="field" style="margin-top:1mm">My type is<i></i></div><div class="field">Interest code<i></i></div></div><div class="card t ch-blue"><div class="ch"><span class="ico sm"><svg
+  data-i="lucide lucide-target"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="10" />
+  <circle cx="12" cy="12" r="6" />
+  <circle cx="12" cy="12" r="2" />
+</svg>
+</span><span class="h3">My top 3 fields</span></div><div class="field">1<i></i></div><div class="field">2<i></i></div><div class="field">3<i></i></div></div><div class="card t ch-green"><div class="ch"><span class="ico sm"><svg
+  data-i="lucide lucide-trophy"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+  <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+  <path d="M4 22h16" />
+  <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" />
+  <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
+  <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
+</svg>
+</span><span class="h3">One strength to use</span></div><div class="wl"></div><div class="wl"></div></div><div class="card t ch-orange"><div class="ch"><span class="ico sm"><svg
+  data-i="lucide lucide-sprout"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M7 20h10" />
+  <path d="M10 20c5.5-2.5.8-6.4 3-10" />
+  <path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z" />
+  <path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z" />
+</svg>
+</span><span class="h3">One area to grow</span></div><div class="wl"></div><div class="wl"></div></div></div>
+<div class="h2 mt"><span class="ico sm"><svg
+  data-i="lucide lucide-route"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="6" cy="19" r="3" />
+  <path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15" />
+  <circle cx="18" cy="5" r="3" />
+</svg>
+</span>Three steps, ninety days</div>
+<div class="phases grow"><div class="ph ch-blue"><div class="phh"><span class="ico white"><svg
+  data-i="lucide lucide-compass"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" />
+  <circle cx="12" cy="12" r="10" />
+</svg>
+</span><div><small>Days 1–30</small><b>Explore</b></div></div><div class="phb">
+<div><div class="lab">Goal</div><div class="val">Read 5 careers from my top field</div></div><div><div class="lab">Dashboard tool I'll use</div><div class="val">Career Library, Test-Drive</div></div>
+<div><div class="lab">My own goal</div><div class="chk"><i></i></div><div class="chk"><i></i></div><div class="chk"><i></i></div></div><div><div class="lab">What I did / proof</div><div class="chk"><i></i></div><div class="chk"><i></i></div></div>
+<div class="chk" style="align-items:center"><span class="box"></span><span class="sm">Done</span></div></div></div><div class="ph ch-orange"><div class="phh"><span class="ico white"><svg
+  data-i="lucide lucide-hammer"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m15 12-8.373 8.373a1 1 0 1 1-3-3L12 9" />
+  <path d="m18 15 4-4" />
+  <path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172V7l-2.26-2.26a6 6 0 0 0-4.202-1.756L9 2.96l.92.82A6.18 6.18 0 0 1 12 8.4V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5" />
+</svg>
+</span><div><small>Days 31–60</small><b>Do</b></div></div><div class="phb">
+<div><div class="lab">Goal</div><div class="val">One small task or free course</div></div><div><div class="lab">Dashboard tool I'll use</div><div class="val">Internships, AI & Certifications</div></div>
+<div><div class="lab">My own goal</div><div class="chk"><i></i></div><div class="chk"><i></i></div><div class="chk"><i></i></div></div><div><div class="lab">What I did / proof</div><div class="chk"><i></i></div><div class="chk"><i></i></div></div>
+<div class="chk" style="align-items:center"><span class="box"></span><span class="sm">Done</span></div></div></div><div class="ph ch-green"><div class="phh"><span class="ico white"><svg
+  data-i="lucide lucide-trophy"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+  <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+  <path d="M4 22h16" />
+  <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" />
+  <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
+  <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
+</svg>
+</span><div><small>Days 61–90</small><b>Build</b></div></div><div class="phb">
+<div><div class="lab">Goal</div><div class="val">One project or proof</div></div><div><div class="lab">Dashboard tool I'll use</div><div class="val">Portfolio, Career Passport</div></div>
+<div><div class="lab">My own goal</div><div class="chk"><i></i></div><div class="chk"><i></i></div><div class="chk"><i></i></div></div><div><div class="lab">What I did / proof</div><div class="chk"><i></i></div><div class="chk"><i></i></div></div>
+<div class="chk" style="align-items:center"><span class="box"></span><span class="sm">Done</span></div></div></div></div>
+<div class="card line mt"><div class="ch"><span class="ico sm"><svg
+  data-i="lucide lucide-calendar-check"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8 2v4" />
+  <path d="M16 2v4" />
+  <rect width="18" height="18" x="3" y="4" rx="2" />
+  <path d="M3 10h18" />
+  <path d="m9 16 2 2 4-4" />
+</svg>
+</span><span class="h3">Tick a box at the end of each week</span><span class="mut sm" style="margin-left:auto">12 weeks, about 90 days</span></div>
+<div class="timeline" style="grid-template-columns:repeat(12,1fr)"><div class="wk ch-blue"><i></i>W1</div><div class="wk ch-blue"><i></i>W2</div><div class="wk ch-blue"><i></i>W3</div><div class="wk ch-blue"><i></i>W4</div><div class="wk ch-orange"><i></i>W5</div><div class="wk ch-orange"><i></i>W6</div><div class="wk ch-orange"><i></i>W7</div><div class="wk ch-orange"><i></i>W8</div><div class="wk ch-green"><i></i>W9</div><div class="wk ch-green"><i></i>W10</div><div class="wk ch-green"><i></i>W11</div><div class="wk ch-green"><i></i>W12</div></div></div>
+<div class="row c2 mt">
+  <div class="callout action"><span class="ico sm"><svg
+  data-i="lucide lucide-lightbulb"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
+  <path d="M9 18h6" />
+  <path d="M10 22h4" />
+</svg>
+</span><div><div class="lbl">Try this</div><p class="sm">The dashboard's <b>My plan</b> page and weekly <b>Career GPS</b> missions turn this sheet into ticked-off tasks (Parts 5 and 6).</p></div></div>
+  <div class="callout parent"><span class="ico sm"><svg
+  data-i="lucide lucide-heart-handshake"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+  <path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66" />
+  <path d="m18 15-2-2" />
+  <path d="m15 18-2-2" />
+</svg>
+</span><div><div class="lbl">For parents</div><p class="sm">Sign the bottom of this page with your child: <b>We agree to try this together.</b></p></div></div>
+</div>
+<div class="sign"><div class="field">Student<i></i></div><div class="field">Parent<i></i></div><div class="field">Date<i></i></div></div>
+</div></section></body></html>

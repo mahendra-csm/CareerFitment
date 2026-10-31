@@ -12,7 +12,7 @@ import content  # noqa: F401  (fills lib.PAGES)
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "out")
 os.makedirs(OUT, exist_ok=True)
-CSS = open(os.path.join(HERE, "fonts.css")).read() + open(os.path.join(HERE, "style.css")).read() + open(os.path.join(HERE, "book3.css")).read() + open(os.path.join(HERE, "v3p.css")).read()
+CSS = open(os.path.join(HERE, "fonts.css")).read() + open(os.path.join(HERE, "style.css")).read() + open(os.path.join(HERE, "book3.css")).read() + open(os.path.join(HERE, "v3p.css")).read() + open(os.path.join(HERE, "book4.css")).read()
 
 
 def tvars(key):

@@ -515,3 +515,38 @@ def divider(part, key, title, sub, items, art=None, art2=None):
 <div class="logo">{img("art/logo.png")}</div></div>
 <img class="photo3" src="assets/{OPENER_PHOTO.get(key, "gallery/g02.jpg")}" alt="">
 <div class="route"><div class="rh3">{icon("route", "4mm", "currentColor", 2)} In this part</div>{stops}</div></div>''', section=title, kind="divider")
+
+
+# ---------------------------------------------------------------- quotes (v4)
+OPQ = {"meet": ("Education is the most powerful weapon which you can use to change the world.", "Nelson Mandela"),
+       "test": ("The unexamined life is not worth living.", "Socrates, in Plato's Apology"),
+       "dims": ("Your time is limited, so don't waste it living someone else's life.", "Steve Jobs, Stanford, 2005"),
+       "report": ("Dream is not that which you see while sleeping, it is something that does not let you sleep.", "A. P. J. Abdul Kalam"),
+       "dash": ("The best way to predict the future is to invent it.", "Alan Kay"),
+       "skills": ("Excellence is a continuous process and not an accident.", "A. P. J. Abdul Kalam"),
+       "startup": ("I don't believe in taking right decisions. I take decisions and then make them right.", "Ratan Tata"),
+       "research": ("Nothing in life is to be feared, it is only to be understood.", "Marie Curie"),
+       "family": ("Children must be taught how to think, not what to think.", "Margaret Mead"),
+       "action": ("Arise, awake, and stop not till the goal is reached.", "Swami Vivekananda")}
+
+
+def qband(text, who, color=None):
+    c = f' style="--qc:{color}"' if color else ""
+    return f'<blockquote class="qb"{c}><p>{text}</p><cite>{who}</cite></blockquote>'
+
+
+def quote_page(text, who, photo, color="#C72D35"):
+    bar = "".join(f'<i style="background:{c}"></i>' for c in ("#C72D35", "#F09A24", "#E5B73B", "#279B70", "#2196C8", "#7754B8"))
+    add(f'''<div class="qpage" style="--c1:{color}"><img src="assets/{photo}" alt=""><div class="bar">{bar}</div>
+<div class="qtx"><p>{text}</p><cite>{who}</cite></div>
+<div class="ft"><span>Career Fitment Handbook 2026–27</span><span>OneGrasp Education Pvt. Ltd.</span></div></div>''', kind="full")
+
+
+_div_old = divider
+
+
+def divider(part, key, title, sub, items, art=None, art2=None):
+    _div_old(part, key, title, sub, items, art, art2)
+    q = OPQ.get(key)
+    if q:
+        PAGES[-1]["body"] = PAGES[-1]["body"][:-len("</div>")] + f'<blockquote class="oq">“{q[0]}”<cite>{q[1]}</cite></blockquote></div>'

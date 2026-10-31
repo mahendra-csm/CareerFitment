@@ -37,11 +37,17 @@ add(head("Anatomy", "Your report,", "page by page.", "This is the real report of
     section=S)
 
 mark("Your scorecard and deep dives")
+_pins = [(1, 7, 36), (2, 29.5, 36), (3, 52, 36), (4, 74.5, 36), (5, 7, 61.5), (6, 29.5, 61.5), (7, 52, 61.5), (8, 74.5, 61.5)]
+_key = [("Personality", "your four-letter type (ESTJ in this sample)"), ("Career interest", "your strongest interest theme"), ("Multiple intelligence", "your top way of being smart"),
+        ("Emotional intelligence", "your score as a percentage; <b>Strongest</b> marks your top dimension"), ("Learning preferences", "the way you prefer to study"),
+        ("Motivators", "your core driver"), ("Strengths", "your signature strength"), ("Aptitude", "your sharpest reasoning area")]
 add(head("Who you are", "Your scorecard", "and deep dives.", "The first part of your report shows your real result in each of the 8 dimensions on one page, then explains each one in detail.")
-    + two(paper("shots/r11-02.jpg", "The scorecard: the real, specific result in each dimension."), paper("shots/r11-05.jpg", "A deep-dive page for one dimension."), gap="6mm")
+    + '<div class="scrow"><figure class="d4shot" style="margin:0"><div class="d4img" style="--c1:#2196C8">' + img("shots/r910-02.jpg") + "".join(f'<span class="pin" style="left:{x}%;top:{y}%">{n}</span>' for n, x, y in _pins)
+    + '</div><figcaption>The scorecard page from a sample Class 9–10 report: one result per dimension, in the order the report explains them.</figcaption></figure>'
+    + '<ol class="sckey">' + "".join(f'<li><span>{i + 1}</span><b>{t}</b> {x}</li>' for i, (t, x) in enumerate(_key)) + "</ol></div>"
     + h3("Every deep-dive page has the same five parts", "layers")
-    + '<div class="flow5">' + "".join(f"<div><b>{a}</b><span>{b}</span></div>" for a, b in [("Score", "0–100, with a typical-student marker"), ("Meaning", "In plain words"), ("Strong", "Where you shine"), ("Grow", "Where to practise"), ("Next steps", "Three actions")]) + "</div>"
-    + callout("try", "On each deep-dive page, underline one line that sounds exactly like you and circle one thing to practise.", cls="push"),
+    + roadmap([("Score", "0–100, with a typical-student marker"), ("Meaning", "In plain words"), ("Strong", "Where you shine"), ("Grow", "Where to practise"), ("Next steps", "Three actions")], per_row=5)
+    + callout("try", "On each deep-dive page, underline one line that sounds exactly like you and circle one thing to practise. Part 3 walks through every deep-dive page, one dimension at a time.", cls="push"),
     section=S)
 
 mark("Careers that fit you")

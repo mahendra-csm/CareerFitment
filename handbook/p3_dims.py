@@ -1,4 +1,5 @@
 from lib import *
+import os
 
 divider(3, "dims", "The 8 Dimensions", "Eight simple questions about you. Together they show where you will thrive. One page for each, with what it measures, how it shows in your report, and what to do with it.",
         ["01 Personality", "02 Career Interests", "03 Multiple Intelligences", "04 Emotional Intelligence", "05 Learning Style", "06 Motivators",
@@ -9,6 +10,13 @@ QS = ["How do I naturally work and decide?", "What kind of work excites me?", "I
       "How do I prefer to study?", "What drives me?", "What do I naturally contribute?", "How quickly can I pick up new skills?"]
 
 DICON = ["fingerprint", "compass", "brain", "heart-handshake", "book-open", "flame", "trophy", "puzzle"]
+DSHOT = ["r910-03c", "r910-04", "r910-05", "r910-06", "r910-07", "r910-08", "r910-09", "r910-10"]
+STD_PINS = [(1, 62, 17), (2, 4, 39), (3, 4, 46), (4, 52, 46), (5, 4, 61), (6, 52, 61), (7, 4, 81)]
+STD_KEY = ["Your result, and how it compares with students your age", "A plain-language summary of your result", "Your breakdown: every part of this dimension, scored",
+           "What this means for you", "Where you're strong (green) and where you can grow (yellow)", "Where you can grow", "Three recommended next steps"]
+PERS_PINS = [(1, 62, 12), (2, 52, 27), (3, 4, 50), (4, 4, 70), (5, 52, 70), (6, 4, 86)]
+PERS_KEY = ["Your four-letter type", "Your type card: name, summary and the score for each letter", "Your four preference sliders and how clearly you lean",
+            "Where you're strong", "Where you can grow", "Three recommended next steps"]
 
 
 def dim(i, art, simple, measures, framework, elems, example, chart, chart_note, why, ai, careers, tries, good):
@@ -16,26 +24,36 @@ def dim(i, art, simple, measures, framework, elems, example, chart, chart_note, 
     nm = NAMES[i].replace("\n", " ")
     mark(f"{i + 1:02d} {nm}")
     v = f"--c1:{c};--c2:{c};--soft:color-mix(in srgb, {c} 9%, white);--deep:color-mix(in srgb, {c} 82%, black)"
+    pins, keys = (PERS_PINS, PERS_KEY) if i == 0 else (STD_PINS[:4] + STD_PINS[4:5] + STD_PINS[6:], STD_KEY[:4] + STD_KEY[4:5] + STD_KEY[6:])
+    from PIL import Image as _I
+    _w, _h = _I.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "shots", DSHOT[i] + ".jpg")).size
+    vis = min(1.0, (112 if i else 118) / (74 * _h / _w))
+    keep = [(x, y / vis, t) for (_, x, y), t in zip(pins, keys) if y / vis < 96]
+    pins = [(k + 1, x, y) for k, (x, y, t) in enumerate(keep)]
+    keys = [t for x, y, t in keep]
+    pin = "".join(f'<span class="pin" style="left:{x}%;top:{y}%">{n}</span>' for n, x, y in pins)
+    key = "".join(f'<li><span>{k + 1}</span>{t}</li>' for k, t in enumerate(keys))
+    els = "".join(f'<li>{icon(ic, "4.2mm", c, 1.6)}<b>{t}</b><span>{x}</span></li>' for ic, t, x in elems)
     prog = "".join(f'<i class="{"on" if k == i else ""}"></i>' for k in range(8))
-    els = "".join(f'<div class="el3">{tile(ic, "7.4mm", "4.2mm")}<div><b>{t}</b><span>{x}</span></div></div>' for ic, t, x in elems)
-    ncol = 2 if len(elems) <= 4 else 2
-    tbl = table(["If you lean towards…", "You may enjoy careers such as…"], careers, "dense", widths=["34%", "66%"])
-    ages = "".join(f'<div class="age3"><b>{a}</b><span>{b}</span></div>' for a, b in tries)
-    add(f'''<div class="dim3" style="{v}">
-<div class="dhero">{tile(DICON[i], "13mm", "7.4mm", solid=True)}
- <div><div class="kicker">Dimension {i + 1:02d} of 08</div><h1 class="dt">{nm}</h1><div class="dq3">“{QS[i]}”</div><div class="dprog">{prog}</div></div>
- <div class="dsimple"><b>In simple words</b><p>{simple}</p></div></div>
-<div class="d3c">
- <div class="dc">{h3("What it measures", "ruler")}<p>{measures}</p></div>
- <div class="dc">{h3("The framework", "book-open")}<p>{framework}</p></div>
- <div class="dc">{h3("Why it matters", "target")}<p>{why}</p></div></div>
-<div class="drow"><div><div class="dlab">{tile("layers", "6mm", "3.4mm")}What it looks at</div><div class="els3 n{len(elems)}">{els}</div></div>
- <div class="dchart">{h3("How it looks in your report", "chart-column")}{chart}<p class="cap3">{chart_note} <i>Illustrative.</i></p></div></div>
-<div class="drow b"><div><div class="dlab">{tile("briefcase", "6mm", "3.4mm")}Careers that often suit each pattern</div>{tbl}</div>
- {callout("example", example)}</div>
-<div class="dlab">{tile("footprints", "6mm", "3.4mm")}Try this at your stage</div><div class="ages3">{ages}</div>
-<div class="drefl">{tile("pen-line", "6mm", "3.4mm")}<b>Fill in from your report</b><div class="fld">My score<i></i></div><div class="fld">My top result<i></i></div><div class="fld">One way I'll use it<i></i></div></div>
-<p class="dgood">{good}</p>
+    ages = "".join(f'<div><b>{a}</b><span>{b}</span></div>' for a, b in tries)
+    add(f'''<div class="dim4" style="{v}">
+<header class="d4h"><div class="d4n">{i + 1:02d}</div><div><div class="d4k">Dimension {i + 1:02d} of 08</div><h1>{nm}</h1><p>“{QS[i]}”</p></div><div class="d4p">{prog}</div></header>
+<div class="d4b">
+ <figure class="d4shot{" tall" if i == 0 else ""}"><div class="d4img"><img src="assets/shots/{DSHOT[i]}.jpg" alt="">{pin}</div>
+  <figcaption>The real {nm} page from a sample Class 9–10 report. {chart_note}</figcaption></figure>
+ <div class="d4t">
+  <p class="d4simple">{simple}</p>
+  <h4>What it measures</h4><p>{measures}</p>
+  <h4>The framework</h4><p>{framework}</p>
+  <h4>Why it matters</h4><p>{why}</p>
+  <h4>Reading this page of your report</h4><ol class="d4key">{key}</ol>
+ </div></div>
+<div class="d4row"><div><h4>What it looks at</h4><ul class="d4els n{len(elems)}">{els}</ul></div>
+ <div><h4>Careers that often suit each pattern</h4>{table(["If you lean towards…", "You may enjoy careers such as…"], careers, "dense", widths=["34%", "66%"])}</div></div>
+<div class="d4ex"><em>Example</em> {example}</div>
+<div class="d4ages"><h4>Try this at your stage</h4><div>{ages}</div></div>
+<div class="d4fill"><b>From my report</b><span>My result <i></i></span><span>One way I'll use it <i></i></span></div>
+<p class="d4good">{good}</p>
 </div>''', section=S)
 
 

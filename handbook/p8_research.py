@@ -1,7 +1,7 @@
 from lib import *
 
 divider(8, "research", "Research & Conferences", "From a student's first research question to an international stage: OneGrasp's peer-reviewed conferences and the scientific committee behind them.",
-        ["The Research Studio", "International scientific conferences", "The researcher journey", "The OneGrasp Scientific Committee", "Featured member: Dr Rudrarup Gupta", "Keynotes, awards and the conference day"], "feat/research.webp")
+        ["The Research Studio", "International scientific conferences", "The researcher journey", "The OneGrasp Scientific Committee", "Curiosity: the start of every discovery", "Keynotes, awards and the conference day"], "feat/research.webp")
 S = "Research & Conferences"
 
 from tools import opener, howto, mission
@@ -94,19 +94,8 @@ from committee_wall import wall_page
 wall_page("Scientific committee", S)
 
 
-mark("Featured member: Dr Rudrarup Gupta")
-add(head("Scientific committee", "Featured member", "Dr Rudrarup Gupta")
-    + '<div class="feat">' + img("committee/dr-rudrarup-gupta.jpg", "featimg") + '''<div class="feattx">
-<p class="featrole">Member, OneGrasp International Scientific Committee</p>
-<dl class="featdl"><dt>Profile</dt><dd>Researcher, Business &amp; Economics</dd>
-<dt>Also</dt><dd>Cricket commentator with the BCCI; founder</dd>
-<dt>Country</dt><dd>India</dd>
-<dt>Committee disciplines</dt><dd>Business &amp; Economics · Education · Social Sciences &amp; Humanities</dd></dl></div></div>'''
-    + h3("Role on the committee")
-    + p("Members of the OneGrasp International Scientific Committee review submitted abstracts in their disciplines, chair paper sessions and deliver keynotes at OneGrasp's online conferences. Dr Gupta serves across three of the eleven disciplines listed above.")
-    + h3("Why it matters to students")
-    + p("When a student presents at a OneGrasp conference, their work is reviewed by experienced researchers and professionals such as Dr Gupta, so the feedback reflects both academic and real-world practice."),
-    section=S)
+mark("Curiosity: the start of every discovery")
+quote_page("The important thing is not to stop questioning. Curiosity has its own reason for existing.", "Albert Einstein", "gallery/g04.jpg", "#2196C8")
 
 mark("Keynotes, awards and the conference day")
 add(head("Conferences", "Keynotes from", "leading experts.", "Committee members and invited experts open each day with keynotes that bridge research and practice.")

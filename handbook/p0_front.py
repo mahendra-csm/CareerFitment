@@ -49,6 +49,11 @@ add(head("Trusted worldwide", "Our partners and", "collaborations.", "Before you
     section="Partners")
 
 
+# ---------------------------------------------------------------- 2b. committee photo wall
+from committee_wall import wall_page
+mark("Our Scientific Committee")
+wall_page("Trusted worldwide", "Scientific Committee")
+
 # ---------------------------------------------------------------- 3. activity: predict yourself
 theme("meet")
 mark("Activity 1: Predict yourself")

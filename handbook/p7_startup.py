@@ -2,7 +2,7 @@ import json, os
 from lib import *
 
 divider(7, "startup", "Startups & Funding", "OneGrasp's startup programmes, and every grant, loan, subsidy, equity and credit-guarantee programme in the dashboard's Funding directory: 311 of them.",
-        ["The Startups course", "Spot, Build, Pitch", "How to use the Funding directory", "Central government programmes", "Banks and SIDBI", "Incubators and funds", "State government programmes"], "feat/startups.webp")
+        ["The Startups course", "How to use the Funding directory", "Central government programmes", "Banks and SIDBI", "Incubators and funds", "State government programmes"], "feat/startups.webp")
 S = "Startups & Funding"
 F = json.load(open(os.path.join(os.path.dirname(__file__), "funding.json")))
 P = F["programmes"]
@@ -30,21 +30,6 @@ mission("Startups",
             ("Proof", "What the 5 interviews said", "messages-square"), ("First customers", "How I'll reach 10 people", "megaphone"), ("Money", "Who pays, how much, why", "indian-rupee"),
             ("Team", "Who I need", "users"), ("Funding to try", "2 programmes from Part 7", "wallet")]) + "</div>",
         "You have a tested problem and a one-page plan.", S)
-
-mark("Spot, Build, Pitch")
-add(head("Entrepreneurship", "Entrepreneurship is best", "learned by doing.",
-         "Most students meet entrepreneurship as a chapter, a guest lecture or a case study. OneGrasp's startup programmes give them a real occasion to take one problem, build a first answer and defend it in front of people who ask hard questions.")
-    + grid([f'<div class="sbp" style="--sc:{c}"><span>{n}</span>{icon(ic, "9mm", "#fff")}<h4>{t}</h4><p>{x}</p></div>' for n, t, x, ic, c in [
-        ("01", "SPOT", "Observe, investigate and define a real problem.", "search", "#D946EF"), ("02", "BUILD", "Develop a prototype or a structured business solution.", "hammer", "#F43F5E"),
-        ("03", "PITCH", "Present the idea, answer questions and plan the next steps.", "presentation", "#F97316")]], 3, gap="4mm")
-    + h3("From problem to pitch: what students actually do", "route")
-    + steps([("Meet a real-world problem", "Chosen by the team.", "globe"), ("Find out who lives with it", "Talk to real users.", "users"), ("Build and test a first solution", "Something people can handle.", "wrench"),
-             ("Shape a business model", "Who pays, and why.", "wallet"), ("Present it", "Answer hard questions.", "mic")], cols=5)
-    + two(box(h3("In the lecture hall", "book") + p("<b>Learning about business:</b> a chapter on business models, a guest lecture, a case study.")),
-          box(h3("In the OneGrasp programme", "rocket") + p("<b>Building and testing an idea:</b> a real problem chosen by the team, a first solution people can handle, a panel that asks hard questions."), "grad"), "mt", gap="4mm")
-    + callout("example", "A team of second-year students notices that small vegetable vendors throw away unsold stock every evening. They interview 20 vendors (Spot), build a simple WhatsApp ordering prototype (Build), and present the numbers to a panel (Pitch). Then they check the Funding directory for an idea-stage grant.")
-    + band("OneGrasp designs the cohort with the institution and delivers it on campus. Talk to us at support@onegrasp.com.", "For universities:", "building-2", "push"),
-    section=S)
 
 mark("How to use the Funding directory")
 kinds = [("Grant", sum(p["kind"] == "grant" for p in P), "#16A34A"), ("Subsidy", sum(p["kind"] == "subsidy" for p in P), "#0EA5E9"), ("Loan", sum(p["kind"] == "loan" for p in P), "#F59E0B"),

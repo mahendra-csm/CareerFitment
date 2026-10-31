@@ -448,3 +448,8 @@ figcaption { font-size: 8pt; color: var(--muted); margin-top: 1.8mm; line-height
 .code3 { display: flex; gap: 3mm; justify-content: center; margin: 2mm 0; } .code3 i { width: 16mm; height: 16mm; border: 2px solid #7C3AED; border-radius: 3mm; background: #fff; }
 .band2 { border-radius: 3.4mm; padding: 3mm; background: color-mix(in srgb, var(--b) 10%, white); border-top: 1.4mm solid var(--b); }
 .band2 b { font: 900 16pt 'Fraunces'; color: var(--b); } .band2 span { display: block; font: 800 9.6pt 'Plus Jakarta Sans'; } .band2 p { font-size: 8.4pt; color: var(--muted); margin-top: .6mm; }
+.wall { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2.6mm 2.4mm; margin-bottom: 3mm; }
+.wm { text-align: center; } .wm img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 1mm solid #CBD5E1; box-shadow: 0 .8mm 2.4mm rgba(0,0,0,.18); }
+.wm.wi img { border-color: var(--c1); } .wm b { display: block; font: 800 7pt/1.15 'Plus Jakarta Sans'; margin-top: 1.2mm; }
+.wm span { display: inline-block; font: 800 6.2pt 'Inter'; color: #fff; background: #64748B; border-radius: 10mm; padding: .2mm 1.8mm; margin-top: .6mm; } .wm.wi span { background: var(--c1); }
+.tbl.dir { font-size: 6.9pt; } .tbl.dir td { padding: .9mm 1.8mm; }

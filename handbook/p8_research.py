@@ -88,14 +88,17 @@ def card_(o, intl):
     return f'<div class="cm"><img src="assets/committee/{o["img"]}"><div><b>{nm(o["name"])}</b><span class="cr">{o["role"][:48]}</span><span>{short_aff(o["aff"])}</span>{flag}</div></div>'
 
 
-add(head("Scientific committee", "International", "committee members.",
-         f"A 50-member committee of professors, researchers and industry experts reviews abstracts, chairs sessions and delivers keynotes across 11 disciplines. Featured: {len(CM)} members from {NC} countries. Here are the {len(INTL)} members based outside India.")
-    + grid([card_(o, True) for o in INTL], 3, gap="2mm 2.4mm")
-    + band(" · ".join(sorted({o["country"] for o in INTL})), f"{NC - 1} countries outside India:", "globe", "mt push"),
-    section=S)
-add(head("Scientific committee", "Committee members", "in India.", f"{len(HOME)} professors and researchers from leading Indian universities and institutes.")
-    + grid([card_(o, False) for o in HOME], 3, gap="2mm 2.4mm")
-    + p("Member details as listed on onegrasp.com/events. The full committee has 50 members; 39 are featured.", "small push"),
+ALL = INTL + sorted(HOME, key=lambda o: o["name"])
+from committee_wall import wall_page
+wall_page("Scientific committee", S)
+
+
+def row(o):
+    return [f'<b>{nm(o["name"])}</b>', o["role"][:60], short_aff(o["aff"]), f'<span class="tag" style="--t:{"#4338CA" if o["country"] not in ("India", "") else "#64748B"}">{o["country"] or "—"}</span>']
+
+
+add(head("Scientific committee", "Committee", "directory.", "Each member's role, institution and country, as listed on onegrasp.com/events.")
+    + table(["Member", "Role", "Institution", "Country"], [row(o) for o in ALL], "dense dir", ["22%", "28%", "38%", "12%"]),
     section=S)
 
 mark("Keynotes, awards and the conference day")

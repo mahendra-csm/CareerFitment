@@ -1,12 +1,9 @@
 """Builds the OneGrasp Career Fitment Handbook.
 
-    python3 build.py            -> out/handbook.html and out/handbook.pdf (+ out/canva-inserts.json)
-
-Pages marked as Canva placeholders are left out of the PDF but keep their
-page number; out/canva-inserts.json lists where the original Canva pages
-(logos, partners, campus photos, scientific committee) are merged back in.
+    python3 build.py            -> out/handbook.html and out/handbook.pdf
+    python3 build.py --html     -> HTML only
 """
-import json, os, re, subprocess, sys
+import os, subprocess, sys
 
 sys.path.insert(0, os.path.dirname(__file__))
 import lib
@@ -15,51 +12,59 @@ import content  # noqa: F401  (fills lib.PAGES)
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "out")
 os.makedirs(OUT, exist_ok=True)
+CSS = open(os.path.join(HERE, "fonts.css")).read() + open(os.path.join(HERE, "style.css")).read()
 
-CSS = open(os.path.join(HERE, "style.css")).read()
-FONTS = open(os.path.join(HERE, "fonts.css")).read()
+
+def tvars(key):
+    _, c1, c2, soft, deep = lib.THEMES[key]
+    return f"--c1:{c1};--c2:{c2};--soft:{soft};--deep:{deep}"
+
+
+def toc_html():
+    parts = []
+    for kind, no, title, idx, key in lib.TOC:
+        if kind == "part":
+            parts.append({"no": no, "title": title, "idx": idx, "key": key, "subs": []})
+        elif parts:
+            parts[-1]["subs"].append((title, idx))
+        else:
+            parts.append({"no": 0, "title": "Welcome", "idx": idx, "key": "brand", "subs": [(title, idx)]})
+    out = []
+    for pt in parts:
+        _, c1, _, soft, _ = lib.THEMES[pt["key"]]
+        subs = '<div class="tsubs">' + "".join(f'<div class="tocs"><span>{t}</span><span>{i + 1}</span></div>' for t, i in pt["subs"]) + "</div>"
+        out.append(f'<div class="tocp" style="--tc:{c1};--tsoft:{soft}"><div class="tph"><span class="tpn">{pt["no"]:02d}</span>'
+                   f'<span class="tpt">{pt["title"]}</span><span class="tpg">{pt["idx"] + 1}</span></div>{subs}</div>')
+    return '<div class="tocg">' + "".join(out) + "</div>"
+
 
 total = len(lib.PAGES)
+import re
+REFS = {t: i + 1 for k, _, t, i, _ in lib.TOC}
 
 
-def toc_html(entries):
-    out = []
-    for kind, no, title, idx in entries:
-        if kind == "part":
-            out.append(f'<div class="toc-part"><span class="tn">{no:02d}</span><b>{title}</b><span class="tp">{idx + 1}</span></div>')
-        else:
-            out.append(f'<div class="toc-sub"><span></span><span>{title}</span><span class="tp">{idx + 1}</span></div>')
-    return "".join(out)
-
-
-# split the contents across the two contents pages at a part boundary near the middle
-parts_at = [i for i, e in enumerate(lib.TOC) if e[0] == "part"]
-cut = min(parts_at, key=lambda i: abs(i - len(lib.TOC) / 2)) if parts_at else len(lib.TOC)
-TOC1, TOC2 = toc_html(lib.TOC[:cut]), toc_html(lib.TOC[cut:])
-sheets, inserts = [], []
+def ref(m):
+    if m.group(1) not in REFS:
+        print("WARNING unknown page reference:", m.group(1)); return "??"
+    return str(REFS[m.group(1)])
+TOC = toc_html()
+sheets = []
 for i, pg in enumerate(lib.PAGES):
     n = i + 1
-    if pg["kind"] == "canva":
-        inserts.append({"page": n, "source": pg["section"]})
-        continue
-    body = pg["body"].replace("{{TOTAL}}", str(total)).replace("{{TOC1}}", TOC1).replace("{{TOC2}}", TOC2)
-    # contents pages resolve their own page numbers
-    body = re.sub(r"\{\{PAGE:(\d+)\}\}", lambda m: f"{int(m.group(1)) + 1:02d}", body)
-    cls = f'page {pg["kind"]}' + (" dark" if pg["dark"] else "")
+    body = re.sub(r"\{\{REF:([^}]+)\}\}", ref, pg["body"].replace("{{TOC}}", TOC).replace("{{TOTAL}}", str(total)))
+    sec = pg["section"] or lib.THEMES[pg["theme"]][0]
     if pg["kind"] in ("cover", "back", "divider", "full"):
         chrome = ""
     else:
-        chrome = (f'<header class="ph"><img src="assets/art/logo.png" class="plogo"><span class="psec">{pg["section"]}</span></header>'
-                  f'<footer class="pf"><span>OneGrasp · Career Fitment Handbook · 2026–27</span><span class="pn">{n:02d}</span></footer>')
-    if pg["kind"] == "divider":
-        chrome = f'<footer class="pf light"><span>OneGrasp · Career Fitment Handbook</span><span class="pn">{n:02d}</span></footer>'
-    sheets.append(f'<section class="{cls}" data-n="{n}">{chrome}<div class="pc">{body}</div></section>')
+        chrome = (f'<div class="strip"><span class="sl">{sec}</span><span class="pn">{n}</span></div>'
+                  f'<img src="assets/art/logo.png" class="plogo"><div class="deco"><i class="y"></i><i class="r"></i><i class="b"></i></div>'
+                  f'<div class="pfoot">OneGrasp · Career Fitment Handbook · 2026–27</div>')
+    sheets.append(f'<section class="page {pg["kind"]}" data-n="{n}" style="{tvars(pg["theme"])}">{chrome}<div class="pc">{body}</div></section>')
 
-doc = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><base href="../"><title>OneGrasp Career Fitment Handbook</title>
-<style>{FONTS}{CSS}</style></head><body>{''.join(sheets)}</body></html>"""
+doc = (f'<!doctype html><html lang="en"><head><meta charset="utf-8"><base href="../"><title>OneGrasp Career Fitment Handbook</title>'
+       f'<style>{CSS}</style></head><body>{"".join(sheets)}</body></html>')
 open(os.path.join(OUT, "handbook.html"), "w").write(doc)
-json.dump({"total_pages": total, "pdf_pages": len(sheets), "inserts": inserts}, open(os.path.join(OUT, "canva-inserts.json"), "w"), indent=2)
-print(f"book pages: {total}  (pdf {len(sheets)} + canva {len(inserts)})")
+print(f"book pages: {total}")
 
 if "--html" not in sys.argv:
     subprocess.run(["node", os.path.join(HERE, "print.js"), os.path.join(OUT, "handbook.html"), os.path.join(OUT, "handbook.pdf")], check=True)

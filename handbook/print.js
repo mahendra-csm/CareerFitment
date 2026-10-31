@@ -7,7 +7,7 @@ const { chromium } = require('playwright');
   await p.evaluate(() => document.fonts.ready);
   const report = await p.evaluate(() => {
     const res = [];
-    document.querySelectorAll('.page:not(.cover):not(.divider):not(.back):not(.full) > .pc').forEach((pc) => {
+    document.querySelectorAll('.page:not(.cover):not(.divider):not(.back):not(.full):not(.nofit) > .pc').forEach((pc) => {
       const zi = document.createElement('div'); zi.className = 'zi';
       while (pc.firstChild) zi.appendChild(pc.firstChild);
       pc.appendChild(zi);
@@ -16,7 +16,7 @@ const { chromium } = require('playwright');
       let h = natural(), z = 1;
       if (h < H * 0.97) {
         // grow until it fills the page (cap 1.3)
-        let lo = 1, hi = 1.3;
+        let lo = 1, hi = 1.42;
         for (let i = 0; i < 14; i++) { const m = (lo + hi) / 2; zi.style.zoom = m; zi.style.width = (W / m) + 'px'; if (zi.scrollHeight * m <= H * 0.985) lo = m; else hi = m; }
         z = lo;
       } else if (h > H) {

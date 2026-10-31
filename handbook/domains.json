@@ -1,0 +1,242 @@
+[
+ {
+  "key": "A",
+  "name": "Business & Entrepreneurship",
+  "tagline": "Building and growing organisations from the ground up.",
+  "what": "Strategy, operations, sales and entrepreneurship - spotting opportunities, building ventures and making organisations run better and grow faster.",
+  "roles": [
+   "Entrepreneur",
+   "Startup Founder",
+   "Business Owner",
+   "Business Development Manager",
+   "Business Consultant",
+   "Management Consultant"
+  ],
+  "salary": "₹3.5–7 LPA entry · ₹12–28 LPA mid · ₹40 LPA+ (leadership / founder equity)",
+  "future": "Every industry needs people who can build, operate and grow organisations - one of the most transferable, founder-friendly domains."
+ },
+ {
+  "key": "B",
+  "name": "Finance & Commerce",
+  "tagline": "Making sense of money, risk and value.",
+  "what": "Accounting, investing, banking and financial planning - the discipline of tracking, growing and protecting money for people and organisations.",
+  "roles": [
+   "Chartered Accountant",
+   "Cost Accountant",
+   "Company Accountant",
+   "Financial Analyst",
+   "Investment Analyst",
+   "Equity Research Analyst"
+  ],
+  "salary": "₹3.5–8 LPA entry · ₹12–30 LPA mid · ₹45 LPA+ (CFO / fund management)",
+  "future": "Every business needs finance - a durable, well-paid domain increasingly boosted by fintech and data analytics."
+ },
+ {
+  "key": "C",
+  "name": "Engineering & Technology",
+  "tagline": "Designing and building the physical world.",
+  "what": "Turning ideas into real machines, structures, vehicles and energy systems - from engines and factories to bridges, aircraft and power grids.",
+  "roles": [
+   "Mechanical Engineer",
+   "Civil Engineer",
+   "Electrical Engineer",
+   "Electronics Engineer",
+   "Electronics & Communication Engineer",
+   "Instrumentation Engineer"
+  ],
+  "salary": "₹3.5–7 LPA entry · ₹10–22 LPA mid · ₹30 LPA+ as lead / project manager",
+  "future": "Infrastructure, EVs, clean energy and advanced manufacturing keep core engineering in steady, well-paid demand."
+ },
+ {
+  "key": "D",
+  "name": "Computer Science & IT",
+  "tagline": "Building the digital world.",
+  "what": "Software, data, cloud, AI and cybersecurity - the systems that power modern life, and one of the fastest-growing, most remote-friendly fields.",
+  "roles": [
+   "Software Developer",
+   "Software Engineer",
+   "Web Developer",
+   "Front-End Developer",
+   "Back-End Developer",
+   "Full-Stack Developer"
+  ],
+  "salary": "₹4–10 LPA entry · ₹15–38 LPA mid · ₹55 LPA+ senior / lead",
+  "future": "AI, cloud and data are reshaping every industry - the highest-paid, most globally portable of all the domains."
+ },
+ {
+  "key": "E",
+  "name": "Medicine & Healthcare",
+  "tagline": "Caring for human health and wellbeing.",
+  "what": "Diagnosis, treatment, therapy, pharmacy and public health - deeply meaningful work with durable, worldwide demand.",
+  "roles": [
+   "General Physician",
+   "Surgeon",
+   "Cardiologist",
+   "Neurologist",
+   "Dermatologist",
+   "Pediatrician"
+  ],
+  "salary": "₹3–6 LPA (allied / nursing) · ₹8–20 LPA (doctors post-PG) · ₹30 LPA+ specialists",
+  "future": "Ageing populations, mental-health awareness and biotech guarantee stable, respected and rising demand."
+ },
+ {
+  "key": "F",
+  "name": "Life Sciences & Agriculture",
+  "tagline": "Understanding and improving living systems.",
+  "what": "Agriculture, biology, biotechnology and food science - feeding the planet and unlocking the science of living things, from farms to labs.",
+  "roles": [
+   "Agricultural Scientist",
+   "Agronomist",
+   "Horticulturist",
+   "Floriculturist",
+   "Soil Scientist",
+   "Plant Scientist"
+  ],
+  "salary": "₹3–6 LPA entry · ₹8–16 LPA mid · ₹22 LPA+ (agri-tech, biotech R&D)",
+  "future": "Food security, biotech and precision agriculture are fast-growing, well-funded fields with rising industry investment."
+ },
+ {
+  "key": "G",
+  "name": "Pure Sciences & Research",
+  "tagline": "Uncovering how the universe works.",
+  "what": "Physics, chemistry, maths and earth sciences - the fundamental research that eventually becomes every technology we use.",
+  "roles": [
+   "Physicist",
+   "Astrophysicist",
+   "Astronomer",
+   "Chemist",
+   "Organic Chemist",
+   "Inorganic Chemist"
+  ],
+  "salary": "₹3–6 LPA entry (research) · ₹8–18 LPA mid · ₹25 LPA+ (senior scientist / professor)",
+  "future": "Quantum computing, materials science and climate research are pulling fresh investment into fundamental science."
+ },
+ {
+  "key": "H",
+  "name": "Architecture, Design & Creative Arts",
+  "tagline": "Shaping how the world looks, feels and functions.",
+  "what": "Architecture, product/graphic/fashion design and fine arts - turning ideas into spaces, objects and visuals people live with and love.",
+  "roles": [
+   "Architect",
+   "Landscape Architect",
+   "Interior Designer",
+   "Urban Designer",
+   "Urban Planner",
+   "Industrial Designer"
+  ],
+  "salary": "₹3–6 LPA entry · ₹8–18 LPA mid · ₹25 LPA+ senior (architecture / product design)",
+  "future": "Sustainable architecture and digital product design keep creative, tech-aware talent in high demand."
+ },
+ {
+  "key": "I",
+  "name": "Media & Communication",
+  "tagline": "Telling stories that reach the world.",
+  "what": "Journalism, content, film, advertising and PR - creating and distributing the stories, news and messages that shape public conversation.",
+  "roles": [
+   "Journalist",
+   "News Reporter",
+   "Investigative Journalist",
+   "News Anchor",
+   "Editor",
+   "Copy Editor"
+  ],
+  "salary": "₹2.5–5 LPA entry · ₹7–15 LPA mid · ₹22 LPA+ senior (editor / director / strategist)",
+  "future": "Streaming, podcasts and creator platforms keep expanding paid opportunities well beyond traditional media."
+ },
+ {
+  "key": "J",
+  "name": "Law, Government & Public Service",
+  "tagline": "Upholding justice and serving the public.",
+  "what": "Law, civil services, policy and public administration - interpreting rules, running government and protecting rights and society.",
+  "roles": [
+   "Advocate",
+   "Corporate Lawyer",
+   "Criminal Lawyer",
+   "Civil Lawyer",
+   "Constitutional Lawyer",
+   "Tax Lawyer"
+  ],
+  "salary": "₹3–6 LPA entry · ₹8–18 LPA mid · higher in law practice & senior civil services",
+  "future": "Legal-tech and policy careers are adding modern, well-paid branches to a traditionally stable domain."
+ },
+ {
+  "key": "K",
+  "name": "Education & Psychology",
+  "tagline": "Helping people learn, grow and understand themselves.",
+  "what": "Teaching, counselling and psychology - shaping how people learn, think and cope, from classrooms to clinics.",
+  "roles": [
+   "Primary School Teacher",
+   "Secondary School Teacher",
+   "High School Teacher",
+   "Subject Teacher",
+   "Mathematics Teacher",
+   "English Teacher"
+  ],
+  "salary": "₹2.5–5 LPA entry · ₹6–14 LPA mid · ₹20 LPA+ (senior academic / clinical roles)",
+  "future": "Mental-health awareness and ed-tech are creating fast-growing, better-paid roles alongside traditional teaching."
+ },
+ {
+  "key": "L",
+  "name": "Hospitality, Tourism & Events",
+  "tagline": "Creating memorable experiences.",
+  "what": "Hotels, travel, tourism and event management - the booming experience economy built on service, planning and hospitality.",
+  "roles": [
+   "Hotel Manager",
+   "Resort Manager",
+   "Restaurant Manager",
+   "Front Office Manager",
+   "Guest Relations Manager",
+   "Food & Beverage Manager"
+  ],
+  "salary": "₹2.5–5 LPA entry · ₹6–14 LPA mid · ₹20 LPA+ (senior hotel / event management)",
+  "future": "Travel, weddings and the experience economy keep growing worldwide, with strong scope for entrepreneurship."
+ },
+ {
+  "key": "M",
+  "name": "Defence, Aviation & Transportation",
+  "tagline": "Protecting the nation and keeping the world moving.",
+  "what": "The armed forces, aviation and logistics - national security, flying aircraft, and moving people and goods around the world.",
+  "roles": [
+   "Army Officer",
+   "Navy Officer",
+   "Air Force Officer",
+   "Military Engineer",
+   "Defence Scientist",
+   "Defence Analyst"
+  ],
+  "salary": "₹4–8 LPA entry · ₹10–25 LPA mid · ₹40 LPA+ (senior pilots / officers)",
+  "future": "Air-travel growth and logistics automation keep steady demand for skilled aviation and transport professionals."
+ },
+ {
+  "key": "N",
+  "name": "Environment & Sustainability",
+  "tagline": "Protecting the planet for the future.",
+  "what": "Environmental science, climate policy and sustainability consulting - measuring, protecting and fixing the natural systems we depend on.",
+  "roles": [
+   "Environmental Consultant",
+   "Environmental Analyst",
+   "Environmental Planner",
+   "Environmental Officer",
+   "Sustainability Manager",
+   "Sustainability Consultant"
+  ],
+  "salary": "₹3–6 LPA entry · ₹8–16 LPA mid · ₹22 LPA+ (ESG / sustainability leadership)",
+  "future": "Climate regulation and ESG reporting requirements are creating fast-growing corporate and policy demand."
+ },
+ {
+  "key": "O",
+  "name": "Sports & Fitness",
+  "tagline": "Building performance, health and passion into a career.",
+  "what": "Coaching, sports science, fitness training and sports media - turning athletic performance and wellbeing into a profession.",
+  "roles": [
+   "Professional Athlete",
+   "Sports Coach",
+   "Fitness Trainer",
+   "Personal Trainer",
+   "Strength & Conditioning Coach",
+   "Sports Physiotherapist"
+  ],
+  "salary": "₹2.5–5 LPA entry · ₹6–14 LPA mid · ₹20 LPA+ (elite coaching / sports management)",
+  "future": "Fitness culture, esports and sports-data analytics are opening new, well-paid career paths beyond playing professionally."
+ }
+]

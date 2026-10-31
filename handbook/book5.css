@@ -1,0 +1,97 @@
+/* =====================================================================
+   v5 "Sales edition" — book-wide layer (loaded after book4).
+   Navy / red / white. Huge Poppins ExtraBold titles, red eyebrows,
+   big numerals, solid offset blocks behind screenshots, navy "in simple
+   words" panels, full-bleed navy chapter openers and tool headers.
+   ===================================================================== */
+:root { --red: #D62F38; --navy: #0E1A2E; --ink: #0E1A2E; --sun: #FFC83D; --paper2: #F4F2EE; }
+
+/* ---------- headings: no colour band, poster typography ---------- */
+.hd { color: var(--ink); padding: 0; margin: 0 0 6mm; }
+.hd::before { display: none !important; }
+.hd .kicker { color: var(--red) !important; opacity: 1; font: 700 8pt 'Inter'; letter-spacing: .2em; }
+.hd .title, .hd .title .c1 { color: var(--ink) !important; }
+.title { font: 800 27pt/1.02 'Poppins' !important; letter-spacing: -.03em; }
+.hd .title .c1 { color: var(--red) !important; font-weight: 800; opacity: 1; }
+.hd .lead { color: var(--body) !important; opacity: 1; font-size: 10.4pt; }
+.page .hdr3, .page.std:not(.nofit) .hdr3 { color: var(--muted) !important; }
+.page .hdr3 .chno, .page.std .hdr3 .chno { background: var(--navy) !important; color: #fff !important; }
+.page.std .hdr3 .ln { background: var(--line) !important; opacity: 1; }
+.page .edge3 { display: block !important; background: var(--red); width: 3mm; }
+.page[style*="#F09A24"] .hdr3, .page[style*="#E5B73B"] .hdr3 { color: var(--muted) !important; }
+
+.h3 { font: 800 12.5pt/1.2 'Poppins'; letter-spacing: -.01em; color: var(--ink); border-bottom: .5mm solid var(--ink); }
+.h3 .it svg { stroke: var(--red) !important; }
+
+/* ---------- colour discipline: red accents, navy structure ---------- */
+.card::before { background: var(--red) !important; }
+.card .it svg, .ins .it svg, .mm .nd .it svg { stroke: var(--red) !important; }
+.stat b { color: var(--ink) !important; font: 800 26pt/1 'Poppins' !important; }
+.stats { border-top-color: var(--ink); }
+.tbl th { background: var(--navy) !important; }
+.tbl tr:nth-child(even) td { background: var(--paper2) !important; }
+.vsn, .st .stn, .d4key li span, .sckey li span, span.pin, .laptop .pin, .d4img .pin { background: var(--red) !important; }
+.nlist li span, .cnum { color: var(--red) !important; }
+
+/* ---------- callouts ---------- */
+.callout { border-left-color: var(--red) !important; }
+.callout[style*="#E5B73B"] { background: var(--navy) !important; border: 0 !important; padding: 4mm 5mm !important; }
+.callout[style*="#E5B73B"] .cot b { color: var(--sun) !important; }
+.callout[style*="#E5B73B"] .cob, .callout[style*="#E5B73B"] .cob b { color: #fff !important; font: 500 10pt/1.5 'Inter'; }
+.callout[style*="#E5B73B"] .it svg { stroke: var(--sun) !important; }
+.callout[style*="#279B70"] { background: var(--paper2) !important; border: 0 !important; padding: 3.4mm 4.4mm !important; }
+.callout[style*="#279B70"] .cot b { color: var(--ink) !important; }
+.callout .cot b { color: var(--red) !important; }
+.callout .it svg { stroke: var(--red) !important; }
+
+/* ---------- screenshots: solid offset block, no blur ---------- */
+.browser, .laptop .lscreen, .paper, .d4img, .shot { box-shadow: 3.5mm 3.5mm 0 0 var(--navy) !important; }
+.grid > figure:nth-child(even) .browser, .two > div:nth-child(2) .browser { box-shadow: 3.5mm 3.5mm 0 0 var(--red) !important; }
+.photo img { box-shadow: 3mm 3mm 0 0 var(--red) !important; }
+.browser, .laptop, .paper, .photo { margin-right: 3.5mm; margin-bottom: 3.5mm; }
+
+/* ---------- chapter openers: full-bleed poster ---------- */
+.op { background: var(--navy) !important; }
+.op .panel { background: none !important; }
+.op .num { font: 800 120pt/.85 'Poppins' !important; color: var(--red) !important; letter-spacing: -.05em; }
+.op .part { color: rgba(255,255,255,.7) !important; letter-spacing: .24em !important; }
+.op .icon { display: none !important; }
+.op h1 { font: 800 30pt/1.02 'Poppins' !important; letter-spacing: -.03em; color: #fff !important; }
+.op .sub { color: rgba(255,255,255,.85) !important; }
+.op .photo3 { filter: grayscale(1) contrast(1.05); }
+.op::after { content: ""; position: absolute; left: 92mm; right: 0; top: 0; height: 118mm; background: var(--red); mix-blend-mode: multiply; opacity: .85; pointer-events: none; }
+.op .route { background: var(--navy); }
+.op .route .rh3 { color: var(--sun) !important; }
+.op .stop b { color: #fff !important; } .op .stop em { color: rgba(255,255,255,.6) !important; }
+.op .stop div { border-bottom-color: rgba(255,255,255,.18) !important; }
+.op .stop span { background: var(--navy) !important; border-color: var(--red) !important; color: #fff !important; }
+.op .stop:first-of-type span { background: var(--red) !important; }
+.op .stop::before { background: rgba(214,47,56,.6) !important; }
+.op .oq { color: #fff !important; border-left-color: var(--red) !important; }
+.op .oq cite { color: rgba(255,255,255,.6) !important; }
+.op .logo { background: #fff; }
+
+/* ---------- tool headers, activities, dimension bands ---------- */
+.th { background: var(--navy) !important; }
+.th-no { background: var(--red) !important; color: #fff !important; }
+.th-txt h1 { font: 800 30pt/1.02 'Poppins' !important; letter-spacing: -.03em; }
+.th-st b { color: var(--sun) !important; font: 800 22pt 'Poppins' !important; }
+.th .kicker { color: var(--sun) !important; }
+.actban, .actban.b2, .actban.b3 { background: var(--red) !important; }
+.actban.b2 { background: var(--navy) !important; }
+.actban h1 { font: 800 30pt/1.02 'Poppins' !important; letter-spacing: -.03em; }
+.d4h h1 { font: 800 26pt/1.02 'Poppins' !important; letter-spacing: -.03em; }
+.d4n { font: 800 50pt/.85 'Poppins' !important; }
+
+/* ---------- quote bands ---------- */
+.qb { background: var(--navy) !important; }
+.qb::before { color: var(--red) !important; }
+.qb p { font: 700 13.5pt/1.32 'Poppins' !important; }
+
+/* ---------- misc ---------- */
+.mm .ctr { background: var(--red) !important; }
+.mm .nd { border-top-color: var(--ink) !important; }
+.kpi { background: var(--navy) !important; } .kpi:nth-child(2) { background: var(--red) !important; }
+.ms { border-top-color: var(--red) !important; } .msh { color: var(--red) !important; }
+.findit b { color: var(--red) !important; }
+.tph .n { background: var(--navy) !important; } .tph { border-bottom-color: var(--ink) !important; } .tph em { color: var(--red) !important; }

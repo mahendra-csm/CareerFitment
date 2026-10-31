@@ -1,11 +1,15 @@
 from lib import *
+from v5book import v5page
 from tools import *
 
 THEMES["skills"] = ("Skills for Life & Work", "#2196C8", "#2196C8", "#E8F7FB", "#155E75")
 divider(6, "skills", "Skills for Life & Work", "School teaches subjects. These tools teach the skills that decide how well life and work go: money, rights, AI, communication, a job-ready resume, and proof of what you can do.",
-        ["Financial Literacy", "Law & Rights", "AI & Certifications", "Communication Lab", "Resume & Interview", "Portfolio, Passport, GPS & Progress", "Spotlight"], "feat/money.webp")
+        ["Job-ready before college", "Financial Literacy", "Law & Rights", "AI & Certifications", "Communication Lab", "Resume & Interview", "Portfolio, Passport, GPS & Progress", "Spotlight"], "feat/money.webp")
 
 # ---------------------------------------------------------------- 6 Money
+mark("Job-ready before college")
+v5page("jobready", "Skills for Life & Work")
+
 mark("Financial Literacy")
 tool_theme("t-money", "Financial Literacy", "#F09A24", "#17243A")
 opener(6, "Financial Literacy", "Money skills, one level at a time: short lessons, a life simulation, eight money labs and Scam Shield games, with virtual money so mistakes cost nothing.", "feat/money.webp",

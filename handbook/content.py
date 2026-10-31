@@ -14,7 +14,7 @@ import p10_action
 import lib
 QB = [('<div class="kicker">Your dream career</div>', "The only way to do great work is to love what you do.", "Steve Jobs, Stanford, 2005", "#C72D35"),
       ('<div class="kicker">Choosing your stream</div>', "Dream, dream, dream. Dreams transform into thoughts and thoughts result in action.", "A. P. J. Abdul Kalam", "#F09A24"),
-      ('<div class="kicker">Your results</div>', "Take up one idea. Make that one idea your life; think of it, dream of it, live on that idea.", "Swami Vivekananda", "#7754B8"),
+      ('<div class="kicker">Navigation</div>', "Take up one idea. Make that one idea your life; think of it, dream of it, live on that idea.", "Swami Vivekananda", "#7754B8"),
       ('<div class="kicker">Study Abroad · How it works</div>', "If you want to shine like a sun, first burn like a sun.", "A. P. J. Abdul Kalam", "#2196C8"),
       ('<div class="kicker">Internships & Jobs · Do it now</div>', "For the things we have to learn before we can do them, we learn by doing them.", "Aristotle, Nicomachean Ethics", "#F09A24"),
       ('<div class="kicker">AI & Certifications · How it works</div>', "The illiterate of the 21st century will not be those who cannot read and write, but those who cannot learn, unlearn, and relearn.", "Alvin Toffler, Future Shock", "#7754B8"),

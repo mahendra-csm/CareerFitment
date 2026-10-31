@@ -1,7 +1,8 @@
 from lib import *
+from v5book import v5page
 
 divider(1, "meet", "Meet OneGrasp", "Who we are, what we do, and why we built a career assessment that looks far beyond marks.",
-        ["What is OneGrasp?", "Your journey with OneGrasp", "Why career choices go wrong", "The future of work", "Real schools, real students"],
+        ["What is OneGrasp?", "Why career choices go wrong", "The future of work", "Real schools, real students"],
         "brochure/c11-i-001.png")
 S = "Meet OneGrasp"
 
@@ -27,34 +28,10 @@ add(head("About us", "What is", "OneGrasp?",
              ("shield-check", "Facts you can check", "Every exam, scholarship and funding programme links to its official source.", "#F09A24")], 4, "compact"),
     section=S)
 
-mark("Your journey with OneGrasp")
-add(head("Roadmap", "Your journey", "with OneGrasp.", "One assessment starts a journey that lasts all through school. This is the route the whole handbook follows, part by part.")
-    + roadmap([("Take the assessment", "About 90 minutes, online. Part 2 shows every screen.", "#2196C8"),
-               ("Read your report", "Your 8 dimensions and best-fit careers. Parts 3 and 4.", "#7754B8"),
-               ("Open your dashboard", "Your report becomes tools you use. Part 5.", "#F09A24"),
-               ("Build life skills", "Money, rights, AI, speaking, resumes. Part 6.", "#279B70"),
-               ("Create and publish", "Startups, research and conferences. Parts 7 and 8.", "#B5891A"),
-               ("Talk it through", "Parents and schools guide, not decide. Part 9.", "#C72D35"),
-               ("Act and track", "30-day challenge, plans and trackers. Part 10.", "#17243A")], ry="50%")
-    + h3("Three stages, three different reports", "layers")
-    + grid([f'<div class="kpi" style="background:{c}"><b>{a}</b><span>{b}</span></div>' for a, b, c in [("Class 6–8", "Discover: explore broadly and notice what you enjoy.", "#2196C8"), ("Class 9–10", "Choose a stream with evidence, not guesswork.", "#7754B8"), ("Class 11–12", "Choose exams, degrees and colleges, and plan for them.", "#C72D35")]], 3, gap="4mm")
-    + two(callout("simple", "Think of it like a GPS: the assessment finds where you are, the report shows possible destinations, and the dashboard gives turn-by-turn directions."),
-          callout("parent", "Re-taking the assessment at each stage shows how your child is growing. Part 3 ends with a page to record results over the years."), "push", gap="4mm"),
-    section=S)
+
 
 mark("Why career choices go wrong")
-traps = [("Marks", "“You scored 95 in maths, so take engineering.”", "Marks show how you did in an exam. They do not show what you enjoy, how you work, or what you will want to do for 30 years.", "percent", "#C72D35"),
-         ("Peer pressure", "“All my friends are taking MPC.”", "Your friends have different strengths and dreams. Following the crowd feels safe today and costly later.", "users", "#F09A24"),
-         ("Guesswork", "“My cousin did B.Com, so…”", "Most families know only a handful of careers. With 930 careers in our library, guessing means missing most of your options.", "shuffle", "#279B70")]
-add(head("Why it matters", "Three traps that decide", "too many careers.",
-         "Ask ten adults why they chose their career and many will say “I didn't really choose.” These are the three most common traps.")
-    + grid([f'<div class="trap" style="--tc:{c}"><div class="trh">{chip(ic, "#fff", c, "12mm", "6mm")}<b>Trap {i + 1}</b><h4>{t}</h4></div><p class="trq">{q}</p><p>{x}</p></div>' for i, (t, q, x, ic, c) in enumerate(traps)], 3)
-    + h3("What a better decision looks like", "check-check")
-    + two(table(["Old way", "OneGrasp way"], [["Choose by marks", "Choose by fit: interests + strengths + aptitude"], ["Follow friends", "Follow your own profile"], ["Know 5 careers", "Explore 930 careers"],
-                                              ["Decide once, alone", "Decide in steps, as a family"], ["Hope it works", "Test it first: Test-Drive, internships, projects"]], widths=["45%", "55%"]),
-          callout("simple", "A good career fit is where three circles overlap: <b>what you enjoy</b> (interests), <b>what you are good at</b> (strengths and aptitude) and <b>what the world needs and pays for</b> (real careers). The assessment finds the first two; the dashboard shows you the third.")
-          + callout("parent", "Your experience matters, and so does your child's profile. Use the report as a shared, neutral starting point for the conversation.")),
-    section=S)
+v5page("traps", S)
 
 mark("The future of work")
 rising = [("AI & Machine Learning", "The biggest skill multiplier of the decade."), ("Big Data & Analytics", "One of the fastest-growing job groups worldwide."),

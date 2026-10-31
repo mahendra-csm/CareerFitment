@@ -1,4 +1,5 @@
 from lib import *
+from v5book import v5page
 
 divider(2, "test", "The Assessment", "What the Career Fitment Assessment is, who it is for, the science behind it, and exactly how to take it, screen by screen.",
         ["What is a psychometric assessment?", "What we measure: the 8 dimensions", "The science behind every question", "Before you begin",
@@ -29,16 +30,7 @@ NAMES = ["Personality", "Career\nInterests", "Multiple\nIntelligences", "Emotion
 QS = ["How do I naturally work and decide?", "What kind of work excites me?", "In which ways am I smart?", "How well do I handle feelings and people?",
       "How do I prefer to study?", "What drives me?", "What do I naturally contribute?", "How quickly can I pick up new skills?"]
 mark("What we measure: the 8 dimensions")
-add(head("What we measure", "The 8 dimensions.", "One complete you.", center=True)
-    + f'<div class="center" style="margin:-1mm 0 2mm">{wheel(NAMES, DIMC, size=118)}</div>'
-    + grid([f'<div class="dq" style="--dc:{DIMC[i]}"><b>{i + 1:02d}</b><span>{NAMES[i].replace(chr(10), " ")}</span><p>{QS[i]}</p></div>' for i in range(8)], 4, gap="2.4mm")
-    + h3("How the eight work together", "puzzle")
-    + cards([("user", "Who you are", "Personality and Emotional Intelligence describe how you work, decide and get on with people.", DIMC[0]),
-             ("heart", "What pulls you", "Career Interests and Motivators show the work that excites you and why you keep going.", DIMC[1]),
-             ("brain", "How you think", "Multiple Intelligences and Learning Style show the ways you are smart and how you learn.", DIMC[2]),
-             ("trophy", "What you can do", "Strengths and Aptitude show what you naturally give and how fast you learn a field's skills.", DIMC[6])], 4, "compact")
-    + callout("simple", "No single dimension decides your career. The best-fit careers are where <b>several dimensions agree</b>: for example, an Investigative interest + a Logical intelligence + a strong Numerical aptitude all point toward science and data.", cls="push"),
-    section=S)
+v5page("elements", S)
 
 
 

@@ -1,4 +1,5 @@
 from lib import *
+from v5book import v5page
 
 theme("brand")
 
@@ -18,6 +19,8 @@ add(f'''<div class="cov3"><div class="ring1"></div><div class="ring2"></div>
 
 # ---------------------------------------------------------------- 2. contents
 add(head("Contents", "What's inside", "this handbook.") + "{{TOC}}", section="Contents", kind="std nofit")
+mark("Stop guessing. Start knowing.")
+v5page("hook", "OneGrasp")
 
 # ---------------------------------------------------------------- 3. belongs to + start here
 mark("Start here")
@@ -40,25 +43,13 @@ import json, os
 CM = json.load(open(os.path.join(os.path.dirname(__file__), "committee.json")))
 INTL = [o for o in CM if o["country"] not in ("India", "")]
 COUNTRIES = ["India"] + sorted({o["country"] for o in INTL})
-mark("Our partners and collaborations")
-logos = [("crossref", "Crossref", "DOI registration"), ("doi", "DOI 10.65838", "Permanent citable links"), ("pace", "PACE Council", "CPD accreditation"), ("jci", "Journal Citation Index", "Citation indexing"),
-         ("intellimind", "IntelliMindEd", "Academic partner"), ("metaspectra", "metaSpectra", "Indexing partner"), ("rmetahub", "RMetaHub", "Indexing partner"), ("kvrss", "KVRSS Group", "Partner")]
-schools = [("school-shanthinikethan", "Sree Shanthinikethan English Medium School"), ("school-dps", "Delhi Public School"), ("school-oxford", "Oxford Grammar High School"), ("school-excellencia", "Excellencia Junior College")]
-add(head("Trusted worldwide", "Our partners and", "collaborations.", "Before you turn the page: these are the international organisations, schools, platforms and scientists who work with OneGrasp.")
-    + h3("International collaborations", "globe")
-    + grid([f'<div class="logo-card">{img("logos/" + f + ".png")}<span>{n}<br><span class="small">{d}</span></span></div>' for f, n, d in logos], 4)
-    + h3("Schools that chose OneGrasp for their students", "school")
-    + grid([f'<div class="logo-card" style="height:34mm">{img("logos/" + f + ".png", style="max-height:19mm")}<span>{n}</span></div>' for f, n in schools], 4)
-    + h3("Free courses and tools in the dashboard come from", "graduation-cap")
-    + grid([f'<div class="logo-card" style="height:16mm">{img("logos/" + f + ".svg", style="max-height:8mm")}</div>' for f in ("google", "microsoft", "ibm", "harvard")], 4)
-    + p("All logos and trademarks belong to their respective owners.", "small center push"),
-    section="Partners")
+mark("Why families trust OneGrasp")
+v5page("trust", "Trust")
 
 
 # ---------------------------------------------------------------- 2b. committee photo wall
 from committee_wall import wall_page
-mark("Our international scientific committee")
-wall_page("Trusted worldwide", "Scientific Committee")
+
 
 # ---------------------------------------------------------------- 3. activity: predict yourself
 theme("meet")

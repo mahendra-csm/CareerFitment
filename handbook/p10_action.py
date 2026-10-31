@@ -1,4 +1,5 @@
 from lib import *
+from v5book import v5page
 import v3parts
 
 THEMES["action"] = ("Your Action Plan", "#C72D35", "#C72D35", "#FFF7E6", "#92400E")
@@ -84,15 +85,4 @@ add(head("Workbook", "My achievements", "and certificates.", "Everything you ear
     section=S)
 # ---------------------------------------------------------------- back cover
 theme("brand")
-add(f'''<div class="bk">
-<div class="dv-dots"></div><div class="dv-blob b1"></div>
-<div class="bk-logo">{img("art/logo.png")}</div>
-<div class="bk-t"><div class="cv-kick" style="color:#FFC83D">The view from every seat</div>
-<h1>Know yourself.<br>Choose with confidence.<br><span>Build your future.</span></h1></div>
-<div class="bk-photos">{"".join(f'<div>{img("gallery/" + g)}</div>' for g in ("new1.webp", "old13.webp", "new5.webp", "old02.webp"))}</div>
-<div class="bk-stats">{stats([("3,000+", "students assessed"), ("10+", "schools and colleges"), ("2,500+", "career roadmaps"), ("8", "dimensions measured")], "glass")}</div>
-<div class="bk-cta">{img("art/qr.png", "bk-qr")}<div><div class="kicker" style="color:#C72D35">Take the assessment today</div>
-<div class="bk-url">careerfitment.onegrasp.com</div>
-<p>{icon("mail", "4mm", "#1E2340")} support@onegrasp.com &nbsp; {icon("phone", "4mm", "#1E2340")} +91 89777 60442 / 43 &nbsp; {icon("globe", "4mm", "#1E2340")} onegrasp.com/events</p>
-<p class="small">OneGrasp Education Pvt. Ltd., Hyderabad, India</p></div></div>
-<div class="bk-foot">© 2026 OneGrasp. Salaries are indicative ranges for India. All logos and trademarks belong to their respective owners.</div></div>''', kind="back")
+v5page("cta", "Take the assessment")

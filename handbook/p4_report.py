@@ -1,13 +1,17 @@
 import json, os
 from lib import *
+from v5book import v5page
 
 divider(4, "report", "Your Report at a Glance", "How to read your report, what each part shows, and how to turn it into decisions, for every student from Class 6 to Class 12.",
-        ["How to read your report", "Your report, page by page", "Your scorecard and deep dives", "Careers that fit you", "Your dream career vs your result",
+        ["A report you'll want to read", "How to read your report", "Your report, page by page", "Your scorecard and deep dives", "Careers that fit you", "Your dream career vs your result",
          "Choosing your stream", "The 15 career domains", "Your roadmap and next steps", "Meet Ananya: a worked example", "Reality check"],
         "brochure/c11-i-005.png")
 S = "Your Report"
 DOM = json.load(open(os.path.join(os.path.dirname(__file__), "domains.json")))
 Y = '<span class="yes">✓</span>'
+
+mark("A report you'll want to read")
+v5page("report", S)
 
 mark("How to read your report")
 add(head("Reading guide", "How to read your report", "in 20 minutes.",
@@ -51,15 +55,7 @@ add(head("Who you are", "Your scorecard", "and deep dives.", "The first part of 
     section=S)
 
 mark("Careers that fit you")
-add(head("Careers that fit you", "Three ways to see", "your future.",
-         "Your report compares what fits you, what fits your stream, and the career you dream of, side by side.")
-    + two(paper("shots/r11-11.jpg", "Career cluster fit: how closely you match each career cluster."), paper("shots/r11-12.jpg", "Your career path at a glance: the three views."), gap="6mm")
-    + grid([f'<div class="view" style="--vc:{c}"><span>{n}</span><b>{t}</b><em>{q}</em><p>{x}</p></div>' for n, t, q, x, c in [
-        ("1", "Career Fitment", "What fits YOU", "Your top 5 career areas, ranked purely by your answers. Each shows key roles, skills to build, salary in India (indicative) and entrance exams.", "#17243A"),
-        ("2", "Career Suitability", "What fits your STREAM", "Once you have a stream (MPC, BiPC, MEC, CEC, HEC), the careers it already reaches, plus companies that hire and funded routes.", "#2196C8"),
-        ("3", "Career Selector", "Your DREAM career", "The career you choose, how well it fits, and the realistic route from where you are today.", "#279B70")]], 3, "mt")
-    + callout("simple", "If all three views agree, you have a clear path. If they disagree, that's useful too: it shows exactly what you'd need to build or change to reach your dream.", cls="push"),
-    section=S)
+v5page("views", S)
 
 mark("Your dream career vs your result")
 add(head("Your dream career", "Pick your dream career.", "See how it fits.",

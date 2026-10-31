@@ -1,9 +1,10 @@
 from lib import *
+from v5book import v5page
 import v3parts
 from tools import *
 
 divider(5, "dash", "Your Dashboard: Explore", "Your report becomes a dashboard you use. This part shows you how to find your way around, then gives each exploring tool its own chapter with missions you can finish this week.",
-        ["How to use your dashboard", "Your dashboard at a glance", "Your dashboard home", "Finding your way, and your results", "Your results pages", "Career Library", "Entrance Exams", "Scholarships", "Study Abroad", "Internships & Jobs"],
+        ["How to use your dashboard", "Your dashboard at a glance", "Your dashboard home", "Finding your way, and your results", "Career Library", "Entrance Exams", "Scholarships", "Study Abroad", "Internships & Jobs"],
         "feat/progress.webp")
 S = "Your Dashboard"
 
@@ -12,20 +13,7 @@ mark("How to use your dashboard")
 add('<div class="v3p ch-orange">' + v3parts.DASH + "</div>", section=S, kind="std nofit")
 
 mark("Your dashboard at a glance")
-add(head("Mind map", "Your dashboard", "at a glance.", "Every tool in one picture. Start in the centre with your results, then branch out to whatever you need this month. Page numbers show where each tool is explained in this book.")
-    + mindmap("Your dashboard", "careerfitment.onegrasp.com", [
-        ("chart-pie", "Your results", "Your profile · 8 Dimensions · Best-fit fields · How you think · My plan  (p. {{REF:Your results pages}})", "#7754B8"),
-        ("book-open", "Careers and exams", "Career Library (p. {{REF:Career Library}}) · Entrance Exams (p. {{REF:Entrance Exams}})", "#2196C8"),
-        ("wallet", "Paying for study", "Scholarships (p. {{REF:Scholarships}}) · Study Abroad (p. {{REF:Study Abroad}})", "#279B70"),
-        ("briefcase", "Work experience", "Internships & Jobs (p. {{REF:Internships & Jobs}}) · Resume & Interview (p. {{REF:Resume & Interview}})", "#F09A24"),
-        ("shield-check", "Life skills", "Financial Literacy (p. {{REF:Financial Literacy}}) · Law & Rights (p. {{REF:Law & Rights}}) · AI & Certifications (p. {{REF:AI & Certifications}})", "#C72D35"),
-        ("mic", "Confidence", "Communication Lab (p. {{REF:Communication Lab}}) · Spotlight (p. {{REF:Spotlight}})", "#B5891A"),
-        ("rocket", "Build something", "Startups (p. {{REF:The Startups course}}) · Research Studio (p. {{REF:The Research Studio}})", "#17243A"),
-        ("trending-up", "Track and prove", "My Progress · Certificates · Career Passport · Career GPS (p. {{REF:Portfolio, Passport, GPS & Progress}})", "#279B70")],
-        height=165, cw=40, nw=48)
-    + two(callout("simple", "You never need every tool at once. Pick the branch that matches this month's question: <b>What fits me?</b> (results), <b>How do I get there?</b> (careers, exams, money) or <b>How do I grow?</b> (skills, proof)."),
-          callout("try", "Colour in the branches you have opened this week. By the end of the 30-day challenge (Part 10) every branch should be coloured."), "push", gap="4mm"),
-    section=S)
+v5page("dashboard", S)
 
 mark("Your dashboard home")
 add(head("Dashboard home", "Your report becomes", "a dashboard you use.",
@@ -48,12 +36,7 @@ add(head("Navigation", "Finding your way,", "and your results.", "The left menu 
     + callout("task", "Open <b>My plan</b> and tick the three “next 30 days” items this month. They're chosen for your top field.", cls="push"),
     section=S)
 
-mark("Your results pages")
-add(head("Your results", "Your report,", "made interactive.", "The <b>Your results</b> pages in the left menu show the same results as your PDF report, but you can tap into each one.")
-    + two(browser("shots/res-dims.jpg", "8 Dimensions: tap a dimension for its score, meaning and actions."), browser("shots/res-mind.jpg", "How you think: intelligences, aptitudes, motivators and learning styles."), gap="4mm")
-    + two(browser("shots/res-fields.jpg", "Best-fit fields: ranked, with a fit % and the reason."), browser("shots/res-plan.jpg", "My plan: next 30 and 90 days, with tick boxes."), "mt", gap="4mm")
-    + callout("task", "Tick all three “next 30 days” items in <b>My plan</b> this month. They're picked for your top field.", cls="push"),
-    section=S)
+
 
 # ---------------------------------------------------------------- 1 Career Library
 mark("Career Library")

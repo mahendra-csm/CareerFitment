@@ -12,7 +12,24 @@ import content  # noqa: F401  (fills lib.PAGES)
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "out")
 os.makedirs(OUT, exist_ok=True)
-CSS = open(os.path.join(HERE, "fonts.css")).read() + open(os.path.join(HERE, "style.css")).read() + open(os.path.join(HERE, "book3.css")).read() + open(os.path.join(HERE, "v3p.css")).read() + open(os.path.join(HERE, "book4.css")).read()
+import re as _re
+
+
+def scoped(path, scope):
+    css = _re.sub(r"/\*.*?\*/", "", open(path).read(), flags=_re.S)
+    out = []
+    for m in _re.finditer(r"([^{}]+)\{([^{}]*)\}", css):
+        sel = [x.strip() for x in m.group(1).split(",")]
+        keep = [x for x in sel if not x.startswith(("@page", ":root", "html", "body", ".page", "*"))]
+        if not keep:
+            if sel[0].startswith(":root"):
+                out.append(scope + " {" + m.group(2) + "}")
+            continue
+        out.append(", ".join(scope + " " + x for x in keep) + " {" + m.group(2) + "}")
+    return "\n".join(out)
+
+
+CSS = open(os.path.join(HERE, "fonts.css")).read() + open(os.path.join(HERE, "style.css")).read() + open(os.path.join(HERE, "book3.css")).read() + open(os.path.join(HERE, "v3p.css")).read() + open(os.path.join(HERE, "book4.css")).read() + open(os.path.join(HERE, "book5.css")).read() + ".v5{position:absolute;inset:0;font:400 9.6pt/1.5 Inter,sans-serif;color:#384252} .v5 *{margin:0;padding:0;box-sizing:border-box} .v5 p{margin:0}" + scoped(os.path.join(HERE, "sales.css"), ".v5")
 
 
 def tvars(key):

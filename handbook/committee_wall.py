@@ -24,7 +24,7 @@ def ordered():
 
 def wall_page(kicker, section):
     add(head(kicker, "OneGrasp's International", "Scientific Committee Members",
-             f"{len(CM)} featured members from {NC} countries review abstracts, chair sessions and deliver keynotes across 11 disciplines.", center=True)
+             f"The committee behind OneGrasp's international conferences: {len(CM)} featured members from {NC} countries review abstracts, chair sessions and deliver keynotes across 11 disciplines.", center=True)
         + '<div class="wall">' + "".join(f'<div class="wm{" wi" if o["country"] not in ("India", "") else ""}"><img src="assets/committee/{o["img"]}"><b>{nm(o["name"])}</b><span>{o["country"] or "&nbsp;"}</span></div>' for o in ordered()) + "</div>"
         + band(" · ".join(["India"] + sorted({o["country"] for o in INTL})), f"{NC} countries:", "globe", "push"),
         section=section)

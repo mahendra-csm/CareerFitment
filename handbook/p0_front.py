@@ -3,28 +3,34 @@ from lib import *
 theme("brand")
 
 # ---------------------------------------------------------------- 1. cover
-add(f'''<div class="cv">
-<div class="cv-bg"></div><div class="cv-dots"></div>
-<div class="cv-logo">{img("art/logo.png")}</div>
-<div class="cv-chip">{icon("book-open", "4mm", "#E5383B")} Handbook · 2026–27 Edition</div>
-<div class="cv-photos">
-  <div class="cvp p1">{img("gallery/new1.webp")}</div>
-  <div class="cvp p2">{img("gallery/old12.webp")}</div>
-  <div class="cvp p3">{img("gallery/new5.webp")}</div>
-  <div class="cvp p4">{img("gallery/old02.webp")}</div>
-</div>
-{img("brochure/c11-i-001.png", "cv-girl")}
-<div class="cv-text">
-  <div class="cv-kick">OneGrasp Career Fitment Assessment</div>
-  <h1 class="cv-title">The Complete<br><span>Career Fitment</span><br>Handbook</h1>
-  <p class="cv-sub">Know yourself. Choose your path. Build your future.<br>The step-by-step guide to the assessment, the 8 dimensions, your report and all 20+ tools in your dashboard.</p>
-  <div class="cv-for"><span>{icon("graduation-cap", "4mm", "#fff")} Students</span><span>{icon("heart-handshake", "4mm", "#fff")} Parents</span><span>{icon("school", "4mm", "#fff")} Schools & colleges</span></div>
-</div>
-<div class="cv-band">
-  <div><b>8</b><span>dimensions<br>of you</span></div><div><b>4</b><span>editions, Class 6<br>to degree</span></div>
-  <div><b>930</b><span>careers<br>explained</span></div><div><b>20+</b><span>tools in one<br>dashboard</span></div><div><b>311</b><span>startup funding<br>programmes</span></div>
-  <div class="cv-url">{img("art/qr.png", "cv-qr")}<span>Take the assessment<br><b>careerfitment.onegrasp.com</b></span></div>
-</div></div>''', kind="cover")
+add(f'''<div class="bc"><div class="bc-edge"></div>
+<div class="bc-top"><span>Career Fitment Assessment</span><span>2026–27 Edition</span></div>
+<div class="bc-logo">{img("art/logo.png")}</div>
+<div class="bc-mid"><div class="bc-kick">The official handbook</div>
+<h1>Career Fitment<br>Handbook</h1>
+<div class="bc-rule"></div>
+<p>Know yourself. Choose your path. Build your future.</p>
+<p class="bc-sub">A practical guide and workbook for students, parents and schools: the assessment, the eight dimensions, your report, and every tool in your dashboard.</p></div>
+<div class="bc-foot"><span>OneGrasp Education Pvt. Ltd.</span><span>careerfitment.onegrasp.com</span></div></div>''', kind="cover")
+
+# ---------------------------------------------------------------- 2. contents
+add(head("Contents", "What's inside", "this handbook.") + "{{TOC}}", section="Contents")
+
+# ---------------------------------------------------------------- 3. belongs to + start here
+mark("Start here")
+route = [("Before the test", "#0EA5E9", [("Do Activity 1 and 2", "{{REF:Activity 1: Predict yourself}}"), ("Read how the test works", "{{REF:What is a psychometric assessment?}}"), ("Get ready for test day", "{{REF:Before you begin}}")]),
+         ("After your report", "#10B981", [("Learn the 8 dimensions", "{{REF:The whole you, at a glance}}"), ("Read your report", "{{REF:How to read your report}}"), ("Do the Reality check", "{{REF:Reality check: how well do you know yourself?}}")]),
+         ("Every week", "#F97316", [("Use your dashboard tools", "{{REF:Your dashboard home}}"), ("Finish the mission cards", "{{REF:Career Library}}"), ("Follow the 30-day challenge", "{{REF:The 30-day kickstart challenge}}")]),
+         ("Parents and teachers", "#0284C7", [("Guide, not decide", "{{REF:For parents: guide, not decide}}"), ("Ten questions to ask", "{{REF:Ten questions to talk through}}"), ("For schools", "{{REF:For schools: the Institution Portal}}")])]
+add(head("Start here", "This handbook", "belongs to…")
+    + box('<div class="own2">' + "".join(f'<div><label>{l}</label><i></i></div>' for l in ["Name", "Class / year", "School or college", "Assessment date"]) + "</div>", "soft")
+    + h3("Your route through this book", "map")
+    + p("This is a do-it book. You don't need to read it in order. Follow the four stages below and go straight to the page shown.", "small")
+    + '<div class="route2">' + "".join(f'<div class="rt" style="--rc:{c}"><div class="rth"><span>{i + 1}</span>{t}</div>' + "".join(f'<div class="rtl"><span>{x}</span><b>p. {pg}</b></div>' for x, pg in items) + "</div>" for i, (t, c, items) in enumerate(route)) + "</div>"
+    + h3("Signs you'll see on the pages", "info")
+    + grid([callout("simple", "The idea in plain words."), callout("example", "A real situation."), callout("try", "A small action this week."),
+            callout("task", "A mission to tick off."), callout("parent", "Advice for parents."), callout("warn", "Mistakes and scams to avoid.")], 3, gap="0 3mm"),
+    section="Start here")
 
 # ---------------------------------------------------------------- 2. partners (trust first)
 import json, os
@@ -42,16 +48,13 @@ add(head("Trusted worldwide", "Our partners and", "collaborations.", "Before you
     + grid([f'<div class="logo-card" style="height:34mm">{img("logos/" + f + ".png", style="max-height:19mm")}<span>{n}</span></div>' for f, n in schools], 4)
     + h3("Free courses and tools in the dashboard come from", "graduation-cap")
     + grid([f'<div class="logo-card" style="height:16mm">{img("logos/" + f + ".svg", style="max-height:8mm")}</div>' for f in ("google", "microsoft", "ibm", "harvard")], 4)
-    + h3("Our international scientific committee", "globe")
-    + '<div class="faces">' + "".join(f'<div><img src="assets/committee/{o["img"]}"><b>{o["name"].replace("Dr. ", "Dr ").replace("Prof. ", "Prof ")}</b><span>{o["country"]}</span></div>' for o in INTL[:10]) + "</div>"
-    + p(f"Professors and researchers from <b>{len(COUNTRIES)} countries</b> review abstracts and deliver keynotes: " + " · ".join(COUNTRIES) + ".", "small mt")
     + p("All logos and trademarks belong to their respective owners.", "small center push"),
     section="Partners")
 
 
 # ---------------------------------------------------------------- 2b. committee photo wall
 from committee_wall import wall_page
-mark("Our Scientific Committee")
+mark("Our international scientific committee")
 wall_page("Trusted worldwide", "Scientific Committee")
 
 # ---------------------------------------------------------------- 3. activity: predict yourself
@@ -97,26 +100,3 @@ add(f'''<div class="actban b2"><div class="actno">ACTIVITY 2 · 2 MINUTES</div><
     section="Activity")
 
 theme("brand")
-# ---------------------------------------------------------------- 2. belongs to + how to use
-mark("How to use this handbook")
-add(head("Before you begin", "This handbook", "belongs to…")
-    + two(box('<div class="own">' + "".join(f'<div class="ownf"><label>{l}</label><div class="wline"></div></div>' for l in
-                                           ["My name", "Class / year", "School or college", "Date I took the assessment", "My personality type", "My interest code", "My top career field"]) + "</div>", "soft"),
-          box(h3("How to use this book", "compass")
-              + p("This is a <b>do-it book</b>, not a read-it book. Every dashboard tool has a mission card with tick boxes and a worksheet. Each part has its own colour on the page edge.")
-              + "".join(f'<div class="route" style="--rc:{c}"><span class="rdot"></span><div><b>{t}</b><br><span class="small">{x}</span></div></div>' for c, t, x in [
-                  ("#E5383B", "1 · Meet OneGrasp", "Who we are"), ("#0EA5E9", "2 · The Assessment", "Before you take the test"),
-                  ("#8B5CF6", "3 · The 8 Dimensions", "What each part of you means"), ("#10B981", "4 · Your Report", "Read with your report open"),
-                  ("#F97316", "5 · Dashboard: Explore", "Careers, exams, scholarships, abroad, jobs"), ("#0891B2", "6 · Skills for Life & Work", "Money, law, AI, speaking, resume, proof"),
-                  ("#D946EF", "7 · Startups & Funding", "Build an idea; 311 funding programmes"), ("#6366F1", "8 · Research & Conferences", "From question to global stage"),
-                  ("#0284C7", "9 · Parents & Schools", "How the adults can help"), ("#F59E0B", "10 · Your Action Plan", "30-day challenge, yearly plans, trackers")])),
-          ratio="0.9fr 1.1fr")
-    + h3("Look out for these boxes")
-    + grid([callout("simple", "The idea explained the way a friend would."), callout("example", "A real situation that shows how it works."),
-            callout("ananya", "Follow Ananya, a sample Class 11 student, through her real report."), callout("try", "A small action you can do this week."),
-            callout("parent", "Advice for mothers, fathers and guardians."), callout("warn", "Mistakes and scams to avoid.")], 3, gap="0 3mm"),
-    section="How to use this book")
-
-# ---------------------------------------------------------------- 4. contents
-add(head("Contents", "What's inside", "this handbook.") + "{{TOC}}", section="Contents")
-

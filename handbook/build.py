@@ -28,14 +28,14 @@ def toc_html():
         elif parts:
             parts[-1]["subs"].append((title, idx))
         else:
-            parts.append({"no": 0, "title": "Welcome", "idx": idx, "key": "brand", "subs": [(title, idx)]})
+            parts.append({"no": 0, "title": "Getting started", "idx": idx, "key": "brand", "subs": [(title, idx)]})
     out = []
     for pt in parts:
-        _, c1, _, soft, _ = lib.THEMES[pt["key"]]
-        subs = '<div class="tsubs">' + "".join(f'<div class="tocs"><span>{t}</span><span>{i + 1}</span></div>' for t, i in pt["subs"]) + "</div>"
-        out.append(f'<div class="tocp" style="--tc:{c1};--tsoft:{soft}"><div class="tph"><span class="tpn">{pt["no"]:02d}</span>'
-                   f'<span class="tpt">{pt["title"]}</span><span class="tpg">{pt["idx"] + 1}</span></div>{subs}</div>')
-    return '<div class="tocg">' + "".join(out) + "</div>"
+        c1 = lib.THEMES[pt["key"]][1]
+        subs = "".join(f'<div class="ts2"><span>{t}</span><i></i><b>{i + 1}</b></div>' for t, i in pt["subs"])
+        num = f'{pt["no"]:02d}' if pt["no"] else "★"
+        out.append(f'<div class="tp2" style="--tc:{c1}"><div class="tp2h"><span>{num}</span><b>{pt["title"]}</b><em>{pt["idx"] + 1}</em></div>{subs}</div>')
+    return '<div class="toc2">' + "".join(out) + "</div>"
 
 
 total = len(lib.PAGES)

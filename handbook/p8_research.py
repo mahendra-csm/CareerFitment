@@ -88,7 +88,8 @@ def card_(o, intl):
     return f'<div class="cm"><img src="assets/committee/{o["img"]}"><div><b>{nm(o["name"])}</b><span class="cr">{o["role"][:48]}</span><span>{short_aff(o["aff"])}</span>{flag}</div></div>'
 
 
-ALL = INTL + sorted(HOME, key=lambda o: o["name"])
+from committee_wall import ordered
+ALL = ordered()
 from committee_wall import wall_page
 wall_page("Scientific committee", S)
 

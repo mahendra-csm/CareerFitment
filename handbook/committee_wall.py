@@ -12,9 +12,19 @@ def nm(n):
     return n.replace("Dr. ", "Dr ").replace("Prof. ", "Prof ").strip()
 
 
+LEAD = ["Dr Manjunath G N", "Dr Rudrarup Gupta", "Dr Rohan Singh", "Dr G. Vikram", "Dr Bishnu Pada Bose"]
+
+
+def ordered():
+    lead = [o for n in LEAD for o in CM if o["name"] == n]
+    rest_in = [o for o in HOME if o not in lead]
+    rest_out = [o for o in INTL if o not in lead]
+    return lead + rest_in + rest_out
+
+
 def wall_page(kicker, section):
-    add(head(kicker, "The OneGrasp", "Scientific Committee.",
-             f"{len(CM)} featured members of our 50-member international committee, from {NC} countries. They review abstracts, chair sessions and deliver keynotes across 11 disciplines.", center=True)
-        + '<div class="wall">' + "".join(f'<div class="wm{" wi" if o["country"] not in ("India", "") else ""}"><img src="assets/committee/{o["img"]}"><b>{nm(o["name"])}</b><span>{o["country"] or "&nbsp;"}</span></div>' for o in INTL + HOME) + "</div>"
+    add(head(kicker, "OneGrasp's International", "Scientific Committee Members",
+             f"{len(CM)} featured members from {NC} countries review abstracts, chair sessions and deliver keynotes across 11 disciplines.", center=True)
+        + '<div class="wall">' + "".join(f'<div class="wm{" wi" if o["country"] not in ("India", "") else ""}"><img src="assets/committee/{o["img"]}"><b>{nm(o["name"])}</b><span>{o["country"] or "&nbsp;"}</span></div>' for o in ordered()) + "</div>"
         + band(" · ".join(["India"] + sorted({o["country"] for o in INTL})), f"{NC} countries:", "globe", "push"),
         section=section)

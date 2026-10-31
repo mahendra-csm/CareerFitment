@@ -1,6 +1,7 @@
 from lib import *
+import v3parts
 
-THEMES["action"] = ("Your Action Plan", "#B92B32", "#B92B32", "#FFF7E6", "#92400E")
+THEMES["action"] = ("Your Action Plan", "#C72D35", "#C72D35", "#FFF7E6", "#92400E")
 divider(10, "action", "Your Action Plan", "Reading changes nothing. Doing does. This part is your workbook: a 30-day kickstart, a month-by-month plan for your stage, and trackers to keep you going all year.",
         ["The 30-day kickstart challenge", "Your year: Class 6–10", "Your year: Class 11–12", "Your 90-day plan", "My profile on one page", "My weekly tracker", "My achievements and certificates"],
         "feat/progress.webp")
@@ -59,21 +60,12 @@ add(head("Your year", "Class 11–12:", "two years, month by month.", "Typical t
     section=S)
 
 mark("Your 90-day plan")
-add(head("Reading guide", "Turn your report into", "a 90-day plan.", "Fill this in with your report open. Keep it on your desk, or photograph it and pin it to your phone.")
-    + two(box(h3("My report in one line", "pen-line") + p("My type is ________ · my interest code is ________", "small") + lines(1) + h3("My top 3 fields", "target") + lines(3)),
-          box(h3("One strength to use", "trophy") + lines(2) + h3("One area to grow", "sprout") + lines(2)), gap="4mm")
-    + table(["When", "Goal", "Dashboard tool I'll use", "Done"], [
-        ["<b>Days 1–30</b> · Explore", "Read 5 careers from my top field", "Career Library, Test-Drive", "☐"], ["", "", "", "☐"],
-        ["<b>Days 31–60</b> · Do", "One small task or free course", "Internships, AI & Certifications", "☐"], ["", "", "", "☐"],
-        ["<b>Days 61–90</b> · Build", "One project or proof", "Portfolio, Career Passport", "☐"], ["", "", "", "☐"]], "mt", widths=["22%", "38%", "32%", "8%"])
-    + two(callout("try", "The dashboard's <b>My plan</b> page and weekly <b>Career GPS</b> missions turn this sheet into ticked-off tasks (Parts 5 and 6)."),
-          callout("parent", "Sign the bottom of this page with your child: <span class='hand' style='font-size:13pt'>We agree to try this together.</span>"), "push", gap="4mm"),
-    section=S)
+add('<div class="v3p ch-orange">' + v3parts.PLAN90 + "</div>", section=S, kind="std nofit")
 
 mark("My profile on one page")
 add(head("Workbook", "My profile", "on one page.", "Copy your results from your report. This is the page to show a counsellor, teacher or interviewer.")
     + two(box(h3("My eight dimensions", "radar") + table(["Dimension", "My result"], [[d, ""] for d in ["Personality type", "Interest code", "Top intelligences", "Emotional intelligence", "Learning style", "Core motivator", "Signature strengths", "Aptitude: sharpest area"]], "fill")),
-          box(h3("Draw my radar", "pencil") + f'<div class="center">{radar(["Pers.", "Interests", "Intell.", "EQ", "Learning", "Motiv.", "Strengths", "Aptitude"], [0] * 8, "#B92B32", 66)}</div>' + p("Mark each score on its spoke (0 centre, 100 edge) and join the dots.", "small"), "soft"), gap="4mm")
+          box(h3("Draw my radar", "pencil") + f'<div class="center">{radar(["Pers.", "Interests", "Intell.", "EQ", "Learning", "Motiv.", "Strengths", "Aptitude"], [0] * 8, "#C72D35", 66)}</div>' + p("Mark each score on its spoke (0 centre, 100 edge) and join the dots.", "small"), "soft"), gap="4mm")
     + two(box(h3("My top 3 fields and fit %", "target") + lines(3)), box(h3("My dream career and its fit", "rocket") + lines(3)), "mt", gap="4mm")
     + two(box(h3("3 strengths I'll use", "trophy") + lines(3)), box(h3("3 areas I'll grow", "sprout") + lines(3)), "mt", gap="4mm"),
     section=S)
@@ -99,7 +91,7 @@ add(f'''<div class="bk">
 <h1>Know yourself.<br>Choose with confidence.<br><span>Build your future.</span></h1></div>
 <div class="bk-photos">{"".join(f'<div>{img("gallery/" + g)}</div>' for g in ("new1.webp", "old13.webp", "new5.webp", "old02.webp"))}</div>
 <div class="bk-stats">{stats([("3,000+", "students assessed"), ("10+", "schools and colleges"), ("2,500+", "career roadmaps"), ("8", "dimensions measured")], "glass")}</div>
-<div class="bk-cta">{img("art/qr.png", "bk-qr")}<div><div class="kicker" style="color:#B92B32">Take the assessment today</div>
+<div class="bk-cta">{img("art/qr.png", "bk-qr")}<div><div class="kicker" style="color:#C72D35">Take the assessment today</div>
 <div class="bk-url">careerfitment.onegrasp.com</div>
 <p>{icon("mail", "4mm", "#1E2340")} support@onegrasp.com &nbsp; {icon("phone", "4mm", "#1E2340")} +91 89777 60442 / 43 &nbsp; {icon("globe", "4mm", "#1E2340")} onegrasp.com/events</p>
 <p class="small">OneGrasp Education Pvt. Ltd., Hyderabad, India</p></div></div>

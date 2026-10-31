@@ -8,24 +8,35 @@ NAMES = ["Personality", "Career\nInterests", "Multiple\nIntelligences", "Emotion
 QS = ["How do I naturally work and decide?", "What kind of work excites me?", "In which ways am I smart?", "How well do I handle feelings and people?",
       "How do I prefer to study?", "What drives me?", "What do I naturally contribute?", "How quickly can I pick up new skills?"]
 
+DICON = ["fingerprint", "compass", "brain", "heart-handshake", "book-open", "flame", "trophy", "puzzle"]
+
+
 def dim(i, art, simple, measures, framework, elems, example, chart, chart_note, why, ai, careers, tries, good):
     c = DIMC[i]
     nm = NAMES[i].replace("\n", " ")
     mark(f"{i + 1:02d} {nm}")
-    eg = "".join(f'<div class="el" style="--dc:{c}">{chip(ic, c, f"color-mix(in srgb, {c} 12%, white)", "9mm", "4.6mm")}<div><b>{t}</b><span>{x}</span></div></div>' for ic, t, x in elems)
-    v = '--dc:#B92B32;--c1:#B92B32;--c2:#17243A;--soft:#F4F3EF;--deep:#17243A'
-    add(f'<div class="dwrap" style="{v}"><div class="dimtop sm"><div><span class="dimbadge">Dimension {i + 1:02d} of 08</span><div class="dimnum">{i + 1:02d}</div>'
-        f'<h1 class="title" style="font-size:27pt">{nm}</h1><div class="dimq">“{QS[i]}”</div></div>{img(art, "dimart")}</div>'
-        + callout("simple", simple)
-        + two(box(h3("What it measures", "ruler") + p(measures, "small") + h3("The framework", "book-open") + p(framework, "small")),
-              box(h3("How it looks in your report", "chart-column") + chart + p(chart_note + " <i>Illustrative.</i>", "small mt")), ratio="1fr 1fr", gap="4mm")
-        + f'<div class="els c4">{eg}</div>'
-        + h3("Careers that often suit each pattern", "briefcase")
-        + table(["If you lean towards…", "You may enjoy careers such as…"], careers, "dense", widths=["30%", "70%"])
-        + two(grid([f'<div class="tryc" style="--dc:{c}"><b>{s_}</b><span>{t}</span></div>' for s_, t in tries], 2, gap="2mm"),
-              box(h3("Fill in from your report", "pen-line") + '<div class="myr"><span>My score</span><i></i><span>My top result</span><i></i><span>One way I\'ll use it</span><i></i></div>', "soft"), "mt push", ratio="1.2fr 0.8fr", gap="4mm")
-        + "</div>",
-        section=S)
+    v = f"--c1:{c};--c2:{c};--soft:color-mix(in srgb, {c} 9%, white);--deep:color-mix(in srgb, {c} 82%, black)"
+    prog = "".join(f'<i class="{"on" if k == i else ""}"></i>' for k in range(8))
+    els = "".join(f'<div class="el3">{tile(ic, "7.4mm", "4.2mm")}<div><b>{t}</b><span>{x}</span></div></div>' for ic, t, x in elems)
+    ncol = 2 if len(elems) <= 4 else 2
+    tbl = table(["If you lean towards…", "You may enjoy careers such as…"], careers, "dense", widths=["34%", "66%"])
+    ages = "".join(f'<div class="age3"><b>{a}</b><span>{b}</span></div>' for a, b in tries)
+    add(f'''<div class="dim3" style="{v}">
+<div class="dhero">{tile(DICON[i], "13mm", "7.4mm", solid=True)}
+ <div><div class="kicker">Dimension {i + 1:02d} of 08</div><h1 class="dt">{nm}</h1><div class="dq3">“{QS[i]}”</div><div class="dprog">{prog}</div></div>
+ <div class="dsimple"><b>In simple words</b><p>{simple}</p></div></div>
+<div class="d3c">
+ <div class="dc">{h3("What it measures", "ruler")}<p>{measures}</p></div>
+ <div class="dc">{h3("The framework", "book-open")}<p>{framework}</p></div>
+ <div class="dc">{h3("Why it matters", "target")}<p>{why}</p></div></div>
+<div class="drow"><div><div class="dlab">{tile("layers", "6mm", "3.4mm")}What it looks at</div><div class="els3 n{len(elems)}">{els}</div></div>
+ <div class="dchart">{h3("How it looks in your report", "chart-column")}{chart}<p class="cap3">{chart_note} <i>Illustrative.</i></p></div></div>
+<div class="drow b"><div><div class="dlab">{tile("briefcase", "6mm", "3.4mm")}Careers that often suit each pattern</div>{tbl}</div>
+ {callout("example", example)}</div>
+<div class="dlab">{tile("footprints", "6mm", "3.4mm")}Try this at your stage</div><div class="ages3">{ages}</div>
+<div class="drefl">{tile("pen-line", "6mm", "3.4mm")}<b>Fill in from your report</b><div class="fld">My score<i></i></div><div class="fld">My top result<i></i></div><div class="fld">One way I'll use it<i></i></div></div>
+<p class="dgood">{good}</p>
+</div>''', section=S)
 
 
 def sliders(rows):
@@ -60,7 +71,7 @@ dim(1, "ug/interests-motivation.webp",
     [("wrench", "Realistic · doing", "Tools, machines, nature, building things."), ("microscope", "Investigative · thinking", "Research, analysis, solving puzzles."), ("palette", "Artistic · creating", "Design, writing, music, new ideas."),
      ("hand-heart", "Social · helping", "Teaching, caring, counselling."), ("megaphone", "Enterprising · leading", "Persuading, selling, starting things."), ("table", "Conventional · organising", "Data, order, systems and accuracy.")],
     "<b>Arjun</b> loves fixing his bicycle and building science-fair models (Realistic + Investigative). His friend <b>Sana</b> loves organising the school fest and convincing sponsors (Enterprising + Social). Their codes, RIE and ESA, point to very different but equally good careers.",
-    f'<div class="center">{hexagon(["Realistic", "Investigative", "Artistic", "Social", "Enterprising", "Conventional"], [38, 86, 66, 44, 57, 31], DIMC[1], 62)}</div><div class="typecard" style="--dc:{DIMC[1]}"><b>IAE</b><span>“The Analytical Investigator” · curious, creative, driven</span></div>',
+    f'<div class="center">{hexagon(["Realistic", "Investigative", "Artistic", "Social", "Enterprising", "Conventional"], [38, 86, 66, 44, 57, 31], DIMC[1], 50)}</div><div class="typecard" style="--dc:{DIMC[1]}"><b>IAE</b><span>“The Analytical Investigator” · curious, creative, driven</span></div>',
     "The further a corner reaches out, the stronger that interest. Your top three letters make your interest code.",
     "Interests drive motivation, persistence and satisfaction. When your studies and work match what genuinely holds your attention, you are far more likely to thrive.",
     ["Choose work they are curious about", "Keep learning as their field changes", "Bring energy and ideas, not only skills", "Stay with hard problems until solved"],
@@ -95,7 +106,7 @@ dim(3, "ug/human-professional-skills.webp",
     [("scan-eye", "Self-awareness", "Recognising your emotions, strengths and values."), ("anchor", "Self-management", "Staying calm, focused and adaptable."),
      ("eye", "Social awareness", "Understanding others' feelings with empathy."), ("handshake", "Relationship management", "Building trust and resolving conflict.")],
     "In a group project, <b>Nikhil</b> notices a teammate has gone quiet, checks in with her privately, and adjusts the plan. That's social awareness plus relationship management, and every good team leader does it.",
-    '<div class="eqgrid">' + "".join(f'<div style="--q:{c}"><b>{v}</b><span>{t}</span></div>' for t, v, c in [("Self-awareness", 72, "#7A2A30"), ("Self-management", 58, "#9C5A5E"), ("Social awareness", 66, "#5E7189"), ("Relationships", 61, "#3D4F66")]) + "</div>",
+    '<div class="eqgrid">' + "".join(f'<div style="--q:{c}"><b>{v}</b><span>{t}</span></div>' for t, v, c in [("Self-awareness", 72, "#7754B8"), ("Self-management", 58, "#F09A24"), ("Social awareness", 66, "#279B70"), ("Relationships", 61, "#2196C8")]) + "</div>",
     "Four areas, each scored out of 100. Your report names the area to practise first.",
     "Strong emotional intelligence improves communication, builds healthier relationships, helps you work in teams and prepares you to lead and adapt.",
     ["Stay calm under pressure", "Handle conflict with respect", "Listen before they respond", "Lead and support a team"],
@@ -111,7 +122,7 @@ dim(4, "ug/academic-domain-fit.webp",
     [("eye", "Seeing (visual)", "Diagrams, charts, videos, demonstrations."), ("ear", "Hearing (auditory)", "Listening, discussing, explaining aloud."),
      ("pen-line", "Reading / writing", "Notes, summaries, lists, re-writing."), ("hand", "Doing (hands-on)", "Trying, practising, experimenting.")],
     "<b>Priya</b> read her biology chapter three times and still forgot it. Then she drew the digestive system as a coloured flowchart and remembered it in one go. She's a visual learner, and now she revises with diagrams.",
-    f'<div class="two mid" style="display:grid;grid-template-columns:1fr 1fr;gap:3mm"><div class="center">{donut([("Seeing", 38, "#3D4F66"), ("Doing", 30, "#3D4F66"), ("Reading", 19, "#9C5A5E"), ("Hearing", 13, "#7A2A30")], 40, 0.55, ("Seeing", "top style"))}</div>{legend([("Seeing", "38%", "#3D4F66"), ("Doing", "30%", "#3D4F66"), ("Reading / writing", "19%", "#9C5A5E"), ("Hearing", "13%", "#7A2A30")])}</div>',
+    f'<div class="two mid" style="display:grid;grid-template-columns:1fr 1fr;gap:3mm"><div class="center">{donut([("Seeing", 38, "#2196C8"), ("Doing", 30, "#2196C8"), ("Reading", 19, "#F09A24"), ("Hearing", 13, "#7754B8")], 40, 0.55, ("Seeing", "top style"))}</div>{legend([("Seeing", "38%", "#2196C8"), ("Doing", "30%", "#2196C8"), ("Reading / writing", "19%", "#F09A24"), ("Hearing", "13%", "#7754B8")])}</div>',
     "Your report names your top and second style, with revision tips for each.",
     "When you study in the ways you prefer, revision is easier to start and keep up. Building flexibility across all four makes you a stronger, more adaptable learner.",
     ["Adapt when the way of working changes", "Learn new tools quickly", "Know how they learn best", "Keep learning without being told"],
@@ -179,7 +190,7 @@ DN = ["Personality type", "Interest code", "Top intelligence", "Emotional intell
 add(head("Growing with you", "See your career", "progress.",
          "You are still growing, so your profile will change too. Take the assessment again as you move up, and compare. Some results stay steady; others grow with practice.")
     + '<div class="prog">' + "".join(f'<div style="--pc:{c}"><b>{t}</b><span>{x}</span></div>' for t, x, c in [
-        ("Class 6–8", "Discover: what am I like?", "#9C5A5E"), ("Class 9–10", "Choose a stream", "#17243A"), ("Class 11–12", "Choose exams, degree, college", "#3D4F66")]) + "</div>"
+        ("Class 6–8", "Discover: what am I like?", "#F09A24"), ("Class 9–10", "Choose a stream", "#17243A"), ("Class 11–12", "Choose exams, degree, college", "#2196C8")]) + "</div>"
     + h3("My results over the years", "chart-line")
     + table(["Dimension", "First time (Class __)", "Second time (Class __)", "Third time (Class __)", "What changed?"], [[f"<b>{d}</b>", "", "", "", ""] for d in DN] + [["<b>Top career field</b>", "", "", "", ""]], "fill", ["22%", "18%", "18%", "18%", "24%"])
     + two(callout("simple", "Personality and interests usually stay fairly steady. Emotional intelligence and aptitude grow with practice, so these are where you'll see the biggest progress."),

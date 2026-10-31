@@ -393,8 +393,125 @@ def divider(part, key, title, sub, items, art, art2=None):
 <div class="dv-foot"><span>{title}</span><span>careerfitment.onegrasp.com</span></div></div>''', section=title, kind="divider")
 
 
-# ---- brand system: every chapter shares one palette ----
-BRAND = ("#B92B32", "#17243A", "#F4F3EF", "#17243A")
+# ---------------------------------------------------------------- design system v3
+ACC = {"red": ("#C72D35", "#B0262E"), "blue": ("#2196C8", "#1672A0"), "purple": ("#7754B8", "#6243A3"), "green": ("#279B70", "#1F7D5A"),
+       "orange": ("#F09A24", "#B76A06"), "gold": ("#E5B73B", "#8C6A0C"), "navy": ("#17243A", "#17243A")}
+CHAPTER = {"brand": "red", "meet": "red", "test": "blue", "dims": "purple", "report": "blue", "dash": "orange", "skills": "green",
+           "startup": "gold", "research": "blue", "family": "red", "action": "orange"}
+CH_ICON = {"meet": "building-2", "test": "clipboard-check", "dims": "brain", "report": "file-chart-column", "dash": "layout-dashboard",
+           "skills": "sprout", "startup": "rocket", "research": "microscope", "family": "heart-handshake", "action": "flag"}
+
+
+def accent(name):
+    c, d = ACC[name]
+    return (c, c, f"color-mix(in srgb, {c} 9%, white)", d)
+
+
+def set_theme(key, name, acc):
+    THEMES[key] = (name,) + accent(acc)
+
+
 for _k in list(THEMES):
-    THEMES[_k] = (THEMES[_k][0],) + BRAND
-DIMC[:] = ["#17243A", "#B92B32", "#3D4F66", "#7A2A30", "#5E7189", "#9C5A5E", "#8A97A8", "#C2A3A5"]
+    THEMES[_k] = (THEMES[_k][0],) + accent(CHAPTER.get(_k, "red"))
+THEMES.setdefault("skills", ("Skills for Life & Work",) + accent("green"))
+THEMES.setdefault("action", ("Your Action Plan",) + accent("orange"))
+DIMC[:] = ["#7754B8", "#C72D35", "#2196C8", "#279B70", "#F09A24", "#B5891A", "#17243A", "#5E7189"]
+ICONS = True
+
+
+def chip(name, color=None, bg=None, size="10mm", isz="5.2mm"):
+    c = color or "var(--c1)"
+    b = bg or f"color-mix(in srgb, {c} 13%, white)"
+    return f'<span class="it chip" style="width:{size};height:{size};background:{b}">{icon(name, isz, c, 1.75)}</span>'
+
+
+def tile(name, size="8mm", isz="4.6mm", solid=False, color="var(--c1)"):
+    if solid:
+        return f'<span class="it" style="width:{size};height:{size};background:{color}">{icon(name, isz, "#fff", 1.75)}</span>'
+    return chip(name, color, None, size, isz)
+
+
+def h3(t, ic=None):
+    return f'<h3 class="h3">{tile(ic, "7mm", "4mm") if ic else ""}<span>{t}</span></h3>'
+
+
+CALLOUT.update({
+    "simple": ("lightbulb", "In simple words", "#E5B73B", "#8C6A0C"), "example": ("users", "Example", "#279B70", "#1F7D5A"),
+    "try": ("footprints", "Try this", "#F09A24", "#B76A06"), "parent": ("heart-handshake", "For parents", "#2196C8", "#1672A0"),
+    "warn": ("triangle-alert", "Caution", "#C72D35", "#B0262E"), "good": ("info", "Good to know", "#2196C8", "#1672A0"),
+    "ananya": ("user-round", "Ananya's story", "#7754B8", "#6243A3"), "teacher": ("school", "For teachers", "#2196C8", "#1672A0"),
+    "task": ("square-check-big", "Your task", "#F09A24", "#B76A06")})
+
+
+def callout(kind, text, title=None, cls=""):
+    ic, label, c, d = CALLOUT[kind]
+    return (f'<div class="callout {cls}" style="--k:{c};--kt:{d}"><div class="cot">{tile(ic, "6mm", "3.6mm", color=c)}<b>{title or label}</b></div>'
+            f'<div class="cob">{text}</div></div>')
+
+
+def stats(items, cls=""):
+    out = []
+    for it in items:
+        ic = tile(it[2], "7mm", "4mm") if len(it) > 2 else ""
+        out.append(f'<div class="stat">{ic}<b>{it[0]}</b><span>{it[1]}</span></div>')
+    return f'<div class="stats {cls}">' + "".join(out) + "</div>"
+
+
+def mindmap(center, sub, nodes, height=110, cw=36, nw=48):
+    """Radial mind map. nodes: (icon, title, text[, colour]). Laid out on an ellipse around the centre."""
+    n = len(nodes)
+    cols = ["#7754B8", "#2196C8", "#279B70", "#F09A24", "#C72D35", "#B5891A", "#17243A", "#5E7189"]
+    lines, html = [], []
+    for i, nd in enumerate(nodes):
+        a = -math.pi / 2 + (i + (0.5 if n % 2 == 0 else 0)) * 2 * math.pi / n
+        x, y = 50 + 37 * math.cos(a), 50 + 41 * math.sin(a)
+        c = nd[3] if len(nd) > 3 else cols[i % len(cols)]
+        lines.append(f'<line x1="50" y1="50" x2="{x:.1f}" y2="{y:.1f}" stroke="{c}" stroke-width=".35" stroke-dasharray="1.2 .8"/>'
+                     f'<circle cx="{x:.1f}" cy="{y:.1f}" r=".9" fill="{c}"/>')
+        txt = f"<p>{nd[2]}</p>" if nd[2] else ""
+        html.append(f'<div class="nd" style="left:{x:.1f}%;top:{y:.1f}%;--nc:{c};--w:{nw}mm">{tile(nd[0], "7mm", "4mm", color=c)}<b>{nd[1]}</b>{txt}</div>')
+    return (f'<div class="mm" style="height:{height}mm"><svg class="lines" viewBox="0 0 100 100" preserveAspectRatio="none">{"".join(lines)}</svg>'
+            f'<div class="ctr" style="left:50%;top:50%;width:{cw}mm;height:{cw}mm"><b>{center}</b><span>{sub}</span></div>{"".join(html)}</div>')
+
+
+def roadmap(stops, ry="50%", per_row=4):
+    """Road with numbered stations, labels alternating above/below; wraps every per_row stops. stops: (title, text[, colour])"""
+    cols = ["#2196C8", "#7754B8", "#F09A24", "#279B70", "#C72D35", "#B5891A", "#17243A"]
+    rows = []
+    for r0 in range(0, len(stops), per_row):
+        out = []
+        for i in range(r0, min(r0 + per_row, len(stops))):
+            s_ = stops[i]
+            c = s_[2] if len(s_) > 2 else cols[i % len(cols)]
+            d = "up" if (i - r0) % 2 == 0 else "dn"
+            out.append(f'<div class="stn {d}" style="--sc:{c}"><div class="sp"></div><div class="dot">{i + 1:02d}</div><div class="lb"><b>{s_[0]}</b><span>{s_[1]}</span></div><div class="sp"></div></div>')
+        rows.append(f'<div class="rm" style="grid-template-columns:repeat({per_row},1fr);--ry:{ry}">' + "".join(out) + "</div>")
+    return "".join(rows)
+
+
+def itiles(items, cols=2, gap="3mm 5mm"):
+    """Icon + title + text tiles. items: (icon, title, text)"""
+    return grid([f'<div class="itile">{tile(i, "9mm", "5mm")}<div><b>{t}</b><span>{x}</span></div></div>' for i, t, x in items], cols, gap=gap)
+
+
+def compare(a_title, a_items, b_title, b_items):
+    li = lambda xs: "".join(f'<p class="small" style="color:var(--body);margin-bottom:1.2mm">{x}</p>' for x in xs)
+    return (f'<div class="cmp"><div class="a"><h5>{icon("x", "3.4mm", "#C72D35", 2.4)}{a_title}</h5>{li(a_items)}</div>'
+            f'<div class="b"><h5>{icon("check", "3.4mm", "#279B70", 2.4)}{b_title}</h5>{li(b_items)}</div></div>')
+
+
+OPENER_PHOTO = {"meet": "gallery/g02.jpg", "test": "gallery/g08.jpg", "dims": "gallery/g14.jpg", "report": "gallery/g10.jpg", "dash": "gallery/g16.jpg",
+                "skills": "gallery/g11.jpg", "startup": "gallery/g04.jpg", "research": "gallery/g05.jpg", "family": "gallery/g12.jpg", "action": "gallery/g15.jpg"}
+
+
+def divider(part, key, title, sub, items, art=None, art2=None):
+    theme(key)
+    TOC.append(("part", part, title, len(PAGES), key))
+    stops = "".join(f'<div class="stop"><span>{i + 1:02d}</span><div><b>{t}</b><em>{{{{REF:{t}}}}}</em></div></div>' for i, t in enumerate(items))
+    add(f'''<div class="op"><div class="panel"><div class="pin">
+<div class="num">{part:02d}</div><div class="part">Part {part:02d}</div>
+<div class="icon">{icon(CH_ICON.get(key, "compass"), "9mm", "#fff", 1.6)}</div>
+<h1>{title}</h1><p class="sub">{sub}</p></div>
+<div class="logo">{img("art/logo.png")}</div></div>
+<img class="photo3" src="assets/{OPENER_PHOTO.get(key, "gallery/g02.jpg")}" alt="">
+<div class="route"><div class="rh3">{icon("route", "4mm", "currentColor", 2)} In this part</div>{stops}</div></div>''', section=title, kind="divider")

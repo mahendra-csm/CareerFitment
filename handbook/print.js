@@ -16,7 +16,7 @@ const { chromium } = require('playwright');
       let h = natural(), z = 1;
       if (h < H * 0.97) {
         // grow until it fills the page (cap 1.3)
-        let lo = 1, hi = 1.06;
+        let lo = 1, hi = 1.12;
         for (let i = 0; i < 14; i++) { const m = (lo + hi) / 2; zi.style.zoom = m; zi.style.width = (W / m) + 'px'; if (zi.scrollHeight * m <= H * 0.985) lo = m; else hi = m; }
         z = lo;
       } else if (h > H) {
@@ -26,7 +26,7 @@ const { chromium } = require('playwright');
       }
       zi.style.zoom = z; zi.style.width = (W / z) + 'px'; zi.style.minHeight = (H / z) + 'px';
       const n = pc.parentElement.dataset.n;
-      if (z < 0.9) res.push(`page ${n}: overflow, shrunk to ${z.toFixed(2)}`);
+      if (z < 0.97) res.push(`page ${n}: overflow, shrunk to ${z.toFixed(2)}`);
     });
     return res;
   });

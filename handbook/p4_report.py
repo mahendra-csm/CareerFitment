@@ -19,9 +19,9 @@ add(head("Reading guide", "How to read your report", "in 20 minutes.",
               ("Read strengths and growth areas (3 min)", "Pick one strength to use and one area to practise this month."),
               ("Read the roadmap and next steps (4 min)", "Circle the very first step. That's your homework for this week.")])
     + two(box(h3("Scores (0–100)", "gauge") + table(["Score", "Label", "Read it as"], [["75–100", tag("Very High", "#17243A"), "Clear, strong preference or ability"], ["65–74", tag("High", "#17243A"), "A real strength"],
-                                                                                    ["50–64", tag("Medium", "#3D4F66"), "Balanced either way"], ["35–49", tag("Developing", "#9C5A5E"), "Not your first instinct yet"], ["0–34", tag("Emerging", "#9C5A5E"), "Early days; a place to practise"]], "dense")),
-          box(h3("Fit % and match labels", "target") + table(["Fit", "Label", "Do this"], [["65%+", tag("Strong match", "#17243A"), "Explore deeply; test-drive"], ["45–64%", tag("Good match", "#3D4F66"), "Keep on the list; try a task"],
-                                                                                         ["under 45%", tag("Worth exploring", "#9C5A5E"), "Read about it; stay curious"]], "dense")
+                                                                                    ["50–64", tag("Medium", "#2196C8"), "Balanced either way"], ["35–49", tag("Developing", "#F09A24"), "Not your first instinct yet"], ["0–34", tag("Emerging", "#F09A24"), "Early days; a place to practise"]], "dense")),
+          box(h3("Fit % and match labels", "target") + table(["Fit", "Label", "Do this"], [["65%+", tag("Strong match", "#17243A"), "Explore deeply; test-drive"], ["45–64%", tag("Good match", "#2196C8"), "Keep on the list; try a task"],
+                                                                                         ["under 45%", tag("Worth exploring", "#F09A24"), "Read about it; stay curious"]], "dense")
               + p("Fit % compares your whole profile with what a field rewards. It is <b>not</b> a probability of success.", "small mt")), "mt", gap="4mm")
     + callout("simple", "In Personality, Learning Style and Motivators a score shows a <b>preference</b>, not quality. Only Aptitude has right answers, and even Aptitude grows with practice.", cls="push"),
     section=S)
@@ -50,8 +50,8 @@ add(head("Careers that fit you", "Three ways to see", "your future.",
     + two(paper("shots/r11-11.jpg", "Career cluster fit: how closely you match each career cluster."), paper("shots/r11-12.jpg", "Your career path at a glance: the three views."), gap="6mm")
     + grid([f'<div class="view" style="--vc:{c}"><span>{n}</span><b>{t}</b><em>{q}</em><p>{x}</p></div>' for n, t, q, x, c in [
         ("1", "Career Fitment", "What fits YOU", "Your top 5 career areas, ranked purely by your answers. Each shows key roles, skills to build, salary in India (indicative) and entrance exams.", "#17243A"),
-        ("2", "Career Suitability", "What fits your STREAM", "Once you have a stream (MPC, BiPC, MEC, CEC, HEC), the careers it already reaches, plus companies that hire and funded routes.", "#3D4F66"),
-        ("3", "Career Selector", "Your DREAM career", "The career you choose, how well it fits, and the realistic route from where you are today.", "#5E7189")]], 3, "mt")
+        ("2", "Career Suitability", "What fits your STREAM", "Once you have a stream (MPC, BiPC, MEC, CEC, HEC), the careers it already reaches, plus companies that hire and funded routes.", "#2196C8"),
+        ("3", "Career Selector", "Your DREAM career", "The career you choose, how well it fits, and the realistic route from where you are today.", "#279B70")]], 3, "mt")
     + callout("simple", "If all three views agree, you have a clear path. If they disagree, that's useful too: it shows exactly what you'd need to build or change to reach your dream.", cls="push"),
     section=S)
 
@@ -77,7 +77,7 @@ add(head("Choosing your stream", "From your top fields", "to a stream.",
     section=S)
 
 mark("The 15 career domains")
-cols = ["#B92B32", "#9C5A5E", "#3D4F66", "#3D4F66", "#7A2A30", "#5E7189", "#5E7189", "#9C5A5E", "#17243A", "#8A97A8", "#7A2A30", "#5E7189", "#8A97A8", "#3D4F66", "#B92B32"]
+cols = ["#C72D35", "#F09A24", "#2196C8", "#2196C8", "#7754B8", "#279B70", "#279B70", "#F09A24", "#17243A", "#E5B73B", "#7754B8", "#279B70", "#E5B73B", "#2196C8", "#C72D35"]
 add(head("Reference", "The 15 career", "domains.", "Your report ranks careers across these 15 broad fields. Each domain card in the report adds what it is, key roles, skills, how to get in, salary in India and abroad, and future scope.")
     + grid([f'<div class="dom" style="--dc:{cols[i]}"><span>{d["key"]}</span><b>{d["name"]}</b><p>{d["tagline"]}</p><em>{", ".join(d["roles"][:3])}</em><i>{d["salary"].split(" · ")[0].replace(" entry", " to start")}</i></div>' for i, d in enumerate(DOM)], 3, gap="2.6mm")
     + p("Salaries are typical starting ranges in India: indicative, not guarantees.", "small push"),
@@ -85,9 +85,11 @@ add(head("Reference", "The 15 career", "domains.", "Your report ranks careers ac
 
 mark("Your roadmap and next steps")
 add(head("How to get there", "Your roadmap", "and next steps.", "The last part of your report turns your results into a route: what to do now, in school and after, plus where the world of work is heading.")
-    + two(paper("shots/r910-13.jpg", "Your long-term roadmap, step by step from today."), paper("shots/r11-17.jpg", "What's rising and what's fading (WEF 2025)."), gap="6mm")
-    + two(paper("shots/r910-14.jpg", "Learn, find work and get funded."),
-          box(h3("Use this part well", "list-checks") + check_list(["Circle the very first step of your roadmap", "Pick one rising field to read about this week", "Open one free course from the list", "Read the parents' page together"]), "soft"), "mt", gap="6mm"),
+    + grid([paper("shots/r910-13.jpg", "Your long-term roadmap, step by step from today."), paper("shots/r11-17.jpg", "What's rising and what's fading (WEF 2025)."), paper("shots/r910-14.jpg", "Learn, find work and get funded.")], 3, "crop3", gap="4mm")
+    + h3("Use this part well", "list-checks")
+    + roadmap([("Circle the first step", "Find the very first step of your roadmap and circle it."), ("Read one rising field", "Pick one rising field to read about this week."),
+               ("Open a free course", "Open one free course from the list."), ("Read it together", "Read the parents' page together.")])
+    + callout("try", "Write your first step here and the date you'll do it by: ______________________________  by ____ / ____", cls="push"),
     section=S)
 
 # ---------------------------------------------------------------- Ananya
@@ -98,10 +100,10 @@ add(head("Worked example", "Meet Ananya:", "her best fits and dream career.", "A
     + two(box(h3("Her top career fields", "target") + hbars([(d, v, "#17243A" if i < 2 else "#9AA5B1") for i, (d, v) in enumerate(doms)], maxv=100, unit="%")
               + p("Computer Science / IT and AI / Data Science tie at the top: both reward an investigative, logical, organised profile.", "small mt")),
           box(h3("Her dream career: Software Engineer", "rocket")
-              + '<div class="grid" style="grid-template-columns:repeat(4,1fr);gap:2mm">' + ring(92, "Fits her profile", "#17243A", 16) + ring(85, "Fits her stream", "#3D4F66", 16) + ring(25, "Aptitude today", "#B92B32", 16) + ring(67, "Overall fitment", "#17243A", 16) + "</div>"
+              + '<div class="grid" style="grid-template-columns:repeat(4,1fr);gap:2mm">' + ring(92, "Fits her profile", "#17243A", 16) + ring(85, "Fits her stream", "#2196C8", 16) + ring(25, "Aptitude today", "#C72D35", 16) + ring(67, "Overall fitment", "#17243A", 16) + "</div>"
               + callout("simple", "Her dream career <b>matches</b> her best-fit field. Her profile and stream fit strongly; her aptitude score is the gap to work on, and aptitude grows with practice.")), ratio="1fr 1fr", gap="4mm")
     + two(box(h3("Strengths to use", "trophy") + bullets(["Clear personality (100/100)", "Clear career interest (100/100)", "Learning style (74/100)"], "tight"), "soft"),
-          box(h3("Areas to grow", "sprout") + bullets(["Motivator clarity (19/100)", "Aptitude and reasoning (25/100)", "Emotional intelligence (25/100)"], "tight", "arrow-up-right", "#B92B32"), "soft"), gap="4mm")
+          box(h3("Areas to grow", "sprout") + bullets(["Motivator clarity (19/100)", "Aptitude and reasoning (25/100)", "Emotional intelligence (25/100)"], "tight", "arrow-up-right", "#C72D35"), "soft"), gap="4mm")
     + h3("What Ananya could do next", "footprints")
     + steps([("Week 1", "Read 5 careers in Computer Science in the Career Library.", "book-open"), ("Week 2", "Test-drive software engineering.", "play"),
              ("Week 3", "Make a JEE Main study plan; take one mock.", "clipboard-list"), ("Week 4", "Start a free coding programme in Internships.", "laptop")], cols=4),
@@ -114,7 +116,7 @@ add(f'''<div class="actban b3"><div class="actno">ACTIVITY 3 · AFTER YOUR REPOR
     + table(["What", "My guess", "Parent's guess", "My report says", "Me ✓", "Parent ✓"], [[f"<b>{r}</b>", "", "", "", "☐", "☐"] for r in rc] + [["<b>TOTAL</b>", "", "", "", "<b>/10</b>", "<b>/10</b>"]], "fill", ["22%", "17%", "17%", "22%", "11%", "11%"])
     + grid([f'<div class="band2" style="--b:{c}"><b>{s}</b><span>{t}</span><p>{x}</p></div>' for s, t, x, c in [
         ("8–10", "You know yourself well", "Great. Now act on it: start the 30-day challenge in Part 10.", "#17243A"),
-        ("5–7", "Some surprises", "Read the deep dives for the dimensions you missed. Surprises are where you learn the most.", "#B92B32"),
-        ("0–4", "Big discovery", "That's exactly why the assessment exists. Talk it through with a parent or counsellor.", "#5E7189")]], 3, "mt", gap="3mm")
+        ("5–7", "Some surprises", "Read the deep dives for the dimensions you missed. Surprises are where you learn the most.", "#C72D35"),
+        ("0–4", "Big discovery", "That's exactly why the assessment exists. Talk it through with a parent or counsellor.", "#279B70")]], 3, "mt", gap="3mm")
     + two(box(h3("My biggest surprise", "sparkles") + lines(2)), box(h3("What I'll do about it", "flag") + lines(2)), "mt push", gap="4mm"),
     section=S)

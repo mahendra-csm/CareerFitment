@@ -1,32 +1,51 @@
 from lib import *
 
 divider(1, "meet", "Meet OneGrasp", "Who we are, what we do, and why we built a career assessment that looks far beyond marks.",
-        ["What is OneGrasp?", "Why career choices go wrong", "The future of work", "Real schools, real students"],
+        ["What is OneGrasp?", "Your journey with OneGrasp", "Why career choices go wrong", "The future of work", "Real schools, real students"],
         "brochure/c11-i-001.png")
 S = "Meet OneGrasp"
 
 mark("What is OneGrasp?")
 add(head("About us", "What is", "OneGrasp?",
          "OneGrasp Education Pvt. Ltd. is an education company based in Hyderabad, India. We help students, families, professionals and institutions make better decisions about learning and work.")
-    + two(callout("simple", "OneGrasp is like a <b>GPS for your career</b>. First it finds where you are today (your strengths, interests and personality). Then it shows the roads that suit you, and finally it gives you turn-by-turn directions: subjects, exams, colleges, skills, money and jobs.")
-          + p("Our best-known product is the <b>Career Fitment Assessment</b>: a psychometric career assessment for students from Class 6 to Class 12. It measures eight dimensions of a student and turns them into a personal report and a dashboard of more than twenty tools.")
-          + p("Around the assessment, OneGrasp runs international scientific conferences, startup and entrepreneurship programmes, certifications, workshops and internships, one-to-one career counselling, and admissions guidance for India and abroad.")
-          + h3("Our belief", "heart")
-          + p("Every student is good at something. A career assessment should never label a child. It should show where they will thrive, what to try next, and how to get there with honest facts about exams, colleges, costs and jobs."),
-          photo("gallery/new1.webp", "Career guidance in a partner school", style="height:66mm") + p("", "mt")
-          + stats([("6–12", "classes covered", "layers"), ("8", "dimensions", "radar")]) + stats([("20+", "dashboard tools", "layout-grid"), ("100%", "facts linked to sources", "badge-check")]),
-          ratio="1.15fr 0.85fr", gap="6mm")
+    + two(callout("simple", "OneGrasp is like a <b>GPS for your career</b>. First it finds where you are today (your strengths, interests and personality). Then it shows the roads that suit you, and finally it gives you turn-by-turn directions: subjects, exams, colleges, skills, money and jobs."),
+          stats([("6–12", "classes covered", "layers"), ("8", "dimensions", "radar"), ("20+", "dashboard tools", "layout-grid")]), ratio="1.1fr .9fr", gap="5mm")
+    + mindmap("OneGrasp", "Education Pvt. Ltd.", [
+        ("clipboard-check", "Career Fitment Assessment", "Our best-known product: a psychometric career assessment for Class 6 to Class 12.", "#C72D35"),
+        ("layout-dashboard", "Report and dashboard", "Eight dimensions turned into a personal report and a dashboard of more than twenty tools.", "#F09A24"),
+        ("globe", "Scientific conferences", "International scientific conferences.", "#2196C8"),
+        ("rocket", "Startup programmes", "Startup and entrepreneurship programmes.", "#B5891A"),
+        ("award", "Certifications", "Certifications, workshops and internships.", "#279B70"),
+        ("messages-square", "Counselling", "One-to-one career counselling.", "#7754B8"),
+        ("plane", "Admissions guidance", "Admissions guidance for India and abroad.", "#17243A")], height=92, cw=32, nw=50)
+    + two(quote("Every student is good at something. A career assessment should never label a child. It should show where they will thrive, what to try next, and how to get there with honest facts about exams, colleges, costs and jobs.", "Our belief"),
+          photo("gallery/new1.webp", "Career guidance in a partner school", style="height:30mm"), ratio="1.25fr .75fr", gap="5mm")
     + h3("What makes OneGrasp different", "sparkles")
-    + cards([("flask-conical", "Built on science", "Well-known frameworks: personality type, Holland's RIASEC interests, Gardner's intelligences, emotional intelligence and reasoning aptitude.", "#B92B32"),
-             ("users", "Written for each age", "Questions and a report written for each class, from Class 6 to Class 12.", "#3D4F66"),
-             ("map", "A plan, not just a PDF", "The report opens a dashboard of lessons, tools and weekly tasks, so it never sits in a drawer.", "#17243A"),
-             ("shield-check", "Facts you can check", "Every exam, scholarship and funding programme links to its official source.", "#9C5A5E")], 4, "compact"),
+    + cards([("flask-conical", "Built on science", "Well-known frameworks: personality type, Holland's RIASEC interests, Gardner's intelligences, emotional intelligence and reasoning aptitude.", "#C72D35"),
+             ("users", "Written for each age", "Questions and a report written for each class, from Class 6 to Class 12.", "#2196C8"),
+             ("map", "A plan, not just a PDF", "The report opens a dashboard of lessons, tools and weekly tasks, so it never sits in a drawer.", "#7754B8"),
+             ("shield-check", "Facts you can check", "Every exam, scholarship and funding programme links to its official source.", "#F09A24")], 4, "compact"),
+    section=S)
+
+mark("Your journey with OneGrasp")
+add(head("Roadmap", "Your journey", "with OneGrasp.", "One assessment starts a journey that lasts all through school. This is the route the whole handbook follows, part by part.")
+    + roadmap([("Take the assessment", "About 90 minutes, online. Part 2 shows every screen.", "#2196C8"),
+               ("Read your report", "Your 8 dimensions and best-fit careers. Parts 3 and 4.", "#7754B8"),
+               ("Open your dashboard", "Your report becomes tools you use. Part 5.", "#F09A24"),
+               ("Build life skills", "Money, rights, AI, speaking, resumes. Part 6.", "#279B70"),
+               ("Create and publish", "Startups, research and conferences. Parts 7 and 8.", "#B5891A"),
+               ("Talk it through", "Parents and schools guide, not decide. Part 9.", "#C72D35"),
+               ("Act and track", "30-day challenge, plans and trackers. Part 10.", "#17243A")], ry="50%")
+    + h3("Three stages, three different reports", "layers")
+    + grid([f'<div class="kpi" style="background:{c}"><b>{a}</b><span>{b}</span></div>' for a, b, c in [("Class 6–8", "Discover: explore broadly and notice what you enjoy.", "#2196C8"), ("Class 9–10", "Choose a stream with evidence, not guesswork.", "#7754B8"), ("Class 11–12", "Choose exams, degrees and colleges, and plan for them.", "#C72D35")]], 3, gap="4mm")
+    + two(callout("simple", "Think of it like a GPS: the assessment finds where you are, the report shows possible destinations, and the dashboard gives turn-by-turn directions."),
+          callout("parent", "Re-taking the assessment at each stage shows how your child is growing. Part 3 ends with a page to record results over the years."), "push", gap="4mm"),
     section=S)
 
 mark("Why career choices go wrong")
-traps = [("Marks", "“You scored 95 in maths, so take engineering.”", "Marks show how you did in an exam. They do not show what you enjoy, how you work, or what you will want to do for 30 years.", "percent", "#B92B32"),
-         ("Peer pressure", "“All my friends are taking MPC.”", "Your friends have different strengths and dreams. Following the crowd feels safe today and costly later.", "users", "#9C5A5E"),
-         ("Guesswork", "“My cousin did B.Com, so…”", "Most families know only a handful of careers. With 930 careers in our library, guessing means missing most of your options.", "shuffle", "#5E7189")]
+traps = [("Marks", "“You scored 95 in maths, so take engineering.”", "Marks show how you did in an exam. They do not show what you enjoy, how you work, or what you will want to do for 30 years.", "percent", "#C72D35"),
+         ("Peer pressure", "“All my friends are taking MPC.”", "Your friends have different strengths and dreams. Following the crowd feels safe today and costly later.", "users", "#F09A24"),
+         ("Guesswork", "“My cousin did B.Com, so…”", "Most families know only a handful of careers. With 930 careers in our library, guessing means missing most of your options.", "shuffle", "#279B70")]
 add(head("Why it matters", "Three traps that decide", "too many careers.",
          "Ask ten adults why they chose their career and many will say “I didn't really choose.” These are the three most common traps.")
     + grid([f'<div class="trap" style="--tc:{c}"><div class="trh">{chip(ic, "#fff", c, "12mm", "6mm")}<b>Trap {i + 1}</b><h4>{t}</h4></div><p class="trq">{q}</p><p>{x}</p></div>' for i, (t, q, x, ic, c) in enumerate(traps)], 3)
@@ -49,7 +68,7 @@ add(head("The next decade", "The world of work", "is changing fast.",
          "AI is taking over routine tasks. The World Economic Forum's <i>Future of Jobs Report 2025</i> shows which skills and jobs are rising, and which are fading.")
     + two(box(h3("Skills employers want most", "trending-up") + numbered(["Analytical thinking", "Resilience, flexibility and agility", "Leadership and social influence", "Creative thinking", "Motivation and self-awareness", "AI and big data"])
               + p("Source: World Economic Forum, Future of Jobs Report 2025. None of these skills shows on a mark sheet.", "small mt")),
-          box(h3("Fading or automating", "trending-down") + bullets(fading, "tight", "minus", "#B92B32"), "soft"), ratio="1.1fr 0.9fr")
+          box(h3("Fading or automating", "trending-down") + bullets(fading, "tight", "minus", "#C72D35"), "soft"), ratio="1.1fr 0.9fr")
     + h3("Rising and future-proof", "rocket")
     + grid([f'<div class="rise"><b>{t}</b><span>{d}</span></div>' for t, d in rising], 5, gap="2.4mm")
     + callout("simple", "Jobs that mix <b>human judgement</b> with <b>technology</b> are the safest. That is why the assessment measures how you think, learn, feel and relate to people, not just what you know.", cls="push"),

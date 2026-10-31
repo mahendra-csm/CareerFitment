@@ -52,12 +52,12 @@ mark("The researcher journey")
 journey = [("Submit your abstract", "Online, before the abstract deadline.", "send"), ("Committee review", "Reviewed by experts in your discipline.", "search-check"), ("Register", "Early, standard or late; Razorpay (India) or PayPal.", "credit-card"),
            ("Present live", "In your discipline's paper session.", "mic"), ("Certificate issued", "Unique, verifiable certificate ID.", "award"), ("DOI assigned", "A permanent, citable link via Crossref.", "link"),
            ("Indexed", "Listed in 10+ directories.", "list"), ("Keynote invitation", "Strong presenters keynote future editions.", "trophy")]
-cols = ["#1E3A8A", "#3730A3", "#17243A", "#4F46E5", "#3D4F66", "#3D4F66", "#B92B32", "#B92B32"]
+cols = ["#1E3A8A", "#3730A3", "#17243A", "#4F46E5", "#2196C8", "#2196C8", "#C72D35", "#C72D35"]
 add(head("Conferences", "From research paper", "to global recognition.", "A clear eight-step path takes every presenter from first submission to a published, indexed and certified contribution, and for the best, a future keynote.")
     + '<div class="stairs">' + "".join(f'<div class="stair" style="--sc:{cols[i]};margin-left:{(7 - i) * 0 + i * 6}mm"><span>Step {i + 1}</span>{icon(ic, "5mm", "#fff")}<b>{t}</b><em>{x}</em></div>' for i, (t, x, ic) in list(enumerate(journey))[::-1]) + "</div>"
     + h3("What every presenter takes home", "gift")
-    + cards([("award", "Certificate with unique ID", "Verifiable by its certificate ID.", "#17243A"), ("link", "A DOI for your abstract", "Prefix 10.65838, resolvable at doi.org.", "#3D4F66"),
-             ("badge-check", "CPD credit", "Accredited through PACE Council.", "#3D4F66"), ("globe", "Zero travel, zero visa", "Join from your campus or home.", "#B92B32")], 4, "compact")
+    + cards([("award", "Certificate with unique ID", "Verifiable by its certificate ID.", "#17243A"), ("link", "A DOI for your abstract", "Prefix 10.65838, resolvable at doi.org.", "#2196C8"),
+             ("badge-check", "CPD credit", "Accredited through PACE Council.", "#2196C8"), ("globe", "Zero travel, zero visa", "Join from your campus or home.", "#C72D35")], 4, "compact")
     + h3("How students get there from the dashboard", "route")
     + steps([("Research Studio", "Eight units teach the method.", "book-open"), ("Start a project", "Plan back from a conference date.", "flag"), ("Mentor check", "7 items scored 1–4.", "clipboard-check"),
              ("Spotlight", "Submit your abstract.", "send")], cols=4),
@@ -112,14 +112,14 @@ mark("Keynotes, awards and the conference day")
 add(head("Conferences", "Keynotes from", "leading experts.", "Committee members and invited experts open each day with keynotes that bridge research and practice.")
     + grid([f'<div class="kn" style="--kc:{c}"><img class="knp" style="border-color:{c}" src="assets/committee/{ph}"><b>{n}</b><em>{r}</em><p>{t}</p></div>' for n, r, t, c, ph in [
         ("Dr Manjunath G N", "Professor & Head, Pharmacology, Sri Siddhartha Medical College, India", "Mental health & psychological stress in athletes · Brain–computer interfaces", "#17243A", "dr-manjunath-g-n.jpg"),
-        ("Dr Bishnu Pada Bose", "Professor, Partner & Advisor, Invosystems, Singapore", "Outcome-based vs traditional education · Greenhouse gases & global warming", "#3D4F66", "dr-bishnu-pada-bose.jpg"),
-        ("Dr Ju Lee Kim", "Senior Researcher, R&D Center, RedGene, Republic of Korea", "Organoids and gene circuits in stem-cell research", "#7A2A30", "dr-ju-lee-kim.jpg")]], 3, gap="4mm")
+        ("Dr Bishnu Pada Bose", "Professor, Partner & Advisor, Invosystems, Singapore", "Outcome-based vs traditional education · Greenhouse gases & global warming", "#2196C8", "dr-bishnu-pada-bose.jpg"),
+        ("Dr Ju Lee Kim", "Senior Researcher, R&D Center, RedGene, Republic of Korea", "Organoids and gene circuits in stem-cell research", "#7754B8", "dr-ju-lee-kim.jpg")]], 3, gap="4mm")
     + h3("Moments from recent conferences", "camera")
     + grid([f'<figure class="hlp"><img src="assets/conf/{f}.jpg"><figcaption>{c}</figcaption></figure>' for f, c in [("h01", "Dr Manjunath G N: stress in athletes"), ("h00", "Dr Bishnu Pada Bose: outcome-based education"), ("h02", "Participants joining a live plenary"), ("h10", "Dr Ju Lee Kim presenting live")]], 4, gap="2.4mm")
     + h3("Two evenings, one clear format (IST)", "clock")
     + two(table(["Day 1", ""], [["6:00", "Inaugural ceremony & welcome"], ["6:30", "Keynote I"], ["7:15", "Keynote II"], ["8:00", "Networking & Q&A"], ["8:15", "Paper session I"], ["9:00", "Paper session II"], ["9:45", "Panel & open Q&A"]], "dense", widths=["22%", "78%"]),
           table(["Day 2", ""], [["6:00", "Welcome & Day 1 recap"], ["6:30", "Keynote III"], ["7:15", "Keynote IV"], ["8:00", "Open networking"], ["8:15", "Paper sessions III & IV"], ["9:00", "Award ceremony"], ["9:45", "Valedictory & certificates"]], "dense", widths=["22%", "78%"]), gap="4mm")
     + h3("Awards at every conference", "trophy")
-    + cards([("trophy", "Best Paper Award", "For the strongest paper in each discipline.", "#9C5A5E"), ("star", "Young Researcher Award", "Recognising early-career excellence.", "#17243A"), ("mic", "Outstanding Presenter", "For clarity and impact on stage.", "#7A2A30")], 3, "compact")
+    + cards([("trophy", "Best Paper Award", "For the strongest paper in each discipline.", "#F09A24"), ("star", "Young Researcher Award", "Recognising early-career excellence.", "#17243A"), ("mic", "Outstanding Presenter", "For clarity and impact on stage.", "#7754B8")], 3, "compact")
     + callout("try", "Students: start with the <b>Research Studio</b> this term, aim for a student conference next term, and a OneGrasp international conference after that.", cls="push"),
     section=S)

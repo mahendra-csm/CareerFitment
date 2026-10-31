@@ -14,10 +14,10 @@ add(head("For parents", "Guide,", "not decide.",
                                               "Help them try things: a visit, a course, a conversation with someone in the field", "Check facts together: fees, exams, deadlines",
                                               "Use the Decision Room to compare two paths calmly", "Revisit the report every 6–12 months"], "tight", "check", "#17243A")),
           box(h3("Avoid", "thumbs-down") + bullets(["Choosing for them because of marks, relatives or neighbours", "Treating a lower score as a failure", "Comparing with siblings or friends",
-                                                   "Pushing a stream or exam they have no interest in", "Paying anyone who promises a guaranteed admission, job or scholarship", "Ending the talk with “because I said so”"], "tight", "x", "#B92B32"), "soft"), "mt", gap="4mm")
+                                                   "Pushing a stream or exam they have no interest in", "Paying anyone who promises a guaranteed admission, job or scholarship", "Ending the talk with “because I said so”"], "tight", "x", "#C72D35"), "soft"), "mt", gap="4mm")
     + h3("What you can see", "eye")
-    + cards([("file-text", "The full report", "Your child can share the PDF or open it with you.", "#17243A"), ("compass", "Weekly progress", "Career GPS shows the week's missions.", "#3D4F66"),
-             ("heart-handshake", "A parents' page", "Every report ends with “Supporting your child”.", "#7A2A30")], 3, "compact push"),
+    + cards([("file-text", "The full report", "Your child can share the PDF or open it with you.", "#17243A"), ("compass", "Weekly progress", "Career GPS shows the week's missions.", "#2196C8"),
+             ("heart-handshake", "A parents' page", "Every report ends with “Supporting your child”.", "#7754B8")], 3, "compact push"),
     section=S)
 
 mark("Ten questions to talk through")
@@ -36,9 +36,9 @@ add(head("For schools and colleges", "See every student.", "Nudge the ones who n
     + two(paper("brochure/c11-i-281.png", "The Institution Portal overview."),
           vsteps([("Daily tracking", "Assessment status, activity and time spent for every student."), ("One-click reminders", "Nudge students who haven't started or have gone quiet."),
                   ("Messages", "Send updates and learning nudges; students can reply."), ("Decision briefs", "Short summaries that support career conversations.")]), ratio="1.1fr 0.9fr", gap="5mm")
-    + cards([("sparkles", "Opportunities", "Share useful opportunities with students.", "#17243A"), ("chart-column", "Insights", "Career journeys, life skills and future skills at a glance.", "#3D4F66"),
-             ("file-bar-chart" if False else "file-chart-column", "School report", "A whole-school view of results and progress.", "#5E7189"), ("users", "Parents & mentors", "Coordinate parents, mentors and counselling.", "#B92B32"),
-             ("eye", "Observations", "Teachers record what they notice.", "#7A2A30"), ("badge-check", "Career Passport", "Verify students' achievements with proof.", "#3D4F66")], 3, "compact mt")
+    + cards([("sparkles", "Opportunities", "Share useful opportunities with students.", "#17243A"), ("chart-column", "Insights", "Career journeys, life skills and future skills at a glance.", "#2196C8"),
+             ("file-bar-chart" if False else "file-chart-column", "School report", "A whole-school view of results and progress.", "#279B70"), ("users", "Parents & mentors", "Coordinate parents, mentors and counselling.", "#C72D35"),
+             ("eye", "Observations", "Teachers record what they notice.", "#7754B8"), ("badge-check", "Career Passport", "Verify students' achievements with proof.", "#2196C8")], 3, "compact mt")
     + band("Schools only ever see their own students, never a student's individual answers. A trust flag shows if a test looks rushed, so it can be retaken.", "Privacy:", "lock", "mt push"),
     section=S)
 
@@ -47,9 +47,9 @@ add(head("Benefits", "What everyone", "gains.", center=True)
     + grid([f'<div class="gain" style="--gc:{c}"><div class="gh">{icon(ic, "9mm", "#fff")}<h4>{t}</h4></div>' + bullets(items, "tight", "check", c) + "</div>" for t, ic, c, items in [
         ("Students", "graduation-cap", "#17243A", ["Know yourself: type, interests, strengths", "Careers that fit, with real facts", "A plan: subjects, exams, degree, college", "Money: scholarships and funding",
                                                  "Skills school doesn't teach", "Proof: certificates, portfolio, passport", "Confidence to choose, and to change"]),
-        ("Parents", "heart-handshake", "#7A2A30", ["A calm conversation based on evidence", "Practical questions to support better", "Visibility of weekly progress", "Honest cost checks before big spends",
+        ("Parents", "heart-handshake", "#7754B8", ["A calm conversation based on evidence", "Practical questions to support better", "Visibility of weekly progress", "Honest cost checks before big spends",
                                                   "Protection from scams and false promises", "A report to revisit as your child grows"]),
-        ("Schools and colleges", "school", "#3D4F66", ["A structured guidance programme on campus", "Daily tracking and one-click reminders", "Decision briefs for counsellors", "Life and future skills for every student",
+        ("Schools and colleges", "school", "#2196C8", ["A structured guidance programme on campus", "Daily tracking and one-click reminders", "Decision briefs for counsellors", "Life and future skills for every student",
                                                        "Privacy built in", "Better-prepared students for admissions and placements"])]], 3, gap="4mm")
     + h3("Built for the world of work that's coming", "rocket")
     + table(["What employers want (WEF 2025)", "Where OneGrasp builds it"], [

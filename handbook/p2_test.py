@@ -9,14 +9,17 @@ S = "The Assessment"
 mark("What is a psychometric assessment?")
 add(head("The test", "Is it just", "another exam?",
          "No. A psychometric career assessment is a structured set of questions that looks beyond marks to understand how you think, what interests you, and where your natural strengths lie.")
-    + two(callout("simple", "<b>Psycho</b> means mind and <b>metric</b> means measure. A psychometric assessment measures parts of your mind that an exam does not: your preferences, interests, feelings and ways of thinking. Think of it as a <b>mirror</b>, not a <b>marksheet</b>.")
-          + p("The OneGrasp Career Fitment Assessment asks short, everyday questions: what would you do in this situation, what do you enjoy, how do you like to learn. It reads your answers through well-established psychology frameworks and turns them into a picture of you.")
-          + p("That picture is then matched against hundreds of careers, so the report can say which fields fit you best, and why.")
-          + callout("example", "Two students both score 90% in Class 10. One loves taking machines apart and solving puzzles alone; the other loves debating and organising school events. Same marks, very different best-fit careers. Marks could not tell them apart. The assessment can."),
-          box(h3("Mirror, not marksheet", "scan-face")
-              + table(["A school exam", "This assessment"], [["Tests what you studied", "Explores who you are"], ["Right or wrong answers", "Mostly no right answers"], ["Gives a mark", "Gives a profile"],
-                                                             ["You can fail", "You can't fail"], ["Same for everyone", "Written for your age"], ["Ends with a result", "Starts a plan"]], widths=["50%", "50%"])
-              + callout("good", "Only the <b>Aptitude</b> section has right answers, like a reasoning test. Everything else is about you, so the only wrong answer is a dishonest one."), "soft"), ratio="1.05fr 0.95fr", gap="6mm")
+    + callout("simple", "<b>Psycho</b> means mind and <b>metric</b> means measure. A psychometric assessment measures parts of your mind that an exam does not: your preferences, interests, feelings and ways of thinking. Think of it as a <b>mirror</b>, not a <b>marksheet</b>.")
+    + h3("How it works", "route")
+    + roadmap([("You answer", "Short, everyday questions: what would you do in this situation, what do you enjoy, how do you like to learn.", "#2196C8"),
+               ("We read your answers", "Through well-established psychology frameworks, and turn them into a picture of you.", "#7754B8"),
+               ("We match", "That picture is matched against hundreds of careers.", "#F09A24"),
+               ("Your report explains", "Which fields fit you best, and why.", "#279B70")])
+    + h3("Mirror, not marksheet", "scan-face")
+    + compare("A school exam", ["Tests what you studied", "Right or wrong answers", "Gives a mark", "You can fail", "Same for everyone", "Ends with a result"],
+              "This assessment", ["Explores who you are", "Mostly no right answers", "Gives a profile", "You can't fail", "Written for your age", "Starts a plan"])
+    + two(callout("example", "Two students both score 90% in Class 10. One loves taking machines apart and solving puzzles alone; the other loves debating and organising school events. Same marks, very different best-fit careers. Marks could not tell them apart. The assessment can."),
+          callout("good", "Only the <b>Aptitude</b> section has right answers, like a reasoning test. Everything else is about you, so the only wrong answer is a dishonest one."), "mt", gap="4mm")
     + h3("What you get back", "gift")
     + cards([("radar", "Your profile", "Your results across 8 dimensions on one page."), ("target", "Best-fit careers", "Top career areas, each with a fit %."),
              ("route", "A roadmap", "Subjects, exams, degrees, skills and jobs, step by step."), ("layout-dashboard", "A dashboard", "20+ tools to act on it, all year.")], 4, "compact"),
@@ -65,9 +68,9 @@ add(head("Prepare", "Before you", "begin.",
               + p("There are no good or bad results, only better fits. If you answer the way a parent, teacher or friend would like, the report will describe them, not you.")
               + p("If two options both feel true, pick the one that is true <b>more often</b>.", "small"), "soft"))
     + h3("Good habits during the test", "sparkles")
-    + cards([("zap", "Trust your first reaction", "Your first honest answer is usually the most accurate. Don't overthink.", "#3D4F66"),
+    + cards([("zap", "Trust your first reaction", "Your first honest answer is usually the most accurate. Don't overthink.", "#2196C8"),
              ("skip-forward", "Skip, then return", "Not sure? Tap Next and come back using the navigator.", "#17243A"),
-             ("brain", "Focus on aptitude", "It's the only part with right answers. Read each question fully.", "#5E7189"),
+             ("brain", "Focus on aptitude", "It's the only part with right answers. Read each question fully.", "#279B70"),
              ("save", "Take a break if needed", "Tap Save Progress. You'll resume with the same questions and time.", "#17243A")], 4, "compact")
     + two(callout("parent", "Please let your child answer alone. Sitting beside them changes their answers. You'll read the report together afterwards (Part 8)."),
           callout("teacher", "Run the test in a calm lab session. Remind students there are no marks and no ranking: that single sentence improves honesty."), "push", gap="4mm"),
@@ -108,27 +111,27 @@ mk = {
 }
 add(head("Question types", "Six kinds of", "questions.",
          "Most questions take a few seconds. Here is what each type looks like on screen, and how to answer it well.")
-    + grid([f'<div class="qt"><div class="qth">{chip(["mouse-pointer-click", "sliders-horizontal", "list-plus", "chevrons-up-down", "brain", "toggle-left"][i], size="8mm", isz="4.4mm")}<b>{k}</b></div>{m}<p class="small">{icon("lightbulb", "3.4mm", "#9C5A5E")} {tip}</p></div>' for i, (k, (m, tip)) in enumerate(mk.items())], 3, gap="4mm")
+    + grid([f'<div class="qt"><div class="qth">{chip(["mouse-pointer-click", "sliders-horizontal", "list-plus", "chevrons-up-down", "brain", "toggle-left"][i], size="8mm", isz="4.4mm")}<b>{k}</b></div>{m}<p class="small">{icon("lightbulb", "3.4mm", "#F09A24")} {tip}</p></div>' for i, (k, (m, tip)) in enumerate(mk.items())], 3, gap="4mm")
     + two(laptop("shots/flow-2.jpg", "A personality question: tap the option most like you."), laptop("shots/exam-mid.jpg", "Class 11–12: answers save as soon as you tap."), "mt", gap="6mm"),
     section=S)
 
 mark("Built to be trusted")
 add(head("Trust", "Built to", "be trusted.",
          "A report is only useful if it really describes the student. Three safeguards protect every result.")
-    + cards([("activity", "Answer-quality check", "When you submit, the test looks at how the paper was answered: how many answers came in under 3 seconds, and whether the same option was picked again and again. It never changes your scores. It only flags a report that may not reflect you (high, medium or low trust), so a rushed test can be retaken.", "#3D4F66"),
+    + cards([("activity", "Answer-quality check", "When you submit, the test looks at how the paper was answered: how many answers came in under 3 seconds, and whether the same option was picked again and again. It never changes your scores. It only flags a report that may not reflect you (high, medium or low trust), so a rushed test can be retaken.", "#2196C8"),
              ("lock", "Your answers stay private", "Your report belongs to you. If you joined through a school, the school sees your progress and activity, never your individual answers.", "#17243A"),
              ("badge-check", "Facts linked to sources", "Exams, scholarships, funded routes and funding programmes link to their official websites, so anyone can check them.", "#17243A")], 3)
     + h3("What a rushed test looks like", "triangle-alert")
     + two(callout("example", "To show you the quality check, we raced through a sample test in about <b>9 minutes</b>, tapping answers in under 3 seconds. The system noticed straight away and marked the report <b>low trust</b>, with the exact reasons below.")
-          + table(["Check", "Our rushed sample", "A thoughtful test"], [["Time taken", "9 min", "40–80 min"], ["Answers under 3 seconds", "79%", "Under 15%"], ["Same answer repeated", "74%", "Under 30%"], ["Longest identical run", "42 in a row", "3–4"], ["Trust", tag("LOW", "#B92B32"), tag("HIGH", "#17243A")]], "dense", widths=["40%", "30%", "30%"]),
-          '<div class="grid" style="grid-template-columns:1fr 1fr;gap:3mm">' + gauge(79, "answers under 3 seconds", "#B92B32", 36) + gauge(74, "same answer as the one before", "#9C5A5E", 36) + "</div>"
+          + table(["Check", "Our rushed sample", "A thoughtful test"], [["Time taken", "9 min", "40–80 min"], ["Answers under 3 seconds", "79%", "Under 15%"], ["Same answer repeated", "74%", "Under 30%"], ["Longest identical run", "42 in a row", "3–4"], ["Trust", tag("LOW", "#C72D35"), tag("HIGH", "#17243A")]], "dense", widths=["40%", "30%", "30%"]),
+          '<div class="grid" style="grid-template-columns:1fr 1fr;gap:3mm">' + gauge(79, "answers under 3 seconds", "#C72D35", 36) + gauge(74, "same answer as the one before", "#F09A24", 36) + "</div>"
           + callout("simple", "Rushing doesn't save time. It just gives you a report about nobody. Slow down, read, and answer as yourself.")),
     section=S)
 
 mark("After you finish")
 add(head("Submitted", "What happens", "after you finish.",
          "Tap “Finish & see report” when every question is answered. Your personalised report is generated instantly.")
-    + laptop("shots/flow-6.jpg", "The confirmation screen: your answers are recorded and your report is being generated.")
+    + laptop("shots/flow-6.jpg", "The confirmation screen: your answers are recorded and your report is being generated.", cls="lim")
     + steps([("Report saved", "It stays on your dashboard permanently. Reopen it any time.", "save"), ("Copy by email", "A confirmation email explains how to sign back in.", "mail"),
              ("Dashboard unlocks", "Your results pages and every tool appear in the menu.", "layout-dashboard"), ("Read it together", "Download the PDF and read it with someone who guides you.", "users")], "mt")
     + two(box(h3("Your first 48 hours", "timer") + check_list(["Open your full report and read the first three pages", "Write your type and interest code on page 2 of this book",

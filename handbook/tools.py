@@ -5,8 +5,13 @@ Each tool gets its own colour (it overrides the part's theme on its pages).
 from lib import *
 
 
-def tool_theme(key, name, c1, c2):
-    THEMES[key] = (name, "#B92B32", "#17243A", "#F4F3EF", "#17243A")
+TOOL_ACC = {"Career Library": "blue", "Entrance Exams": "purple", "Scholarships": "green", "Study Abroad": "blue", "Internships & Jobs": "orange",
+            "Financial Literacy": "green", "Law & Rights": "navy", "AI & Certifications": "purple", "Communication Lab": "orange",
+            "Resume & Interview": "red", "Proof & Progress": "green", "Spotlight": "gold", "Startups": "gold", "Research Studio": "blue"}
+
+
+def tool_theme(key, name, c1=None, c2=None):
+    set_theme(key, name, TOOL_ACC.get(name, "orange"))
     theme(key)
 
 
@@ -19,8 +24,8 @@ def opener(no, name, tagline, art, stats_, who, why, inside, find, section):
 <div class="th-txt"><div class="kicker" style="color:#FFE08A">Your dashboard</div><h1>{name}</h1><p>{tagline}</p>
 <div class="th-st">{st}</div></div>{img(art, "th-art")}</div>'''
         + two(box(h3("Why it matters", "target") + wh), box(h3("Who it's for", "users") + who + findit(*find), "soft"), ratio="1.15fr 0.85fr", gap="4mm")
-        + h3("What's inside", "layout-grid")
-        + f'<div class="inside">{ins}</div>',
+        + h3("What's inside: the tool at a glance", "layout-grid")
+        + mindmap(name, "What's inside", inside, height=100 if len(inside) <= 6 else 108, cw=34, nw=47),
         section=section)
 
 

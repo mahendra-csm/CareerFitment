@@ -2,7 +2,7 @@ import json, os
 from lib import *
 
 divider(7, "startup", "Startups & Funding", "OneGrasp's startup programmes, and every grant, loan, subsidy, equity and credit-guarantee programme in the dashboard's Funding directory: 311 of them.",
-        ["The Startups course", "Spot, Build, Pitch", "How to use the Funding directory", "Central government programmes", "Banks and SIDBI", "Incubators and funds", "State government programmes"], "feat/startups.webp")
+        ["The Startups course", "Spot, Build, Pitch", "How to use the Funding directory", "Funding for early-stage startups"], "feat/startups.webp")
 S = "Startups & Funding"
 F = json.load(open(os.path.join(os.path.dirname(__file__), "funding.json")))
 P = F["programmes"]
@@ -35,8 +35,8 @@ mark("Spot, Build, Pitch")
 add(head("Entrepreneurship", "Entrepreneurship is best", "learned by doing.",
          "Most students meet entrepreneurship as a chapter, a guest lecture or a case study. OneGrasp's startup programmes give them a real occasion to take one problem, build a first answer and defend it in front of people who ask hard questions.")
     + grid([f'<div class="sbp" style="--sc:{c}"><span>{n}</span>{icon(ic, "9mm", "#fff")}<h4>{t}</h4><p>{x}</p></div>' for n, t, x, ic, c in [
-        ("01", "SPOT", "Observe, investigate and define a real problem.", "search", "#7A2A30"), ("02", "BUILD", "Develop a prototype or a structured business solution.", "hammer", "#B92B32"),
-        ("03", "PITCH", "Present the idea, answer questions and plan the next steps.", "presentation", "#B92B32")]], 3, gap="4mm")
+        ("01", "SPOT", "Observe, investigate and define a real problem.", "search", "#7754B8"), ("02", "BUILD", "Develop a prototype or a structured business solution.", "hammer", "#C72D35"),
+        ("03", "PITCH", "Present the idea, answer questions and plan the next steps.", "presentation", "#C72D35")]], 3, gap="4mm")
     + h3("From problem to pitch: what students actually do", "route")
     + steps([("Meet a real-world problem", "Chosen by the team.", "globe"), ("Find out who lives with it", "Talk to real users.", "users"), ("Build and test a first solution", "Something people can handle.", "wrench"),
              ("Shape a business model", "Who pays, and why.", "wallet"), ("Present it", "Answer hard questions.", "mic")], cols=5)
@@ -46,12 +46,12 @@ add(head("Entrepreneurship", "Entrepreneurship is best", "learned by doing.",
     section=S)
 
 mark("How to use the Funding directory")
-kinds = [("Grant", sum(p["kind"] == "grant" for p in P), "#17243A"), ("Subsidy", sum(p["kind"] == "subsidy" for p in P), "#3D4F66"), ("Loan", sum(p["kind"] == "loan" for p in P), "#B92B32"),
-         ("Equity", sum(p["kind"] == "equity" for p in P), "#5E7189"), ("Guarantee", sum(p["kind"] == "guarantee" for p in P), "#B92B32")]
-runby = [("State government", T["runBy"]["state"], "#7A2A30"), ("Incubators and funds", T["runBy"]["incubator"], "#B92B32"), ("Central government", T["runBy"]["central"], "#B92B32"), ("Banks and SIDBI", T["runBy"]["bank"], "#8A97A8")]
+kinds = [("Grant", sum(p["kind"] == "grant" for p in P), "#17243A"), ("Subsidy", sum(p["kind"] == "subsidy" for p in P), "#2196C8"), ("Loan", sum(p["kind"] == "loan" for p in P), "#C72D35"),
+         ("Equity", sum(p["kind"] == "equity" for p in P), "#279B70"), ("Guarantee", sum(p["kind"] == "guarantee" for p in P), "#E5B73B")]
+runby = [("State government", T["runBy"]["state"], "#7754B8"), ("Incubators and funds", T["runBy"]["incubator"], "#F09A24"), ("Central government", T["runBy"]["central"], "#C72D35"), ("Banks and SIDBI", T["runBy"]["bank"], "#E5B73B")]
 early = sum(1 for p in P if set(p["stages"]) & {"idea", "proof-of-concept", "prototype"})
 add(head("Funding directory", "Money to start", "your startup.",
-         f"The dashboard's Funding directory lists every grant, loan, subsidy, equity and credit-guarantee programme for Indian startups from CapEasy's scheme directory (CapEasy is OneGrasp's own company). The next nine pages list all {T['programmes']}, as of {F['fetchedAt']}.")
+         f"The dashboard's Funding directory lists every grant, loan, subsidy, equity and credit-guarantee programme for Indian startups from CapEasy's scheme directory (CapEasy is OneGrasp's own company). The next two pages list the {early} programmes open at idea, proof-of-concept or prototype stage, where student founders start. All {T['programmes']} are in the dashboard (data as of {F['fetchedAt']}).")
     + stats([(str(T["programmes"]), "programmes", "list"), (f"₹{T['crore']:,.0f} cr", "on offer in total", "indian-rupee"), (str(early), "for idea / prototype stage", "lightbulb"), (str(T["oneClick"]), "one-click applications", "mouse-pointer-click")])
     + two(box(h3("What kind of money?", "chart-pie") + '<div class="two mid" style="display:grid;grid-template-columns:42mm 1fr;gap:3mm">' + donut(kinds, 40, 0.55, (str(T["programmes"]), "programmes")) + legend(kinds) + "</div>"),
           box(h3("Who runs them?", "landmark") + '<div class="two mid" style="display:grid;grid-template-columns:42mm 1fr;gap:3mm">' + donut(runby, 40, 0.55, ("4", "sources")) + legend(runby) + "</div>"), gap="4mm")
@@ -63,7 +63,7 @@ add(head("Funding directory", "Money to start", "your startup.",
           callout("warn", "Never pay an agent to “guarantee” a government grant. Real schemes apply directly or through registered incubators."), "push", gap="4mm"),
     section=S)
 
-KIND = {"grant": tag("Grant", "#17243A"), "subsidy": tag("Subsidy", "#3D4F66"), "loan": tag("Loan", "#B92B32"), "equity": tag("Equity", "#5E7189"), "guarantee": tag("Guarantee", "#B92B32")}
+KIND = {"grant": tag("Grant", "#17243A"), "subsidy": tag("Subsidy", "#2196C8"), "loan": tag("Loan", "#C72D35"), "equity": tag("Equity", "#279B70"), "guarantee": tag("Guarantee", "#B5891A")}
 STAGE = {"idea": "Idea", "proof-of-concept": "PoC", "prototype": "Prototype", "early-stage": "Early", "seed": "Seed", "paid-pilot": "Pilot", "early-revenue": "Revenue", "growth": "Growth", "scale": "Scale"}
 
 
@@ -81,23 +81,15 @@ def short(n, k=74):
     return n if len(n) <= k else n[:k - 1].rstrip() + "…"
 
 
-PER = 80
-groups = [("central", "Central government programmes"), ("bank", "Banks and SIDBI"), ("incubator", "Incubators and funds"), ("state", "State government programmes")]
+groups = [("central", "Central government"), ("incubator", "Incubators and funds"), ("state", "State governments")]
 items = []
 for key, title in groups:
-    g = [p for p in P if p["run_by_kind"] == key]
+    g = [p for p in P if p["run_by_kind"] == key and set(p["stages"]) & {"idea", "proof-of-concept", "prototype"}]
     g.sort(key=(lambda p: (p["states"][0] if p["states"] else "", p["name"])) if key == "state" else (lambda p: p["name"]))
-    cnt = len(g)
-    items.append(("H", title, cnt))
+    items.append(("H", title, len(g)))
     items += [("P", title, p) for p in g]
-pages = []
-cur = []
-for it in items:
-    cur.append(it)
-    if len(cur) >= PER:
-        pages.append(cur); cur = []
-if cur:
-    pages.append(cur)
+half_ = (len(items) + 1) // 2
+pages = [items[:half_], items[half_:]]
 
 
 def col(rows):
@@ -108,17 +100,15 @@ def col(rows):
             continue
         p = x
         where = sname(p["states"][0]) if p["states"] else "All India"
-        out.append(f'<tr><td>{E(short(p["name"], 52))}</td><td>{KIND[p["kind"]]}</td><td>{E(amt(p)[:22])}</td><td>{where}</td></tr>')
+        out.append(f'<tr><td>{E(short(p["name"], 58))}</td><td>{KIND[p["kind"]]}</td><td>{E(amt(p)[:24])}</td><td>{where}</td></tr>')
     return f'<table class="tbl fund2"><colgroup><col style="width:52%"><col style="width:16%"><col style="width:19%"><col style="width:13%"></colgroup><thead><tr><th>Programme</th><th>Type</th><th>Amount</th><th>Where</th></tr></thead><tbody>{"".join(out)}</tbody></table>'
 
 
-seen = set()
+mark("Funding for early-stage startups")
 for i, pg in enumerate(pages):
-    for kind, title, _ in pg:
-        if title not in seen:
-            mark(title); seen.add(title)
     half = (len(pg) + 1) // 2
-    add(head("Funding directory", "Startup funding", f"programmes ({i + 1} of {len(pages)})")
-        + two(col(pg[:half]), col(pg[half:]), gap="3mm")
-        + p(f"Source: CapEasy scheme directory (capeasy.in/schemes), {F['fetchedAt']}. Amounts and deadlines change; open each programme in Startups › Funding for details, eligibility and how to apply.", "small push"),
+    add(head("Funding directory", "Funding for early-stage", f"startups ({i + 1} of 2)",
+             "Programmes that fund an idea, proof of concept or prototype. Open each one in Startups › Funding for amounts, eligibility and how to apply." if i == 0 else "")
+        + two(col(pg[:half]), col(pg[half:]), gap="4mm")
+        + p(f"Source: CapEasy scheme directory (capeasy.in/schemes), {F['fetchedAt']}. {early} of {T['programmes']} programmes shown; the full list, with filters, is in the dashboard. Amounts and deadlines change.", "small push"),
         section=S)
